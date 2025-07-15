@@ -126,7 +126,7 @@ class ScreenGalHalo(Halo):
         self.taux     = gpop.tau_sca
 
     #------- Deal with variable scattering halo images ----#
-    def variable_profile(self, time, lc, dist=8.0, tnow=None):
+    def variable_profile(self, time, lc, dist=8.0*u.kpc, tnow=None):
         """
         Given a light curve, calculate the energy-dependent intensity of
         the scattering halo at some time afterwards.
@@ -538,13 +538,13 @@ def path_diff(alpha, x):
     | ASSUMES SMALL ANGLES
     |
     | **INPUTS**
-    | alpha  : scalar : observation angle [arcsec]
-    | x      : scalar or np.array : position of dust patch (source is at x=0, observer at x=1)
+    | alpha  : astropy Quantity : observation angle
+    | x      : scalar float or np.array : position of dust patch (source is at x=0, observer at x=1)
     """
     assert (np.max(x) < 1.0) & (np.min(x) > 0)
     if (np.size(alpha) > 1) & (np.size(x) > 1):
         assert len(alpha) == len(x)
-    alpha_rad = alpha * u.arcsec.to('rad')
+    alpha_rad = alpha.to('rad').value
     if not _is_small_angle(alpha_rad):
         print("WARNING: astrodust.halos.galhalo functions assume small angle scattering and the largest angle is > 0.01 rad")
     return alpha_rad**2 * (1-x) / (2*x)
@@ -555,10 +555,9 @@ def time_delay(alpha, x, dkpc):
     | ASSUMES SMALL ANGLES
     |
     | **INPUTS**
-    | alpha : observation angle [arcsec]
-    | x     : position of a dust patch (source is at x=0, observer at x=1)
-    | D     : distance to the X-ray source [kpc]
+    | alpha : astropy Quantity : observation angle
+    | x     : float : position of a dust patch (source is at x=0, observer at x=1)
+    | D     : astropy Quantity : distance to the X-ray source
     """
     delta_x = path_diff(alpha, x)
-    d_cm    = dkpc * 1.e3 * u.pc.to('cm')  # cm
-    return delta_x * (d_cm / c.c).to('s').value # seconds
+    return delta_x * (dkpc / c.c).to('s').value # seconds
