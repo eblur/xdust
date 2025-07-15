@@ -140,8 +140,8 @@ class ScreenGalHalo(Halo):
             Light curve in units of source flux
             (i.e. will be multiplied by self.fabs)
 
-        dist : float (kpc)
-            Distance to the object in kpc
+        dist : astropy Quantity
+            Distance to the object
 
         tnow : float (days)
             Time for calculating the halo image
@@ -179,7 +179,7 @@ class ScreenGalHalo(Halo):
         return inten
 
     def fake_variable_image(self, time, lc, arf,
-                            exposure=10.e3, tnow=None, dist=8.0,
+                            exposure=10.e3, tnow=None, dist=8.0*u.kpc,
                             pix_scale=0.5, num_pix=[2400,2400],
                             lmin=None, lmax=None, save_file=None):
         """
@@ -205,21 +205,21 @@ class ScreenGalHalo(Halo):
             Time for calculating the halo image
             (Default: Last time value in light curve)
 
-        dist : float [kpc]
-            Distance to the object in kpc
+        dist : astropy Quantity 
+            Distance to the object
 
-        pix_scale : float [arcsec]
+        pix_scale : astropy Quantity (angular)
             Size of simulated pixels
 
         num_pix : ints (nx,ny)
             Size of pixel grid to use
 
         lmin : float
-            Minimum halo.lam value
+            Minimum halo.lam value, in same units, in same units as halo.lam (not checked)
             (Default:None uses entire range)
 
         lmax : float
-            Maximum halo.lam value
+            Maximum halo.lam value, in same units as halo.lam (not checked)
             (Default:None uses entire range)
 
         save_file : string (Default:None)
@@ -243,17 +243,17 @@ class ScreenGalHalo(Halo):
             time_now = tnow
 
         var_profile = self.variable_profile(time, lc, tnow=time_now, dist=dist)
-        # intensity cube (NE x NTH), phot/cm^2/s/arcsec^2
-
+        # intensity cube (NE x NTH), phot/cm^2/s/arcsec^2, numpy array floats
+        
         # Decide which energy indexes to use
         if lmin is None:
             imin = 0
         else:
-            imin = min(np.arange(len(self.lam))[self.lam >= lmin])
+            imin = min(np.arange(len(self.lam))[self.lam.value >= lmin])
         if lmax is None:
             iend = len(self.lam)
         else:
-            iend = max(np.arange(len(self.lam))[self.lam <= lmax])
+            iend = max(np.arange(len(self.lam))[self.lam.value <= lmax])
 
         # set up image grid
         xlen, ylen = num_pix
@@ -265,26 +265,26 @@ class ScreenGalHalo(Halo):
         arf_data = fits.open(arf)['SPECRESP'].data
         arf_x = 0.5*(arf_data['ENERG_LO'] + arf_data['ENERG_HI'])
         arf_y = arf_data['SPECRESP']
-        arf   = InterpolatedUnivariateSpline(arf_x, arf_y, k=1)
+        arf_interp = InterpolatedUnivariateSpline(arf_x, arf_y, k=1)
 
         # Conversion erg -> ct for each energy bin
-        if self.lam_unit in ['Angs', 'Angstrom', 'angs', 'angstrom']:
-            ener = self.lam * u.angstrom
-        elif self.lam_unit in ['kev', 'keV']:
-            ener = self.lam * u.keV
-        else:
-            ener = self.lam * u.Unit(self.lam_unit)
-        int_conv = arf(ener.to(u.keV, equivalencies=u.spectral()))
+        #if self.lam.unit in ['Angs', 'Angstrom', 'angs', 'angstrom']:
+        #    ener = self.lam * u.angstrom
+        #elif self.lam.unit in ['kev', 'keV']:
+        #    ener = self.lam.to('keV')
+        #int_conv = arf(ener.to(u.keV, equivalencies=u.spectral()))
+        int_conv = arf_interp(self.lam.to(u.keV, equivalencies=u.spectral()).value)
         # cm^2 ct/phot
 
-        r_asec = radius * pix_scale
+        pix_scale_arcsec = pix_scale.to('arcsec').value
+        r_asec = radius * pix_scale_arcsec
         result = np.zeros_like(radius)
         for i in np.arange(imin, iend):
             h_interp = InterpolatedUnivariateSpline(
                     self.theta, var_profile[i,:] * int_conv[i], k=1,
                     ext=1) # ct/s/arcsec^2
             # corresponding counts at each radial value in the grid
-            pix_flux = h_interp(r_asec) * pix_scale**2 * exposure # cts
+            pix_flux = h_interp(r_asec) * pix_scale_arcsec**2 * exposure # cts
             # use poisson statistics to get a random value
             pix_random = np.random.poisson(pix_flux)
             # add it to the final result
