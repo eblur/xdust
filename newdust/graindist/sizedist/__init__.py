@@ -2,6 +2,7 @@ from .grain import Grain
 from .powerlaw import Powerlaw
 from .exp_cutoff import ExpCutoff
 from .astrodust import Astrodust
+from .weingartner import WD01
 
 from .. import shape
 
