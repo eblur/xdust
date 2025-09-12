@@ -185,7 +185,7 @@ class WD01(object):
     """
     Weingartner & Draine (2001) grain size distribution
     """
-    def __init__(self, galaxy='MW', RV=3.1, form='silicate', amin=AMIN, amax=AMAX, na=NA, log=False):
+    def __init__(self, galaxy='MW', RV=3.1, form='silicate', amin=AMIN, amax=AMAX, na=NA, log=True):
         """
         Inputs
         ------
