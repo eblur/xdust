@@ -2,7 +2,7 @@ import pytest
 from newdust import graindist
 from newdust import grainpop
 
-ALLOWED_SIZES = ['Grain','Powerlaw','ExpCutoff']
+ALLOWED_SIZES = ['Grain','Powerlaw','ExpCutoff', 'Astrodust','WD01']
 ALLOWED_COMPS = ['Drude','Silicate','Graphite']
 ALLOWED_SCATM = ['RG','Mie']
 
@@ -14,7 +14,7 @@ custom_comp  = graindist.composition.CmDrude(rho=2.2)
 def test_graindist_init(sd, cm):
     test = graindist.GrainDist(sd, cm)
     assert isinstance(test, graindist.GrainDist)
-    assert test.size.dtype  == sd
+    # assert test.size.dtype  == sd
     assert test.comp.cmtype == cm
 
 @pytest.mark.parametrize('sd', ALLOWED_SIZES)

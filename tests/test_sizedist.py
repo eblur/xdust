@@ -31,6 +31,24 @@ def test_ExpCutoff():
     tot_mass = trapz(md, test.a.to('micron').value)
     assert percent_diff(tot_mass, MDTEST) <= 0.01
 
+def test_WD01():
+    test = sizedist.WD01()
+    nd   = test.ndens(MDTEST, RHOTEST)
+    assert len(test.a) == len(nd)
+    md   = test.mdens(MDTEST, RHOTEST)
+    tot_mass = trapz(md, test.a.to('micron').value)
+    assert percent_diff(tot_mass, MDTEST) <= 0.01
+
+def test_Astrodust():
+    test = sizedist.Astrodust()
+    nd   = test.ndens(MDTEST, RHOTEST)
+    assert len(test.a) == len(nd)
+    md   = test.mdens(MDTEST, RHOTEST)
+    tot_mass = trapz(md, test.a.to('micron').value)
+    assert percent_diff(tot_mass, MDTEST) <= 0.01
+
+
+
 # Test that doubling the dust mass column doubles the total mass
 MDTEST2 = 2.0 * MDTEST
 
@@ -54,7 +72,9 @@ RHOTEST2 = 2.0 * RHOTEST
 @pytest.mark.parametrize('sd',
                          [sizedist.Grain(),
                           sizedist.Powerlaw(),
-                          sizedist.ExpCutoff()])
+                          sizedist.ExpCutoff(),
+                          sizedist.WD01(),
+                          sizedist.Astrodust()])
 def test_change_rho(sd):
     nd1 = sd.ndens(MDTEST, RHOTEST)
     nd2 = sd.ndens(MDTEST, RHOTEST2)

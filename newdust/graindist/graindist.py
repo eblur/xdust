@@ -7,7 +7,7 @@ MD_DEFAULT = 1.e-4  # g cm^-2
 RHO        = 3.0    # g cm^-3
 AMAX       = 0.3  # um
 
-ALLOWED_SIZES  = ['Grain','Powerlaw','ExpCutoff','Astrodust']
+ALLOWED_SIZES  = ['Grain','Powerlaw','ExpCutoff','Astrodust','WD01']
 ALLOWED_COMPS  = ['Drude', 'Silicate', 'Graphite']
 SHAPES = {'Sphere':sh.Sphere()}
 
@@ -40,13 +40,12 @@ class GrainDist(object):
     
     vol   : physical grain volume based on grain shape [cm^2]
     """
-    def __init__(self, dtype, cmtype, shape='Sphere', md=MD_DEFAULT,
-                 amax=AMAX, rho=None, **kwargs):
+    def __init__(self, dtype, cmtype, shape='Sphere', md=MD_DEFAULT, rho=None, **kwargs):
         """
         Inputs
         ------
       
-        dtype : string ('Grain', 'Powerlaw', 'ExpCutoff', 'Astrodust') or 
+        dtype : string ('Grain', 'Powerlaw', 'ExpCutoff', 'Astrodust', 'WD01') or 
         newdust.graindist.sizedist object defining the grain radius distribution
 
         cmtype : string ('Drude', 'Silicate', 'Graphite') or
@@ -55,12 +54,6 @@ class GrainDist(object):
         shape : string ('Sphere' is the only option), otherwise could be used to define a custom shape
 
         md : float : dust mass column [g cm^-2]
-        
-        amax : float or astropy.Quantity : Defines the grain size distribution properties
-        |   *Grain:* defines the singular grain radius
-        |   *Powerlaw:* defines the maximum grain radius
-        |   *ExpCutoff:* defines the exponential cut-off value, `acut`
-        |   *Astrodust:* defines the maximum grain radius
 
         rho : if defined, will be provide as input to the `rho` keyword in composition
 
@@ -70,7 +63,7 @@ class GrainDist(object):
         self.md = md
 
         if isinstance(dtype, str):
-            self._assign_sizedist_from_string(dtype, amax, **kwargs)
+            self._assign_sizedist_from_string(dtype, **kwargs)
         else:
             self.size = dtype
 
@@ -118,16 +111,18 @@ class GrainDist(object):
         ax.set_yscale('log')
         return
 
-    def _assign_sizedist_from_string(self, dtype, amax, **kwargs):
+    def _assign_sizedist_from_string(self, dtype, **kwargs):
         assert dtype in ALLOWED_SIZES
         if dtype == 'Grain':
-            self.size = sizedist.Grain(rad=amax)
+            self.size = sizedist.Grain(**kwargs)
         if dtype == 'Powerlaw':
-            self.size = sizedist.Powerlaw(amax=amax, **kwargs)
+            self.size = sizedist.Powerlaw(**kwargs)
         if dtype == 'ExpCutoff':
-            self.size = sizedist.ExpCutoff(acut=amax, **kwargs)
+            self.size = sizedist.ExpCutoff(**kwargs)
         if dtype == 'Astrodust':
-            self.size = sizedist.Astrodust(amax=amax, **kwargs)
+            self.size = sizedist.Astrodust(**kwargs)
+        if dtype == 'WD01':
+            self.size = sizedist.WD01(**kwargs)
         return
 
     def _assign_comp_from_string(self, cmtype, rho):
