@@ -1,7 +1,7 @@
 import numpy as np
 import astropy.units as u
 
-from newdust.graindist import shape
+from .. import shape
 
 __all__ = ['Grain']
 
@@ -46,7 +46,7 @@ class Grain(object):
 
         rho : float : grain material density [g cm^-3]
 
-        shape : newdust.graindist.shape object (default is a Sphere)
+        shape : xdust.graindist.shape object (default is a Sphere)
 
         Returns
         -------

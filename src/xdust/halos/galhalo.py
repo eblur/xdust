@@ -32,7 +32,7 @@ class UniformGalHalo(Halo):
 
         Parameters
         ----------
-        gpop : newdust.grainpop.SingleGrainPop
+        gpop : xdust.grainpop.SingleGrainPop
 
         nx : int
             Number of x-values to use for calculation (Default: 500)
@@ -91,7 +91,7 @@ class ScreenGalHalo(Halo):
 
         Parameters
         ----------
-        gpop : newdust.grainpop.SingleGrainPop
+        gpop : xdust.grainpop.SingleGrainPop
 
         x : float (0.0, 1.0]
             1.0 - (distance to screen / distance to X-ray source)

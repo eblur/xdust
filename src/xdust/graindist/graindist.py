@@ -22,11 +22,11 @@ class GrainDist(object):
 
     Attributes
     ----------
-    size : newdust.graindist.sizedist object
+    size : xdust.graindist.sizedist object
     
-    comp : newdust.graindist.composition object
+    comp : xdust.graindist.composition object
     
-    shape : newdust.graindist.shape object
+    shape : xdust.graindist.shape object
     
     md : float : dust mass column density [g cm^-2]
 
@@ -46,10 +46,10 @@ class GrainDist(object):
         ------
       
         dtype : string ('Grain', 'Powerlaw', 'ExpCutoff', 'Astrodust', 'WD01') or 
-        newdust.graindist.sizedist object defining the grain radius distribution
+        xdust.graindist.sizedist object defining the grain radius distribution
 
         cmtype : string ('Drude', 'Silicate', 'Graphite') or
-        newdust.graindist.composition object defining the optical constants and compound density
+        xdust.graindist.composition object defining the optical constants and compound density
 
         shape : string ('Sphere' is the only option), otherwise could be used to define a custom shape
 

@@ -3,7 +3,7 @@ import astropy.units as u
 import astropy.constants as c
 from scipy.integrate import trapezoid as trapz
 from scipy.special import erf
-from newdust.graindist import shape
+from .. import shape
 
 __all__ = ['WD01']
 
@@ -261,7 +261,7 @@ class WD01(object):
             If called upon running, it will override the default grain density.
             Then self.rho will be reset to this value
 
-        shape : newdust.graindist.shape object (default is a Sphere)
+        shape : xdust.graindist.shape object (default is a Sphere)
 
         Returns
         -------
@@ -301,7 +301,7 @@ class WD01(object):
 
         rho : float : grain material density [g cm^-3]
 
-        shape : newdust.graindist.shape object (default is a Sphere)
+        shape : xdust.graindist.shape object (default is a Sphere)
 
         Returns
         -------

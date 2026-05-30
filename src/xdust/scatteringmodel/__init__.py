@@ -14,7 +14,7 @@ from .ggadt import GGADT
 
 calculate( lam : scalar or np.array [wavelength or energy grid, keV default]
            a   : scalar [grain size, micron]
-           cm  : newdust.graindist.composition cm object (abstract class)
+           cm  : xdust.graindist.composition cm object (abstract class)
            unit = : string ['kev', 'angs']
            theta = : scalar or np.array [angles to calculate differential scattering, arcsec, default 0.0]
            **kwargs

@@ -2,7 +2,8 @@ import numpy as np
 from astropy.io import ascii
 from astropy import units as u
 
-from newdust.graindist.composition import _find_cmfile, Composition
+from . import _find_cmfile
+from .composition import Composition
 
 __all__ = ['CmSilicate']
 

@@ -21,7 +21,7 @@ class SingleGrainPop(graindist.GrainDist):
 
     Attributes
     ----------
-    In addition to those supplied by newdust.graindist.GraindDist
+    In addition to those supplied by xdust.graindist.GraindDist
 
     lam : astropy.units.Quantity : wavelength or energy used for the extinction computation
 
@@ -44,10 +44,10 @@ class SingleGrainPop(graindist.GrainDist):
         ------
 
         dtype : string ('Grain', 'Powerlaw', 'ExpCutoff') or 
-        newdust.graindist.sizedist object defining the grain radius distribution
+        xdust.graindist.sizedist object defining the grain radius distribution
 
         cmtype : string ('Drude', 'Silicate', 'Graphite') or
-        newdust.graindist.composition object defining the optical constants and compound density
+        xdust.graindist.composition object defining the optical constants and compound density
 
         stype : string ('Mie' or 'RG') : defines what extinction model calculator to use. If an
         input for `scatm_from_file` is provided, then the `stype` input will be ignored.
