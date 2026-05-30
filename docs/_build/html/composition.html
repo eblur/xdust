@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="./">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>astrodust.graindist.composition - xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="astrodust.graindist.composition.minerals" href="minerals.html" /><link rel="prev" title="astrodust.graindist.sizedist" href="sizedist.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>xdust.graindist.composition - xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="xdust.graindist.shape" href="shape.html" /><link rel="prev" title="xdust.graindist.sizedist" href="sizedist.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
@@ -18,7 +18,7 @@
 }
 </style>
     
-  <meta property="og:type" content="website"/><meta property="og:title" content="astrodust.graindist.composition"/>
+  <meta property="og:type" content="website"/><meta property="og:title" content="xdust.graindist.composition"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -59,45 +59,14 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="grainpop.html">astrodust.grainpop</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="grainpop.html">xdust.grainpop</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="graindist.html">xdust.graindist</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sizedist.html">xdust.graindist.sizedist</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">xdust.graindist.composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shape.html">xdust.graindist.shape</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">astrodust.graindist.composition</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">astrodust.graindist.composition</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="scatmodels.html">xdust.scatteringmodel</a></li>
 </ul>
 
         </div>
@@ -111,13 +80,19 @@ data-aria-dark="Switch to auto color mode">
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#abstract-class-cmindex">Abstract Class: <em>CmIndex</em></a></li>
-<li><a class="reference internal" href="#classes">Classes</a><ul>
+<li><a class="reference internal" href="#cmdrude">CmDrude</a><ul>
 <li><a class="reference internal" href="#xdust.graindist.composition.CmDrude"><code class="docutils literal notranslate"><span class="pre">CmDrude</span></code></a><ul>
 <li><a class="reference internal" href="#xdust.graindist.composition.CmDrude.ip"><code class="docutils literal notranslate">ip()</span></code></a></li>
 <li><a class="reference internal" href="#xdust.graindist.composition.CmDrude.rp"><code class="docutils literal notranslate">rp()</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cmsilicate">CmSilicate</a><ul>
 <li><a class="reference internal" href="#xdust.graindist.composition.CmSilicate"><code class="docutils literal notranslate"><span class="pre">CmSilicate</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cmgraphite">CmGraphite</a><ul>
 <li><a class="reference internal" href="#xdust.graindist.composition.CmGraphite"><code class="docutils literal notranslate"><span class="pre">CmGraphite</span></code></a></li>
 </ul>
 </li>
@@ -138,16 +113,12 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="grainpop.html"><span itemprop="name">astrodust.grainpop</span></a>
+        <a itemprop="item" href="graindist.html"><span itemprop="name">xdust.graindist</span></a>
         <span>/</span>
         <meta itemprop="position" content="2" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="graindist.html"><span itemprop="name">astrodust.graindist</span></a>
-        <span>/</span>
+        <strong itemprop="name">xdust.graindist.composition</strong>
         <meta itemprop="position" content="3" />
-      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">astrodust.graindist.composition</strong>
-        <meta itemprop="position" content="4" />
       </li></ol>
     <div class="xl:hidden ml-1">
       <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
@@ -159,13 +130,8 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="astrodust-graindist-composition">
-<h1>astrodust.graindist.composition<a class="headerlink" href="#astrodust-graindist-composition" title="Link to this heading">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a></li>
-</ul>
-</div>
+          <section id="xdust-graindist-composition">
+<h1>xdust.graindist.composition<a class="headerlink" href="#xdust-graindist-composition" title="Link to this heading">¶</a></h1>
 <section id="abstract-class-cmindex">
 <h2>Abstract Class: <em>CmIndex</em><a class="headerlink" href="#abstract-class-cmindex" title="Link to this heading">¶</a></h2>
 <p>Abstract class <em>CmIndex</em> describes the complex index of refraction for a particular material.
@@ -179,8 +145,8 @@ It must contain the following attributes:</p>
 </ul>
 <p>Right now the only units accepted are “kev” and “angs”</p>
 </section>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<section id="cmdrude">
+<h2>CmDrude<a class="headerlink" href="#cmdrude" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.composition.CmDrude">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.</span></span><span class="sig-name descname"><span class="pre">CmDrude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmdrude.html#CmDrude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmDrude" title="Link to this definition">¶</a></dt>
@@ -228,6 +194,9 @@ It must contain the following attributes:</p>
 
 </dd></dl>
 
+</section>
+<section id="cmsilicate">
+<h2>CmSilicate<a class="headerlink" href="#cmsilicate" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.composition.CmSilicate">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.</span></span><span class="sig-name descname"><span class="pre">CmSilicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmsilicate.html#CmSilicate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmSilicate" title="Link to this definition">¶</a></dt>
@@ -235,6 +204,9 @@ It must contain the following attributes:</p>
 <p>Optical constants for Silicate from Draine (2003)</p>
 </dd></dl>
 
+</section>
+<section id="cmgraphite">
+<h2>CmGraphite<a class="headerlink" href="#cmgraphite" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.composition.CmGraphite">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.</span></span><span class="sig-name descname"><span class="pre">CmGraphite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'big'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'perp'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmgraphite.html#CmGraphite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmGraphite" title="Link to this definition">¶</a></dt>
@@ -268,13 +240,13 @@ It must contain the following attributes:</p>
     <a href="sizedist.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">astrodust.graindist.sizedist</div></div>
+        <span>Previous</span><div class="title">xdust.graindist.sizedist</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="minerals.html">
+    <a href="shape.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">astrodust.graindist.composition.minerals</div>
+        <div class="title">xdust.graindist.shape</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

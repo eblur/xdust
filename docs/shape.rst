@@ -1,8 +1,11 @@
-astrodust.graindist.shape
-===============================
+xdust.graindist.shape
+=====================
 
-.. toctree::
-   :maxdepth: 1
+At this time, only spherical dust grains are supported. 
+For non-spherical dust grains, the grain size distribution 
+can be specified using the effective grain radius $a_{\rm eff}$, defined as
+$$ V_g = \frac{4}{3} \pi a_{\rm eff}^3 $$
+where $V_g$ is the volume of the grain.
 
 Abstract Class: *Shape*
 --------------------------
@@ -16,7 +19,6 @@ It must contain the following attributes:
 
 - `cgeo` (a function giving the geometric area of the grain [cm^2])
 
-Classes
--------
-
+Sphere
+------
 .. autoclass:: xdust.graindist.shape.Sphere

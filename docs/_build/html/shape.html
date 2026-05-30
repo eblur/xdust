@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="./">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>astrodust.graindist.shape - xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="xdust extinction" href="extinction.html" /><link rel="prev" title="astrodust.graindist.composition.minerals" href="minerals.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>xdust.graindist.shape - xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="xdust.scatteringmodel" href="scatmodels.html" /><link rel="prev" title="xdust.graindist.composition" href="composition.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
@@ -18,7 +18,7 @@
 }
 </style>
     
-  <meta property="og:type" content="website"/><meta property="og:title" content="astrodust.graindist.shape"/>
+  <meta property="og:type" content="website"/><meta property="og:title" content="xdust.graindist.shape"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -59,45 +59,16 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="grainpop.html">astrodust.grainpop</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="grainpop.html">xdust.grainpop</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="graindist.html">xdust.graindist</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sizedist.html">xdust.graindist.sizedist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composition.html">xdust.graindist.composition</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">xdust.graindist.shape</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">astrodust.graindist.shape</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">astrodust.graindist.shape</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="scatmodels.html">xdust.scatteringmodel</a></li>
 </ul>
 
         </div>
@@ -111,7 +82,7 @@ data-aria-dark="Switch to auto color mode">
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#abstract-class-shape">Abstract Class: <em>Shape</em></a></li>
-<li><a class="reference internal" href="#classes">Classes</a><ul>
+<li><a class="reference internal" href="#sphere">Sphere</a><ul>
 <li><a class="reference internal" href="#xdust.graindist.shape.Sphere"><code class="docutils literal notranslate"><span class="pre">Sphere</span></code></a><ul>
 <li><a class="reference internal" href="#xdust.graindist.shape.Sphere.shape"><code class="docutils literal notranslate">shape</span></code></a></li>
 <li><a class="reference internal" href="#xdust.graindist.shape.Sphere.cgeo"><code class="docutils literal notranslate">cgeo()</span></code></a></li>
@@ -137,16 +108,12 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="grainpop.html"><span itemprop="name">astrodust.grainpop</span></a>
+        <a itemprop="item" href="graindist.html"><span itemprop="name">xdust.graindist</span></a>
         <span>/</span>
         <meta itemprop="position" content="2" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="graindist.html"><span itemprop="name">astrodust.graindist</span></a>
-        <span>/</span>
+        <strong itemprop="name">xdust.graindist.shape</strong>
         <meta itemprop="position" content="3" />
-      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">astrodust.graindist.shape</strong>
-        <meta itemprop="position" content="4" />
       </li></ol>
     <div class="xl:hidden ml-1">
       <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
@@ -158,10 +125,13 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="astrodust-graindist-shape">
-<h1>astrodust.graindist.shape<a class="headerlink" href="#astrodust-graindist-shape" title="Link to this heading">¶</a></h1>
-<div class="toctree-wrapper compound">
-</div>
+          <section id="xdust-graindist-shape">
+<h1>xdust.graindist.shape<a class="headerlink" href="#xdust-graindist-shape" title="Link to this heading">¶</a></h1>
+<p>At this time, only spherical dust grains are supported.
+For non-spherical dust grains, the grain size distribution
+can be specified using the effective grain radius $a_{rm eff}$, defined as
+$$ V_g = frac{4}{3} pi a_{rm eff}^3 $$
+where $V_g$ is the volume of the grain.</p>
 <section id="abstract-class-shape">
 <h2>Abstract Class: <em>Shape</em><a class="headerlink" href="#abstract-class-shape" title="Link to this heading">¶</a></h2>
 <p>Abstract class <em>Shape</em> describes the shape of the dust grains.
@@ -172,8 +142,8 @@ It must contain the following attributes:</p>
 <li><p><cite>cgeo</cite> (a function giving the geometric area of the grain [cm^2])</p></li>
 </ul>
 </section>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<section id="sphere">
+<h2>Sphere<a class="headerlink" href="#sphere" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.shape.Sphere">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.shape.</span></span><span class="sig-name descname"><span class="pre">Sphere</span></span><a class="reference internal" href="_modules/xdust/graindist/shape/sphere.html#Sphere"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.shape.Sphere" title="Link to this definition">¶</a></dt>
@@ -229,16 +199,16 @@ It must contain the following attributes:</p>
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="minerals.html">
+    <a href="composition.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">astrodust.graindist.composition.minerals</div></div>
+        <span>Previous</span><div class="title">xdust.graindist.composition</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="extinction.html">
+    <a href="scatmodels.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">xdust extinction</div>
+        <div class="title">xdust.scatteringmodel</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

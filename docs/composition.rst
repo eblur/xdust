@@ -1,10 +1,5 @@
-astrodust.graindist.composition
-===============================
-
-.. toctree::
-   :maxdepth: 1
-
-   minerals
+xdust.graindist.composition
+===========================
 
 Abstract Class: *CmIndex*
 --------------------------
@@ -24,9 +19,14 @@ It must contain the following attributes:
 
 Right now the only units accepted are "kev" and "angs"
 
-Classes
+CmDrude
 -------
-
 .. autoclass:: xdust.graindist.composition.CmDrude
+
+CmSilicate
+----------
 .. autoclass:: xdust.graindist.composition.CmSilicate
+
+CmGraphite
+----------
 .. autoclass:: xdust.graindist.composition.CmGraphite

@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="./">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="astrodust.grainpop" href="grainpop.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="xdust.grainpop" href="grainpop.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
@@ -18,7 +18,7 @@
 }
 </style>
     
-  <meta property="og:type" content="website"/><meta property="og:title" content="Home doc page for eblur/dust"/>
+  <meta property="og:type" content="website"/><meta property="og:title" content="Xdust documentation"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -59,45 +59,14 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul>
-<li class="toctree-l1"><a class="reference internal" href="grainpop.html">astrodust.grainpop</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="grainpop.html">xdust.grainpop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graindist.html">xdust.graindist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sizedist.html">xdust.graindist.sizedist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composition.html">xdust.graindist.composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shape.html">xdust.graindist.shape</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="scatmodels.html">xdust.scatteringmodel</a></li>
 </ul>
 
         </div>
@@ -111,6 +80,8 @@ data-aria-dark="Switch to auto color mode">
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#grain-populations">Grain Populations</a></li>
+<li><a class="reference internal" href="#x-ray-scattering-halos">X-ray Scattering Halos</a></li>
 <li><a class="reference internal" href="#modules">Modules</a></li>
 </ul>
 </div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
@@ -129,7 +100,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Home doc page for <em>eblur/dust</em></strong>
+        <strong itemprop="name"><em>Xdust</em> documentation</strong>
         <meta itemprop="position" content="2" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -142,78 +113,75 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="home-doc-page-for-eblur-dust">
-<h1>Home doc page for <em>eblur/dust</em><a class="headerlink" href="#home-doc-page-for-eblur-dust" title="Link to this heading">¶</a></h1>
-<p>The <em>eblur/dust</em> set of python modules calculate scattering absorption
-and scattering efficiencies for dust from the infrared to the X-ray.
-This code can also be used to calculate dust scattering halo images in
-the X-ray, in both interstellar and intergalactic (cosmological)
-contexts.</p>
+          <section id="xdust-documentation">
+<h1><em>Xdust</em> documentation<a class="headerlink" href="#xdust-documentation" title="Link to this heading">¶</a></h1>
+<p>The <em>xdust</em> library calculates scattering and absorption efficiencies
+for dust from the infrared to the X-ray. It has special capabilities
+to calculate dust scattering halo images in the X-ray.</p>
 <p><strong>First published version of this code</strong> (released with <a class="reference external" href="http://adsabs.harvard.edu/abs/2015MNRAS.453.1121C">Corrales &amp; Paerels, 2015</a>)
 <a class="reference external" href="http://dx.doi.org/10.5281/zenodo.15991">http://dx.doi.org/10.5281/zenodo.15991</a></p>
-<p><strong>Source code:</strong> github.com/eblur/dust</p>
-<p><strong>Support:</strong> If you are having issues, please contact <a class="reference external" href="mailto:lia&#37;&#52;&#48;astro&#46;wisc&#46;edu">lia<span>&#64;</span>astro<span>&#46;</span>wisc<span>&#46;</span>edu</a></p>
+<p><strong>Source code:</strong> <a class="reference external" href="https://github.com/eblur/xdust">github.com/eblur/xdust</a></p>
+<p><strong>Support:</strong> If you are having issues, please contact <a class="reference external" href="mailto:liac&#37;&#52;&#48;umich&#46;edu">liac<span>&#64;</span>umich<span>&#46;</span>edu</a></p>
 <section id="features">
 <h2>Features<a class="headerlink" href="#features" title="Link to this heading">¶</a></h2>
 <p>A number of dust grain size distributions and optical constants are
 provided, but they can be fully customized by the user by invoking
 custom objects of the approporiate class.  Provided dust models
 include:</p>
-<ul class="simple">
+<ul>
 <li><p>Grain size distributions: single grain size, power law, and a power law with an exponential cut-off</p></li>
 <li><p><a class="reference external" href="http://adsabs.harvard.edu/abs/2001ApJ...548..296W">Weingartner &amp; Draine (2001)</a>
 grain size distributions for Milky Way dust</p></li>
+<li><p>The new <a class="reference external" href="url">Hensley &amp; Draine (2022) Astrodust</a> size distribution (assuming spherical grains)</p></li>
 <li><p>Optical constants (complex index of refraction) for 0.1 um sized
 <a class="reference external" href="https://www.astro.princeton.edu/~draine/dust/dust.diel.html">graphite and astrosilicate grains</a></p></li>
-<li><p>Rayleigh-Gans scattering physics</p>
-<ul>
-<li><p><a class="reference external" href="http://adsabs.harvard.edu/abs/1998ApJ...503..831S">Smith &amp; Dwek (1998)</a></p></li>
-<li><p><a class="reference external" href="http://adsabs.harvard.edu/abs/1986ApJ...302..371M">Mauche &amp; Gorenstein (1986)</a></p></li>
-</ul>
-</li>
+<li><p>Rayleigh-Gans scattering physics following:
+* <a class="reference external" href="http://adsabs.harvard.edu/abs/1998ApJ...503..831S">Smith &amp; Dwek (1998)</a>
+* <a class="reference external" href="http://adsabs.harvard.edu/abs/1986ApJ...302..371M">Mauche &amp; Gorenstein (1986)</a></p></li>
 <li><p>Mie scattering physics using the algorithms of
-<a class="reference external" href="http://adsabs.harvard.edu/abs/1983asls.book.....B">Bohren &amp; Huffman (1986)</a></p>
-<ul>
-<li><p>Converted from <a class="reference external" href="http://www.met.tamu.edu/class/atmo689-lc/bhmie.pro">fortran and IDL</a>
-to python</p></li>
-</ul>
+<a class="reference external" href="http://adsabs.harvard.edu/abs/1983asls.book.....B">Bohren &amp; Huffman (1986)</a> converted from <a href="#id1"><span class="problematic" id="id2">`</span></a>fortran and IDL</p>
+<blockquote>
+<div><p>&lt;<a class="reference external" href="http://www.met.tamu.edu/class/atmo689-lc/bhmie.pro">http://www.met.tamu.edu/class/atmo689-lc/bhmie.pro</a>&gt;`_ to python</p>
+</div></blockquote>
 </li>
 </ul>
+</section>
+<section id="grain-populations">
+<h2>Grain Populations<a class="headerlink" href="#grain-populations" title="Link to this heading">¶</a></h2>
+<p>At the top level, <em>Xdust</em> uses the <code class="docutils literal notranslate"><span class="pre">SingleGrainPop</span></code> object to
+model a population of dust grains based on three distinct properties:</p>
+<ul class="simple">
+<li><p>the grain size distribution (see <code class="docutils literal notranslate"><span class="pre">xdust.graindist.sizedist</span></code>)</p></li>
+<li><p>composition type specifying the optical constants (see <code class="docutils literal notranslate"><span class="pre">xdust.graindist.composition</span></code>)</p></li>
+<li><p>the scattering physics model (see <code class="docutils literal notranslate"><span class="pre">xdust.scatteringmodel</span></code>)</p></li>
+</ul>
+<p>Furthermore, the <strong>GrainPop</strong> object contains a list of <strong>SingleGrainPop</strong> objects,
+which can be called upon using keys, like a dictionary.  Keys have to be specified
+when the <strong>GrainPop</strong> object is initialized.</p>
+<p>For example, when the <code class="docutils literal notranslate"><span class="pre">xdust.make_MRN</span></code> function is called, it will return a
+<strong>GrainPop</strong> object with the keys <cite>‘sil’</cite> for the silicate grain size distribution,
+<cite>‘gra_para’</cite> for the graphitic grains with monomers parallel to the light wave propagation,
+and <cite>‘gra_perp’</cite> for the graphitic grains with monomers perpendicular to the light wave propagation.
+See the <code class="docutils literal notranslate"><span class="pre">xdust.grainpop</span></code> module for more information.</p>
+</section>
+<section id="x-ray-scattering-halos">
+<h2>X-ray Scattering Halos<a class="headerlink" href="#x-ray-scattering-halos" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">xdust.halos</span></code> module provides tools for calculating the intensity of
+X-ray dust scattering halos under the ideal assumptions of single-scattering
+through an optically thin sight line (Corrales &amp; Paerels 2015, Corrales et al. 2016).</p>
 </section>
 <section id="modules">
 <h2>Modules<a class="headerlink" href="#modules" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="grainpop.html">astrodust.grainpop</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a></li>
-<li class="toctree-l3"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grainpop.html">xdust.grainpop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graindist.html">xdust.graindist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sizedist.html">xdust.graindist.sizedist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composition.html">xdust.graindist.composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shape.html">xdust.graindist.shape</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="scatmodels.html">xdust.scatteringmodel</a></li>
 </ul>
 </div>
 </section>
@@ -228,7 +196,7 @@ to python</p></li>
     <a href="grainpop.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">astrodust.grainpop</div>
+        <div class="title">xdust.grainpop</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

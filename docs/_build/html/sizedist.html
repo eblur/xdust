@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="./">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>astrodust.graindist.sizedist - xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="astrodust.graindist.composition" href="composition.html" /><link rel="prev" title="astrodust.graindist" href="graindist.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>xdust.graindist.sizedist - xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="xdust.graindist.composition" href="composition.html" /><link rel="prev" title="xdust.graindist" href="graindist.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
@@ -18,7 +18,7 @@
 }
 </style>
     
-  <meta property="og:type" content="website"/><meta property="og:title" content="astrodust.graindist.sizedist"/>
+  <meta property="og:type" content="website"/><meta property="og:title" content="xdust.graindist.sizedist"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -59,45 +59,18 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="grainpop.html">astrodust.grainpop</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">astrodust.graindist.sizedist</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="grainpop.html">xdust.grainpop</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="graindist.html">xdust.graindist</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">xdust.graindist.sizedist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composition.html">xdust.graindist.composition</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="shape.html">xdust.graindist.shape</a><ul class="simple">
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">astrodust.graindist.sizedist</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="scatmodels.html">xdust.scatteringmodel</a></li>
 </ul>
 
         </div>
@@ -111,7 +84,7 @@ data-aria-dark="Switch to auto color mode">
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#abstract-class-sizedist">Abstract Class: <em>Sizedist</em></a></li>
-<li><a class="reference internal" href="#classes">Classes</a><ul>
+<li><a class="reference internal" href="#grain">Grain</a><ul>
 <li><a class="reference internal" href="#xdust.graindist.sizedist.Grain"><code class="docutils literal notranslate"><span class="pre">Grain</span></code></a><ul>
 <li><a class="reference internal" href="#xdust.graindist.sizedist.Grain.a"><code class="docutils literal notranslate">a</span></code></a></li>
 <li><a class="reference internal" href="#xdust.graindist.sizedist.Grain.dtype"><code class="docutils literal notranslate">dtype</span></code></a></li>
@@ -119,14 +92,36 @@ data-aria-dark="Switch to auto color mode">
 <li><a class="reference internal" href="#xdust.graindist.sizedist.Grain.ndens"><code class="docutils literal notranslate">ndens()</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a class="reference internal" href="#powerlaw">Powerlaw</a><ul>
 <li><a class="reference internal" href="#xdust.graindist.sizedist.Powerlaw"><code class="docutils literal notranslate"><span class="pre">Powerlaw</span></code></a><ul>
 <li><a class="reference internal" href="#xdust.graindist.sizedist.Powerlaw.mdens"><code class="docutils literal notranslate">mdens()</span></code></a></li>
 <li><a class="reference internal" href="#xdust.graindist.sizedist.Powerlaw.ndens"><code class="docutils literal notranslate">ndens()</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a class="reference internal" href="#expcutoff">ExpCutoff</a><ul>
 <li><a class="reference internal" href="#xdust.graindist.sizedist.ExpCutoff"><code class="docutils literal notranslate"><span class="pre">ExpCutoff</span></code></a><ul>
 <li><a class="reference internal" href="#xdust.graindist.sizedist.ExpCutoff.mdens"><code class="docutils literal notranslate">mdens()</span></code></a></li>
 <li><a class="reference internal" href="#xdust.graindist.sizedist.ExpCutoff.ndens"><code class="docutils literal notranslate">ndens()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#wd01">WD01</a><ul>
+<li><a class="reference internal" href="#xdust.graindist.sizedist.WD01"><code class="docutils literal notranslate"><span class="pre">WD01</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.graindist.sizedist.WD01.mdens"><code class="docutils literal notranslate">mdens()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.sizedist.WD01.ndens"><code class="docutils literal notranslate">ndens()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#astrodust">Astrodust</a><ul>
+<li><a class="reference internal" href="#xdust.graindist.sizedist.Astrodust"><code class="docutils literal notranslate"><span class="pre">Astrodust</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.graindist.sizedist.Astrodust.mdens"><code class="docutils literal notranslate">mdens()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.sizedist.Astrodust.ndens"><code class="docutils literal notranslate">ndens()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -148,16 +143,12 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="grainpop.html"><span itemprop="name">astrodust.grainpop</span></a>
+        <a itemprop="item" href="graindist.html"><span itemprop="name">xdust.graindist</span></a>
         <span>/</span>
         <meta itemprop="position" content="2" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="graindist.html"><span itemprop="name">astrodust.graindist</span></a>
-        <span>/</span>
+        <strong itemprop="name">xdust.graindist.sizedist</strong>
         <meta itemprop="position" content="3" />
-      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">astrodust.graindist.sizedist</strong>
-        <meta itemprop="position" content="4" />
       </li></ol>
     <div class="xl:hidden ml-1">
       <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
@@ -169,10 +160,8 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="astrodust-graindist-sizedist">
-<h1>astrodust.graindist.sizedist<a class="headerlink" href="#astrodust-graindist-sizedist" title="Link to this heading">¶</a></h1>
-<div class="toctree-wrapper compound">
-</div>
+          <section id="xdust-graindist-sizedist">
+<h1>xdust.graindist.sizedist<a class="headerlink" href="#xdust-graindist-sizedist" title="Link to this heading">¶</a></h1>
 <section id="abstract-class-sizedist">
 <h2>Abstract Class: <em>Sizedist</em><a class="headerlink" href="#abstract-class-sizedist" title="Link to this heading">¶</a></h2>
 <p>Abstract class <em>Sizedist</em> must contain attributes:</p>
@@ -183,8 +172,8 @@ data-aria-dark="Switch to auto color mode">
 <li><p><cite>mdens</cite> (md, rho, shape) returns mass density of dust grains [e.g. g cm^-2 um^-1]</p></li>
 </ul>
 </section>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<section id="grain">
+<h2>Grain<a class="headerlink" href="#grain" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.sizedist.Grain">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.sizedist.</span></span><span class="sig-name descname"><span class="pre">Grain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;Quantity</span> <span class="pre">1.</span> <span class="pre">micron&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/grain.html#Grain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.Grain" title="Link to this definition">¶</a></dt>
@@ -241,6 +230,9 @@ Other distributions return a continuous function that can be integrated.</p>
 
 </dd></dl>
 
+</section>
+<section id="powerlaw">
+<h2>Powerlaw<a class="headerlink" href="#powerlaw" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.sizedist.Powerlaw">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.sizedist.</span></span><span class="sig-name descname"><span class="pre">Powerlaw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.005</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/powerlaw.html#Powerlaw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.Powerlaw" title="Link to this definition">¶</a></dt>
@@ -288,6 +280,9 @@ Other distributions return a continuous function that can be integrated.</p>
 
 </dd></dl>
 
+</section>
+<section id="expcutoff">
+<h2>ExpCutoff<a class="headerlink" href="#expcutoff" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.sizedist.ExpCutoff">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.sizedist.</span></span><span class="sig-name descname"><span class="pre">ExpCutoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.005</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acut</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/exp_cutoff.html#ExpCutoff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.ExpCutoff" title="Link to this definition">¶</a></dt>
@@ -336,6 +331,110 @@ Other distributions return a continuous function that can be integrated.</p>
 </dd></dl>
 
 </section>
+<section id="wd01">
+<h2>WD01<a class="headerlink" href="#wd01" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.graindist.sizedist.WD01">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.sizedist.</span></span><span class="sig-name descname"><span class="pre">WD01</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">galaxy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">form</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'silicate'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.00035</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/weingartner.html#WD01"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.WD01" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Weingartner &amp; Draine (2001) grain size distribution</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.graindist.sizedist.WD01.mdens">
+<span class="sig-name descname"><span class="pre">mdens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;xdust.graindist.shape.sphere.Sphere</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/weingartner.html#WD01.mdens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.WD01.mdens" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate mass density function for the dust grains, given a total dust mass column</p>
+<section id="id5">
+<h3>Inputs<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>md : float : mass column density [g cm^-2]</p>
+<p>rho : float : grain material density [g cm^-3]</p>
+<p>shape : xdust.graindist.shape object (default is a Sphere)</p>
+<dl class="field-list simple">
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li></li>
+<li><p><em>Mass column distribution of grains in [cg m^-2 um^-1]</em></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.graindist.sizedist.WD01.ndens">
+<span class="sig-name descname"><span class="pre">ndens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;xdust.graindist.shape.sphere.Sphere</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/weingartner.html#WD01.ndens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.WD01.ndens" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate number density of dust grains, given a dust mass column</p>
+<section id="id6">
+<h3>Inputs<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>md : float : mass column density [g cm^-2]</p>
+<dl class="simple">
+<dt>rho<span class="classifier">float</span><span class="classifier">grain material density [g cm^-3]</span></dt><dd><p>If called upon running, it will override the default grain density.
+Then self.rho will be reset to this value</p>
+</dd>
+</dl>
+<p>shape : xdust.graindist.shape object (default is a Sphere)</p>
+<dl class="field-list simple">
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li></li>
+<li><p><em>Column density of grains in [cm^-2 um^-2]</em></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="astrodust">
+<h2>Astrodust<a class="headerlink" href="#astrodust" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.graindist.sizedist.Astrodust">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.sizedist.</span></span><span class="sig-name descname"><span class="pre">Astrodust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.00045</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/astrodust.html#Astrodust"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.Astrodust" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The Astrodust grain size distribution accroding to Hensley &amp; Draine 2022</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.graindist.sizedist.Astrodust.mdens">
+<span class="sig-name descname"><span class="pre">mdens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;xdust.graindist.shape.sphere.Sphere</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/astrodust.html#Astrodust.mdens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.Astrodust.mdens" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate mass density function for the dust grains, given a total dust mass column</p>
+<section id="id7">
+<h3>Inputs<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>md : float : mass column density [g cm^-2]</p>
+<p>rho : float : grain material density [g cm^-3]</p>
+<p>shape : xdust.graindist.shape object (default is a Sphere)</p>
+<dl class="field-list simple">
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li></li>
+<li><p><em>Mass column distribution of grains in [cg m^-2 um^-1]</em></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.graindist.sizedist.Astrodust.ndens">
+<span class="sig-name descname"><span class="pre">ndens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;xdust.graindist.shape.sphere.Sphere</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/astrodust.html#Astrodust.ndens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.Astrodust.ndens" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate number density of dust grains, given a dust mass column</p>
+<section id="id8">
+<h3>Inputs<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>md : float : mass column density [g cm^-2]</p>
+<p>rho : float : grain material density [g cm^-3]</p>
+<p>shape : xdust.graindist.shape object (default is a Sphere)</p>
+<dl class="field-list simple">
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li></li>
+<li><p><em>Column density of grains in [cm^-2]</em></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+</section>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -347,13 +446,13 @@ Other distributions return a continuous function that can be integrated.</p>
     <a href="graindist.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">astrodust.graindist</div></div>
+        <span>Previous</span><div class="title">xdust.graindist</div></div>
     </a>
   </div><div class="navigation-next">
     <a href="composition.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">astrodust.graindist.composition</div>
+        <div class="title">xdust.graindist.composition</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

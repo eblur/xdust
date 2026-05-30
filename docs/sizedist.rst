@@ -1,9 +1,5 @@
-astrodust.graindist.sizedist
+xdust.graindist.sizedist
 ============================
-
-.. toctree::
-   :maxdepth: 1
-
 
 Abstract Class: *Sizedist*
 --------------------------
@@ -18,9 +14,24 @@ Abstract class *Sizedist* must contain attributes:
 
 - `mdens` (md, rho, shape) returns mass density of dust grains [e.g. g cm^-2 um^-1]
 
-Classes
--------
-
+Grain
+-----
 .. autoclass:: xdust.graindist.sizedist.Grain
+
+Powerlaw
+--------
 .. autoclass:: xdust.graindist.sizedist.Powerlaw
+
+ExpCutoff
+---------
 .. autoclass:: xdust.graindist.sizedist.ExpCutoff
+
+WD01
+----
+.. autoclass:: xdust.graindist.sizedist.WD01
+
+Astrodust
+---------
+.. autoclass:: xdust.graindist.sizedist.Astrodust
+
+

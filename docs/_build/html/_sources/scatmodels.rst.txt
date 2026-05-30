@@ -1,8 +1,8 @@
-astrodust.extinction.scatmodels
-===============================
+xdust.scatteringmodel
+=====================
 
-Abstract Class: *ScatModel*
----------------------------
+Abstract Class: *ScatteringModel*
+---------------------------------
 
 Abstract class *ScatModel* defines the scattering and extinction algorithm to
 use.  An empty object is created after the initial call.  To calculate the
@@ -29,8 +29,14 @@ scattering angles (arcsec).
 
 Right now the only units accepted are "kev" and "angs"
 
-Classes
--------
-
+RGscattering
+------------
 .. autoclass:: xdust.scatteringmodel.RGscattering
+
+Mie
+---
 .. autoclass:: xdust.scatteringmodel.Mie
+
+GGADT
+-----
+.. autoclass:: xdust.scatteringmodel.GGADT

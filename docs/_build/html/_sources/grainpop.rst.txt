@@ -1,19 +1,25 @@
-astrodust.grainpop
-====================
+xdust.grainpop
+==============
 
-This module provides the **SingleGrainPop** and **GrainPop** classes. They are
-containers for ``GrainDist`` and ``Extinction`` objects.
+The ``SingleGrainPop`` object is used to model a population of dust grains 
+based on three distinct properties:
 
-**SingleGrainPop** contains a single ``GrainDist`` and ``Extinction`` object.
+* the grain size distribution (see ``xdust.graindist.sizedist``)
+* composition type specifying the optical constants (see ``xdust.graindist.composition``)
+* the scattering physics model (see ``xdust.scatteringmodel``)
 
-**GrainPop** contains a list of **SingleGrainPop** objects, which can be called
-upon using keys, like a dictionary.  Keys have to be specified when the
-**GrainPop** object is initialized.
+Furthermore, the **GrainPop** object contains a list of **SingleGrainPop** objects, 
+which can be called upon using keys, like a dictionary.  Keys have to be specified 
+when the **GrainPop** object is initialized.
 
-Class structures
-----------------
+SingleGrainPop
+--------------
 
 .. autoclass:: xdust.grainpop.SingleGrainPop
+
+GrainPop
+--------
+
 .. autoclass:: xdust.grainpop.GrainPop
 
 Helper functions
@@ -21,12 +27,3 @@ Helper functions
 
 .. autofunction:: xdust.grainpop.make_MRN
 .. autofunction:: xdust.grainpop.make_MRN_RGDrude
-
-See also
---------
-
-.. toctree::
-   :maxdepth: 2
-
-   graindist
-   extinction
