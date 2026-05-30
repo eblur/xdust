@@ -2,7 +2,7 @@ import numpy as np
 import astropy.units as u
 import astropy.constants as c
 
-from newdust.graindist.composition import Composition
+from .composition import Composition
 
 __all__ = ['CmDrude']
 

@@ -1,5 +1,5 @@
 import numpy as np
-import newdust
+import xdust
 
 def percent_diff(a, b):
     # Return the absolute value of the percent difference between two values

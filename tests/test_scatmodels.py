@@ -5,8 +5,8 @@ from scipy.integrate import trapezoid as trapz
 import pytest
 import astropy.units as u
 
-from newdust.graindist import composition
-from newdust import scatteringmodel
+from xdust.graindist import composition
+from xdust import scatteringmodel
 from . import percent_diff
 
 CMD   = composition.CmDrude()

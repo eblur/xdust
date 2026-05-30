@@ -3,8 +3,8 @@ import numpy as np
 from scipy.integrate import trapezoid as trapz
 import astropy.units as u
 
-from newdust.halos import *
-from newdust import grainpop
+from xdust.halos import *
+from xdust import grainpop
 from . import percent_diff
 
 # I tested a few values of NTH to reach the 5% integration threshold in some tests

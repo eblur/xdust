@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 import astropy.units as u
-from newdust.graindist import composition
+from xdust.graindist import composition
 from . import percent_diff
 
 WAVEL = np.logspace(0, 2.5, 100) * u.angstrom

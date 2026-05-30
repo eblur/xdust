@@ -1,7 +1,7 @@
 import numpy as np
 
 import astropy.units as u
-from newdust.graindist import shape
+from xdust.graindist import shape
 from . import percent_diff
 
 AVALS = np.linspace(0.01, 1.0, 100) * u.micron  # um

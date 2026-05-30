@@ -29,7 +29,7 @@ class RGscattering(ScatteringModel):
             Grain radius value(s) to use in the calculation;
             if no units specified, defaults to micron
         
-        cm : newdust.graindist.composition object
+        cm : xdust.graindist.composition object
             Holds the optical constants and density for the compound.
         
         theta : astropy.units.Quantity -or- numpy.ndarray -or- float
