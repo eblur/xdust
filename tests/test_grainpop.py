@@ -3,9 +3,9 @@ import numpy as np
 from scipy.integrate import trapezoid as trapz
 import astropy.units as u
 
-from newdust.grainpop import *
-from newdust import graindist
-from newdust import scatteringmodel
+from xdust.grainpop import *
+from xdust import graindist
+from xdust import scatteringmodel
 from . import percent_diff
 
 MD = 1.e-5  # g cm^-2

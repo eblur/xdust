@@ -1,6 +1,6 @@
 import pytest
-from newdust import graindist
-from newdust import grainpop
+from xdust import graindist
+from xdust import grainpop
 
 ALLOWED_SIZES = ['Grain','Powerlaw','ExpCutoff', 'Astrodust','WD01']
 ALLOWED_COMPS = ['Drude','Silicate','Graphite']

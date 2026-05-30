@@ -2,7 +2,7 @@ import pytest
 import numpy as np
 from scipy.integrate import trapezoid as trapz
 
-from newdust.graindist import *
+from xdust.graindist import *
 from . import percent_diff
 
 MD  = 1.e-5  # g cm^-2

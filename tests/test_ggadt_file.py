@@ -1,21 +1,23 @@
 import pytest
 import subprocess
+from pathlib import Path
 from astropy.io import fits
 import astropy.units as u
 import numpy as np
 
-from newdust.scatteringmodel import make_ggadt as ggadt
-from newdust.scatteringmodel import make_ggadt_astrodust as astro
+from xdust.scatteringmodel import make_ggadt as ggadt
+from xdust.scatteringmodel import make_ggadt_astrodust as astro
 
+_TABLES = Path(__file__).parent.parent / 'src' / 'xdust' / 'scatteringmodel' / 'tables'
 
 #make FITS files
 #make_fits(material, folder, indicies, outfile, overwrite=True)
-ggadt.make_fits('lepidocrocite', '../newdust/scatteringmodel/tables/ggadt_rand_oblate', range(4), 'gg_1.fits')
+ggadt.make_fits('lepidocrocite', str(_TABLES / 'ggadt_rand_oblate'), range(4), 'gg_1.fits')
 
-ggadt.make_fits('fayalite', '../newdust/scatteringmodel/tables/ggadt_set_prolate', range(3), 'gg_2.fits')
+ggadt.make_fits('fayalite', str(_TABLES / 'ggadt_set_prolate'), range(3), 'gg_2.fits')
 
 #make_fits_astrodust(material, indicies, folder, outfile, overwrite=True)
-astro.make_fits_astrodust('hematite', '../newdust/scatteringmodel/tables/astrodust_hematite', range(10), 'astro.fits')
+astro.make_fits_astrodust('hematite', str(_TABLES / 'astrodust_hematite'), range(10), 'astro.fits')
 
 def test_headers():
         assert(check_header('gg_1.fits', 'lepidocrocite',  'oblate', 1.4, 'random') == True)
@@ -112,19 +114,19 @@ def check_data(file):
 
     if file == 'gg_1.fits':
         while i < 4:
-            test_file = f'../newdust/scatteringmodel/tables/ggadt_rand_oblate/lepidocrocite_{i}.out'
+            test_file = str(_TABLES / f'ggadt_rand_oblate/lepidocrocite_{i}.out')
             result = check_vals(test_file, f, i)
             i += 1
 
     elif file == 'gg_2.fits':
         while i < 3:
-            test_file = f'../newdust/scatteringmodel/tables/ggadt_set_prolate/fayalite_{i}.out'
+            test_file = str(_TABLES / f'ggadt_set_prolate/fayalite_{i}.out')
             result = check_vals(test_file, f, i)
             i += 1
     
     else:
         while i < 10:
-            test_file = f'../newdust/scatteringmodel/tables/astrodust_hematite/hematite_{i}.out'
+            test_file = str(_TABLES / f'astrodust_hematite/hematite_{i}.out')
             result = check_vals(test_file, f, i)
             i += 1
     

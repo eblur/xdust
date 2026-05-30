@@ -1,7 +1,7 @@
 import pytest
 from scipy.integrate import trapezoid as trapz
 
-from newdust.graindist import sizedist
+from xdust.graindist import sizedist
 from . import percent_diff
 
 MDTEST  = 1.e-4  # g cm^-2
