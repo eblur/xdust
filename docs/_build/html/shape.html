@@ -1,142 +1,270 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>astrodust.graindist.shape - xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="xdust extinction" href="extinction.html" /><link rel="prev" title="astrodust.graindist.composition.minerals" href="minerals.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=9454f7d5" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
     
-    <title>astrodust.graindist.shape &mdash; astrodust 0.1 documentation</title>
-    
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="astrodust 0.1 documentation" href="index.html" />
-    <link rel="up" title="astrodust.graindist" href="graindist.html" />
-    <link rel="prev" title="astrodust.graindist.composition.minerals" href="minerals.html" />
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+  <meta property="og:type" content="website"/><meta property="og:title" content="astrodust.graindist.shape"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
-  <body role="document">  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="astrodust-graindist-shape">
-<h1>astrodust.graindist.shape<a class="headerlink" href="#astrodust-graindist-shape" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul class="simple">
-</ul>
-</div>
-<div class="section" id="abstract-class-shape">
-<h2>Abstract Class: <em>Shape</em><a class="headerlink" href="#abstract-class-shape" title="Permalink to this headline">¶</a></h2>
-<p>Abstract class <em>Shape</em> describes the shape of the dust grains.
-It must contain the following attributes:</p>
-<ul class="simple">
-<li><cite>shape</cite> (a string)</li>
-<li><cite>vol</cite> (a function giving the volume of the grain [cm^3])</li>
-<li><cite>cgeo</cite> (a function giving the geometric area of the grain [cm^2])</li>
-</ul>
-</div>
-<div class="section" id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="newdust.graindist.shape.Sphere">
-<em class="property">class </em><code class="descclassname">newdust.graindist.shape.</code><code class="descname">Sphere</code><a class="reference internal" href="_modules/newdust/graindist/shape/sphere.html#Sphere"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#newdust.graindist.shape.Sphere" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line"><strong>ATTRIBUTES</strong></div>
-<div class="line">shape : A string describing the shape (&#8216;sphere&#8217;)</div>
-<div class="line"><br /></div>
-<div class="line"><em>functions</em></div>
-<div class="line">vol(a)  : A function that returns the grain&#8217;s volume (4/3 pi a^3)</div>
-<div class="line">cgeo(a) : A function that returns the grain&#8217;s geometric cross-section (pi a^2)</div>
-<div class="line"><br /></div>
-<div class="line">Takes grain radius (a) in units of microns only</div>
-</div>
-</dd></dl>
-
-</div>
-</div>
-
-
-          </div>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      
+      
+      <strong>xdust</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link">
+          <a href="https://github.com/eblur/xdust">
+            <span>GitHub</span></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
         </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">astrodust.graindist.shape</a><ul>
-<li><a class="reference internal" href="#abstract-class-shape">Abstract Class: <em>Shape</em></a></li>
-<li><a class="reference internal" href="#classes">Classes</a></li>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="grainpop.html">astrodust.grainpop</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">astrodust.graindist.shape</a><ul class="simple">
 </ul>
 </li>
 </ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  <li><a href="graindist.html">astrodust.graindist</a><ul>
-      <li>Previous: <a href="minerals.html" title="previous chapter">astrodust.graindist.composition.minerals</a></li>
-  </ul></li>
-  </ul></li>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
 </ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/shape.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">astrodust.graindist.shape</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
+</ul>
+</li>
+</ul>
+
         </div>
       </div>
-      <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2017, Lia Corrales.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
-      
-      |
-      <a href="_sources/shape.txt"
-          rel="nofollow">Page source</a>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#abstract-class-shape">Abstract Class: <em>Shape</em></a></li>
+<li><a class="reference internal" href="#classes">Classes</a><ul>
+<li><a class="reference internal" href="#xdust.graindist.shape.Sphere"><code class="docutils literal notranslate"><span class="pre">Sphere</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.graindist.shape.Sphere.shape"><code class="docutils literal notranslate">shape</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.shape.Sphere.cgeo"><code class="docutils literal notranslate">cgeo()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.shape.Sphere.vol"><code class="docutils literal notranslate">vol()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
     </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">xdust</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="grainpop.html"><span itemprop="name">astrodust.grainpop</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="graindist.html"><span itemprop="name">astrodust.graindist</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">astrodust.graindist.shape</strong>
+        <meta itemprop="position" content="4" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="astrodust-graindist-shape">
+<h1>astrodust.graindist.shape<a class="headerlink" href="#astrodust-graindist-shape" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<section id="abstract-class-shape">
+<h2>Abstract Class: <em>Shape</em><a class="headerlink" href="#abstract-class-shape" title="Link to this heading">¶</a></h2>
+<p>Abstract class <em>Shape</em> describes the shape of the dust grains.
+It must contain the following attributes:</p>
+<ul class="simple">
+<li><p><cite>shape</cite> (a string)</p></li>
+<li><p><cite>vol</cite> (a function giving the volume of the grain [cm^3])</p></li>
+<li><p><cite>cgeo</cite> (a function giving the geometric area of the grain [cm^2])</p></li>
+</ul>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.graindist.shape.Sphere">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.shape.</span></span><span class="sig-name descname"><span class="pre">Sphere</span></span><a class="reference internal" href="_modules/xdust/graindist/shape/sphere.html#Sphere"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.shape.Sphere" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.graindist.shape.Sphere.shape">
+<span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#xdust.graindist.shape.Sphere.shape" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string : Describes the shape (‘sphere’)</p>
+</dd>
+</dl>
+</dd></dl>
 
-    
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.graindist.shape.Sphere.cgeo">
+<span class="sig-name descname"><span class="pre">cgeo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/shape/sphere.html#Sphere.cgeo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.shape.Sphere.cgeo" title="Link to this definition">¶</a></dt>
+<dd><p>Return the geometric cross-section of a spherical particle, in units of cm^2</p>
+<section id="inputs">
+<h3>Inputs<a class="headerlink" href="#inputs" title="Link to this heading">¶</a></h3>
+<p>a : astropy.units.Quantity -or- float : if a float, unit of microns assumed</p>
+<dl class="field-list simple">
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pi * a^2</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.graindist.shape.Sphere.vol">
+<span class="sig-name descname"><span class="pre">vol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/shape/sphere.html#Sphere.vol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.shape.Sphere.vol" title="Link to this definition">¶</a></dt>
+<dd><p>Return the grain’s volume in units of cm^3</p>
+<section id="id1">
+<h3>Inputs<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<p>a : astropy.units.Quantity -or- float : if a float, unit of microns assumed</p>
+<dl class="field-list simple">
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(4/3) * pi * a^3</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="minerals.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">astrodust.graindist.composition.minerals</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="extinction.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">xdust extinction</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2024, Lia Corrales</p>
+  
+  <p>
+    Made with
     
-  </body>
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/shibuya.js?v=50760d75"></script></body>
 </html>

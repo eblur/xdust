@@ -1,45 +1,149 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="astrodust.grainpop" href="grainpop.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=9454f7d5" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
     
-    <title>Home doc page for eblur/dust &mdash; astrodust 0.1 documentation</title>
-    
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="astrodust 0.1 documentation" href="#" />
-    <link rel="next" title="astrodust.grainpop" href="grainpop.html" />
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+  <meta property="og:type" content="website"/><meta property="og:title" content="Home doc page for eblur/dust"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
-  <body role="document">  
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="#">
+      
+      
+      <strong>xdust</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link">
+          <a href="https://github.com/eblur/xdust">
+            <span>GitHub</span></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul>
+<li class="toctree-l1"><a class="reference internal" href="grainpop.html">astrodust.grainpop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
+</ul>
+</li>
+</ul>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="home-doc-page-for-eblur-dust">
-<h1>Home doc page for <em>eblur/dust</em><a class="headerlink" href="#home-doc-page-for-eblur-dust" title="Permalink to this headline">¶</a></h1>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#modules">Modules</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="#"><span itemprop="name">xdust</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Home doc page for <em>eblur/dust</em></strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="home-doc-page-for-eblur-dust">
+<h1>Home doc page for <em>eblur/dust</em><a class="headerlink" href="#home-doc-page-for-eblur-dust" title="Link to this heading">¶</a></h1>
 <p>The <em>eblur/dust</em> set of python modules calculate scattering absorption
 and scattering efficiencies for dust from the infrared to the X-ray.
 This code can also be used to calculate dust scattering halo images in
@@ -49,130 +153,108 @@ contexts.</p>
 <a class="reference external" href="http://dx.doi.org/10.5281/zenodo.15991">http://dx.doi.org/10.5281/zenodo.15991</a></p>
 <p><strong>Source code:</strong> github.com/eblur/dust</p>
 <p><strong>Support:</strong> If you are having issues, please contact <a class="reference external" href="mailto:lia&#37;&#52;&#48;astro&#46;wisc&#46;edu">lia<span>&#64;</span>astro<span>&#46;</span>wisc<span>&#46;</span>edu</a></p>
-<div class="section" id="features">
-<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading">¶</a></h2>
 <p>A number of dust grain size distributions and optical constants are
 provided, but they can be fully customized by the user by invoking
 custom objects of the approporiate class.  Provided dust models
 include:</p>
 <ul class="simple">
-<li>Grain size distributions: single grain size, power law, and a power law with an exponential cut-off</li>
-<li><a class="reference external" href="http://adsabs.harvard.edu/abs/2001ApJ...548..296W">Weingartner &amp; Draine (2001)</a>
-grain size distributions for Milky Way dust</li>
-<li>Optical constants (complex index of refraction) for 0.1 um sized
-<a class="reference external" href="https://www.astro.princeton.edu/~draine/dust/dust.diel.html">graphite and astrosilicate grains</a></li>
-<li>Rayleigh-Gans scattering physics<ul>
-<li><a class="reference external" href="http://adsabs.harvard.edu/abs/1998ApJ...503..831S">Smith &amp; Dwek (1998)</a></li>
-<li><a class="reference external" href="http://adsabs.harvard.edu/abs/1986ApJ...302..371M">Mauche &amp; Gorenstein (1986)</a></li>
+<li><p>Grain size distributions: single grain size, power law, and a power law with an exponential cut-off</p></li>
+<li><p><a class="reference external" href="http://adsabs.harvard.edu/abs/2001ApJ...548..296W">Weingartner &amp; Draine (2001)</a>
+grain size distributions for Milky Way dust</p></li>
+<li><p>Optical constants (complex index of refraction) for 0.1 um sized
+<a class="reference external" href="https://www.astro.princeton.edu/~draine/dust/dust.diel.html">graphite and astrosilicate grains</a></p></li>
+<li><p>Rayleigh-Gans scattering physics</p>
+<ul>
+<li><p><a class="reference external" href="http://adsabs.harvard.edu/abs/1998ApJ...503..831S">Smith &amp; Dwek (1998)</a></p></li>
+<li><p><a class="reference external" href="http://adsabs.harvard.edu/abs/1986ApJ...302..371M">Mauche &amp; Gorenstein (1986)</a></p></li>
 </ul>
 </li>
-<li>Mie scattering physics using the algorithms of
-<a class="reference external" href="http://adsabs.harvard.edu/abs/1983asls.book.....B">Bohren &amp; Huffman (1986)</a><ul>
-<li>Converted from <a class="reference external" href="http://www.met.tamu.edu/class/atmo689-lc/bhmie.pro">fortran and IDL</a>
-to python</li>
+<li><p>Mie scattering physics using the algorithms of
+<a class="reference external" href="http://adsabs.harvard.edu/abs/1983asls.book.....B">Bohren &amp; Huffman (1986)</a></p>
+<ul>
+<li><p>Converted from <a class="reference external" href="http://www.met.tamu.edu/class/atmo689-lc/bhmie.pro">fortran and IDL</a>
+to python</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="modules">
-<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="grainpop.html">astrodust.grainpop</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="grainpop.html#class-structures">Class structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="grainpop.html#helper-functions">Helper functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="grainpop.html#see-also">See also</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="graindist.html">astrodust.graindist</a></li>
-<li class="toctree-l3"><a class="reference internal" href="extinction.html">astrodust.extinction</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="graindist.html#graindist-class">GrainDist class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graindist.html#helper-functions">Helper functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graindist.html#supporting-modules">Supporting modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a></li>
 <li class="toctree-l3"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="extinction.html">astrodust.extinction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="extinction.html#extinction-class">Extinction class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="extinction.html#helper-functions">Helper functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="extinction.html#supporting-modules">Supporting modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
 </ul>
-</div>
-</div>
-</div>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="#">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Home doc page for <em>eblur/dust</em></a><ul>
-<li><a class="reference internal" href="#features">Features</a></li>
-<li><a class="reference internal" href="#modules">Modules</a></li>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
 </ul>
 </li>
 </ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="grainpop.html" title="next chapter">astrodust.grainpop</a></li>
-  </ul></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
+</ul>
+</li>
 </ul>
 </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/index.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-next">
+    <a href="grainpop.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">astrodust.grainpop</div>
       </div>
-      <div class="clearer"></div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
     </div>
-    <div class="footer">
-      &copy;2017, Lia Corrales.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
-      
-      |
-      <a href="_sources/index.txt"
-          rel="nofollow">Page source</a>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2024, Lia Corrales</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
     </div>
-
-    
-
-    
-  </body>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/shibuya.js?v=50760d75"></script></body>
 </html>

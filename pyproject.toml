@@ -21,6 +21,12 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=7.0"]
+docs = [
+    "sphinx>=7.0",
+    "shibuya",
+    "sphinx-autodoc-typehints",
+    "sphinx-autobuild"
+]
 
 [project.urls]
 Homepage = "https://github.com/eblur/xdust"

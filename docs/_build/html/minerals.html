@@ -1,153 +1,271 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>astrodust.graindist.composition.minerals - xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="astrodust.graindist.shape" href="shape.html" /><link rel="prev" title="astrodust.graindist.composition" href="composition.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=9454f7d5" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
     
-    <title>astrodust.graindist.composition.minerals &mdash; astrodust 0.1 documentation</title>
-    
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="astrodust 0.1 documentation" href="index.html" />
-    <link rel="up" title="astrodust.graindist.composition" href="composition.html" />
-    <link rel="prev" title="astrodust.graindist.composition" href="composition.html" />
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+  <meta property="og:type" content="website"/><meta property="og:title" content="astrodust.graindist.composition.minerals"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
-  <body role="document">  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="astrodust-graindist-composition-minerals">
-<h1>astrodust.graindist.composition.minerals<a class="headerlink" href="#astrodust-graindist-composition-minerals" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul class="simple">
-</ul>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      
+      
+      <strong>xdust</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link">
+          <a href="https://github.com/eblur/xdust">
+            <span>GitHub</span></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
 </div>
-<dl class="class">
-<dt id="newdust.graindist.composition.minerals.Mineral">
-<em class="property">class </em><code class="descclassname">newdust.graindist.composition.minerals.</code><code class="descname">Mineral</code><span class="sig-paren">(</span><em>comp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newdust/graindist/composition/minerals.html#Mineral"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#newdust.graindist.composition.minerals.Mineral" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="grainpop.html">astrodust.grainpop</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">astrodust.graindist.composition.minerals</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">astrodust.graindist.composition.minerals</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#xdust.graindist.composition.minerals.Mineral"><code class="docutils literal notranslate"><span class="pre">Mineral</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.graindist.composition.minerals.Mineral.weight_amu"><code class="docutils literal notranslate">weight_amu</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.composition.minerals.Mineral.weight_g"><code class="docutils literal notranslate">weight_g</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xdust.graindist.composition.minerals.calc_mass_conversion"><code class="docutils literal notranslate"><span class="pre">calc_mass_conversion()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.composition.minerals.calc_element_column"><code class="docutils literal notranslate"><span class="pre">calc_element_column()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.composition.minerals.get_ISM_abund"><code class="docutils literal notranslate"><span class="pre">get_ISM_abund()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.composition.minerals.get_dust_abund"><code class="docutils literal notranslate"><span class="pre">get_dust_abund()</span></code></a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">xdust</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="grainpop.html"><span itemprop="name">astrodust.grainpop</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="graindist.html"><span itemprop="name">astrodust.graindist</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="composition.html"><span itemprop="name">astrodust.graindist.composition</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="4" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">astrodust.graindist.composition.minerals</strong>
+        <meta itemprop="position" content="5" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="astrodust-graindist-composition-minerals">
+<h1>astrodust.graindist.composition.minerals<a class="headerlink" href="#astrodust-graindist-composition-minerals" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.graindist.composition.minerals.Mineral">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.minerals.</span></span><span class="sig-name descname"><span class="pre">Mineral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/minerals.html#Mineral"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.minerals.Mineral" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="line-block">
 <div class="line">Use a dictionary to define the composition.</div>
 <div class="line">e.g. Olivines of pure MgFe^{2+}SiO_4 composition would be</div>
-<div class="line">olivine_halfMg = Mineral( {&#8216;Mg&#8217;:1.0, &#8216;Fe&#8217;:1.0, &#8216;Si&#8217;:1.0, &#8216;O&#8217;:4.0} )</div>
+<div class="line">olivine_halfMg = Mineral( {‘Mg’:1.0, ‘Fe’:1.0, ‘Si’:1.0, ‘O’:4.0} )</div>
 <div class="line">self.composition : dictionary containing elements and their weights</div>
 <div class="line"><br /></div>
 <div class="line">&#64;property</div>
 <div class="line">self._weight_amu : amu weight of unit crystal</div>
 <div class="line">self.weight_g    : g weight of unit crystal</div>
 </div>
+<dl class="py property">
+<dt class="sig sig-object py" id="xdust.graindist.composition.minerals.Mineral.weight_amu">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">weight_amu</span></span><a class="headerlink" href="#xdust.graindist.composition.minerals.Mineral.weight_amu" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="xdust.graindist.composition.minerals.Mineral.weight_g">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">weight_g</span></span><a class="headerlink" href="#xdust.graindist.composition.minerals.Mineral.weight_g" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
-<dl class="function">
-<dt id="newdust.graindist.composition.minerals.calc_mass_conversion">
-<code class="descclassname">newdust.graindist.composition.minerals.</code><code class="descname">calc_mass_conversion</code><span class="sig-paren">(</span><em>elem</em>, <em>mineral</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newdust/graindist/composition/minerals.html#calc_mass_conversion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#newdust.graindist.composition.minerals.calc_mass_conversion" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="xdust.graindist.composition.minerals.calc_mass_conversion">
+<span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.minerals.</span></span><span class="sig-name descname"><span class="pre">calc_mass_conversion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mineral</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/minerals.html#calc_mass_conversion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.minerals.calc_mass_conversion" title="Link to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns the number of atoms per gram of a particular mineral object</div>
 <div class="line">Useful for converting mass column to a number density column for an element</div>
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="newdust.graindist.composition.minerals.calc_element_column">
-<code class="descclassname">newdust.graindist.composition.minerals.</code><code class="descname">calc_element_column</code><span class="sig-paren">(</span><em>NH</em>, <em>fmineral</em>, <em>atom</em>, <em>mineral</em>, <em>d2g=0.009</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newdust/graindist/composition/minerals.html#calc_element_column"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#newdust.graindist.composition.minerals.calc_element_column" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="xdust.graindist.composition.minerals.calc_element_column">
+<span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.minerals.</span></span><span class="sig-name descname"><span class="pre">calc_element_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NH</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmineral</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mineral</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d2g</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.009</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/minerals.html#calc_element_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.minerals.calc_element_column" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate the column density of an element for a particular NH value,
 assuming a dust-to-gas ratio (d2g) and the fraction of dust in that
 particular mineral species (fmineral)</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="newdust.graindist.composition.minerals.get_ISM_abund">
-<code class="descclassname">newdust.graindist.composition.minerals.</code><code class="descname">get_ISM_abund</code><span class="sig-paren">(</span><em>elem</em>, <em>abund_table={'S': 7.09</em>, <em>'Ni': 6.05</em>, <em>'C': 8.38</em>, <em>'Mn': 5.34</em>, <em>'Co': 4.92</em>, <em>'Cl': 5.12</em>, <em>'Mg': 7.4</em>, <em>'H': 12.0</em>, <em>'Ca': 6.2</em>, <em>'Al': 6.33</em>, <em>'Ne': 7.94</em>, <em>'O': 8.69</em>, <em>'N': 7.88</em>, <em>'P': 5.42</em>, <em>'Si': 7.27</em>, <em>'Ar': 6.41</em>, <em>'Ti': 4.81</em>, <em>'Fe': 7.43</em>, <em>'Na': 6.16</em>, <em>'Cr': 5.51</em>, <em>'He': 10.99}</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newdust/graindist/composition/minerals.html#get_ISM_abund"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#newdust.graindist.composition.minerals.get_ISM_abund" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="xdust.graindist.composition.minerals.get_ISM_abund">
+<span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.minerals.</span></span><span class="sig-name descname"><span class="pre">get_ISM_abund</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abund_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'Al':</span> <span class="pre">6.33,</span> <span class="pre">'Ar':</span> <span class="pre">6.41,</span> <span class="pre">'C':</span> <span class="pre">8.38,</span> <span class="pre">'Ca':</span> <span class="pre">6.2,</span> <span class="pre">'Cl':</span> <span class="pre">5.12,</span> <span class="pre">'Co':</span> <span class="pre">4.92,</span> <span class="pre">'Cr':</span> <span class="pre">5.51,</span> <span class="pre">'Fe':</span> <span class="pre">7.43,</span> <span class="pre">'H':</span> <span class="pre">12.0,</span> <span class="pre">'He':</span> <span class="pre">10.99,</span> <span class="pre">'Mg':</span> <span class="pre">7.4,</span> <span class="pre">'Mn':</span> <span class="pre">5.34,</span> <span class="pre">'N':</span> <span class="pre">7.88,</span> <span class="pre">'Na':</span> <span class="pre">6.16,</span> <span class="pre">'Ne':</span> <span class="pre">7.94,</span> <span class="pre">'Ni':</span> <span class="pre">6.05,</span> <span class="pre">'O':</span> <span class="pre">8.69,</span> <span class="pre">'P':</span> <span class="pre">5.42,</span> <span class="pre">'S':</span> <span class="pre">7.09,</span> <span class="pre">'Si':</span> <span class="pre">7.27,</span> <span class="pre">'Ti':</span> <span class="pre">4.81}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/minerals.html#get_ISM_abund"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.minerals.get_ISM_abund" title="Link to this definition">¶</a></dt>
 <dd><p>Given an abundance table, calculate the number per H atom of a
 given element in any ISM form</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="newdust.graindist.composition.minerals.get_dust_abund">
-<code class="descclassname">newdust.graindist.composition.minerals.</code><code class="descname">get_dust_abund</code><span class="sig-paren">(</span><em>elem</em>, <em>abund_table={'S': 7.09</em>, <em>'Ni': 6.05</em>, <em>'C': 8.38</em>, <em>'Mn': 5.34</em>, <em>'Co': 4.92</em>, <em>'Cl': 5.12</em>, <em>'Mg': 7.4</em>, <em>'H': 12.0</em>, <em>'Ca': 6.2</em>, <em>'Al': 6.33</em>, <em>'Ne': 7.94</em>, <em>'O': 8.69</em>, <em>'N': 7.88</em>, <em>'P': 5.42</em>, <em>'Si': 7.27</em>, <em>'Ar': 6.41</em>, <em>'Ti': 4.81</em>, <em>'Fe': 7.43</em>, <em>'Na': 6.16</em>, <em>'Cr': 5.51</em>, <em>'He': 10.99}</em>, <em>gas_ratio={'S': 0.6</em>, <em>'Ni': 0.04</em>, <em>'C': 0.5</em>, <em>'Mn': 0.07</em>, <em>'Co': 0.05</em>, <em>'Cl': 0.5</em>, <em>'Mg': 0.2</em>, <em>'H': 1.0</em>, <em>'Ca': 0.003</em>, <em>'Al': 0.02</em>, <em>'Ne': 1.0</em>, <em>'O': 0.6</em>, <em>'N': 1.0</em>, <em>'P': 0.6</em>, <em>'Si': 0.1</em>, <em>'Ar': 1.0</em>, <em>'Ti': 0.002</em>, <em>'Fe': 0.3</em>, <em>'Na': 0.25</em>, <em>'Cr': 0.03</em>, <em>'He': 1.0}</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newdust/graindist/composition/minerals.html#get_dust_abund"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#newdust.graindist.composition.minerals.get_dust_abund" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="xdust.graindist.composition.minerals.get_dust_abund">
+<span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.minerals.</span></span><span class="sig-name descname"><span class="pre">get_dust_abund</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abund_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'Al':</span> <span class="pre">6.33,</span> <span class="pre">'Ar':</span> <span class="pre">6.41,</span> <span class="pre">'C':</span> <span class="pre">8.38,</span> <span class="pre">'Ca':</span> <span class="pre">6.2,</span> <span class="pre">'Cl':</span> <span class="pre">5.12,</span> <span class="pre">'Co':</span> <span class="pre">4.92,</span> <span class="pre">'Cr':</span> <span class="pre">5.51,</span> <span class="pre">'Fe':</span> <span class="pre">7.43,</span> <span class="pre">'H':</span> <span class="pre">12.0,</span> <span class="pre">'He':</span> <span class="pre">10.99,</span> <span class="pre">'Mg':</span> <span class="pre">7.4,</span> <span class="pre">'Mn':</span> <span class="pre">5.34,</span> <span class="pre">'N':</span> <span class="pre">7.88,</span> <span class="pre">'Na':</span> <span class="pre">6.16,</span> <span class="pre">'Ne':</span> <span class="pre">7.94,</span> <span class="pre">'Ni':</span> <span class="pre">6.05,</span> <span class="pre">'O':</span> <span class="pre">8.69,</span> <span class="pre">'P':</span> <span class="pre">5.42,</span> <span class="pre">'S':</span> <span class="pre">7.09,</span> <span class="pre">'Si':</span> <span class="pre">7.27,</span> <span class="pre">'Ti':</span> <span class="pre">4.81}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gas_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'Al':</span> <span class="pre">0.02,</span> <span class="pre">'Ar':</span> <span class="pre">1.0,</span> <span class="pre">'C':</span> <span class="pre">0.5,</span> <span class="pre">'Ca':</span> <span class="pre">0.003,</span> <span class="pre">'Cl':</span> <span class="pre">0.5,</span> <span class="pre">'Co':</span> <span class="pre">0.05,</span> <span class="pre">'Cr':</span> <span class="pre">0.03,</span> <span class="pre">'Fe':</span> <span class="pre">0.3,</span> <span class="pre">'H':</span> <span class="pre">1.0,</span> <span class="pre">'He':</span> <span class="pre">1.0,</span> <span class="pre">'Mg':</span> <span class="pre">0.2,</span> <span class="pre">'Mn':</span> <span class="pre">0.07,</span> <span class="pre">'N':</span> <span class="pre">1.0,</span> <span class="pre">'Na':</span> <span class="pre">0.25,</span> <span class="pre">'Ne':</span> <span class="pre">1.0,</span> <span class="pre">'Ni':</span> <span class="pre">0.04,</span> <span class="pre">'O':</span> <span class="pre">0.6,</span> <span class="pre">'P':</span> <span class="pre">0.6,</span> <span class="pre">'S':</span> <span class="pre">0.6,</span> <span class="pre">'Si':</span> <span class="pre">0.1,</span> <span class="pre">'Ti':</span> <span class="pre">0.002}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/minerals.html#get_dust_abund"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.minerals.get_dust_abund" title="Link to this definition">¶</a></dt>
 <dd><p>Given an abundance table (dict) and a table of gas ratios (dict),
 calculate the number per H atom of a given ISM element in <em>solid</em> form</p>
 </dd></dl>
 
-</div>
+</section>
 
-
-          </div>
-        </div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="composition.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">astrodust.graindist.composition</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="shape.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">astrodust.graindist.shape</div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  <li><a href="graindist.html">astrodust.graindist</a><ul>
-  <li><a href="composition.html">astrodust.graindist.composition</a><ul>
-      <li>Previous: <a href="composition.html" title="previous chapter">astrodust.graindist.composition</a></li>
-  </ul></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/minerals.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
     </div>
-    <div class="footer">
-      &copy;2017, Lia Corrales.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
-      
-      |
-      <a href="_sources/minerals.txt"
-          rel="nofollow">Page source</a>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2024, Lia Corrales</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
     </div>
-
-    
-
-    
-  </body>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/shibuya.js?v=50760d75"></script></body>
 </html>

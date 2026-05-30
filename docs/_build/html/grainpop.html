@@ -1,233 +1,607 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>astrodust.grainpop - xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="astrodust.graindist" href="graindist.html" /><link rel="prev" title="Home doc page for eblur/dust" href="index.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=9454f7d5" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
     
-    <title>astrodust.grainpop &mdash; astrodust 0.1 documentation</title>
-    
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="astrodust 0.1 documentation" href="index.html" />
-    <link rel="next" title="astrodust.graindist" href="graindist.html" />
-    <link rel="prev" title="Home doc page for eblur/dust" href="index.html" />
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+  <meta property="og:type" content="website"/><meta property="og:title" content="astrodust.grainpop"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
-  <body role="document">  
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      
+      
+      <strong>xdust</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link">
+          <a href="https://github.com/eblur/xdust">
+            <span>GitHub</span></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">astrodust.grainpop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
+</ul>
+</li>
+</ul>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="astrodust-grainpop">
-<h1>astrodust.grainpop<a class="headerlink" href="#astrodust-grainpop" title="Permalink to this headline">¶</a></h1>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#class-structures">Class structures</a><ul>
+<li><a class="reference internal" href="#xdust.grainpop.SingleGrainPop"><code class="docutils literal notranslate"><span class="pre">SingleGrainPop</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.grainpop.SingleGrainPop.lam"><code class="docutils literal notranslate">lam</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.SingleGrainPop.tau_sca"><code class="docutils literal notranslate">tau_sca</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.SingleGrainPop.tau_abs"><code class="docutils literal notranslate">tau_abs</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.SingleGrainPop.tau_ext"><code class="docutils literal notranslate">tau_ext</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.SingleGrainPop.diff"><code class="docutils literal notranslate">diff</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.SingleGrainPop.int_diff"><code class="docutils literal notranslate">int_diff</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.SingleGrainPop.calculate_ext"><code class="docutils literal notranslate">calculate_ext()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.SingleGrainPop.info"><code class="docutils literal notranslate">info()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.SingleGrainPop.plot_ext"><code class="docutils literal notranslate">plot_ext()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.SingleGrainPop.plot_sdist"><code class="docutils literal notranslate">plot_sdist()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.SingleGrainPop.write_extinction_table"><code class="docutils literal notranslate">write_extinction_table()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xdust.grainpop.GrainPop"><code class="docutils literal notranslate"><span class="pre">GrainPop</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.grainpop.GrainPop.keys"><code class="docutils literal notranslate">keys</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.GrainPop.gpoplist"><code class="docutils literal notranslate">gpoplist</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.GrainPop.description"><code class="docutils literal notranslate">description</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.GrainPop.lam"><code class="docutils literal notranslate">lam</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.GrainPop.tau_ext"><code class="docutils literal notranslate">tau_ext</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.GrainPop.tau_sca"><code class="docutils literal notranslate">tau_sca</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.GrainPop.tau_abs"><code class="docutils literal notranslate">tau_abs</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.GrainPop.calculate_ext"><code class="docutils literal notranslate">calculate_ext()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.GrainPop.info"><code class="docutils literal notranslate">info()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.GrainPop.md"><code class="docutils literal notranslate">md</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.GrainPop.plot_ext"><code class="docutils literal notranslate">plot_ext()</span></code></a></li>
+<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate">tau_abs</span></code></a></li>
+<li><a class="reference internal" href="#id15"><code class="docutils literal notranslate">tau_ext</span></code></a></li>
+<li><a class="reference internal" href="#id16"><code class="docutils literal notranslate">tau_sca</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#helper-functions">Helper functions</a><ul>
+<li><a class="reference internal" href="#xdust.grainpop.make_MRN"><code class="docutils literal notranslate"><span class="pre">make_MRN()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.grainpop.make_MRN_RGDrude"><code class="docutils literal notranslate"><span class="pre">make_MRN_RGDrude()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">See also</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">xdust</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">astrodust.grainpop</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="astrodust-grainpop">
+<h1>astrodust.grainpop<a class="headerlink" href="#astrodust-grainpop" title="Link to this heading">¶</a></h1>
 <p>This module provides the <strong>SingleGrainPop</strong> and <strong>GrainPop</strong> classes. They are
-containers for <code class="docutils literal"><span class="pre">GrainDist</span></code> and <code class="docutils literal"><span class="pre">Extinction</span></code> objects.</p>
-<p><strong>SingleGrainPop</strong> contains a single <code class="docutils literal"><span class="pre">GrainDist</span></code> and <code class="docutils literal"><span class="pre">Extinction</span></code> object.</p>
+containers for <code class="docutils literal notranslate"><span class="pre">GrainDist</span></code> and <code class="docutils literal notranslate"><span class="pre">Extinction</span></code> objects.</p>
+<p><strong>SingleGrainPop</strong> contains a single <code class="docutils literal notranslate"><span class="pre">GrainDist</span></code> and <code class="docutils literal notranslate"><span class="pre">Extinction</span></code> object.</p>
 <p><strong>GrainPop</strong> contains a list of <strong>SingleGrainPop</strong> objects, which can be called
 upon using keys, like a dictionary.  Keys have to be specified when the
 <strong>GrainPop</strong> object is initialized.</p>
-<div class="section" id="class-structures">
-<h2>Class structures<a class="headerlink" href="#class-structures" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="newdust.grainpop.SingleGrainPop">
-<em class="property">class </em><code class="descclassname">newdust.grainpop.</code><code class="descname">SingleGrainPop</code><span class="sig-paren">(</span><em>graindist</em>, <em>extinction</em>, <em>description='Custom'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newdust/grainpop.html#SingleGrainPop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#newdust.grainpop.SingleGrainPop" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">A single dust grain population. Can add a string describing the Grain population using the <em>description</em> keyword</div>
-<div class="line"><br /></div>
-<div class="line"><strong>ATTRIBUTES</strong></div>
-<div class="line">description : a string describing the grain population</div>
-<div class="line">gdist : GrainDist object</div>
-<div class="line">ext   : Extinction object</div>
-<div class="line"><br /></div>
-<div class="line"><em>The following attributes are inherited form the GrainDist object</em></div>
-<div class="line">a, ndens, mdens, cgeo, vol</div>
-<div class="line"><em>The following attributes are inherited from the Extinction object</em></div>
-<div class="line">lam, lam_unit, tau_ext, tau_sca, tau_abs</div>
-<div class="line"><br /></div>
-<div class="line"><em>functions</em></div>
-<div class="line">calculate_ext(lam, unit=&#8217;kev&#8217;, <a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs) runs the extinction calculation on the wavelength grid specified by lam and unit</div>
-<div class="line">plot_sizes(ax, <a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs) plots the size distribution (see <em>astrodust.graindist.sizedist</em>)</div>
-<div class="line">plot_ext(ax, keyword, <a href="#id5"><span class="problematic" id="id6">**</span></a>kwargs) plots the extinction properties (see <em>astrodust.extinction</em>)</div>
-<div class="line-block">
-<div class="line">- <code class="docutils literal"><span class="pre">keyword</span></code> options are &#8220;ext&#8221;, &#8220;sca&#8221;, &#8220;abs&#8221;, &#8220;all&#8221;</div>
-</div>
-<div class="line">info() prints information about the dust grain properties</div>
-</div>
+<section id="class-structures">
+<h2>Class structures<a class="headerlink" href="#class-structures" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.grainpop.SingleGrainPop">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.grainpop.</span></span><span class="sig-name descname"><span class="pre">SingleGrainPop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Sphere'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">md</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scatm_from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/grainpop.html#SingleGrainPop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.grainpop.SingleGrainPop" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="graindist.html#xdust.graindist.GrainDist" title="xdust.graindist.graindist.GrainDist"><code class="xref py py-class docutils literal notranslate"><span class="pre">GrainDist</span></code></a></p>
+<p>SingleGrainPop unifies the grain size distribution (its parent class)
+with extinction model calculations. It provides attributes and convenience
+functions for easy access to frequently needed information. Only one dust
+composition can be modeled at a time.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">In</span> <span class="pre">addition</span> <span class="pre">to</span> <span class="pre">those</span> <span class="pre">supplied</span> <span class="pre">by</span> <span class="pre">xdust.graindist.GraindDist</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.grainpop.SingleGrainPop.lam">
+<span class="sig-name descname"><span class="pre">lam</span></span><a class="headerlink" href="#xdust.grainpop.SingleGrainPop.lam" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>astropy.units.Quantity : wavelength or energy used for the extinction computation</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="class">
-<dt id="newdust.grainpop.GrainPop">
-<em class="property">class </em><code class="descclassname">newdust.grainpop.</code><code class="descname">GrainPop</code><span class="sig-paren">(</span><em>gpoplist</em>, <em>keys=None</em>, <em>description='Custom_GrainPopDict'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newdust/grainpop.html#GrainPop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#newdust.grainpop.GrainPop" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">A collection of dust grain distributions (SingeGrainPop).</div>
-<div class="line">Can add a string describing this Grain population using the <cite>description</cite> keyword</div>
-<div class="line"><br /></div>
-<div class="line"><strong>ATTRIBUTES</strong></div>
-<div class="line">keys     : A list of keys corresponding to each SingleGrainPop (default: list of integers starting with 0)</div>
-<div class="line">gpoplist : A list of SingleGrainPop objects</div>
-<div class="line">description : A string describing this collection</div>
-<div class="line">lam      : The energy / wavelength used for calculating extinction</div>
-<div class="line">lam_unit : The unit for energy (&#8216;kev&#8217;) or wavelength (&#8216;angs&#8217;) used for calculating extinction</div>
-<div class="line"><br /></div>
-<div class="line"><em>properties</em></div>
-<div class="line">tau_ext : Total extinction optical depth as a function of wavelength / energy</div>
-<div class="line">tau_sca : Total scattering optical depth as a function of wavelength / energy</div>
-<div class="line">tau_abs : Total absorption optical depth as a function of wavelength / energy</div>
-<div class="line"><br /></div>
-<div class="line"><em>functions</em></div>
-<div class="line">__getitem__(key) will return the SingleGrainPop indexed by <code class="docutils literal"><span class="pre">key</span></code></div>
-<div class="line">calculate_ext(lam, unit=&#8217;kev&#8217;, <a href="#id7"><span class="problematic" id="id8">**</span></a>kwargs) runs the extinction calculation on the wavelength grid specified by lam and unit</div>
-<div class="line">plot_ext(ax, keyword, <a href="#id9"><span class="problematic" id="id10">**</span></a>kwargs) plots the extinction properties (see <em>astrodust.extinction</em>)</div>
-<div class="line-block">
-<div class="line">- <code class="docutils literal"><span class="pre">keyword</span></code> options are &#8220;ext&#8221;, &#8220;sca&#8221;, &#8220;abs&#8221;, &#8220;all&#8221;</div>
-</div>
-<div class="line">info(key=None) prints information about the SingleGrainPop indexed by <code class="docutils literal"><span class="pre">key</span></code></div>
-<div class="line-block">
-<div class="line">- if <code class="docutils literal"><span class="pre">key</span></code> is <em>None</em>, information about every grain population will be printed to screen</div>
-</div>
-</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.grainpop.SingleGrainPop.tau_sca">
+<span class="sig-name descname"><span class="pre">tau_sca</span></span><a class="headerlink" href="#xdust.grainpop.SingleGrainPop.tau_sca" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray float : scattering optical depth for this grain population</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="helper-functions">
-<h2>Helper functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="newdust.grainpop.make_MRN">
-<code class="descclassname">newdust.grainpop.</code><code class="descname">make_MRN</code><span class="sig-paren">(</span><em>amin=0.005</em>, <em>amax=0.3</em>, <em>p=3.5</em>, <em>md=0.0001</em>, <em>fsil=0.6</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newdust/grainpop.html#make_MRN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#newdust.grainpop.make_MRN" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">Returns a GrainPop describing an MRN dust grain size distribution, which is a mixture of silicate and graphite grains.</div>
-<div class="line">Applies the 1/3 parallel, 2/3 perpendicular assumption of graphite grain orientations.</div>
-<div class="line"><br /></div>
-<div class="line"><strong>INPUTS</strong></div>
-<div class="line">amin : minimum grain size in microns</div>
-<div class="line">amax : maximum grain size in microns</div>
-<div class="line">p    : power law slope for grain size distribution</div>
-<div class="line">md   : dust mass column [g cm^-2]</div>
-<div class="line">fsil : fraction of dust mass in silicate grains</div>
-</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.grainpop.SingleGrainPop.tau_abs">
+<span class="sig-name descname"><span class="pre">tau_abs</span></span><a class="headerlink" href="#xdust.grainpop.SingleGrainPop.tau_abs" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray float : absorption optical depth for this grain population</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="newdust.grainpop.make_MRN_drude">
-<code class="descclassname">newdust.grainpop.</code><code class="descname">make_MRN_drude</code><span class="sig-paren">(</span><em>amin=0.005</em>, <em>amax=0.3</em>, <em>p=3.5</em>, <em>rho=3.0</em>, <em>md=0.0001</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newdust/grainpop.html#make_MRN_drude"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#newdust.grainpop.make_MRN_drude" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">Returns a GrainPop describing an MRN dust grain size distribution, and uses the Drude approximation,</div>
-<div class="line">which approximates the dust grain as a sphere of free electrons</div>
-<div class="line"><br /></div>
-<div class="line"><strong>INPUTS</strong></div>
-<div class="line">amin : minimum grain size in microns</div>
-<div class="line">amax : maximum grain size in microns</div>
-<div class="line">p    : power law slope for grain size distribution</div>
-<div class="line">rho  : density of dust grain material [g cm^-3]</div>
-<div class="line">md   : dust mass column [g cm^-2]</div>
-</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.grainpop.SingleGrainPop.tau_ext">
+<span class="sig-name descname"><span class="pre">tau_ext</span></span><a class="headerlink" href="#xdust.grainpop.SingleGrainPop.tau_ext" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray float : extinction (scattering + absorption) optical depth</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="see-also">
-<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">for</span> <span class="pre">this</span> <span class="pre">grain</span> <span class="pre">population</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.grainpop.SingleGrainPop.diff">
+<span class="sig-name descname"><span class="pre">diff</span></span><a class="headerlink" href="#xdust.grainpop.SingleGrainPop.diff" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>astropy.units.Quantity : [cm^2 rad^-2] differential scattering cross-section</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">as</span> <span class="pre">a</span> <span class="pre">function</span> <span class="pre">of</span> <span class="pre">wavelength/energy,</span> <span class="pre">grain</span> <span class="pre">size,</span> <span class="pre">and</span> <span class="pre">angle</span> <span class="pre">(NE</span> <span class="pre">x</span> <span class="pre">NA</span> <span class="pre">x</span> <span class="pre">NTH)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.grainpop.SingleGrainPop.int_diff">
+<span class="sig-name descname"><span class="pre">int_diff</span></span><a class="headerlink" href="#xdust.grainpop.SingleGrainPop.int_diff" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>astropy.units.Quantity : [rad^-2] differential cross-section integrated</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">over</span> <span class="pre">grain</span> <span class="pre">size</span> <span class="pre">distribution</span> <span class="pre">effectively</span> <span class="pre">dtau</span> <span class="pre">/</span> <span class="pre">dOmega$</span>&#160; <span class="pre">(NE</span> <span class="pre">x</span> <span class="pre">NTH)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.grainpop.SingleGrainPop.calculate_ext">
+<span class="sig-name descname"><span class="pre">calculate_ext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lam</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/grainpop.html#SingleGrainPop.calculate_ext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.grainpop.SingleGrainPop.calculate_ext" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the extinction model.</p>
+<dl class="simple">
+<dt>lam<span class="classifier">astropy.units.Quantity -or- numpy.ndarray</span></dt><dd><p>Wavelength or energy values for calculating the cross-sections;
+if no units specified, defaults to keV</p>
+</dd>
+<dt>theta<span class="classifier">astropy.units.Quantity -or- numpy.ndarray -or- float</span></dt><dd><p>Scattering angles for computing the differential scattering cross-section;
+if no units specified, defaults to radian</p>
+</dd>
+</dl>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs passed to self.scatm.calculate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.grainpop.SingleGrainPop.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/grainpop.html#SingleGrainPop.info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.grainpop.SingleGrainPop.info" title="Link to this definition">¶</a></dt>
+<dd><p>Print information about this grain population</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.grainpop.SingleGrainPop.plot_ext">
+<span class="sig-name descname"><span class="pre">plot_ext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/grainpop.html#SingleGrainPop.plot_ext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.grainpop.SingleGrainPop.plot_ext" title="Link to this definition">¶</a></dt>
+<dd><p>Plot  the extinction properties of the grain population.</p>
+<section id="inputs">
+<h3>Inputs<a class="headerlink" href="#inputs" title="Link to this heading">¶</a></h3>
+<p>ax : matplotlib.pyplot.axes object</p>
+<p>keyword : string (‘ext’, ‘sca’, ‘abs’, ‘all’) : extinction value(s) to plot</p>
+<dl class="simple">
+<dt>unit<span class="classifier">string parsable by astropy.units</span><span class="classifier">unit to use for the x-axis values.</span></dt><dd><p>If None, defaults to the unit assigned to self.lam</p>
+</dd>
+</dl>
+<p><a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs passed to ax.legend()</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.grainpop.SingleGrainPop.plot_sdist">
+<span class="sig-name descname"><span class="pre">plot_sdist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/grainpop.html#SingleGrainPop.plot_sdist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.grainpop.SingleGrainPop.plot_sdist" title="Link to this definition">¶</a></dt>
+<dd><p>Plot information about the grain size distribution.
+(Calls GrainDist.plot)</p>
+<section id="id5">
+<h3>Inputs<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>ax : matplotlib.pyplot.axes object</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.grainpop.SingleGrainPop.write_extinction_table">
+<span class="sig-name descname"><span class="pre">write_extinction_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outfile</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/grainpop.html#SingleGrainPop.write_extinction_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.grainpop.SingleGrainPop.write_extinction_table" title="Link to this definition">¶</a></dt>
+<dd><p>Write the contents of the extinction calculation to a FITS file.
+(Runs ScatteringModel.write_table)</p>
+<section id="id6">
+<h3>Inputs<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>outfile : string : Name of file to write</p>
+<p><a href="#id7"><span class="problematic" id="id8">**</span></a>kwargs passed to self.scatm.write_table</p>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.grainpop.GrainPop">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.grainpop.</span></span><span class="sig-name descname"><span class="pre">GrainPop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gpoplist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Custom_GrainPopDict'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/grainpop.html#GrainPop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.grainpop.GrainPop" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A collection of SingleGrainPop objects. Each SingleGrainPop represents
+a different composition (or perhaps different geometries of grain size distribution).
+Each SingleGrainPop object has a label string, and can be accessed in the same was as
+key-value pairs are accessed in a Python dictionary.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.grainpop.GrainPop.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><a class="headerlink" href="#xdust.grainpop.GrainPop.keys" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Python list of strings : labels for each SingleGrainPop object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">(Default</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of integers starting with 0)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.grainpop.GrainPop.gpoplist">
+<span class="sig-name descname"><span class="pre">gpoplist</span></span><a class="headerlink" href="#xdust.grainpop.GrainPop.gpoplist" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Python list of SingleGrainPop objects : Paired, in order, with the values in <cite>keys</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.grainpop.GrainPop.description">
+<span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#xdust.grainpop.GrainPop.description" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string : A description for this collection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.grainpop.GrainPop.lam">
+<span class="sig-name descname"><span class="pre">lam</span></span><a class="headerlink" href="#xdust.grainpop.GrainPop.lam" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>astropy.units.Quantity : wavelength or energy used for the extinction computation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">\*properties*</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.grainpop.GrainPop.tau_ext">
+<span class="sig-name descname"><span class="pre">tau_ext</span></span><a class="headerlink" href="#xdust.grainpop.GrainPop.tau_ext" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray : Total extinction optical depth as a function of wavelength / energy</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.grainpop.GrainPop.tau_sca">
+<span class="sig-name descname"><span class="pre">tau_sca</span></span><a class="headerlink" href="#xdust.grainpop.GrainPop.tau_sca" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray : Total scattering optical depth as a function of wavelength / energy</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.grainpop.GrainPop.tau_abs">
+<span class="sig-name descname"><span class="pre">tau_abs</span></span><a class="headerlink" href="#xdust.grainpop.GrainPop.tau_abs" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray : Total absorption optical depth as a function of wavelength / energy</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.grainpop.GrainPop.calculate_ext">
+<span class="sig-name descname"><span class="pre">calculate_ext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lam</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/grainpop.html#GrainPop.calculate_ext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.grainpop.GrainPop.calculate_ext" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the extinction model.</p>
+<dl class="simple">
+<dt>lam<span class="classifier">astropy.units.Quantity -or- numpy.ndarray</span></dt><dd><p>Wavelength or energy values for calculating the cross-sections;
+if no units specified, defaults to keV</p>
+</dd>
+<dt>theta<span class="classifier">astropy.units.Quantity -or- numpy.ndarray -or- float</span></dt><dd><p>Scattering angles for computing the differential scattering cross-section;
+if no units specified, defaults to radian</p>
+</dd>
+</dl>
+<p><a href="#id9"><span class="problematic" id="id10">**</span></a>kwargs passed to SingleGrainPop.scatm.calculate for each grain population in the list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.grainpop.GrainPop.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/grainpop.html#GrainPop.info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.grainpop.GrainPop.info" title="Link to this definition">¶</a></dt>
+<dd><p>Print information about this collection of grain populations</p>
+<section id="id11">
+<h3>Inputs<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>key<span class="classifier">int or string</span><span class="classifier">key-value for the SingleGrainPopulation of interest.</span></dt><dd><p>If None, systematically prints information for every SingleGrainPop in the collection.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="xdust.grainpop.GrainPop.md">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">md</span></span><a class="headerlink" href="#xdust.grainpop.GrainPop.md" title="Link to this definition">¶</a></dt>
+<dd><p>Return the sum of the <cite>md</cite> values from each SingleGrainPop</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.grainpop.GrainPop.plot_ext">
+<span class="sig-name descname"><span class="pre">plot_ext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/grainpop.html#GrainPop.plot_ext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.grainpop.GrainPop.plot_ext" title="Link to this definition">¶</a></dt>
+<dd><p>Plot the sum of the extinction properties across all grain populations</p>
+<section id="id12">
+<h3>Inputs<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>ax : matplotlib.pyplot.axes object</p>
+<p>keyword : string (‘ext’, ‘sca’, ‘abs’, ‘all’) : extinction value(s) to plot</p>
+<dl class="simple">
+<dt>unit<span class="classifier">string parsable by astropy.units</span><span class="classifier">unit to use for the x-axis values</span></dt><dd><p>If None, defaults to the unit assigned to self.lam</p>
+</dd>
+</dl>
+<p><a href="#id13"><span class="problematic" id="id14">**</span></a>kwargs passed to ax.legend()</p>
+</section>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id0">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">tau_abs</span></span><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
+<dd><p>Return the sum of the <cite>tau_abs</cite> values from each SingleGrainPop</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id15">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">tau_ext</span></span><a class="headerlink" href="#id15" title="Link to this definition">¶</a></dt>
+<dd><p>Return the sum of the <cite>tau_ext</cite> values from each SingleGrainPop</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id16">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">tau_sca</span></span><a class="headerlink" href="#id16" title="Link to this definition">¶</a></dt>
+<dd><p>Return the sum of the <cite>tau_sca</cite> values from each SingleGrainPop</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="helper-functions">
+<h2>Helper functions<a class="headerlink" href="#helper-functions" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="xdust.grainpop.make_MRN">
+<span class="sig-prename descclassname"><span class="pre">xdust.grainpop.</span></span><span class="sig-name descname"><span class="pre">make_MRN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.005</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">md</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsil</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/grainpop.html#make_MRN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.grainpop.make_MRN" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a GrainPop describing an MRN dust grain size distribution,
+which is a mixture of silicate and graphite grains. Applies the 1/3 parallel,
+2/3 perpendicular assumption of graphite grain orientations.</p>
+<section id="id17">
+<h3>Inputs<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p>amin : astropy.units.Quantity -or- float :  minimum grain radius; if a float, micron units assumed</p>
+<p>amax : astropy.units.Quantity -or- float : maximum grain radius; if a float, micron units assumed</p>
+<p>p : float : powerlaw slope for grain size distribution</p>
+<p>md : float : dust mass column [g cm^-2]</p>
+<p>fsil : float : fraction of dust mass in silicate grains</p>
+<p><a href="#id18"><span class="problematic" id="id19">**</span></a>kwargs passed to graindist.sizedist.Powerlaw()</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="xdust.grainpop.make_MRN_RGDrude">
+<span class="sig-prename descclassname"><span class="pre">xdust.grainpop.</span></span><span class="sig-name descname"><span class="pre">make_MRN_RGDrude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.005</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">md</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/grainpop.html#make_MRN_RGDrude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.grainpop.make_MRN_RGDrude" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a SingleGrainPop describing an MRN dust grain size distribution, but uses
+Rayleigh-Gans scattering with the  Drude approximation, which approximates
+the dust grain as a sphere of free electrons.</p>
+<section id="id20">
+<h3>Inputs<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p>amin : astropy.units.Quantity -or- float :  minimum grain radius; if a float, micron units assumed</p>
+<p>amax : astropy.units.Quantity -or- float : maximum grain radius; if a float, micron units assumed</p>
+<p>p : float : powerlaw slope for grain size distribution</p>
+<p>rho : float : density of the dust grain material [g cm^-3]</p>
+<p>md : float : dust mass column [g cm^-2]</p>
+<p><a href="#id21"><span class="problematic" id="id22">**</span></a>kwargs passed to graindist.sizedist.Powerlaw()</p>
+</section>
+</dd></dl>
+
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="graindist.html#graindist-class">GrainDist class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graindist.html#helper-functions">Helper functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graindist.html#supporting-modules">Supporting modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="extinction.html">astrodust.extinction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="extinction.html#extinction-class">Extinction class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="extinction.html#helper-functions">Helper functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="extinction.html#supporting-modules">Supporting modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
 </ul>
 </li>
 </ul>
 </div>
-</div>
-</div>
+</section>
+</section>
 
-
-          </div>
-        </div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="index.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Home</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="graindist.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">astrodust.graindist</div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">astrodust.grainpop</a><ul>
-<li><a class="reference internal" href="#class-structures">Class structures</a></li>
-<li><a class="reference internal" href="#helper-functions">Helper functions</a></li>
-<li><a class="reference internal" href="#see-also">See also</a></li>
-</ul>
-</li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">Home doc page for <em>eblur/dust</em></a></li>
-      <li>Next: <a href="graindist.html" title="next chapter">astrodust.graindist</a></li>
-  </ul></li>
-</ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/grainpop.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
     </div>
-    <div class="footer">
-      &copy;2017, Lia Corrales.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
-      
-      |
-      <a href="_sources/grainpop.txt"
-          rel="nofollow">Page source</a>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2024, Lia Corrales</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
     </div>
-
-    
-
-    
-  </body>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/shibuya.js?v=50760d75"></script></body>
 </html>

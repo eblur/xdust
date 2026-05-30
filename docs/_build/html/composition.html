@@ -1,204 +1,306 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>astrodust.graindist.composition - xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="astrodust.graindist.composition.minerals" href="minerals.html" /><link rel="prev" title="astrodust.graindist.sizedist" href="sizedist.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=9454f7d5" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
     
-    <title>astrodust.graindist.composition &mdash; astrodust 0.1 documentation</title>
-    
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="astrodust 0.1 documentation" href="index.html" />
-    <link rel="up" title="astrodust.graindist" href="graindist.html" />
-    <link rel="next" title="astrodust.graindist.composition.minerals" href="minerals.html" />
-    <link rel="prev" title="astrodust.graindist.sizedist" href="sizedist.html" />
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+  <meta property="og:type" content="website"/><meta property="og:title" content="astrodust.graindist.composition"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
-  <body role="document">  
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      
+      
+      <strong>xdust</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link">
+          <a href="https://github.com/eblur/xdust">
+            <span>GitHub</span></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="grainpop.html">astrodust.grainpop</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">astrodust.graindist.composition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="graindist.html">astrodust.graindist</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">astrodust.graindist.composition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extinction.html">xdust extinction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scatmodels.html">astrodust.extinction.scatmodels</a></li>
+</ul>
+</li>
+</ul>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="astrodust-graindist-composition">
-<h1>astrodust.graindist.composition<a class="headerlink" href="#astrodust-graindist-composition" title="Permalink to this headline">¶</a></h1>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#abstract-class-cmindex">Abstract Class: <em>CmIndex</em></a></li>
+<li><a class="reference internal" href="#classes">Classes</a><ul>
+<li><a class="reference internal" href="#xdust.graindist.composition.CmDrude"><code class="docutils literal notranslate"><span class="pre">CmDrude</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.graindist.composition.CmDrude.ip"><code class="docutils literal notranslate">ip()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.composition.CmDrude.rp"><code class="docutils literal notranslate">rp()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xdust.graindist.composition.CmSilicate"><code class="docutils literal notranslate"><span class="pre">CmSilicate</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.composition.CmGraphite"><code class="docutils literal notranslate"><span class="pre">CmGraphite</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">xdust</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="grainpop.html"><span itemprop="name">astrodust.grainpop</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="graindist.html"><span itemprop="name">astrodust.graindist</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">astrodust.graindist.composition</strong>
+        <meta itemprop="position" content="4" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="astrodust-graindist-composition">
+<h1>astrodust.graindist.composition<a class="headerlink" href="#astrodust-graindist-composition" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a></li>
 </ul>
 </div>
-<div class="section" id="abstract-class-cmindex">
-<h2>Abstract Class: <em>CmIndex</em><a class="headerlink" href="#abstract-class-cmindex" title="Permalink to this headline">¶</a></h2>
+<section id="abstract-class-cmindex">
+<h2>Abstract Class: <em>CmIndex</em><a class="headerlink" href="#abstract-class-cmindex" title="Link to this heading">¶</a></h2>
 <p>Abstract class <em>CmIndex</em> describes the complex index of refraction for a particular material.
 It must contain the following attributes:</p>
 <ul class="simple">
-<li><cite>cmtype</cite> (a string)</li>
-<li><cite>rho</cite> (g cm^-3)</li>
-<li><cite>rp</cite> (a function that takes wavelength [&#8220;angs&#8221;] or energy [&#8220;kev&#8221;] and returns the real part of the complex index of refraction)</li>
-<li><cite>ip</cite> (a function that takes wavelength [&#8220;angs&#8221;] or energy [&#8220;kev&#8221;] and returns the imaginary part of the complex index of refraction)</li>
-<li><cite>cm</cite> (a function that takes wavelengths [&#8220;angs&#8221;] or energy [&#8220;kev&#8221;] and returns the complex index of refraction, <em>dtype=&#8217;complex&#8217;</em>)</li>
+<li><p><cite>cmtype</cite> (a string)</p></li>
+<li><p><cite>rho</cite> (g cm^-3)</p></li>
+<li><p><cite>rp</cite> (a function that takes wavelength [“angs”] or energy [“kev”] and returns the real part of the complex index of refraction)</p></li>
+<li><p><cite>ip</cite> (a function that takes wavelength [“angs”] or energy [“kev”] and returns the imaginary part of the complex index of refraction)</p></li>
+<li><p><cite>cm</cite> (a function that takes wavelengths [“angs”] or energy [“kev”] and returns the complex index of refraction, <em>dtype=’complex’</em>)</p></li>
 </ul>
-<p>Right now the only units accepted are &#8220;kev&#8221; and &#8220;angs&#8221;</p>
+<p>Right now the only units accepted are “kev” and “angs”</p>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.graindist.composition.CmDrude">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.</span></span><span class="sig-name descname"><span class="pre">CmDrude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmdrude.html#CmDrude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmDrude" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Composition</span></code></p>
+<p>Optical constants under the Drude approximation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.graindist.composition.CmDrude.ip">
+<span class="sig-name descname"><span class="pre">ip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmdrude.html#CmDrude.ip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmDrude.ip" title="Link to this definition">¶</a></dt>
+<dd><p>Gives the imaginary part of the complex index of refraction under the Drude approximation.</p>
+<section id="inputs">
+<h3>Inputs<a class="headerlink" href="#inputs" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>x<span class="classifier">if astropy.units.Quantity, convert to same units as self.wavel;</span></dt><dd><p>if numpy.ndarray, assume keV units</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li></li>
+<li><p><em>0.0 if x is a float or quantity of no length</em></p></li>
+<li><p><em>numpy.ndarray filled with zeros, same length as x</em></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.graindist.composition.CmDrude.rp">
+<span class="sig-name descname"><span class="pre">rp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmdrude.html#CmDrude.rp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmDrude.rp" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the real part of the complex index of refraction under the Drude approximation.</p>
+<section id="id1">
+<h3>Inputs<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>x<span class="classifier">if astropy.units.Quantity, convert to same units as self.wavel;</span></dt><dd><p>if numpy.ndarray, assume keV units</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(rho / 2 m_p) * (r_e / 2 pi) * wavel^2</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.graindist.composition.CmSilicate">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.</span></span><span class="sig-name descname"><span class="pre">CmSilicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmsilicate.html#CmSilicate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmSilicate" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Composition</span></code></p>
+<p>Optical constants for Silicate from Draine (2003)</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.graindist.composition.CmGraphite">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.</span></span><span class="sig-name descname"><span class="pre">CmGraphite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'big'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'perp'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmgraphite.html#CmGraphite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmGraphite" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Composition</span></code></p>
+<p>Optical constants for Graphite from Draine (2003)</p>
+<div class="line-block">
+<div class="line">Additional Attributes</div>
+<div class="line">———————</div>
+<div class="line">size   : ‘big’ or ‘small’;</div>
+<div class="line-block">
+<div class="line">‘big’ gives results for 0.1 um sized graphite grains at 20 K [Draine (2003)];</div>
+<div class="line">‘small’ gives results for 0.01 um sized grains at 20 K</div>
 </div>
-<div class="section" id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="newdust.graindist.composition.CmDrude">
-<em class="property">class </em><code class="descclassname">newdust.graindist.composition.</code><code class="descname">CmDrude</code><span class="sig-paren">(</span><em>rho=3.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newdust/graindist/composition/cmdrude.html#CmDrude"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#newdust.graindist.composition.CmDrude" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line"><strong>ATTRIBUTES</strong></div>
-<div class="line">cmtype : &#8216;Drude&#8217;</div>
-<div class="line">rho    : grain density [g cm^-3]</div>
-<div class="line">citation : A string containing citation to original work</div>
-<div class="line"><br /></div>
-<div class="line"><em>functions</em></div>
-<div class="line">rp(lam, unit=&#8217;kev&#8217;) : Returns real part (unit=&#8217;kev&#8217;|&#8217;angs&#8217;)</div>
-<div class="line">ip(lam, unit=&#8217;kev&#8217;) : Returns imaginary part (always 0.0)</div>
-<div class="line">cm(lam, unit=&#8217;kev&#8217;) : Complex index of refraction of dtype=&#8217;complex&#8217;</div>
-<div class="line">plot(lam, unit=&#8217;kev&#8217;) : Plots Re(m-1)</div>
+<div class="line">orient : ‘perp’ or ‘para’</div>
+<div class="line-block">
+<div class="line">‘perp’ gives results for E-field perpendicular to c-axis</div>
+<div class="line">‘para’ gives results for E-field parallel to c-axis</div>
+</div>
 </div>
 </dd></dl>
 
-<dl class="class">
-<dt id="newdust.graindist.composition.CmSilicate">
-<em class="property">class </em><code class="descclassname">newdust.graindist.composition.</code><code class="descname">CmSilicate</code><span class="sig-paren">(</span><em>rho=3.8</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newdust/graindist/composition/cmsilicate.html#CmSilicate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#newdust.graindist.composition.CmSilicate" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line"><strong>ATTRIBUTES</strong></div>
-<div class="line">cmtype : &#8216;Silicate&#8217;</div>
-<div class="line">rho : grain material density (g cm^-3)</div>
-<div class="line">citation : A string containing citation to the original work</div>
-<div class="line">interps : A tuple containing scipy.interp1d objects (rp, ip)</div>
-<div class="line"><br /></div>
-<div class="line"><em>functions</em></div>
-<div class="line">rp(lam, unit=&#8217;kev&#8217;)  : Returns real part (unit=&#8217;kev&#8217;|&#8217;angs&#8217;)</div>
-<div class="line">ip(lam, unit=&#8217;kev&#8217;)  : Returns imaginary part (unit=&#8217;kev&#8217;|&#8217;angs&#8217;)</div>
-<div class="line">cm(lam, unit=&#8217;kev&#8217;) : Complex index of refraction of dtype=&#8217;complex&#8217;</div>
-<div class="line">plot(lam=None, unit=&#8217;kev&#8217;) : Plots Re(m-1) and Im(m)</div>
-<div class="line-block">
-<div class="line">if lam is <em>None</em>, plots the original interp objects</div>
-<div class="line">otherwise, plots with user defined wavelength (lam)</div>
-</div>
-</div>
-</dd></dl>
+</section>
+</section>
 
-<dl class="class">
-<dt id="newdust.graindist.composition.CmGraphite">
-<em class="property">class </em><code class="descclassname">newdust.graindist.composition.</code><code class="descname">CmGraphite</code><span class="sig-paren">(</span><em>rho=2.2</em>, <em>size='big'</em>, <em>orient='perp'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newdust/graindist/composition/cmgraphite.html#CmGraphite"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#newdust.graindist.composition.CmGraphite" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line"><strong>ATTRIBUTES</strong></div>
-<div class="line">cmtype : &#8216;Graphite&#8217;</div>
-<div class="line">rho : grain material density (g cm^-3)</div>
-<div class="line">size   : &#8216;big&#8217; or &#8216;small&#8217;</div>
-<div class="line-block">
-<div class="line">&#8216;big&#8217; gives results for 0.1 um sized graphite grains at 20 K [Draine (2003)]</div>
-<div class="line">&#8216;small&#8217; gives results for 0.01 um sized grains at 20 K</div>
-</div>
-<div class="line">orient : &#8216;perp&#8217; or &#8216;para&#8217;</div>
-<div class="line-block">
-<div class="line">&#8216;perp&#8217; gives results for E-field perpendicular to c-axis</div>
-<div class="line">&#8216;para&#8217; gives results for E-field parallel to c-axis</div>
-</div>
-<div class="line">citation : A string containing citation to original work</div>
-<div class="line">interps  : A tuple containing scipy.interp1d objects (rp, ip)</div>
-<div class="line"><br /></div>
-<div class="line"><em>functions</em></div>
-<div class="line">rp(lam, unit=&#8217;kev&#8217;) : Returns real part (unit=&#8217;kev&#8217;|&#8217;angs&#8217;)</div>
-<div class="line">ip(lam, unit=&#8217;kev&#8217;) : Returns imaginary part (unit=&#8217;kev&#8217;|&#8217;angs&#8217;)</div>
-<div class="line">cm(lam, unit=&#8217;kev&#8217;) : Complex index of refraction of dtype=&#8217;complex&#8217;</div>
-<div class="line">plot(lam=None, unit=&#8217;kev&#8217;) : Plots Re(m-1) and Im(m)</div>
-<div class="line-block">
-<div class="line">if lam is <em>None</em>, plots the original interp objects</div>
-<div class="line">otherwise, plots with user defined wavelength (lam)</div>
-</div>
-</div>
-</dd></dl>
-
-</div>
-</div>
-
-
-          </div>
-        </div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="sizedist.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">astrodust.graindist.sizedist</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="minerals.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">astrodust.graindist.composition.minerals</div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">astrodust.graindist.composition</a><ul>
-<li><a class="reference internal" href="#abstract-class-cmindex">Abstract Class: <em>CmIndex</em></a></li>
-<li><a class="reference internal" href="#classes">Classes</a></li>
-</ul>
-</li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  <li><a href="graindist.html">astrodust.graindist</a><ul>
-      <li>Previous: <a href="sizedist.html" title="previous chapter">astrodust.graindist.sizedist</a></li>
-      <li>Next: <a href="minerals.html" title="next chapter">astrodust.graindist.composition.minerals</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/composition.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
     </div>
-    <div class="footer">
-      &copy;2017, Lia Corrales.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
-      
-      |
-      <a href="_sources/composition.txt"
-          rel="nofollow">Page source</a>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2024, Lia Corrales</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
     </div>
-
-    
-
-    
-  </body>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/shibuya.js?v=50760d75"></script></body>
 </html>

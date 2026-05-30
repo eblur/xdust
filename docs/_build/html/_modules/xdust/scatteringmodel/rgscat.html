@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>xdust.scatteringmodel.rgscat - xdust 0.1 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=9454f7d5" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="xdust.scatteringmodel.rgscat"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../index.html">
+      
+      
+      <strong>xdust</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link">
+          <a href="https://github.com/eblur/xdust">
+            <span>GitHub</span></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../grainpop.html">astrodust.grainpop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../graindist.html">astrodust.graindist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../composition.html">astrodust.graindist.composition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../minerals.html">astrodust.graindist.composition.minerals</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../shape.html">astrodust.graindist.shape</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extinction.html">astrodust.extinction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../scatmodels.html">astrodust.extinction.scatmodels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../graindist.html">astrodust.graindist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../composition.html">astrodust.graindist.composition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../minerals.html">astrodust.graindist.composition.minerals</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../shape.html">astrodust.graindist.shape</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../extinction.html">astrodust.extinction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../scatmodels.html">astrodust.extinction.scatmodels</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">xdust</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">xdust.scatteringmodel.rgscat</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <h1>Source code for xdust.scatteringmodel.rgscat</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span data-line="2"><span class="kn">import</span><span class="w"> </span><span class="nn">astropy.units</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">u</span>
+</span><span data-line="3"><span class="kn">from</span><span class="w"> </span><span class="nn">..</span><span class="w"> </span><span class="kn">import</span> <span class="n">helpers</span>
+</span><span data-line="4"><span class="kn">from</span><span class="w"> </span><span class="nn">.scatteringmodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScatteringModel</span>
+</span><span data-line="5">
+</span><span data-line="6"><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;RGscattering&#39;</span><span class="p">]</span>
+</span><span data-line="7">
+</span><span data-line="8"><span class="n">CHARSIG</span>       <span class="o">=</span> <span class="mf">1.04</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcmin</span> <span class="c1"># characteristic scattering angle [arcmin E(keV)^-1 a(um)^-1]</span>
+</span><span data-line="9">
+<div class="viewcode-block" id="RGscattering">
+<a class="viewcode-back" href="../../../scatmodels.html#xdust.scatteringmodel.RGscattering">[docs]</a>
+</span><span data-line="10"><span class="k">class</span><span class="w"> </span><span class="nc">RGscattering</span><span class="p">(</span><span class="n">ScatteringModel</span><span class="p">):</span>
+</span><span data-line="11"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="12"><span class="sd">    Rayleigh-Gans scattering model. *See* Mauche &amp; Gorenstein (1986), ApJ 302, 371; </span>
+</span><span data-line="13"><span class="sd">    Smith &amp; Dwek (1998), ApJ, 503, 831</span>
+</span><span data-line="14"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="15">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span data-line="16">        <span class="n">ScatteringModel</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span data-line="17">        <span class="bp">self</span><span class="o">.</span><span class="n">stype</span> <span class="o">=</span> <span class="s1">&#39;RGscat&#39;</span>
+</span><span data-line="18">        <span class="bp">self</span><span class="o">.</span><span class="n">citation</span> <span class="o">=</span> <span class="s1">&#39;Calculating RG-Drude approximation</span><span class="se">\n</span><span class="s1">Mauche &amp; Gorenstein (1986), ApJ 302, 371</span><span class="se">\n</span><span class="s1">Smith &amp; Dwek (1998), ApJ, 503, 831&#39;</span>
+</span><span data-line="19">
+<div class="viewcode-block" id="RGscattering.calculate">
+<a class="viewcode-back" href="../../../scatmodels.html#xdust.scatteringmodel.RGscattering.calculate">[docs]</a>
+</span><span data-line="20">    <span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">cm</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+</span><span data-line="21"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="22"><span class="sd">        Calculate the extinction efficiences with the Rayleigh-Gans approximation.</span>
+</span><span data-line="23">
+</span><span data-line="24"><span class="sd">        lam : astropy.units.Quantity -or- numpy.ndarray</span>
+</span><span data-line="25"><span class="sd">            Wavelength or energy values for calculating the cross-sections;</span>
+</span><span data-line="26"><span class="sd">            if no units specified, defaults to keV</span>
+</span><span data-line="27"><span class="sd">        </span>
+</span><span data-line="28"><span class="sd">        a : astropy.units.Quantity -or- numpy.ndarray</span>
+</span><span data-line="29"><span class="sd">            Grain radius value(s) to use in the calculation;</span>
+</span><span data-line="30"><span class="sd">            if no units specified, defaults to micron</span>
+</span><span data-line="31"><span class="sd">        </span>
+</span><span data-line="32"><span class="sd">        cm : xdust.graindist.composition object</span>
+</span><span data-line="33"><span class="sd">            Holds the optical constants and density for the compound.</span>
+</span><span data-line="34"><span class="sd">        </span>
+</span><span data-line="35"><span class="sd">        theta : astropy.units.Quantity -or- numpy.ndarray -or- float</span>
+</span><span data-line="36"><span class="sd">            Scattering angles for computing the differential scattering cross-section;</span>
+</span><span data-line="37"><span class="sd">            if no units specified, defaults to radian</span>
+</span><span data-line="38">
+</span><span data-line="39"><span class="sd">        Updates the `qsca`, `qext`, `qabs`, and `diff` attributes</span>
+</span><span data-line="40"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="41">        <span class="c1"># Store the parameters</span>
+</span><span data-line="42">        <span class="n">lam_cm0</span><span class="p">,</span> <span class="n">a_cm0</span><span class="p">,</span> <span class="n">theta_rad0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store_parameters</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">cm</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+</span><span data-line="43">        <span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="n">NTH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">lam_cm0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">a_cm0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">theta_rad0</span><span class="p">)</span>
+</span><span data-line="44">
+</span><span data-line="45">        <span class="c1"># Make sure every variable is an array</span>
+</span><span data-line="46">        <span class="n">lam_cm_1d</span>    <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">_make_array</span><span class="p">(</span><span class="n">lam_cm0</span><span class="p">)</span>
+</span><span data-line="47">        <span class="n">a_cm_1d</span>      <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">_make_array</span><span class="p">(</span><span class="n">a_cm0</span><span class="p">)</span>
+</span><span data-line="48">        <span class="n">theta_rad_1d</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">_make_array</span><span class="p">(</span><span class="n">theta_rad0</span><span class="p">)</span>
+</span><span data-line="49">
+</span><span data-line="50">        <span class="c1"># Get the complex index of refraction minus one (m-1)</span>
+</span><span data-line="51">        <span class="n">cmi_1d</span>    <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">cm</span><span class="p">(</span><span class="n">lam_cm_1d</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.0</span>
+</span><span data-line="52">
+</span><span data-line="53">        <span class="c1"># Make everything NE x NA</span>
+</span><span data-line="54">        <span class="n">a_cm</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">a_cm_1d</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">NA</span><span class="p">),</span> <span class="n">NE</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span><span data-line="55">        <span class="n">lam_cm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">lam_cm_1d</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">NA</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="56">        <span class="n">mm1</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">cmi_1d</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">NA</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="57">        <span class="c1"># Size parameter (grain circumference to incoming wavelength)</span>
+</span><span data-line="58">        <span class="n">x</span>      <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">a_cm</span> <span class="o">/</span> <span class="n">lam_cm</span> <span class="c1"># (NE x NA)</span>
+</span><span data-line="59">        <span class="c1"># Characteristic scattering angle (sigma in Gaussian approximation)</span>
+</span><span data-line="60">        <span class="n">sigma</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">characteristic_angle</span><span class="p">(</span><span class="n">lam_cm</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="p">,</span> <span class="n">a_cm</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="p">)</span>
+</span><span data-line="61">        <span class="n">sigma_rad</span> <span class="o">=</span> <span class="n">sigma</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;radian&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="c1"># (NE x NA)</span>
+</span><span data-line="62">        
+</span><span data-line="63">        <span class="c1"># Calculate the scattering efficiencies (1-d)</span>
+</span><span data-line="64">        <span class="n">qsca</span> <span class="o">=</span> <span class="n">_qsca</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mm1</span><span class="p">)</span>
+</span><span data-line="65">        <span class="bp">self</span><span class="o">.</span><span class="n">qsca</span> <span class="o">=</span> <span class="n">qsca</span>
+</span><span data-line="66">        <span class="bp">self</span><span class="o">.</span><span class="n">qext</span> <span class="o">=</span> <span class="n">qsca</span>
+</span><span data-line="67">        <span class="bp">self</span><span class="o">.</span><span class="n">qabs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qext</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">qsca</span>
+</span><span data-line="68">
+</span><span data-line="69">        <span class="c1"># Calculate the differential scattering cross-section of shape (NE, NA, NTH)</span>
+</span><span data-line="70">        <span class="n">xs_sca</span>    <span class="o">=</span> <span class="n">_dsig</span><span class="p">(</span><span class="n">a_cm</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mm1</span><span class="p">)</span> <span class="c1"># cm^2</span>
+</span><span data-line="71">        <span class="n">xs_sca_3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">xs_sca</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">NTH</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</span><span data-line="72">
+</span><span data-line="73">        <span class="c1"># Calculate the angular dependence with shape (NE, NA, NTH)</span>
+</span><span data-line="74">        <span class="n">theta_3d</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span>
+</span><span data-line="75">            <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">theta_rad_1d</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">NTH</span><span class="p">),</span> <span class="n">NE</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+</span><span data-line="76">            <span class="n">NA</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="77">        <span class="n">sigma_3d</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">sigma_rad</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">NTH</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</span><span data-line="78">        <span class="n">thdep</span>     <span class="o">=</span> <span class="n">_thdep</span><span class="p">(</span><span class="n">theta_3d</span><span class="p">,</span> <span class="n">sigma_3d</span><span class="p">)</span> <span class="c1"># ster^-1</span>
+</span><span data-line="79">
+</span><span data-line="80">        <span class="c1"># Divide by geometric area cross-section, assumes spherical grains</span>
+</span><span data-line="81">        <span class="n">geo</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">a_cm</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># NE x NA</span>
+</span><span data-line="82">        <span class="n">geo_3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">NTH</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</span><span data-line="83">        
+</span><span data-line="84">        <span class="c1"># Differential cross-section: amplitude * angular portion / geometric cross-section</span>
+</span><span data-line="85">        <span class="bp">self</span><span class="o">.</span><span class="n">diff</span> <span class="o">=</span> <span class="n">xs_sca_3d</span> <span class="o">*</span> <span class="n">thdep</span> <span class="o">/</span> <span class="n">geo_3d</span>  <span class="c1"># ster^-1</span></div>
+
+</span><span data-line="86">
+</span><span data-line="87">    <span class="c1"># Standard deviation on scattering angle distribution</span>
+<div class="viewcode-block" id="RGscattering.characteristic_angle">
+<a class="viewcode-back" href="../../../scatmodels.html#xdust.scatteringmodel.RGscattering.characteristic_angle">[docs]</a>
+</span><span data-line="88">    <span class="k">def</span><span class="w"> </span><span class="nf">characteristic_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+</span><span data-line="89"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="90"><span class="sd">        Calculates the characteristic scattering angle under the Rayleigh-Gans approximation, </span>
+</span><span data-line="91"><span class="sd">        with the Gaussian approximation to the bessel functions.</span>
+</span><span data-line="92">
+</span><span data-line="93"><span class="sd">        lam : astropy.units.Quantity -or- numpy.ndarray</span>
+</span><span data-line="94"><span class="sd">            Wavelength or energy values for calculating the cross-sections;</span>
+</span><span data-line="95"><span class="sd">            if no units specified, defaults to keV</span>
+</span><span data-line="96"><span class="sd">        </span>
+</span><span data-line="97"><span class="sd">        a : astropy.units.Quantity -or- numpy.ndarray</span>
+</span><span data-line="98"><span class="sd">            Grain radius value(s) to use in the calculation;</span>
+</span><span data-line="99"><span class="sd">            if no units specified, defaults to micron</span>
+</span><span data-line="100"><span class="sd">        </span>
+</span><span data-line="101"><span class="sd">        Returns</span>
+</span><span data-line="102"><span class="sd">        -------</span>
+</span><span data-line="103"><span class="sd">        astropy.units.Quantity using the formula 1.04 arcmin (E/keV)^-1 (a/micron)^-1</span>
+</span><span data-line="104"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="105">        <span class="n">lam_keV</span> <span class="o">=</span> <span class="n">lam</span>
+</span><span data-line="106">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">):</span>
+</span><span data-line="107">            <span class="n">lam_keV</span> <span class="o">=</span> <span class="n">lam</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;keV&#39;</span><span class="p">,</span> <span class="n">equivalencies</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">spectral</span><span class="p">())</span><span class="o">.</span><span class="n">value</span>
+</span><span data-line="108">
+</span><span data-line="109">        <span class="n">a_um</span> <span class="o">=</span> <span class="n">a</span>
+</span><span data-line="110">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">):</span>
+</span><span data-line="111">            <span class="n">a_um</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;micron&#39;</span><span class="p">,</span> <span class="n">equivalencies</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">spectral</span><span class="p">())</span><span class="o">.</span><span class="n">value</span>
+</span><span data-line="112">        
+</span><span data-line="113">        <span class="k">return</span> <span class="n">CHARSIG</span> <span class="o">/</span> <span class="p">(</span><span class="n">lam_keV</span> <span class="o">*</span> <span class="n">a_um</span><span class="p">)</span></div>
+</div>
+
+</span><span data-line="114">
+</span><span data-line="115"><span class="c1">#--------------- Helper functions</span>
+</span><span data-line="116">
+</span><span data-line="117"><span class="k">def</span><span class="w"> </span><span class="nf">_qsca</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mm1</span><span class="p">):</span>  <span class="c1"># NE x NA</span>
+</span><span data-line="118">    <span class="k">return</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mm1</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># unitless</span>
+</span><span data-line="119">
+</span><span data-line="120"><span class="k">def</span><span class="w"> </span><span class="nf">_dsig</span><span class="p">(</span><span class="n">a_cm</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mm1</span><span class="p">):</span>  <span class="c1"># NE x NA</span>
+</span><span data-line="121">    <span class="c1"># Amplitude portion of the differential scattering cross-section</span>
+</span><span data-line="122">    <span class="k">return</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">a_cm</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mm1</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># cm^2</span>
+</span><span data-line="123">
+</span><span data-line="124"><span class="k">def</span><span class="w"> </span><span class="nf">_thdep</span><span class="p">(</span><span class="n">theta_rad</span><span class="p">,</span> <span class="n">sigma_rad</span><span class="p">):</span>  <span class="c1"># NE x NA x NTH</span>
+</span><span data-line="125">    <span class="c1"># Angular portion of the differential scattering cross-section</span>
+</span><span data-line="126">    <span class="k">return</span> <span class="mf">2.</span><span class="o">/</span><span class="mf">9.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">theta_rad</span><span class="o">/</span><span class="n">sigma_rad</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># ster^-1</span>
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2024, Lia Corrales</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>
