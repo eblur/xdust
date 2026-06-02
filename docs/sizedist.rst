@@ -4,15 +4,33 @@ xdust.graindist.sizedist
 Abstract Class: *Sizedist*
 --------------------------
 
-Abstract class *Sizedist* must contain attributes:
+Abstract class *Sizedist* must contain the following:
 
-- `dtype` : a string description
+**Atributes**
 
-- `a` : an array
+- ``dtype`` : a string description
 
-- `ndens` (md, rho, shape) returns number density of dust grains [e.g. cm^-2 um^-1]
+- ``a`` : float or np.array [grain size, micron] or astropy Quantity
 
-- `mdens` (md, rho, shape) returns mass density of dust grains [e.g. g cm^-2 um^-1]
+**Methods**
+
+- ``ndens(md, rho, shape=xdust.graindist.shape.Sphere)`` 
+   Returns number density of dust grains [e.g. cm^-2 um^-1]
+
+   ``md`` -- float [dust mass column density in g cm^-2]
+
+   ``rho`` -- float [dust mass density in g cm^-3]
+
+   ``shape`` -- xdust.graindist.shape object (abstract class)
+
+- ``mdens(md, rho, shape=xdust.graindist.shape.Sphere)`` 
+   Returns the mass density of dust grains [e.g. in g cm^-2 um^-1]
+
+   ``md`` -- float [dust mass column density in g cm^-2]
+
+   ``rho`` -- float [dust mass density in g cm^-3]
+
+   ``shape`` -- xdust.graindist.shape object (abstract class)
 
 Grain
 -----

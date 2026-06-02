@@ -19,7 +19,7 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
-    'sphinx_autodoc_typehints',
+    # 'sphinx_autodoc_typehints', # requires a different format: https://pypi.org/project/sphinx-autodoc-typehints/
 ]
 
 autosummary_generate = True

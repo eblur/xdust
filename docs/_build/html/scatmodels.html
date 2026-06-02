@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="./">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>xdust.scatteringmodel - xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="xdust extinction" href="extinction.html" /><link rel="prev" title="astrodust.graindist.shape" href="shape.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>xdust.scatteringmodel - xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="xdust.halos" href="halos.html" /><link rel="prev" title="xdust.graindist.shape" href="shape.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
@@ -59,42 +59,15 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="grainpop.html">xdust.grainpop</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="graindist.html">xdust.graindist</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">xdust.scatteringmodel</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="grainpop.html">xdust.grainpop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graindist.html">xdust.graindist</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="sizedist.html">xdust.graindist.sizedist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composition.html">xdust.graindist.composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shape.html">xdust.graindist.shape</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="composition.html">astrodust.graindist.composition</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="minerals.html">astrodust.graindist.composition.minerals</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="shape.html">astrodust.graindist.shape</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="reference internal" href="extinction.html">xdust extinction</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">xdust.scatteringmodel</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">xdust.scatteringmodel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="halos.html">xdust.halos</a></li>
 </ul>
 
         </div>
@@ -155,12 +128,8 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="grainpop.html"><span itemprop="name">xdust.grainpop</span></a>
-        <span>/</span>
-        <meta itemprop="position" content="2" />
-      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
         <strong itemprop="name">xdust.scatteringmodel</strong>
-        <meta itemprop="position" content="3" />
+        <meta itemprop="position" content="2" />
       </li></ol>
     <div class="xl:hidden ml-1">
       <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
@@ -176,23 +145,47 @@ data-aria-dark="Switch to auto color mode">
 <h1>xdust.scatteringmodel<a class="headerlink" href="#xdust-scatteringmodel" title="Link to this heading">¶</a></h1>
 <section id="abstract-class-scatteringmodel">
 <h2>Abstract Class: <em>ScatteringModel</em><a class="headerlink" href="#abstract-class-scatteringmodel" title="Link to this heading">¶</a></h2>
-<p>Abstract class <em>ScatModel</em> defines the scattering and extinction algorithm to
-use.  An empty object is created after the initial call.  To calculate the
-relevant values, run <cite>ScatModel.calculate(*args, **kwargs)</cite> with the desired
-wavelength, grain size (um), complex index of refraction (see
-<em>astrodust.graindist.composition</em>), wavelength unit (“kev” or “angs”), and
-scattering angles (arcsec).</p>
-<p><strong>Attributes</strong></p>
+<p>A dust scattering model must contain the following:</p>
+<p><strong>Attributes:</strong></p>
 <ul class="simple">
-<li><p><cite>stype</cite> – a string describing the model</p></li>
-<li><p><cite>cite</cite> – a citation for the model–</p></li>
-<li><p><cite>qsca</cite> – unitless scattering efficiency</p></li>
-<li><p><cite>qext</cite> – unit-less extinction efficiency</p></li>
-<li><p><cite>qabs</cite> – unit-less absorption efficiency</p></li>
-<li><p><cite>diff</cite> – differential scattering cross-section, cm^2 ster^-1</p></li>
-<li><p><cite>calculate (lam, a, cm, unit=’kev’)</cite> – calculates the above</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stype</span></code> – a string describing the model</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cite</span></code> – a citation for the model–</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qsca</span></code> – unitless scattering efficiency</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qext</span></code> – unit-less extinction efficiency</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qabs</span></code> – unit-less absorption efficiency</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diff</span></code> – differential scattering efficiency, ster^-1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pars</span></code> – dict, stores the parameters used to run <cite>calculate</cite></p></li>
 </ul>
-<p>Right now the only units accepted are “kev” and “angs”</p>
+<p><strong>Methods</strong></p>
+<ul>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">calculate(lam,</span> <span class="pre">a,</span> <span class="pre">cm,</span> <span class="pre">mem_lim=8.0,</span> <span class="pre">theta=0.0)</span></code></dt><dd><p>calculates the extinction
+efficiencies and differential scattering cross section for the given
+wavelength/energy grid, grain size, and composition.
+Stores the results in the attributes <cite>qsca</cite>, <cite>qext</cite>, <cite>qabs</cite>, and <cite>diff</cite>.
+The parameters used to run <cite>calculate</cite> are stored in the attribute <cite>pars</cite>
+as a dictionary.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">lam</span></code> – astropy Quantity [wavelength or energy grid]</p>
+<p><code class="docutils literal notranslate"><span class="pre">a</span></code>   – float [grain size, micron] or astropy Quantity</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>cm `` – xdust.graindist.composition object</p>
+<p><code class="docutils literal notranslate"><span class="pre">mem_lim</span></code> – float [memory limit for scattering calculation, GB, default 8.0]</p>
+<p><code class="docutils literal notranslate"><span class="pre">theta</span></code> – float or np.array [radians] or astropy Quantity, angles to calculate differential scattering [default 0.0]</p>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">write_table(outfile)</span></code> writes a FITS table of efficiency values to the specified filename</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">outfile</span></code> – string [filename for writing a FITS table of efficiency values]</p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">read_from_table(infile)</span></code> reads efficiency values from a FITS table and stores them in the attributes <cite>qsca</cite>, <cite>qext</cite>, <cite>qabs</cite>, and <cite>diff</cite>. The parameters used to run the scattering model are stored in the attribute <cite>pars</cite> as a dictionary.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">infile</span></code> – string [filename for loading efficiency values from FITS file]</p>
+</div></blockquote>
+</li>
+</ul>
 </section>
 <section id="rgscattering">
 <h2>RGscattering<a class="headerlink" href="#rgscattering" title="Link to this heading">¶</a></h2>
@@ -392,13 +385,13 @@ if no units specified, defaults to radian</p>
     <a href="shape.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">astrodust.graindist.shape</div></div>
+        <span>Previous</span><div class="title">xdust.graindist.shape</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="extinction.html">
+    <a href="halos.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">xdust extinction</div>
+        <div class="title">xdust.halos</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

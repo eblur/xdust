@@ -12,18 +12,18 @@ from .ggadt import GGADT
 --------------------------------------------------------------
  A dust scattering model should contain the following attributes
 
-calculate( lam : scalar or np.array [wavelength or energy grid, keV default]
-           a   : scalar [grain size, micron]
+calculate( lam : astropy Quantity [wavelength or energy grid]
+           a   : float [grain size, micron] or astropy Quantity
            cm  : xdust.graindist.composition cm object (abstract class)
-           unit = : string ['kev', 'angs']
-           theta = : scalar or np.array [angles to calculate differential scattering, arcsec, default 0.0]
+           mem_lim = : float [memory limit for scattering calculation, GB, default 1.0]
+           theta = : float or np.array [radians] or astropy Quantity, angles to calculate differential scattering [default 0.0]
            **kwargs
            )
 
 qsca : np.array, scattering efficiency [unitless]
 qabs : np.array, absorption efficiency [unitless]
 qext : np.array, extinction efficiency [unitless]
-diff : np.array, differentifal scattering cross section [ster^-1]
+diff : np.array, differential scattering efficiency [ster^-1]
 pars : dict, stores the parameters used to run `calculate`
 
 write_table( outfile : string [filename for writing a FITS table of efficiency values] )

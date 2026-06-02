@@ -11,7 +11,7 @@ from .. import shape
 API
 -------
 
-*Sizedist* must contain attributes
+*Sizedist* must contain the following attributes
 
 `dtype` : a string description
 

@@ -62,15 +62,12 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l1"><a class="reference internal" href="grainpop.html">xdust.grainpop</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="graindist.html">xdust.graindist</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">xdust.graindist.sizedist</a></li>
-<li class="toctree-l2"><a class="reference internal" href="composition.html">xdust.graindist.composition</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="shape.html">xdust.graindist.shape</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="composition.html">xdust.graindist.composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shape.html">xdust.graindist.shape</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="scatmodels.html">xdust.scatteringmodel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="halos.html">xdust.halos</a></li>
 </ul>
 
         </div>
@@ -164,12 +161,30 @@ data-aria-dark="Switch to auto color mode">
 <h1>xdust.graindist.sizedist<a class="headerlink" href="#xdust-graindist-sizedist" title="Link to this heading">¶</a></h1>
 <section id="abstract-class-sizedist">
 <h2>Abstract Class: <em>Sizedist</em><a class="headerlink" href="#abstract-class-sizedist" title="Link to this heading">¶</a></h2>
-<p>Abstract class <em>Sizedist</em> must contain attributes:</p>
+<p>Abstract class <em>Sizedist</em> must contain the following:</p>
+<p><strong>Atributes</strong></p>
 <ul class="simple">
-<li><p><cite>dtype</cite> : a string description</p></li>
-<li><p><cite>a</cite> : an array</p></li>
-<li><p><cite>ndens</cite> (md, rho, shape) returns number density of dust grains [e.g. cm^-2 um^-1]</p></li>
-<li><p><cite>mdens</cite> (md, rho, shape) returns mass density of dust grains [e.g. g cm^-2 um^-1]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code> : a string description</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code> : float or np.array [grain size, micron] or astropy Quantity</p></li>
+</ul>
+<p><strong>Methods</strong></p>
+<ul>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">ndens(md,</span> <span class="pre">rho,</span> <span class="pre">shape=xdust.graindist.shape.Sphere)</span></code></dt><dd><p>Returns number density of dust grains [e.g. cm^-2 um^-1]</p>
+<p><code class="docutils literal notranslate"><span class="pre">md</span></code> – float [dust mass column density in g cm^-2]</p>
+<p><code class="docutils literal notranslate"><span class="pre">rho</span></code> – float [dust mass density in g cm^-3]</p>
+<p><code class="docutils literal notranslate"><span class="pre">shape</span></code> – xdust.graindist.shape object (abstract class)</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">mdens(md,</span> <span class="pre">rho,</span> <span class="pre">shape=xdust.graindist.shape.Sphere)</span></code></dt><dd><p>Returns the mass density of dust grains [e.g. in g cm^-2 um^-1]</p>
+<p><code class="docutils literal notranslate"><span class="pre">md</span></code> – float [dust mass column density in g cm^-2]</p>
+<p><code class="docutils literal notranslate"><span class="pre">rho</span></code> – float [dust mass density in g cm^-3]</p>
+<p><code class="docutils literal notranslate"><span class="pre">shape</span></code> – xdust.graindist.shape object (abstract class)</p>
+</dd>
+</dl>
+</li>
 </ul>
 </section>
 <section id="grain">
@@ -218,11 +233,8 @@ Other distributions return a continuous function that can be integrated.</p>
 <p>rho : float : grain material density [g cm^-3]</p>
 <p>shape : xdust.graindist.shape object (default is a Sphere)</p>
 <dl class="field-list simple">
-<dt class="field-odd">returns<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li></li>
-<li><p><em>Column density of grains in [cm^-2]</em></p></li>
-</ul>
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Column density of grains in [cm^-2]</p>
 </dd>
 </dl>
 </section>
@@ -248,11 +260,8 @@ Other distributions return a continuous function that can be integrated.</p>
 <p>rho : float : grain material density [g cm^-3]</p>
 <p>shape : xdust.graindist.shape object (default is a Sphere)</p>
 <dl class="field-list simple">
-<dt class="field-odd">returns<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li></li>
-<li><p><em>Mass column distribution of grains in [cg m^-2 um^-1]</em></p></li>
-</ul>
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Mass column distribution of grains in [cg m^-2 um^-1]</p>
 </dd>
 </dl>
 </section>
@@ -268,11 +277,8 @@ Other distributions return a continuous function that can be integrated.</p>
 <p>rho : float : grain material density [g cm^-3]</p>
 <p>shape : xdust.graindist.shape object (default is a Sphere)</p>
 <dl class="field-list simple">
-<dt class="field-odd">returns<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li></li>
-<li><p><em>Column density of grains in [cm^-2]</em></p></li>
-</ul>
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Column density of grains in [cm^-2]</p>
 </dd>
 </dl>
 </section>
@@ -298,11 +304,8 @@ Other distributions return a continuous function that can be integrated.</p>
 <p>rho : float : grain material density [g cm^-3]</p>
 <p>shape : xdust.graindist.shape object (default is a Sphere)</p>
 <dl class="field-list simple">
-<dt class="field-odd">returns<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li></li>
-<li><p><em>Mass column distribution of grains in [cg m^-2 um^-1]</em></p></li>
-</ul>
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Mass column distribution of grains in [cg m^-2 um^-1]</p>
 </dd>
 </dl>
 </section>
@@ -318,11 +321,8 @@ Other distributions return a continuous function that can be integrated.</p>
 <p>rho : float : grain material density [g cm^-3]</p>
 <p>shape : xdust.graindist.shape object (default is a Sphere)</p>
 <dl class="field-list simple">
-<dt class="field-odd">returns<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li></li>
-<li><p><em>Column density of grains in [cm^-2]</em></p></li>
-</ul>
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Column density of grains in [cm^-2]</p>
 </dd>
 </dl>
 </section>
@@ -348,11 +348,8 @@ Other distributions return a continuous function that can be integrated.</p>
 <p>rho : float : grain material density [g cm^-3]</p>
 <p>shape : xdust.graindist.shape object (default is a Sphere)</p>
 <dl class="field-list simple">
-<dt class="field-odd">returns<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li></li>
-<li><p><em>Mass column distribution of grains in [cg m^-2 um^-1]</em></p></li>
-</ul>
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Mass column distribution of grains in [cg m^-2 um^-1]</p>
 </dd>
 </dl>
 </section>
@@ -372,11 +369,8 @@ Then self.rho will be reset to this value</p>
 </dl>
 <p>shape : xdust.graindist.shape object (default is a Sphere)</p>
 <dl class="field-list simple">
-<dt class="field-odd">returns<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li></li>
-<li><p><em>Column density of grains in [cm^-2 um^-2]</em></p></li>
-</ul>
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Column density of grains in [cm^-2 um^-2]</p>
 </dd>
 </dl>
 </section>
@@ -402,11 +396,8 @@ Then self.rho will be reset to this value</p>
 <p>rho : float : grain material density [g cm^-3]</p>
 <p>shape : xdust.graindist.shape object (default is a Sphere)</p>
 <dl class="field-list simple">
-<dt class="field-odd">returns<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li></li>
-<li><p><em>Mass column distribution of grains in [cg m^-2 um^-1]</em></p></li>
-</ul>
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Mass column distribution of grains in [cg m^-2 um^-1]</p>
 </dd>
 </dl>
 </section>
@@ -422,11 +413,8 @@ Then self.rho will be reset to this value</p>
 <p>rho : float : grain material density [g cm^-3]</p>
 <p>shape : xdust.graindist.shape object (default is a Sphere)</p>
 <dl class="field-list simple">
-<dt class="field-odd">returns<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li></li>
-<li><p><em>Column density of grains in [cm^-2]</em></p></li>
-</ul>
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Column density of grains in [cm^-2]</p>
 </dd>
 </dl>
 </section>

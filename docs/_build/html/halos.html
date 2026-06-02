@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>xdust.halos - xdust 0.1 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="xdust.scatteringmodel" href="scatmodels.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=9454f7d5" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="xdust.halos"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      
+      
+      <strong>xdust</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link">
+          <a href="https://github.com/eblur/xdust">
+            <span>GitHub</span></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="grainpop.html">xdust.grainpop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graindist.html">xdust.graindist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sizedist.html">xdust.graindist.sizedist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composition.html">xdust.graindist.composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shape.html">xdust.graindist.shape</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scatmodels.html">xdust.scatteringmodel</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">xdust.halos</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#superclass-halo">Superclass: <code class="docutils literal notranslate"><span class="pre">Halo</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.halos.Halo"><code class="docutils literal notranslate"><span class="pre">Halo</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.halos.Halo.description"><code class="docutils literal notranslate">description</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.Halo.lam"><code class="docutils literal notranslate">lam</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.Halo.theta"><code class="docutils literal notranslate">theta</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.Halo.norm_int"><code class="docutils literal notranslate">norm_int</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.Halo.taux"><code class="docutils literal notranslate">taux</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.Halo.fabs"><code class="docutils literal notranslate">fabs</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.Halo.intensity"><code class="docutils literal notranslate">intensity</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.Halo.fhalo"><code class="docutils literal notranslate">fhalo</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.Halo.calculate_intensity"><code class="docutils literal notranslate">calculate_intensity()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.Halo.ecf"><code class="docutils literal notranslate">ecf()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.Halo.fake_image"><code class="docutils literal notranslate">fake_image()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.Halo.fext"><code class="docutils literal notranslate">fext</span></code></a></li>
+<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate">fhalo</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.Halo.frac_halo"><code class="docutils literal notranslate">frac_halo()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.Halo.percent_fabs"><code class="docutils literal notranslate">percent_fabs</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.Halo.percent_fext"><code class="docutils literal notranslate">percent_fext</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.Halo.write"><code class="docutils literal notranslate">write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#uniformgalhalo">UniformGalHalo</a><ul>
+<li><a class="reference internal" href="#xdust.halos.galhalo.UniformGalHalo"><code class="docutils literal notranslate"><span class="pre">UniformGalHalo</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.halos.galhalo.UniformGalHalo.calculate"><code class="docutils literal notranslate">calculate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#screengalhalo">ScreenGalHalo</a><ul>
+<li><a class="reference internal" href="#xdust.halos.galhalo.ScreenGalHalo"><code class="docutils literal notranslate"><span class="pre">ScreenGalHalo</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.halos.galhalo.ScreenGalHalo.calculate"><code class="docutils literal notranslate">calculate()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.galhalo.ScreenGalHalo.fake_variable_image"><code class="docutils literal notranslate">fake_variable_image()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.halos.galhalo.ScreenGalHalo.variable_profile"><code class="docutils literal notranslate">variable_profile()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#uniformgalhalocp15">UniformGalHaloCP15</a><ul>
+<li><a class="reference internal" href="#xdust.halos.galhalo.UniformGalHaloCP15"><code class="docutils literal notranslate"><span class="pre">UniformGalHaloCP15</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.halos.galhalo.UniformGalHaloCP15.calculate"><code class="docutils literal notranslate">calculate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#screengalhalocp15">ScreenGalHaloCP15</a><ul>
+<li><a class="reference internal" href="#xdust.halos.galhalo.ScreenGalHaloCP15"><code class="docutils literal notranslate"><span class="pre">ScreenGalHaloCP15</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.halos.galhalo.ScreenGalHaloCP15.calculate"><code class="docutils literal notranslate">calculate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">xdust</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">xdust.halos</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="xdust-halos">
+<h1>xdust.halos<a class="headerlink" href="#xdust-halos" title="Link to this heading">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">xdust.Halo</span></code> object is the superclass that holds all
+information and special functions for working with a simulated X-ray
+dust scattering halo.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">xdust.UniformGalHalo</span></code> object assumes that all dust is uniformly distributed
+along the line-of-sight towards the X-ray light source.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">xdust.ScreenGalHalo</span></code> object assumes that all dust is confined within an
+infinitesimally thin sheet with the specified column density.</p>
+<p>See Corrales &amp; Paerels (2015) for a description of the mathematics and geometry.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In the <em>xdust</em> code, the position of the scattering material (<span class="math notranslate nohighlight">\(x\)</span>)
+is defined as <span class="math notranslate nohighlight">\(x = 1 - d/D\)</span>, where <span class="math notranslate nohighlight">\(d\)</span> is the distance to the
+scattering material and <span class="math notranslate nohighlight">\(D\)</span> is the distance to the X-ray light source.
+This is the <em>opposite</em> of the conventions used in many other papers on X-ray dust
+scattering halos, e.g., from R. K. Smith and S. Heinz.</p>
+</div>
+<p>Any scattering model physics can be used in the halo calculations. For
+the semi-analytic (fast) model described in Corrales &amp; Paerels 2015, utilizing
+the Rayleigh-Gans approximation with the Drude approximation for the complex
+index of refraction, on can use the <code class="docutils literal notranslate"><span class="pre">UniformGalHaloCP15</span></code> and <code class="docutils literal notranslate"><span class="pre">ScrenGalHaloCP15</span></code>
+objects.</p>
+<section id="superclass-halo">
+<h2>Superclass: <code class="docutils literal notranslate"><span class="pre">Halo</span></code><a class="headerlink" href="#superclass-halo" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.halos.Halo">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.halos.</span></span><span class="sig-name descname"><span class="pre">Halo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/halo.html#Halo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.Halo" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An X-ray scattering halo.</p>
+<p>Sliceable object: can input a range of energy/wavelength values and it will
+return the halo values for the range of interest.
+Can also summon values according using integers within range(len(lam))</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.halos.Halo.description">
+<span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#xdust.halos.Halo.description" title="Link to this definition">¶</a></dt>
+<dd><p>Text description of this scattering halo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.halos.Halo.lam">
+<span class="sig-name descname"><span class="pre">lam</span></span><a class="headerlink" href="#xdust.halos.Halo.lam" title="Link to this definition">¶</a></dt>
+<dd><p>Wavelength or energy values for performing the calculation;
+if no units specified, defaults to keV</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>astropy.units.Quantity -or- numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.halos.Halo.theta">
+<span class="sig-name descname"><span class="pre">theta</span></span><a class="headerlink" href="#xdust.halos.Halo.theta" title="Link to this definition">¶</a></dt>
+<dd><p>Scattering angles for computing the differential scattering cross-section;
+if no units specified, defaults to ARCCSEC</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>astropy.units.Quantity -or- numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.halos.Halo.norm_int">
+<span class="sig-name descname"><span class="pre">norm_int</span></span><a class="headerlink" href="#xdust.halos.Halo.norm_int" title="Link to this definition">¶</a></dt>
+<dd><p>Normalized scattering halo intensity as a function of energy (NE x NTH)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>astropy.units.Quantity array [arcsec^-2]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.halos.Halo.taux">
+<span class="sig-name descname"><span class="pre">taux</span></span><a class="headerlink" href="#xdust.halos.Halo.taux" title="Link to this definition">¶</a></dt>
+<dd><p>Integrated X-ray scattering opacity as a function of energy</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray (NE)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.halos.Halo.fabs">
+<span class="sig-name descname"><span class="pre">fabs</span></span><a class="headerlink" href="#xdust.halos.Halo.fabs" title="Link to this definition">¶</a></dt>
+<dd><p>Bin-integrated absorbed flux (photon/cm^2/s -or- erg/cm^2/s),
+used for calculating total halo intensity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or astropy.units.Quantity (NE)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.halos.Halo.intensity">
+<span class="sig-name descname"><span class="pre">intensity</span></span><a class="headerlink" href="#xdust.halos.Halo.intensity" title="Link to this definition">¶</a></dt>
+<dd><p>Energy-integrated intensity calculated for the scattering halo [fabs x norm_int]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>astropy.units.Quantity (NTH) [arcsec^-2 x fabs.unit]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.halos.Halo.fhalo">
+<span class="sig-name descname"><span class="pre">fhalo</span></span><a class="headerlink" href="#xdust.halos.Halo.fhalo" title="Link to this definition">¶</a></dt>
+<dd><p>Theoretical bin-integrated flux spectrum for the scattering
+halo. This is computed using the formula Fabs * (1 - exp(-taux))</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or astropy.units.Quantity (NE) [fabs.unit]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.halos.Halo.calculate_intensity">
+<span class="sig-name descname"><span class="pre">calculate_intensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flux</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'abs'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/halo.html#Halo.calculate_intensity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.Halo.calculate_intensity" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the scattering halo intensity from a flux spectrum.</p>
+<dl class="simple">
+<dt>flux<span class="classifier">numpy.ndarray or astropy.units.Quantity (NE)</span></dt><dd><p>Bin-integrated absorbed flux (photon/cm^2/s -or- erg/cm^2/s),
+used for calculating total halo intensity</p>
+</dd>
+<dt>ftype<span class="classifier">string (‘abs’ or ‘ext’)</span></dt><dd><p>Describe whether the input spectrum is absorbed flux or
+point source component flux (after including scattering component of extinction)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.halos.Halo.ecf">
+<span class="sig-name descname"><span class="pre">ecf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">th</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/halo.html#Halo.ecf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.Halo.ecf" title="Link to this definition">¶</a></dt>
+<dd><p>Return the fraction of (energy-integrated) scattering halo flux enclosed by theta &lt; th</p>
+<section id="inputs">
+<h3>Inputs<a class="headerlink" href="#inputs" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>th0<span class="classifier">astropy.units.Quantity -or- float:</span></dt><dd><p>Maximum theta value for calculating enclosed fraction;
+if no unit specified, ARCSEC is assumed</p>
+</dd>
+</dl>
+<p>n : int : number of theta values to use for inteprolating</p>
+<dl class="simple">
+<dt>log<span class="classifier">bool</span><span class="classifier">If True, uses a log-spaced theta grid for the integral;</span></dt><dd><p>If False, uses a linear spaced theta grid.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>float</strong> (<em>trapz(self.intensity * 2 pi theta_arcsec, theta_arcsec)</em>)</p></li>
+<li><p><em>SMALL ANGLE SCATTERING IS ASSUMED!</em></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.halos.Halo.fake_image">
+<span class="sig-name descname"><span class="pre">fake_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_flux</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exposure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pix_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_pix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[2400,</span> <span class="pre">2400]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/halo.html#Halo.fake_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.Halo.fake_image" title="Link to this definition">¶</a></dt>
+<dd><p>Make a fake image file using a telescope ARF as input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arf</strong> (<em>string</em>) – Filename of telescope ARF</p></li>
+<li><p><strong>src_flux</strong> (<em>numpy.ndarray</em><em> [</em><em>phot/cm^2/s</em><em>]</em>) – Describes the absorbed (without X-ray scattering) flux
+model for the central X-ray point source. Must correspond
+to the values in Halo.lam</p></li>
+<li><p><strong>exposure</strong> (<em>float</em><em> [</em><em>seconds</em><em>]</em>) – Exposure time to use</p></li>
+<li><p><strong>pix_scale</strong> (<em>float</em><em> [</em><em>arcsec</em><em>]</em>) – Size of simulated pixels</p></li>
+<li><p><strong>num_pix</strong> (<em>ints</em><em> (</em><em>nx</em><em>,</em><em>ny</em><em>)</em>) – Size of pixel grid to use</p></li>
+<li><p><strong>lmin</strong> (<em>float</em>) – Minimum halo.lam value
+(Default:None uses entire range)</p></li>
+<li><p><strong>lmax</strong> (<em>float</em>) – Maximum halo.lam value
+(Default:None uses entire range)</p></li>
+<li><p><strong>save_file</strong> (<em>string</em><em> (</em><em>Default:None</em><em>)</em>) – Filename to use if you want to save the output to a .fits</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>2D numpy.ndarray of shape (nx, ny), representing the image of</em></p></li>
+<li><p><em>a dust scattering halo. The halo intensity at different</em></p></li>
+<li><p><em>energies are converted into counts using the ARF. Then a</em></p></li>
+<li><p><em>Poisson distribution is used to simulate the number of counts</em></p></li>
+<li><p><em>in each pixel.</em></p></li>
+<li><p><em>If the user supplies a file name string using the save_file</em></p></li>
+<li><p><em>keyword, a FITS file will be saved.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="xdust.halos.Halo.fext">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">fext</span></span><a class="headerlink" href="#xdust.halos.Halo.fext" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the point-source flux component, Fps = Fabs exp(-tau_sca)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id0">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">fhalo</span></span><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the total scattring halo flux, Fh = Fabs (1 - exp(-tau_sca))</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.halos.Halo.frac_halo">
+<span class="sig-name descname"><span class="pre">frac_halo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">th</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/halo.html#Halo.frac_halo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.Halo.frac_halo" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate fraction of halo, as a function of energy, enclosed by theta &lt; th</p>
+<section id="id1">
+<h3>Inputs<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>th0<span class="classifier">astropy.units.Quantity -or- float:</span></dt><dd><p>Maximum theta value for calculating enclosed fraction;
+if no unit specified, ARCSEC is assumed</p>
+</dd>
+</dl>
+<p>n : int : number of theta values to use for inteprolating</p>
+<dl class="simple">
+<dt>log<span class="classifier">bool</span><span class="classifier">If True, uses a log-spaced theta grid for the integral;</span></dt><dd><p>If False, uses a linear spaced theta grid.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>float</strong> (<em>trapz(self.intensity * 2 pi theta_arcsec, theta_arcsec)</em>)</p></li>
+<li><p><em>SMALL ANGLE SCATTERING IS ASSUMED!</em></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="xdust.halos.Halo.percent_fabs">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">percent_fabs</span></span><a class="headerlink" href="#xdust.halos.Halo.percent_fabs" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate fraction of absorbed flux that goes into the scattring halo,
+effectively (1 - exp(-tau))</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="xdust.halos.Halo.percent_fext">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">percent_fext</span></span><a class="headerlink" href="#xdust.halos.Halo.percent_fext" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate fraction of point source flux that goes into the scattring halo,
+effectively (1 - exp(-tau)) / exp(-tau) = exp(tau) - 1</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.halos.Halo.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/halo.html#Halo.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.Halo.write" title="Link to this definition">¶</a></dt>
+<dd><section id="id2">
+<h3>Inputs<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>filename<span class="classifier">string</span></dt><dd><p>Name for the output FITS file</p>
+</dd>
+</dl>
+<p>Write the scattering halo ‘norm_int’ attribute to a FITS file.
+The file will also store the relevant LAM, THETA, and TAUX values.</p>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="uniformgalhalo">
+<h2>UniformGalHalo<a class="headerlink" href="#uniformgalhalo" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.halos.galhalo.UniformGalHalo">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.halos.galhalo.</span></span><span class="sig-name descname"><span class="pre">UniformGalHalo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/galhalo.html#UniformGalHalo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.galhalo.UniformGalHalo" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xdust.halos.Halo" title="xdust.halos.halo.Halo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Halo</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.halos.galhalo.UniformGalHalo.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gpop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/galhalo.html#UniformGalHalo.calculate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.galhalo.UniformGalHalo.calculate" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the X-ray scattering intensity for dust distributed
+uniformly along the line of sight</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gpop</strong> (<a class="reference internal" href="grainpop.html#xdust.grainpop.SingleGrainPop" title="xdust.grainpop.SingleGrainPop"><em>xdust.grainpop.SingleGrainPop</em></a>)</p></li>
+<li><p><strong>nx</strong> (<em>int</em>) – Number of x-values to use for calculation (Default: 500)</p></li>
+<li><p><strong>calculator</strong> (<em>**kwargs are passed to grainpop extinction</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None. Updates the md, <a class="reference internal" href="#xdust.halos.Halo.norm_int" title="xdust.halos.Halo.norm_int">norm_int</a>, and taux attributes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="screengalhalo">
+<h2>ScreenGalHalo<a class="headerlink" href="#screengalhalo" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.halos.galhalo.ScreenGalHalo">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.halos.galhalo.</span></span><span class="sig-name descname"><span class="pre">ScreenGalHalo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/galhalo.html#ScreenGalHalo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.galhalo.ScreenGalHalo" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xdust.halos.Halo" title="xdust.halos.halo.Halo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Halo</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.halos.galhalo.ScreenGalHalo.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gpop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/galhalo.html#ScreenGalHalo.calculate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.galhalo.ScreenGalHalo.calculate" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the X-ray scattering intensity for dust in an
+infinitesimally thin wall somewhere on the line of sight.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gpop</strong> (<a class="reference internal" href="grainpop.html#xdust.grainpop.SingleGrainPop" title="xdust.grainpop.SingleGrainPop"><em>xdust.grainpop.SingleGrainPop</em></a>)</p></li>
+<li><p><strong>x</strong> (<em>float</em><em> (</em><em>0.0</em><em>, </em><em>1.0</em><em>]</em>) – 1.0 - (distance to screen / distance to X-ray source)</p></li>
+<li><p><strong>calculator</strong> (<em>**kwargs are passed to grainpop extinction</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None. Updates the md, x, <a class="reference internal" href="#xdust.halos.Halo.norm_int" title="xdust.halos.Halo.norm_int">norm_int</a>, and taux attributes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.halos.galhalo.ScreenGalHalo.fake_variable_image">
+<span class="sig-name descname"><span class="pre">fake_variable_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exposure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tnow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pix_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_pix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[2400,</span> <span class="pre">2400]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/galhalo.html#ScreenGalHalo.fake_variable_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.galhalo.ScreenGalHalo.fake_variable_image" title="Link to this definition">¶</a></dt>
+<dd><p>Make a fake image of a variable scattering halo
+using a telescope ARF as input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> (<em>numpy.ndarray</em><em> [</em><em>days</em><em>]</em>) – Time values for light curve</p></li>
+<li><p><strong>lc</strong> (<em>numpy.ndarray</em><em> (</em><em>unitless</em><em>)</em>) – Light curve in units of source flux
+(i.e. will be multiplied by self.fabs)</p></li>
+<li><p><strong>arf</strong> (<em>string</em>) – Filename of telescope ARF</p></li>
+<li><p><strong>exposure</strong> (<em>float</em><em> [</em><em>seconds</em><em>]</em>) – Exosure time for simulated image</p></li>
+<li><p><strong>tnow</strong> (<em>float</em><em> [</em><em>days</em><em>]</em>) – Time for calculating the halo image
+(Default: Last time value in light curve)</p></li>
+<li><p><strong>dist</strong> (<em>float</em><em> [</em><em>kpc</em><em>]</em>) – Distance to the object in kpc</p></li>
+<li><p><strong>pix_scale</strong> (<em>float</em><em> [</em><em>arcsec</em><em>]</em>) – Size of simulated pixels</p></li>
+<li><p><strong>num_pix</strong> (<em>ints</em><em> (</em><em>nx</em><em>,</em><em>ny</em><em>)</em>) – Size of pixel grid to use</p></li>
+<li><p><strong>lmin</strong> (<em>float</em>) – Minimum halo.lam value
+(Default:None uses entire range)</p></li>
+<li><p><strong>lmax</strong> (<em>float</em>) – Maximum halo.lam value
+(Default:None uses entire range)</p></li>
+<li><p><strong>save_file</strong> (<em>string</em><em> (</em><em>Default:None</em><em>)</em>) – Filename to use if you want to save the output to a FITS file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>2D numpy.ndarray of shape (nx, ny), representing the image of</em></p></li>
+<li><p><em>a dust scattering halo. The halo intensity at different</em></p></li>
+<li><p><em>energies are converted into counts using the ARF. Then a</em></p></li>
+<li><p><em>Poisson distribution is used to simulate the number of counts</em></p></li>
+<li><p><em>in each pixel.</em></p></li>
+<li><p><em>If the user supplies a file name string using the save_file</em></p></li>
+<li><p><em>keyword, a FITS file will be saved.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.halos.galhalo.ScreenGalHalo.variable_profile">
+<span class="sig-name descname"><span class="pre">variable_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tnow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/galhalo.html#ScreenGalHalo.variable_profile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.galhalo.ScreenGalHalo.variable_profile" title="Link to this definition">¶</a></dt>
+<dd><p>Given a light curve, calculate the energy-dependent intensity of
+the scattering halo at some time afterwards.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> (<em>numpy.ndarray</em><em> (</em><em>days</em><em>)</em>) – Time values for light curve</p></li>
+<li><p><strong>lc</strong> (<em>numpy.ndarray</em><em> (</em><em>unitless</em><em>)</em>) – Light curve in units of source flux
+(i.e. will be multiplied by self.fabs)</p></li>
+<li><p><strong>dist</strong> (<em>float</em><em> (</em><em>kpc</em><em>)</em>) – Distance to the object in kpc</p></li>
+<li><p><strong>tnow</strong> (<em>float</em><em> (</em><em>days</em><em>)</em>) – Time for calculating the halo image
+(Default: Last time value in light curve)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Scattering halo intensity as a function of
+energy and observation angle.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray (NE x NTH) [fabs units / arcsec**2]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="uniformgalhalocp15">
+<h2>UniformGalHaloCP15<a class="headerlink" href="#uniformgalhalocp15" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.halos.galhalo.UniformGalHaloCP15">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.halos.galhalo.</span></span><span class="sig-name descname"><span class="pre">UniformGalHaloCP15</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/galhalo.html#UniformGalHaloCP15"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.galhalo.UniformGalHaloCP15" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xdust.halos.Halo" title="xdust.halos.halo.Halo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Halo</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.halos.galhalo.UniformGalHaloCP15.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;Quantity</span> <span class="pre">0.005</span> <span class="pre">micron&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;Quantity</span> <span class="pre">0.5</span> <span class="pre">micron&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;Quantity</span> <span class="pre">3.</span> <span class="pre">g</span> <span class="pre">/</span> <span class="pre">cm3&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/galhalo.html#UniformGalHaloCP15.calculate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.galhalo.UniformGalHaloCP15.calculate" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the X-ray scattering intensity for dust distributed
+uniformly along the line of sight utlizing the analytic solution
+according to the Corrales &amp; Paerels 2015.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amin</strong> (<em>float</em><em> or </em><em>astropy.units.Quantity</em><em> [</em><em>micron</em><em>] </em><em>- minimum grain radius</em>)</p></li>
+<li><p><strong>amax</strong> (<em>float</em><em> or </em><em>astropy.units.Quantity</em><em> [</em><em>micron</em><em>] </em><em>- maximum grain radius</em>)</p></li>
+<li><p><strong>p</strong> (<em>float</em><em> [</em><em>unitless</em><em>] </em><em>- slope</em><em> of </em><em>power law distribution</em>)</p></li>
+<li><p><strong>rho</strong> (<em>float</em><em> or </em><em>astropy.units.Quantity</em><em> [</em><em>g cm^-3</em><em>] </em><em>- grain mass density</em>)</p></li>
+<li><p><strong>md</strong> (<em>float</em><em> or </em><em>astropy.units.Quantity</em><em> [</em><em>g cm^-2</em><em>] </em><em>-  dust mass column</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None. Updates norm_int [arcsec^-2], and taux [unitless] attributes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="screengalhalocp15">
+<h2>ScreenGalHaloCP15<a class="headerlink" href="#screengalhalocp15" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.halos.galhalo.ScreenGalHaloCP15">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.halos.galhalo.</span></span><span class="sig-name descname"><span class="pre">ScreenGalHaloCP15</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/galhalo.html#ScreenGalHaloCP15"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.galhalo.ScreenGalHaloCP15" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xdust.halos.Halo" title="xdust.halos.halo.Halo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Halo</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.halos.galhalo.ScreenGalHaloCP15.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;Quantity</span> <span class="pre">0.005</span> <span class="pre">micron&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;Quantity</span> <span class="pre">0.5</span> <span class="pre">micron&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;Quantity</span> <span class="pre">3.</span> <span class="pre">g</span> <span class="pre">/</span> <span class="pre">cm3&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/halos/galhalo.html#ScreenGalHaloCP15.calculate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.halos.galhalo.ScreenGalHaloCP15.calculate" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the X-ray scattering intensity for dust in an
+infinitesimally thin wall somewhere on the line of sight.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amin</strong> (<em>float</em><em> or </em><em>astropy.units.Quantity</em><em> [</em><em>micron</em><em>] </em><em>- minimum grain radius</em>)</p></li>
+<li><p><strong>amax</strong> (<em>float</em><em> or </em><em>astropy.units.Quantity</em><em> [</em><em>micron</em><em>] </em><em>- maximum grain radius</em>)</p></li>
+<li><p><strong>p</strong> (<em>float</em><em> [</em><em>unitless</em><em>] </em><em>- slope</em><em> of </em><em>power law distribution</em>)</p></li>
+<li><p><strong>rho</strong> (<em>float</em><em> or </em><em>astropy.units.Quantity</em><em> [</em><em>g cm^-3</em><em>] </em><em>- grain mass density</em>)</p></li>
+<li><p><strong>md</strong> (<em>float</em><em> or </em><em>astropy.units.Quantity</em><em> [</em><em>g cm^-2</em><em>] </em><em>-  dust mass column</em>)</p></li>
+<li><p><strong>x</strong> (<em>float</em><em> (</em><em>0.0</em><em>, </em><em>1.0</em><em>] </em><em>[</em><em>unitless</em><em>] </em><em>-</em><em> (</em><em>distance to screen / distance to X-ray source</em><em>)</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None. Updates the md, x, <a class="reference internal" href="#xdust.halos.Halo.norm_int" title="xdust.halos.Halo.norm_int">norm_int</a>, and taux attributes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="scatmodels.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">xdust.scatteringmodel</div></div>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2024, Lia Corrales</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/shibuya.js?v=50760d75"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script></body>
+</html>

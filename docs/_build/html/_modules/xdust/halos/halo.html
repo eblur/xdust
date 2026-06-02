@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>xdust.halos.halo - xdust 0.1 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=9454f7d5" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="xdust.halos.halo"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../index.html">
+      
+      
+      <strong>xdust</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link">
+          <a href="https://github.com/eblur/xdust">
+            <span>GitHub</span></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../grainpop.html">xdust.grainpop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../graindist.html">xdust.graindist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../sizedist.html">xdust.graindist.sizedist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../composition.html">xdust.graindist.composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../shape.html">xdust.graindist.shape</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../scatmodels.html">xdust.scatteringmodel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../halos.html">xdust.halos</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">xdust</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">xdust.halos.halo</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <h1>Source code for xdust.halos.halo</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span data-line="2"><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">interp1d</span><span class="p">,</span> <span class="n">InterpolatedUnivariateSpline</span>
+</span><span data-line="3"><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">trapezoid</span> <span class="k">as</span> <span class="n">trapz</span>
+</span><span data-line="4"><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">fits</span>
+</span><span data-line="5"><span class="kn">import</span><span class="w"> </span><span class="nn">astropy.units</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">u</span>
+</span><span data-line="6">
+</span><span data-line="7"><span class="kn">from</span><span class="w"> </span><span class="nn">..</span><span class="w"> </span><span class="kn">import</span> <span class="n">helpers</span>
+</span><span data-line="8">
+</span><span data-line="9"><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Halo&#39;</span><span class="p">]</span>
+</span><span data-line="10">
+</span><span data-line="11"><span class="n">ALLOWED_FTYPE</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;abs&#39;</span><span class="p">,</span><span class="s1">&#39;ext&#39;</span><span class="p">]</span>
+</span><span data-line="12"><span class="n">ALLOWED_FUNIT</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cgs&#39;</span><span class="p">,</span><span class="s1">&#39;phot&#39;</span><span class="p">,</span><span class="s1">&#39;count&#39;</span><span class="p">,</span><span class="s1">&#39;none&#39;</span><span class="p">]</span>
+</span><span data-line="13">
+<div class="viewcode-block" id="Halo">
+<a class="viewcode-back" href="../../../halos.html#xdust.halos.Halo">[docs]</a>
+</span><span data-line="14"><span class="k">class</span><span class="w"> </span><span class="nc">Halo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span data-line="15"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="16"><span class="sd">    An X-ray scattering halo.</span>
+</span><span data-line="17">
+</span><span data-line="18"><span class="sd">    Sliceable object: can input a range of energy/wavelength values and it will </span>
+</span><span data-line="19"><span class="sd">    return the halo values for the range of interest. </span>
+</span><span data-line="20"><span class="sd">    Can also summon values according using integers within range(len(lam))</span>
+</span><span data-line="21">
+</span><span data-line="22"><span class="sd">    Attributes</span>
+</span><span data-line="23"><span class="sd">    ----------</span>
+</span><span data-line="24"><span class="sd">    </span>
+</span><span data-line="25"><span class="sd">    description : string</span>
+</span><span data-line="26"><span class="sd">        Text description of this scattering halo.</span>
+</span><span data-line="27">
+</span><span data-line="28"><span class="sd">    lam : astropy.units.Quantity -or- numpy.ndarray</span>
+</span><span data-line="29"><span class="sd">        Wavelength or energy values for performing the calculation; </span>
+</span><span data-line="30"><span class="sd">        if no units specified, defaults to keV</span>
+</span><span data-line="31"><span class="sd">        </span>
+</span><span data-line="32"><span class="sd">    theta : astropy.units.Quantity -or- numpy.ndarray </span>
+</span><span data-line="33"><span class="sd">        Scattering angles for computing the differential scattering cross-section;</span>
+</span><span data-line="34"><span class="sd">        if no units specified, defaults to ARCCSEC</span>
+</span><span data-line="35"><span class="sd">    </span>
+</span><span data-line="36"><span class="sd">    norm_int : astropy.units.Quantity array [arcsec^-2]</span>
+</span><span data-line="37"><span class="sd">        Normalized scattering halo intensity as a function of energy (NE x NTH)</span>
+</span><span data-line="38"><span class="sd">    </span>
+</span><span data-line="39"><span class="sd">    taux : numpy.ndarray (NE)</span>
+</span><span data-line="40"><span class="sd">        Integrated X-ray scattering opacity as a function of energy</span>
+</span><span data-line="41"><span class="sd">    </span>
+</span><span data-line="42"><span class="sd">    fabs : numpy.ndarray or astropy.units.Quantity (NE)</span>
+</span><span data-line="43"><span class="sd">        Bin-integrated absorbed flux (photon/cm^2/s -or- erg/cm^2/s), </span>
+</span><span data-line="44"><span class="sd">        used for calculating total halo intensity</span>
+</span><span data-line="45"><span class="sd">    </span>
+</span><span data-line="46"><span class="sd">    intensity : astropy.units.Quantity (NTH) [arcsec^-2 x fabs.unit]</span>
+</span><span data-line="47"><span class="sd">        Energy-integrated intensity calculated for the scattering halo [fabs x norm_int]</span>
+</span><span data-line="48"><span class="sd">        </span>
+</span><span data-line="49"><span class="sd">    fhalo : numpy.ndarray or astropy.units.Quantity (NE) [fabs.unit]</span>
+</span><span data-line="50"><span class="sd">        Theoretical bin-integrated flux spectrum for the scattering</span>
+</span><span data-line="51"><span class="sd">        halo. This is computed using the formula Fabs * (1 - exp(-taux))</span>
+</span><span data-line="52">
+</span><span data-line="53"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="54">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">from_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span data-line="55">        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="56">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">):</span>
+</span><span data-line="57">            <span class="bp">self</span><span class="o">.</span><span class="n">lam</span> <span class="o">=</span> <span class="n">lam</span>
+</span><span data-line="58">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="59">            <span class="bp">self</span><span class="o">.</span><span class="n">lam</span> <span class="o">=</span> <span class="n">lam</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">keV</span>    <span class="c1"># length NE</span>
+</span><span data-line="60">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">):</span>
+</span><span data-line="61">            <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span>
+</span><span data-line="62">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="63">            <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcsec</span>  <span class="c1"># length NTH, arcsec</span>
+</span><span data-line="64">        <span class="bp">self</span><span class="o">.</span><span class="n">norm_int</span>  <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># NE x NTH, arcsec^-2</span>
+</span><span data-line="65">        <span class="bp">self</span><span class="o">.</span><span class="n">taux</span>      <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># NE, unitless</span>
+</span><span data-line="66">        <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span>      <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># NE, bin integrated flux [e.g. phot/cm^2/s, NOT phot/cm^2/s/keV]</span>
+</span><span data-line="67">        <span class="bp">self</span><span class="o">.</span><span class="n">intensity</span> <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># NTH, flux x arcsec^-2</span>
+</span><span data-line="68">        <span class="k">if</span> <span class="n">from_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="69">            <span class="bp">self</span><span class="o">.</span><span class="n">_read_from_file</span><span class="p">(</span><span class="n">from_file</span><span class="p">)</span>
+</span><span data-line="70">
+<div class="viewcode-block" id="Halo.calculate_intensity">
+<a class="viewcode-back" href="../../../halos.html#xdust.halos.Halo.calculate_intensity">[docs]</a>
+</span><span data-line="71">    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_intensity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flux</span><span class="p">,</span> <span class="n">ftype</span><span class="o">=</span><span class="s1">&#39;abs&#39;</span><span class="p">):</span>
+</span><span data-line="72"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="73"><span class="sd">        Calculate the scattering halo intensity from a flux spectrum.</span>
+</span><span data-line="74">
+</span><span data-line="75"><span class="sd">        flux : numpy.ndarray or astropy.units.Quantity (NE)</span>
+</span><span data-line="76"><span class="sd">            Bin-integrated absorbed flux (photon/cm^2/s -or- erg/cm^2/s), </span>
+</span><span data-line="77"><span class="sd">            used for calculating total halo intensity</span>
+</span><span data-line="78"><span class="sd">        </span>
+</span><span data-line="79"><span class="sd">        ftype : string (&#39;abs&#39; or &#39;ext&#39;)</span>
+</span><span data-line="80"><span class="sd">            Describe whether the input spectrum is absorbed flux or </span>
+</span><span data-line="81"><span class="sd">            point source component flux (after including scattering component of extinction)</span>
+</span><span data-line="82"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="83">        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm_int</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span><span data-line="84">        <span class="k">assert</span> <span class="n">ftype</span> <span class="ow">in</span> <span class="n">ALLOWED_FTYPE</span>
+</span><span data-line="85">        <span class="k">if</span> <span class="n">ftype</span> <span class="o">==</span> <span class="s1">&#39;abs&#39;</span><span class="p">:</span>
+</span><span data-line="86">            <span class="n">fabs</span> <span class="o">=</span> <span class="n">flux</span>
+</span><span data-line="87">        <span class="k">if</span> <span class="n">ftype</span> <span class="o">==</span> <span class="s1">&#39;ext&#39;</span><span class="p">:</span>
+</span><span data-line="88">            <span class="n">fabs</span> <span class="o">=</span> <span class="n">flux</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">taux</span><span class="p">)</span> <span class="c1"># Fps = Fabs exp(-tau_sca)</span>
+</span><span data-line="89">        <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span> <span class="o">=</span> <span class="n">fabs</span>
+</span><span data-line="90">        <span class="n">NE</span><span class="p">,</span> <span class="n">NTH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">norm_int</span><span class="p">)</span>
+</span><span data-line="91">        <span class="n">fa_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">fabs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">NTH</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="92">        <span class="bp">self</span><span class="o">.</span><span class="n">intensity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">norm_int</span> <span class="o">*</span> <span class="n">fa_grid</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+
+</span><span data-line="93">
+</span><span data-line="94">    <span class="nd">@property</span>
+</span><span data-line="95">    <span class="k">def</span><span class="w"> </span><span class="nf">fext</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="96"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="97"><span class="sd">        Returns the point-source flux component, Fps = Fabs exp(-tau_sca)</span>
+</span><span data-line="98"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="99">        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span><span data-line="100">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">taux</span><span class="p">)</span>
+</span><span data-line="101">
+</span><span data-line="102">    <span class="nd">@property</span>
+</span><span data-line="103">    <span class="k">def</span><span class="w"> </span><span class="nf">fhalo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="104"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="105"><span class="sd">        Returns the total scattring halo flux, Fh = Fabs (1 - exp(-tau_sca))</span>
+</span><span data-line="106"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="107">        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span><span data-line="108">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">taux</span><span class="p">))</span>
+</span><span data-line="109">
+</span><span data-line="110">    <span class="nd">@property</span>
+</span><span data-line="111">    <span class="k">def</span><span class="w"> </span><span class="nf">percent_fabs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="112"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="113"><span class="sd">        Calculate fraction of absorbed flux that goes into the scattring halo,</span>
+</span><span data-line="114"><span class="sd">        effectively (1 - exp(-tau))</span>
+</span><span data-line="115"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="116">        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span><span data-line="117">        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fhalo</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fabs</span><span class="p">)</span>
+</span><span data-line="118">
+</span><span data-line="119">    <span class="nd">@property</span>
+</span><span data-line="120">    <span class="k">def</span><span class="w"> </span><span class="nf">percent_fext</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="121"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="122"><span class="sd">        Calculate fraction of point source flux that goes into the scattring halo,</span>
+</span><span data-line="123"><span class="sd">        effectively (1 - exp(-tau)) / exp(-tau) = exp(tau) - 1</span>
+</span><span data-line="124"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="125">        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span><span data-line="126">        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fhalo</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fext</span><span class="p">)</span>
+</span><span data-line="127">
+</span><span data-line="128">    <span class="c1"># http://stackoverflow.com/questions/2936863/python-implementing-slicing-in-getitem</span>
+</span><span data-line="129">    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+</span><span data-line="130"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="131"><span class="sd">        Returns a Halo object that is a subset / slice of the original halo.</span>
+</span><span data-line="132">
+</span><span data-line="133"><span class="sd">        Slice values must be floats that follow the same units as the original `lam` value.</span>
+</span><span data-line="134"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="135">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+</span><span data-line="136">            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_lam_index</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</span><span data-line="137">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
+</span><span data-line="138">            <span class="n">lmin</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">start</span>
+</span><span data-line="139">            <span class="n">lmax</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">stop</span>
+</span><span data-line="140">            <span class="k">if</span> <span class="n">lmin</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="141">                <span class="n">ii</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="n">lmax</span><span class="p">)</span>
+</span><span data-line="142">            <span class="k">elif</span> <span class="n">lmax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="143">                <span class="n">ii</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;=</span> <span class="n">lmin</span><span class="p">)</span>
+</span><span data-line="144">            <span class="k">else</span><span class="p">:</span>
+</span><span data-line="145">                <span class="n">ii</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;=</span> <span class="n">lmin</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="n">lmax</span><span class="p">)</span>
+</span><span data-line="146">            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_lam_slice</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
+</span><span data-line="147">
+</span><span data-line="148">    <span class="k">def</span><span class="w"> </span><span class="nf">_get_lam_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ii</span><span class="p">):</span>
+</span><span data-line="149">        <span class="n">result</span> <span class="o">=</span> <span class="n">Halo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">)</span>
+</span><span data-line="150">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm_int</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="151">            <span class="n">result</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span>
+</span><span data-line="152">            <span class="n">result</span><span class="o">.</span><span class="n">norm_int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm_int</span><span class="p">[</span><span class="n">ii</span><span class="p">,</span><span class="o">...</span><span class="p">]</span>
+</span><span data-line="153">            <span class="n">result</span><span class="o">.</span><span class="n">taux</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">taux</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+</span><span data-line="154">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="155">            <span class="n">result</span><span class="o">.</span><span class="n">calculate_intensity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fabs</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">ftype</span><span class="o">=</span><span class="s1">&#39;abs&#39;</span><span class="p">)</span>
+</span><span data-line="156">        <span class="k">return</span> <span class="n">result</span>
+</span><span data-line="157">
+</span><span data-line="158">    <span class="k">def</span><span class="w"> </span><span class="nf">_get_lam_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+</span><span data-line="159">        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+</span><span data-line="160">        <span class="n">result</span> <span class="o">=</span> <span class="n">Halo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">)</span>
+</span><span data-line="161">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm_int</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="162">            <span class="n">result</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span>
+</span><span data-line="163">            <span class="n">result</span><span class="o">.</span><span class="n">norm_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">norm_int</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="o">...</span><span class="p">]])</span>
+</span><span data-line="164">            <span class="n">result</span><span class="o">.</span><span class="n">taux</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">taux</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span><span data-line="165">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="166">            <span class="n">flux</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">fabs</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+</span><span data-line="167">            <span class="n">result</span><span class="o">.</span><span class="n">calculate_intensity</span><span class="p">(</span><span class="n">flux</span><span class="p">,</span> <span class="n">ftype</span><span class="o">=</span><span class="s1">&#39;abs&#39;</span><span class="p">)</span>
+</span><span data-line="168">        <span class="k">return</span> <span class="n">result</span>
+</span><span data-line="169">
+<div class="viewcode-block" id="Halo.ecf">
+<a class="viewcode-back" href="../../../halos.html#xdust.halos.Halo.ecf">[docs]</a>
+</span><span data-line="170">    <span class="k">def</span><span class="w"> </span><span class="nf">ecf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span><span data-line="171"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="172"><span class="sd">        Return the fraction of (energy-integrated) scattering halo flux enclosed by theta &lt; th</span>
+</span><span data-line="173">
+</span><span data-line="174"><span class="sd">        Inputs</span>
+</span><span data-line="175"><span class="sd">        ------</span>
+</span><span data-line="176">
+</span><span data-line="177"><span class="sd">        th0 : astropy.units.Quantity -or- float:</span>
+</span><span data-line="178"><span class="sd">            Maximum theta value for calculating enclosed fraction;</span>
+</span><span data-line="179"><span class="sd">            if no unit specified, ARCSEC is assumed</span>
+</span><span data-line="180"><span class="sd">        </span>
+</span><span data-line="181"><span class="sd">        n : int : number of theta values to use for inteprolating</span>
+</span><span data-line="182">
+</span><span data-line="183"><span class="sd">        log : bool : If True, uses a log-spaced theta grid for the integral;</span>
+</span><span data-line="184"><span class="sd">            If False, uses a linear spaced theta grid.</span>
+</span><span data-line="185">
+</span><span data-line="186"><span class="sd">        Returns</span>
+</span><span data-line="187"><span class="sd">        -------</span>
+</span><span data-line="188"><span class="sd">        float : trapz(self.intensity * 2 pi theta_arcsec, theta_arcsec)</span>
+</span><span data-line="189">
+</span><span data-line="190"><span class="sd">        SMALL ANGLE SCATTERING IS ASSUMED!</span>
+</span><span data-line="191"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="192">        <span class="c1"># Will break if we attempt to run this without an intensity calculation</span>
+</span><span data-line="193">        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">intensity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span><span data-line="194">
+</span><span data-line="195">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">th</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">):</span>
+</span><span data-line="196">            <span class="n">thmax</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;arcsec&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+</span><span data-line="197">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="198">            <span class="n">thmax</span> <span class="o">=</span> <span class="n">th</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcsec</span>
+</span><span data-line="199">        
+</span><span data-line="200">        <span class="c1"># Halo theta values, which will serve as grid</span>
+</span><span data-line="201">        <span class="n">th_asec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;arcsec&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+</span><span data-line="202">
+</span><span data-line="203">        <span class="c1"># Make sure that the value of interest is within the calculated grid</span>
+</span><span data-line="204">        <span class="k">assert</span> <span class="n">thmax</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">th_asec</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">thmax</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">th_sec</span><span class="p">)</span>
+</span><span data-line="205">
+</span><span data-line="206">        <span class="c1"># Get a new grid of intensity values over which to integrate</span>
+</span><span data-line="207">        <span class="k">if</span> <span class="n">log</span><span class="p">:</span>
+</span><span data-line="208">            <span class="n">th_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">th_asec</span><span class="p">)),</span> 
+</span><span data-line="209">                                  <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">th_asec</span><span class="p">)),</span> <span class="n">n</span><span class="p">)</span>
+</span><span data-line="210">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="211">            <span class="n">th_grid</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">th_asec</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">th_asec</span><span class="p">),</span> <span class="n">n</span><span class="p">)</span>
+</span><span data-line="212">        
+</span><span data-line="213">        <span class="n">I_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">th_grid</span><span class="p">,</span> <span class="n">th_asec</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">intensity</span><span class="p">)</span>
+</span><span data-line="214">        <span class="n">fh_tot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fhalo</span><span class="p">)</span> <span class="c1"># total flux in the halo</span>
+</span><span data-line="215">        <span class="n">enclosed</span> <span class="o">=</span> <span class="n">trapz</span><span class="p">(</span><span class="n">I_grid</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">th_grid</span><span class="p">,</span> <span class="n">th_grid</span><span class="p">)</span>
+</span><span data-line="216">        <span class="k">return</span> <span class="n">enclosed</span> <span class="o">/</span> <span class="n">fh_tot</span></div>
+
+</span><span data-line="217">    
+<div class="viewcode-block" id="Halo.frac_halo">
+<a class="viewcode-back" href="../../../halos.html#xdust.halos.Halo.frac_halo">[docs]</a>
+</span><span data-line="218">    <span class="k">def</span><span class="w"> </span><span class="nf">frac_halo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span><span data-line="219"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="220"><span class="sd">        Calculate fraction of halo, as a function of energy, enclosed by theta &lt; th</span>
+</span><span data-line="221">
+</span><span data-line="222"><span class="sd">        Inputs</span>
+</span><span data-line="223"><span class="sd">        ------</span>
+</span><span data-line="224">
+</span><span data-line="225"><span class="sd">        th0 : astropy.units.Quantity -or- float:</span>
+</span><span data-line="226"><span class="sd">            Maximum theta value for calculating enclosed fraction;</span>
+</span><span data-line="227"><span class="sd">            if no unit specified, ARCSEC is assumed</span>
+</span><span data-line="228"><span class="sd">        </span>
+</span><span data-line="229"><span class="sd">        n : int : number of theta values to use for inteprolating</span>
+</span><span data-line="230">
+</span><span data-line="231"><span class="sd">        log : bool : If True, uses a log-spaced theta grid for the integral;</span>
+</span><span data-line="232"><span class="sd">            If False, uses a linear spaced theta grid.</span>
+</span><span data-line="233">
+</span><span data-line="234"><span class="sd">        Returns</span>
+</span><span data-line="235"><span class="sd">        -------</span>
+</span><span data-line="236"><span class="sd">        float : trapz(self.intensity * 2 pi theta_arcsec, theta_arcsec)</span>
+</span><span data-line="237">
+</span><span data-line="238"><span class="sd">        SMALL ANGLE SCATTERING IS ASSUMED!</span>
+</span><span data-line="239"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="240">        <span class="c1"># Will break if we attempt to run this without an intensity calculation</span>
+</span><span data-line="241">        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm_intensity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span><span data-line="242">
+</span><span data-line="243">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">th</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">):</span>
+</span><span data-line="244">            <span class="n">thmax</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;arcsec&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+</span><span data-line="245">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="246">            <span class="n">thmax</span> <span class="o">=</span> <span class="n">th</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcsec</span>
+</span><span data-line="247">        
+</span><span data-line="248">        <span class="c1"># Halo theta values, which will serve as grid</span>
+</span><span data-line="249">        <span class="n">th_asec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;arcsec&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+</span><span data-line="250">
+</span><span data-line="251">        <span class="c1"># Make sure that the value of interest is within the calculated grid</span>
+</span><span data-line="252">        <span class="k">assert</span> <span class="n">thmax</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">th_asec</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">thmax</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">th_sec</span><span class="p">)</span>
+</span><span data-line="253">
+</span><span data-line="254">        <span class="c1"># Get a new grid of intensity values over which to integrate</span>
+</span><span data-line="255">        <span class="k">if</span> <span class="n">log</span><span class="p">:</span>
+</span><span data-line="256">            <span class="n">th_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">th_asec</span><span class="p">)),</span> 
+</span><span data-line="257">                                  <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">th_asec</span><span class="p">)),</span> <span class="n">n</span><span class="p">)</span>
+</span><span data-line="258">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="259">            <span class="n">th_grid</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">th_asec</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">th_asec</span><span class="p">),</span> <span class="n">n</span><span class="p">)</span>
+</span><span data-line="260">        
+</span><span data-line="261">        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span data-line="262">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="p">)):</span>
+</span><span data-line="263">            <span class="n">I_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">th_grid</span><span class="p">,</span> <span class="n">th_asec</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm_int</span><span class="p">[</span><span class="n">i</span><span class="p">,:])</span>
+</span><span data-line="264">            <span class="n">enclosed</span> <span class="o">=</span> <span class="n">trapz</span><span class="p">(</span><span class="n">I_grid</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">th_grid</span><span class="p">,</span> <span class="n">th_grid</span><span class="p">)</span>
+</span><span data-line="265">            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">[</span><span class="n">enclosed</span><span class="p">]</span>
+</span><span data-line="266">        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="c1"># unitless, size NE</span></div>
+
+</span><span data-line="267">
+</span><span data-line="268">
+<div class="viewcode-block" id="Halo.write">
+<a class="viewcode-back" href="../../../halos.html#xdust.halos.Halo.write">[docs]</a>
+</span><span data-line="269">    <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+</span><span data-line="270"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="271"><span class="sd">        Inputs</span>
+</span><span data-line="272"><span class="sd">        ------</span>
+</span><span data-line="273"><span class="sd">        filename : string</span>
+</span><span data-line="274"><span class="sd">            Name for the output FITS file</span>
+</span><span data-line="275">
+</span><span data-line="276"><span class="sd">        Write the scattering halo &#39;norm_int&#39; attribute to a FITS file.</span>
+</span><span data-line="277"><span class="sd">        The file will also store the relevant LAM, THETA, and TAUX values.</span>
+</span><span data-line="278"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="279">        <span class="n">hdr</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">Header</span><span class="p">()</span>
+</span><span data-line="280">        <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;COMMENT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Normalized halo intensity as a function of angle&quot;</span>
+</span><span data-line="281">        <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;COMMENT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;HDU 1 is LAM, HDU 2 is THETA, HDU 3 is TAUX&quot;</span>
+</span><span data-line="282">        <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;INTUNIT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm_int</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">()</span>
+</span><span data-line="283">        <span class="n">primary_hdu</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">PrimaryHDU</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">norm_int</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">hdr</span><span class="p">)</span>
+</span><span data-line="284">
+</span><span data-line="285">        <span class="n">hdus_to_write</span> <span class="o">=</span> <span class="p">[</span><span class="n">primary_hdu</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_write_halo_pars</span><span class="p">()</span>
+</span><span data-line="286">        <span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">HDUList</span><span class="p">(</span><span class="n">hdus</span><span class="o">=</span><span class="n">hdus_to_write</span><span class="p">)</span>
+</span><span data-line="287">        <span class="n">hdu_list</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">)</span>
+</span><span data-line="288">        <span class="k">return</span></div>
+
+</span><span data-line="289">
+</span><span data-line="290">    <span class="c1">##----- Helper material</span>
+</span><span data-line="291">    <span class="k">def</span><span class="w"> </span><span class="nf">_write_halo_pars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="292"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Write the FITS file&quot;&quot;&quot;</span>
+</span><span data-line="293">        <span class="c1"># e.g. pars[&#39;lam&#39;], pars[&#39;a&#39;]</span>
+</span><span data-line="294">        <span class="c1"># should this be part of WCS?</span>
+</span><span data-line="295">        <span class="n">c1</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">BinTableHDU</span><span class="o">.</span><span class="n">from_columns</span><span class="p">(</span>
+</span><span data-line="296">             <span class="p">[</span><span class="n">fits</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;lam&#39;</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">_make_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="o">.</span><span class="n">value</span><span class="p">),</span>
+</span><span data-line="297">             <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">())])</span>
+</span><span data-line="298">        <span class="n">c2</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">BinTableHDU</span><span class="o">.</span><span class="n">from_columns</span><span class="p">(</span>
+</span><span data-line="299">             <span class="p">[</span><span class="n">fits</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;theta&#39;</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">_make_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="o">.</span><span class="n">value</span><span class="p">),</span>
+</span><span data-line="300">             <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">())])</span>
+</span><span data-line="301">        <span class="n">c3</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">BinTableHDU</span><span class="o">.</span><span class="n">from_columns</span><span class="p">(</span>
+</span><span data-line="302">             <span class="p">[</span><span class="n">fits</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;taux&#39;</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">_make_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">taux</span><span class="p">),</span>
+</span><span data-line="303">             <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)])</span>
+</span><span data-line="304">        <span class="k">return</span> <span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">]</span>
+</span><span data-line="305">
+</span><span data-line="306">    <span class="k">def</span><span class="w"> </span><span class="nf">_read_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+</span><span data-line="307"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read a Halo object from a FITS file&quot;&quot;&quot;</span>
+</span><span data-line="308">        <span class="n">ff</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</span><span data-line="309">        <span class="c1"># Load the normalized intensity</span>
+</span><span data-line="310">        <span class="bp">self</span><span class="o">.</span><span class="n">norm_int</span> <span class="o">=</span> <span class="n">ff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Unit</span><span class="p">(</span><span class="n">ff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;INTUNIT&#39;</span><span class="p">])</span>
+</span><span data-line="311">        <span class="c1"># Load the other parameters</span>
+</span><span data-line="312">        <span class="bp">self</span><span class="o">.</span><span class="n">lam</span> <span class="o">=</span> <span class="n">ff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;lam&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Unit</span><span class="p">(</span><span class="n">ff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="s1">&#39;lam&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unit</span><span class="p">)</span>
+</span><span data-line="313">        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">ff</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Unit</span><span class="p">(</span><span class="n">ff</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unit</span><span class="p">)</span>
+</span><span data-line="314">        <span class="bp">self</span><span class="o">.</span><span class="n">taux</span> <span class="o">=</span> <span class="n">ff</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;taux&#39;</span><span class="p">]</span>
+</span><span data-line="315">        <span class="c1"># Set halo type</span>
+</span><span data-line="316">        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">filename</span>
+</span><span data-line="317">
+</span><span data-line="318">    <span class="c1">##------ Make a fake image with a telescope arf</span>
+<div class="viewcode-block" id="Halo.fake_image">
+<a class="viewcode-back" href="../../../halos.html#xdust.halos.Halo.fake_image">[docs]</a>
+</span><span data-line="319">    <span class="k">def</span><span class="w"> </span><span class="nf">fake_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arf</span><span class="p">,</span> <span class="n">src_flux</span><span class="p">,</span> <span class="n">exposure</span><span class="p">,</span>
+</span><span data-line="320">                   <span class="n">pix_scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">num_pix</span><span class="o">=</span><span class="p">[</span><span class="mi">2400</span><span class="p">,</span><span class="mi">2400</span><span class="p">],</span>
+</span><span data-line="321">                   <span class="n">lmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span data-line="322"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Make a fake image file using a telescope ARF as input.</span>
+</span><span data-line="323">
+</span><span data-line="324"><span class="sd">        Parameters</span>
+</span><span data-line="325"><span class="sd">        ----------</span>
+</span><span data-line="326"><span class="sd">        arf : string</span>
+</span><span data-line="327"><span class="sd">            Filename of telescope ARF</span>
+</span><span data-line="328">
+</span><span data-line="329"><span class="sd">        src_flux : numpy.ndarray [phot/cm^2/s]</span>
+</span><span data-line="330"><span class="sd">            Describes the absorbed (without X-ray scattering) flux</span>
+</span><span data-line="331"><span class="sd">            model for the central X-ray point source. Must correspond</span>
+</span><span data-line="332"><span class="sd">            to the values in Halo.lam</span>
+</span><span data-line="333">
+</span><span data-line="334"><span class="sd">        exposure : float [seconds]</span>
+</span><span data-line="335"><span class="sd">            Exposure time to use</span>
+</span><span data-line="336">
+</span><span data-line="337"><span class="sd">        pix_scale : float [arcsec]</span>
+</span><span data-line="338"><span class="sd">            Size of simulated pixels</span>
+</span><span data-line="339">
+</span><span data-line="340"><span class="sd">        num_pix : ints (nx,ny)</span>
+</span><span data-line="341"><span class="sd">            Size of pixel grid to use</span>
+</span><span data-line="342">
+</span><span data-line="343"><span class="sd">        lmin : float</span>
+</span><span data-line="344"><span class="sd">            Minimum halo.lam value</span>
+</span><span data-line="345"><span class="sd">            (Default:None uses entire range)</span>
+</span><span data-line="346">
+</span><span data-line="347"><span class="sd">        lmax : float</span>
+</span><span data-line="348"><span class="sd">            Maximum halo.lam value</span>
+</span><span data-line="349"><span class="sd">            (Default:None uses entire range)</span>
+</span><span data-line="350">
+</span><span data-line="351"><span class="sd">        save_file : string (Default:None)</span>
+</span><span data-line="352"><span class="sd">            Filename to use if you want to save the output to a .fits</span>
+</span><span data-line="353">
+</span><span data-line="354"><span class="sd">        Returns</span>
+</span><span data-line="355"><span class="sd">        -------</span>
+</span><span data-line="356"><span class="sd">        2D numpy.ndarray of shape (nx, ny), representing the image of</span>
+</span><span data-line="357"><span class="sd">        a dust scattering halo. The halo intensity at different</span>
+</span><span data-line="358"><span class="sd">        energies are converted into counts using the ARF. Then a</span>
+</span><span data-line="359"><span class="sd">        Poisson distribution is used to simulate the number of counts</span>
+</span><span data-line="360"><span class="sd">        in each pixel.</span>
+</span><span data-line="361">
+</span><span data-line="362"><span class="sd">        If the user supplies a file name string using the save_file</span>
+</span><span data-line="363"><span class="sd">        keyword, a FITS file will be saved.</span>
+</span><span data-line="364"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="365">        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">src_flux</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="p">)</span>
+</span><span data-line="366">
+</span><span data-line="367">        <span class="n">xlen</span><span class="p">,</span> <span class="n">ylen</span> <span class="o">=</span> <span class="n">num_pix</span>
+</span><span data-line="368">        <span class="n">xcen</span><span class="p">,</span> <span class="n">ycen</span> <span class="o">=</span> <span class="n">xlen</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">ylen</span><span class="o">//</span><span class="mi">2</span>
+</span><span data-line="369">        <span class="n">ccdx</span><span class="p">,</span> <span class="n">ccdy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">xlen</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ylen</span><span class="p">))</span>
+</span><span data-line="370">        <span class="n">radius</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">ccdx</span> <span class="o">-</span> <span class="n">xcen</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">ccdy</span> <span class="o">-</span> <span class="n">ycen</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</span><span data-line="371">
+</span><span data-line="372">        <span class="c1"># Typical ARF files have columns &#39;ENERG_LO&#39;, &#39;ENERG_HI&#39;, &#39;SPECRESP&#39;</span>
+</span><span data-line="373">        <span class="n">arf_data</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">arf</span><span class="p">)[</span><span class="s1">&#39;SPECRESP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+</span><span data-line="374">        <span class="n">arf_x</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">arf_data</span><span class="p">[</span><span class="s1">&#39;ENERG_LO&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">arf_data</span><span class="p">[</span><span class="s1">&#39;ENERG_HI&#39;</span><span class="p">])</span>
+</span><span data-line="375">        <span class="n">arf_y</span> <span class="o">=</span> <span class="n">arf_data</span><span class="p">[</span><span class="s1">&#39;SPECRESP&#39;</span><span class="p">]</span>
+</span><span data-line="376">        <span class="n">arf</span>   <span class="o">=</span> <span class="n">InterpolatedUnivariateSpline</span><span class="p">(</span><span class="n">arf_x</span><span class="p">,</span> <span class="n">arf_y</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="377">
+</span><span data-line="378">        <span class="c1"># Source counts to use for each energy bin</span>
+</span><span data-line="379">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lam_unit</span> <span class="o">==</span> <span class="s1">&#39;angs&#39;</span><span class="p">:</span>
+</span><span data-line="380">            <span class="n">ltemp</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lam</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">angstrom</span>
+</span><span data-line="381">            <span class="n">ltemp_kev</span>  <span class="o">=</span> <span class="n">ltemp</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">keV</span><span class="p">,</span> <span class="n">equivalencies</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">spectral</span><span class="p">())</span><span class="o">.</span><span class="n">value</span>
+</span><span data-line="382">            <span class="n">arf_temp</span>   <span class="o">=</span> <span class="n">arf</span><span class="p">(</span><span class="n">ltemp_kev</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span data-line="383">            <span class="n">src_counts</span> <span class="o">=</span> <span class="n">src_flux</span> <span class="o">*</span> <span class="n">arf_temp</span> <span class="o">*</span> <span class="n">exposure</span>
+</span><span data-line="384">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="385">            <span class="n">src_counts</span> <span class="o">=</span> <span class="n">src_flux</span> <span class="o">*</span> <span class="n">arf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="p">)</span> <span class="o">*</span> <span class="n">exposure</span>
+</span><span data-line="386">
+</span><span data-line="387">        <span class="c1"># Decide which energy indexes to use</span>
+</span><span data-line="388">        <span class="k">if</span> <span class="n">lmin</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="389">            <span class="n">imin</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="390">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="391">            <span class="n">imin</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="p">))[</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span> <span class="o">&gt;=</span> <span class="n">lmin</span><span class="p">])</span>
+</span><span data-line="392">        <span class="k">if</span> <span class="n">lmax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="393">            <span class="n">iend</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="p">)</span>
+</span><span data-line="394">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="395">            <span class="n">iend</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="p">))[</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span> <span class="o">&lt;=</span> <span class="n">lmax</span><span class="p">])</span>
+</span><span data-line="396">
+</span><span data-line="397">        <span class="c1">#iend = imax</span>
+</span><span data-line="398">        <span class="c1">#if imax &lt; 0:</span>
+</span><span data-line="399">        <span class="c1">#    iend = np.arange(len(self.lam)+1)[imax]</span>
+</span><span data-line="400">
+</span><span data-line="401">        <span class="c1"># Add up randomized image for each energy index value</span>
+</span><span data-line="402">        <span class="n">r_asec</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">pix_scale</span>
+</span><span data-line="403">        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+</span><span data-line="404">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">imin</span><span class="p">,</span> <span class="n">iend</span><span class="p">):</span>
+</span><span data-line="405">            <span class="c1"># interp object for halo grid (arcsec, counts/arcsec^2)</span>
+</span><span data-line="406">            <span class="n">h_interp</span> <span class="o">=</span> <span class="n">InterpolatedUnivariateSpline</span><span class="p">(</span>
+</span><span data-line="407">                <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm_int</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">*</span> <span class="n">src_counts</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># counts/arcsec^2</span>
+</span><span data-line="408">            <span class="c1"># Get the corresponding counts at each radial value in the grid</span>
+</span><span data-line="409">            <span class="n">pix_counts</span> <span class="o">=</span> <span class="n">h_interp</span><span class="p">(</span><span class="n">r_asec</span><span class="p">)</span> <span class="o">*</span> <span class="n">pix_scale</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># counts per pixel</span>
+</span><span data-line="410">            <span class="c1"># Some of the interpolated values are below zero. This is not okay. Set those to zero.</span>
+</span><span data-line="411">            <span class="n">pix_counts</span><span class="p">[</span><span class="n">pix_counts</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span data-line="412">            <span class="c1"># Use poisson statistics to get a random value</span>
+</span><span data-line="413">            <span class="n">pix_random</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">pix_counts</span><span class="p">)</span>
+</span><span data-line="414">            <span class="c1"># add it to the final result</span>
+</span><span data-line="415">            <span class="n">result</span> <span class="o">+=</span> <span class="n">pix_random</span>
+</span><span data-line="416">
+</span><span data-line="417">        <span class="k">if</span> <span class="n">save_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="418">            <span class="n">hdu</span>  <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">PrimaryHDU</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span><span data-line="419">            <span class="n">hdul</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">HDUList</span><span class="p">([</span><span class="n">hdu</span><span class="p">])</span>
+</span><span data-line="420">            <span class="n">hdul</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="n">save_file</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="421">
+</span><span data-line="422">        <span class="k">return</span> <span class="n">result</span></div>
+</div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2024, Lia Corrales</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

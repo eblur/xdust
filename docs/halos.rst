@@ -1,0 +1,54 @@
+xdust.halos
+===========
+
+The ``xdust.Halo`` object is the superclass that holds all 
+information and special functions for working with a simulated X-ray 
+dust scattering halo. 
+
+The ``xdust.UniformGalHalo`` object assumes that all dust is uniformly distributed 
+along the line-of-sight towards the X-ray light source.
+
+The ``xdust.ScreenGalHalo`` object assumes that all dust is confined within an 
+infinitesimally thin sheet with the specified column density.
+
+See Corrales & Paerels (2015) for a description of the mathematics and geometry.
+
+.. warning::
+
+   In the *xdust* code, the position of the scattering material (:math:`x`)
+   is defined as :math:`x = 1 - d/D`, where :math:`d` is the distance to the
+   scattering material and :math:`D` is the distance to the X-ray light source.
+   This is the *opposite* of the conventions used in many other papers on X-ray dust
+   scattering halos, e.g., from R. K. Smith and S. Heinz.
+
+Any scattering model physics can be used in the halo calculations. For 
+the semi-analytic (fast) model described in Corrales & Paerels 2015, utilizing 
+the Rayleigh-Gans approximation with the Drude approximation for the complex 
+index of refraction, on can use the ``UniformGalHaloCP15`` and ``ScrenGalHaloCP15`` 
+objects.
+
+Superclass: ``Halo``
+---------------------
+
+.. autoclass:: xdust.halos.Halo
+
+UniformGalHalo
+--------------
+
+.. autoclass:: xdust.halos.galhalo.UniformGalHalo
+
+ScreenGalHalo
+-------------
+
+.. autoclass:: xdust.halos.galhalo.ScreenGalHalo
+
+UniformGalHaloCP15
+------------------
+
+.. autoclass:: xdust.halos.galhalo.UniformGalHaloCP15
+
+ScreenGalHaloCP15
+-----------------
+
+.. autoclass:: xdust.halos.galhalo.ScreenGalHaloCP15
+
