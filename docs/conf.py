@@ -38,12 +38,8 @@ source_suffix = '.rst'
 language = 'en'
 
 # -- Options for HTML output -------------------------------------------------
-html_theme = 'shibuya'
+html_theme = 'furo'
 
-html_theme_options = {
-    'nav_links': [
-        {'title': 'GitHub', 'url': 'https://github.com/eblur/xdust'},
-    ],
-}
+html_theme_options = {}
 
 html_static_path = []

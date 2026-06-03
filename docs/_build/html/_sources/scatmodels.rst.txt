@@ -1,3 +1,4 @@
+.. _scatmodels:
 
 xdust.scatteringmodel
 =====================
@@ -52,13 +53,19 @@ A dust scattering model must contain the following:
             ``infile`` -- string [filename for loading efficiency values from FITS file]
 
 
+.. _RGscattering:
+
 RGscattering
 ------------
 .. autoclass:: xdust.scatteringmodel.RGscattering
 
+.. _Mie:
+
 Mie
 ---
 .. autoclass:: xdust.scatteringmodel.Mie
+
+.. _GGADT:
 
 GGADT
 -----

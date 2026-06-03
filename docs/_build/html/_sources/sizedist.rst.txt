@@ -1,3 +1,5 @@
+.. _sizedist:
+
 xdust.graindist.sizedist
 ============================
 
@@ -32,21 +34,31 @@ Abstract class *Sizedist* must contain the following:
 
    ``shape`` -- xdust.graindist.shape object (abstract class)
 
+.. _Grain:
+
 Grain
 -----
 .. autoclass:: xdust.graindist.sizedist.Grain
+
+.. _Powerlaw:
 
 Powerlaw
 --------
 .. autoclass:: xdust.graindist.sizedist.Powerlaw
 
+.. _ExpCutoff:
+
 ExpCutoff
 ---------
 .. autoclass:: xdust.graindist.sizedist.ExpCutoff
 
+.. _WD01:
+
 WD01
 ----
 .. autoclass:: xdust.graindist.sizedist.WD01
+
+.. _Astrodust:
 
 Astrodust
 ---------

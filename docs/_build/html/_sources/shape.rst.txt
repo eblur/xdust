@@ -1,3 +1,5 @@
+.. _shape:
+
 xdust.graindist.shape
 =====================
 
@@ -18,6 +20,8 @@ It must contain the following attributes:
 - `vol` (a function giving the volume of the grain [cm^3])
 
 - `cgeo` (a function giving the geometric area of the grain [cm^2])
+
+.. _Sphere:
 
 Sphere
 ------

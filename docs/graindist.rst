@@ -1,8 +1,12 @@
+.. _graindist:
+
 xdust.graindist
 ===============
 
 This module provides the essential **SingleGrainPop** and **GrainPop** classes.
 
+.. _GrainDistClass:
+   
 GrainDist
 ---------
 

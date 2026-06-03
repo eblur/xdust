@@ -1,3 +1,5 @@
+.. _halos:
+
 xdust.halos
 ===========
 
@@ -27,25 +29,35 @@ the Rayleigh-Gans approximation with the Drude approximation for the complex
 index of refraction, on can use the ``UniformGalHaloCP15`` and ``ScrenGalHaloCP15`` 
 objects.
 
+.. _Halo:
+
 Superclass: ``Halo``
 ---------------------
 
 .. autoclass:: xdust.halos.Halo
+
+.. _UniformGalHalo:
 
 UniformGalHalo
 --------------
 
 .. autoclass:: xdust.halos.galhalo.UniformGalHalo
 
+.. _ScreenGalHalo:
+
 ScreenGalHalo
 -------------
 
 .. autoclass:: xdust.halos.galhalo.ScreenGalHalo
 
+.. _UniformGalHaloCP15:
+
 UniformGalHaloCP15
 ------------------
 
 .. autoclass:: xdust.halos.galhalo.UniformGalHaloCP15
+
+.. _ScreenGalHaloCP15:
 
 ScreenGalHaloCP15
 -----------------
