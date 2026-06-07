@@ -3,7 +3,7 @@ from astropy.io import ascii
 from astropy import units as u
 
 from . import _find_cmfile
-from .composition import Composition
+from . import Composition
 
 __all__ = ['CmSilicate']
 
@@ -11,7 +11,8 @@ RHO_SIL       = 3.8  # g cm^-3
 
 class CmSilicate(Composition):
     """
-    Optical constants for Silicate from Draine (2003)
+    Optical constants for Silicate from
+    `Draine (2003), ApJ 598, 1026 <http://adsabs.harvard.edu/abs/2003ApJ...598.1026D>`_
     """
     def __init__(self, rho=RHO_SIL):
         Composition.__init__(self)

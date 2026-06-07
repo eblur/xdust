@@ -246,7 +246,7 @@
 <span class="n">RHO_C</span>    <span class="o">=</span> <span class="mf">2.24</span>    <span class="c1"># g cm^-3 (graphite grain material density), p.298</span>
 <span class="n">RHO_S</span>    <span class="o">=</span> <span class="mf">3.5</span>     <span class="c1"># g cm^-3 (silicate grain material density), p.298</span>
 
-<span class="n">NA</span>       <span class="o">=</span> <span class="mi">100</span>     <span class="c1"># default number for grain size dist resolution</span>
+<span class="n">NA</span>       <span class="o">=</span> <span class="mi">24</span>     <span class="c1"># default number for grain size dist resolution</span>
 
 <span class="c1"># min and max grain radii</span>
 <span class="n">AMIN</span>     <span class="o">=</span> <span class="mf">0.00035</span>   <span class="c1"># micron</span>
@@ -440,10 +440,14 @@
 <span class="sd">        Maximum grain radius; plain floats are assumed to be in microns.</span>
 
 <span class="sd">    na : int</span>
-<span class="sd">        Number of grain size bins. Default ``100``.</span>
+<span class="sd">        Number of grain size bins.</span>
 
 <span class="sd">    log : bool</span>
-<span class="sd">        If ``True``, use log-spaced grain size grid. Default ``True``.</span>
+<span class="sd">        If ``True`` (default), use log-spaced grain size grid; otherwise, use a linear grid.</span>
+
+<span class="sd">    Warning</span>
+<span class="sd">    -------</span>
+<span class="sd">    This class has only been implmented for ``galaxy=&#39;MW&#39;`` and ``RV`` values of 3.1, 4.0, and 5.5.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">galaxy</span><span class="o">=</span><span class="s1">&#39;MW&#39;</span><span class="p">,</span> <span class="n">RV</span><span class="o">=</span><span class="mf">3.1</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="s1">&#39;silicate&#39;</span><span class="p">,</span> <span class="n">amin</span><span class="o">=</span><span class="n">AMIN</span><span class="p">,</span> <span class="n">amax</span><span class="o">=</span><span class="n">AMAX</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="n">NA</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="n">Sizedist</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>

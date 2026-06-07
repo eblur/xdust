@@ -243,7 +243,7 @@
 <span class="c1"># Some default values</span>
 <span class="n">RHO</span>      <span class="o">=</span> <span class="mf">3.0</span>     <span class="c1"># g cm^-3 (average grain material density)</span>
 
-<span class="n">NA</span>       <span class="o">=</span> <span class="mi">100</span>     <span class="c1"># default number for grain size dist resolution</span>
+<span class="n">NA</span>       <span class="o">=</span> <span class="mi">24</span>      <span class="c1"># default number for grain size dist resolution</span>
 <span class="n">PDIST</span>    <span class="o">=</span> <span class="mf">3.5</span>     <span class="c1"># default slope for power law distribution</span>
 
 <span class="c1"># min and max grain radii for MRN distribution</span>
@@ -276,12 +276,12 @@
 <span class="sd">        Number of grain size grid points.</span>
 
 <span class="sd">    log : bool</span>
-<span class="sd">        If ``True``, use log-spaced grain size grid. Default ``False``.</span>
+<span class="sd">        If ``True`` (default), use log-spaced grain size grid; otherwise, use a linear grid.</span>
 
 <span class="sd">    nfold : int</span>
 <span class="sd">        Number of e-foldings past ``acut`` to extend the grid.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amin</span><span class="o">=</span><span class="n">AMIN</span><span class="p">,</span> <span class="n">acut</span><span class="o">=</span><span class="n">ACUT</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">PDIST</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="n">NA</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nfold</span><span class="o">=</span><span class="n">NFOLD</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amin</span><span class="o">=</span><span class="n">AMIN</span><span class="p">,</span> <span class="n">acut</span><span class="o">=</span><span class="n">ACUT</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">PDIST</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="n">NA</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nfold</span><span class="o">=</span><span class="n">NFOLD</span><span class="p">):</span>
         <span class="n">Sizedist</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;ExpCutoff&#39;</span>
 

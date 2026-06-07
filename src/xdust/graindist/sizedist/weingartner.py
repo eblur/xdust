@@ -204,10 +204,14 @@ class WD01(Sizedist):
         Maximum grain radius; plain floats are assumed to be in microns.
 
     na : int
-        Number of grain size bins. Default ``100``.
+        Number of grain size bins.
 
     log : bool
         If ``True`` (default), use log-spaced grain size grid; otherwise, use a linear grid.
+
+    Warning
+    -------
+    This class has only been implmented for ``galaxy='MW'`` and ``RV`` values of 3.1, 4.0, and 5.5.
     """
     def __init__(self, galaxy='MW', RV=3.1, form='silicate', amin=AMIN, amax=AMAX, na=NA, log=True):
         Sizedist.__init__(self)

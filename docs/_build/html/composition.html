@@ -240,8 +240,15 @@
         <article role="main" id="furo-main-content">
           <section id="xdust-graindist-composition">
 <span id="composition"></span><h1>xdust.graindist.composition<a class="headerlink" href="#xdust-graindist-composition" title="Link to this heading">¶</a></h1>
-<section id="superclass-composition">
-<h2>Superclass: <code class="docutils literal notranslate"><span class="pre">Composition</span></code><a class="headerlink" href="#superclass-composition" title="Link to this heading">¶</a></h2>
+<p>The composition library is built on the superclass <a class="reference internal" href="#compositionclass"><span class="std std-ref">Composition</span></a>, which holds the optical constants and material density [g cm^-3] of a grain composition type.</p>
+<p><strong>Premade composition types</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cmdrude"><span class="std std-ref">CmDrude</span></a> – Drude approximation, treating the grain as a mass of free electrons</p></li>
+<li><p><a class="reference internal" href="#cmsilicate"><span class="std std-ref">CmSilicate</span></a> – astronomical silicates (Draine 2003)</p></li>
+<li><p><a class="reference internal" href="#cmgraphite"><span class="std std-ref">CmGraphite</span></a> – graphite (Draine 2003)</p></li>
+</ul>
+<section id="compositionclass">
+<span id="id1"></span><h2>Composition<a class="headerlink" href="#compositionclass" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.composition.Composition">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.</span></span><span class="sig-name descname"><span class="pre">Composition</span></span><a class="reference internal" href="_modules/xdust/graindist/composition/composition.html#Composition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.Composition" title="Link to this definition">¶</a></dt>
@@ -393,7 +400,7 @@ the same units as <code class="docutils literal notranslate"><span class="pre">s
 
 </section>
 <section id="cmdrude">
-<span id="id1"></span><h2>CmDrude<a class="headerlink" href="#cmdrude" title="Link to this heading">¶</a></h2>
+<span id="id2"></span><h2>CmDrude<a class="headerlink" href="#cmdrude" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.composition.CmDrude">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.</span></span><span class="sig-name descname"><span class="pre">CmDrude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmdrude.html#CmDrude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmDrude" title="Link to this definition">¶</a></dt>
@@ -438,7 +445,7 @@ for array input.</p>
 
 </section>
 <section id="cmsilicate">
-<span id="id2"></span><h2>CmSilicate<a class="headerlink" href="#cmsilicate" title="Link to this heading">¶</a></h2>
+<span id="id3"></span><h2>CmSilicate<a class="headerlink" href="#cmsilicate" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.composition.CmSilicate">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.</span></span><span class="sig-name descname"><span class="pre">CmSilicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmsilicate.html#CmSilicate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmSilicate" title="Link to this definition">¶</a></dt>
@@ -448,7 +455,7 @@ for array input.</p>
 
 </section>
 <section id="cmgraphite">
-<span id="id3"></span><h2>CmGraphite<a class="headerlink" href="#cmgraphite" title="Link to this heading">¶</a></h2>
+<span id="id4"></span><h2>CmGraphite<a class="headerlink" href="#cmgraphite" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.composition.CmGraphite">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.</span></span><span class="sig-name descname"><span class="pre">CmGraphite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'big'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'perp'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmgraphite.html#CmGraphite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmGraphite" title="Link to this definition">¶</a></dt>
@@ -539,7 +546,7 @@ for array input.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">xdust.graindist.composition</a><ul>
-<li><a class="reference internal" href="#superclass-composition">Superclass: <code class="docutils literal notranslate"><span class="pre">Composition</span></code></a><ul>
+<li><a class="reference internal" href="#compositionclass">Composition</a><ul>
 <li><a class="reference internal" href="#xdust.graindist.composition.Composition"><code class="docutils literal notranslate"><span class="pre">Composition</span></code></a><ul>
 <li><a class="reference internal" href="#xdust.graindist.composition.Composition.cmtype"><code class="docutils literal notranslate"><span class="pre">Composition.cmtype</span></code></a></li>
 <li><a class="reference internal" href="#xdust.graindist.composition.Composition.rho"><code class="docutils literal notranslate"><span class="pre">Composition.rho</span></code></a></li>

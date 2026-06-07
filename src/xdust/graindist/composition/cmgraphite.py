@@ -3,7 +3,7 @@ from astropy.io import ascii
 from astropy import units as u
 
 from . import _find_cmfile
-from .composition import Composition
+from . import Composition
 
 __all__ = ['CmGraphite']
 
@@ -11,13 +11,14 @@ RHO_GRA       = 2.2  # g cm^-3
 
 class CmGraphite(Composition):
     """
-    Optical constants for Graphite from Draine (2003)
+    Optical constants for Graphite from
+    `Draine (2003), ApJ 598, 1026 <http://adsabs.harvard.edu/abs/2003ApJ...598.1026D>`_
 
     Attributes
     ----------
     size : str
-        ``'big'`` gives results for 0.1 um sized graphite grains at 20 K
-        [Draine (2003)]; ``'small'`` gives results for 0.01 um sized grains at 20 K.
+        ``'big'`` gives results for 0.1 um sized graphite grains at 20 K;
+        ``'small'`` gives results for 0.01 um sized grains at 20 K.
 
     orient : str
         ``'perp'`` gives results for E-field perpendicular to the c-axis;
