@@ -1,14 +1,14 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="../../../../">
+<html class="no-js" lang="en" data-content_root="../../../">
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../genindex.html"><link rel="search" title="Search" href="../../../../search.html">
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html"><link rel="search" title="Search" href="../../../search.html">
 
     <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
-        <title>xdust.graindist.composition.cmsilicate - xdust 0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=d111a655" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=7bdb33bb" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+        <title>xdust.graindist.sizedist - xdust 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=8dab3a3b" />
     
     
 
@@ -160,7 +160,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../../index.html"><div class="brand">xdust 0.1 documentation</div></a>
+      <a href="../../../index.html"><div class="brand">xdust 0.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -179,26 +179,26 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
   
   <span class="sidebar-brand-text">xdust 0.1 documentation</span>
   
-</a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../grainpop.html">xdust.grainpop</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../graindist.html">xdust.graindist</a><input aria-label="Toggle navigation of xdust.graindist" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../../sizedist.html">xdust.graindist.sizedist</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../composition.html">xdust.graindist.composition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../shape.html">xdust.graindist.shape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../grainpop.html">xdust.grainpop</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../graindist.html">xdust.graindist</a><input aria-label="Toggle navigation of xdust.graindist" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../sizedist.html">xdust.graindist.sizedist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../composition.html">xdust.graindist.composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../shape.html">xdust.graindist.shape</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../scatmodels.html">xdust.scatteringmodel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../halos.html">xdust.halos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../scatmodels.html">xdust.scatteringmodel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../halos.html">xdust.halos</a></li>
 </ul>
 
 </div>
@@ -231,41 +231,101 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <h1>Source code for xdust.graindist.composition.cmsilicate</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">ascii</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+          <h1>Source code for xdust.graindist.sizedist</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">-------</span>
+<span class="sd">API</span>
+<span class="sd">-------</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">_find_cmfile</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">.composition</span><span class="w"> </span><span class="kn">import</span> <span class="n">Composition</span>
+<span class="sd">*Sizedist* must contain the following attributes</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CmSilicate&#39;</span><span class="p">]</span>
+<span class="sd">`dtype` : a string description</span>
 
-<span class="n">RHO_SIL</span>       <span class="o">=</span> <span class="mf">3.8</span>  <span class="c1"># g cm^-3</span>
+<span class="sd">`a` : an array</span>
 
-<div class="viewcode-block" id="CmSilicate">
-<a class="viewcode-back" href="../../../../composition.html#xdust.graindist.composition.CmSilicate">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">CmSilicate</span><span class="p">(</span><span class="n">Composition</span><span class="p">):</span>
+<span class="sd">And must contain the following two methods:</span>
+
+<span class="sd">`ndens` (md, rho, shape) returns number density of dust grains [e.g. cm^-2 um^-1]</span>
+
+<span class="sd">`mdens` (md, rho, shape) returns mass density of dust grains [e.g. g cm^-2 um^-1]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Sizedist">
+<a class="viewcode-back" href="../../../sizedist.html#xdust.graindist.sizedist.Sizedist">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Sizedist</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Optical constants for Silicate from Draine (2003)</span>
+<span class="sd">    Abstract class for grain size distributions</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dtype : str</span>
+<span class="sd">        String description of the size distribution.</span>
+
+<span class="sd">    a : astropy.units.Quantity</span>
+<span class="sd">        Grain radius grid.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="n">RHO_SIL</span><span class="p">):</span>
-        <span class="n">Composition</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cmtype</span> <span class="o">=</span> <span class="s1">&#39;Silicate&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rho</span>    <span class="o">=</span> <span class="n">rho</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">citation</span> <span class="o">=</span> <span class="s2">&quot;Using optical constants for astrosilicate,</span><span class="se">\n</span><span class="s2">Draine, B. T. 2003, ApJ, 598, 1026</span><span class="se">\n</span><span class="s2">http://adsabs.harvard.edu/abs/2003ApJ...598.1026D&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;Abstract Sizedist&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="kc">None</span>
 
-        <span class="n">D03file</span> <span class="o">=</span> <span class="n">_find_cmfile</span><span class="p">(</span><span class="s1">&#39;callindex.out_sil.D03&#39;</span><span class="p">)</span>
-        <span class="n">D03dat</span>  <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">D03file</span><span class="p">,</span> <span class="n">header_start</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">data_start</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="viewcode-block" id="Sizedist.ndens">
+<a class="viewcode-back" href="../../../sizedist.html#xdust.graindist.sizedist.Sizedist.ndens">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ndens</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">md</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate number density of dust grains, given a dust mass column</span>
 
-        <span class="c1"># The wavelength grid needs to be in ascending order for np.interp to run correctly</span>
-        <span class="n">wavel</span> <span class="o">=</span> <span class="n">D03dat</span><span class="p">[</span><span class="s1">&#39;wave(um)&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span>
-        <span class="n">wsort</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">wavel</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        md : float</span>
+<span class="sd">            Mass column density [g cm^-2].</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">wavel</span> <span class="o">=</span> <span class="n">wavel</span><span class="p">[</span><span class="n">wsort</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">revals</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="n">D03dat</span><span class="p">[</span><span class="s1">&#39;Re(n)-1&#39;</span><span class="p">][</span><span class="n">wsort</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">imvals</span> <span class="o">=</span> <span class="n">D03dat</span><span class="p">[</span><span class="s1">&#39;Im(n)&#39;</span><span class="p">][</span><span class="n">wsort</span><span class="p">]</span></div>
+<span class="sd">        rho : float</span>
+<span class="sd">            Grain material density [g cm^-3].</span>
 
+<span class="sd">        shape : xdust.graindist.shape object</span>
+<span class="sd">            Grain shape (default: ``Sphere``, the only supported option)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy.ndarray</span>
+<span class="sd">            Column density of grains [cm^-2 um^-1].</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;ndens method not implemented for Sizedist&#39;</span><span class="p">)</span>   </div>
+
+
+<div class="viewcode-block" id="Sizedist.mdens">
+<a class="viewcode-back" href="../../../sizedist.html#xdust.graindist.sizedist.Sizedist.mdens">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mdens</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">md</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate mass density function for the dust grains, given a total dust mass column</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        md : float</span>
+<span class="sd">            Mass column density [g cm^-2].</span>
+
+<span class="sd">        rho : float</span>
+<span class="sd">            Grain material density [g cm^-3].</span>
+
+<span class="sd">        shape : xdust.graindist.shape object</span>
+<span class="sd">            Grain shape (default: ``Sphere``, the only supported option)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy.ndarray</span>
+<span class="sd">            Mass column distribution [g cm^-2 um^-1].</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;mdens method not implemented for Sizedist&#39;</span><span class="p">)</span> </div>
+</div>
+
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.grain</span><span class="w"> </span><span class="kn">import</span> <span class="n">Grain</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.powerlaw</span><span class="w"> </span><span class="kn">import</span> <span class="n">Powerlaw</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.exp_cutoff</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExpCutoff</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.astrodust</span><span class="w"> </span><span class="kn">import</span> <span class="n">Astrodust</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.weingartner</span><span class="w"> </span><span class="kn">import</span> <span class="n">WD01</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..</span><span class="w"> </span><span class="kn">import</span> <span class="n">shape</span>
 </pre></div>
         </article>
       </div>
@@ -298,9 +358,9 @@
       
     </aside>
   </div>
-</div><script src="../../../../_static/documentation_options.js?v=2709fde1"></script>
-    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
-    <script src="../../../../_static/scripts/furo.js?v=46bd48cc"></script>
+</div><script src="../../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>

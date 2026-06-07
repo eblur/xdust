@@ -2,13 +2,14 @@ import numpy as np
 import astropy.units as u
 from scipy.integrate import trapezoid as trapz
 from .. import shape
+from . import Sizedist
 
 __all__ = ['Powerlaw']
 
 # Some default values
 RHO      = 3.0     # g cm^-3 (average grain material density)
 
-NA       = 100     # default number for grain size dist resolution
+NA       = 24     # default number for grain size dist resolution
 PDIST    = 3.5     # default slope for power law distribution
 
 # min and max grain radii for MRN distribution
@@ -19,29 +20,29 @@ SHAPE    = shape.Sphere()
 
 #------------------------------------
 
-class Powerlaw(object):
+class Powerlaw(Sizedist):
     """
     A power law grain size distribution
+
+    Parameters
+    ----------
+    amin : astropy.units.Quantity or float
+        Minimum grain radius; plain floats are assumed to be in microns.
+
+    amax : astropy.units.Quantity or float
+        Maximum grain radius; plain floats are assumed to be in microns.
+
+    p : float
+        Power law slope for :math:`dn/da \\propto a^{-p}`.
+
+    na : int
+        Number of grain size grid points.
+
+    log : bool
+        If ``True`` (default), use log-spaced grain size grid; otherwise, use a linear grid.
     """
-    def __init__(self, amin=AMIN, amax=AMAX, p=PDIST, na=NA, log=False):
-        """
-        Parameters
-        ----------
-        amin : astropy.units.Quantity or float
-            Minimum grain radius; plain floats are assumed to be in microns.
-
-        amax : astropy.units.Quantity or float
-            Maximum grain radius; plain floats are assumed to be in microns.
-
-        p : float
-            Power law slope for :math:`dn/da \\propto a^{-p}`.
-
-        na : int
-            Number of grain size grid points.
-
-        log : bool
-            If ``True``, use log-spaced grain size grid. Default ``False``.
-        """
+    def __init__(self, amin=AMIN, amax=AMAX, p=PDIST, na=NA, log=True):
+        Sizedist.__init__(self)
         # Set the name of this size disribution
         self.dtype = 'Powerlaw'
 

@@ -240,41 +240,107 @@
         <article role="main" id="furo-main-content">
           <section id="xdust-graindist-sizedist">
 <span id="sizedist"></span><h1>xdust.graindist.sizedist<a class="headerlink" href="#xdust-graindist-sizedist" title="Link to this heading">¶</a></h1>
-<section id="abstract-class-sizedist">
-<h2>Abstract Class: <em>Sizedist</em><a class="headerlink" href="#abstract-class-sizedist" title="Link to this heading">¶</a></h2>
-<p>Abstract class <em>Sizedist</em> must contain the following:</p>
-<p><strong>Atributes</strong></p>
+<p>The size distribution library is built on the superclass <a class="reference internal" href="#sizedistclass"><span class="std std-ref">Sizedist</span></a>, which holds the grain size distribution function and the grain size array.</p>
+<p>The grain size distribution function is defined as the number of grains per unit volume per unit grain size, i.e. <span class="math notranslate nohighlight">\(dn/da\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Within this library the functions are used to describe column density <span class="math notranslate nohighlight">\(N(a) = \int dn/da \, dl\)</span>, where <span class="math notranslate nohighlight">\(dl\)</span> is the path length along the line of sight.
+However, one can always convert between column density and number density by dividing by the path length, i.e. <span class="math notranslate nohighlight">\(n(a) = N(a)/L\)</span>.</p>
+</div>
+<p><strong>Premade size distributions</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code> : a string description</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code> : float or np.array [grain size, micron] or astropy Quantity</p></li>
+<li><p><a class="reference internal" href="#grain"><span class="std std-ref">Grain</span></a></p></li>
+<li><p><a class="reference internal" href="#powerlaw"><span class="std std-ref">Powerlaw</span></a></p></li>
+<li><p><a class="reference internal" href="#expcutoff"><span class="std std-ref">ExpCutoff</span></a></p></li>
+<li><p><a class="reference internal" href="#wd01"><span class="std std-ref">WD01</span></a></p></li>
+<li><p><a class="reference internal" href="#astrodust"><span class="std std-ref">Astrodust</span></a></p></li>
 </ul>
-<p><strong>Methods</strong></p>
-<ul>
-<li><dl>
-<dt><code class="docutils literal notranslate"><span class="pre">ndens(md,</span> <span class="pre">rho,</span> <span class="pre">shape=xdust.graindist.shape.Sphere)</span></code></dt><dd><p>Returns number density of dust grains [e.g. cm^-2 um^-1]</p>
-<p><code class="docutils literal notranslate"><span class="pre">md</span></code> – float [dust mass column density in g cm^-2]</p>
-<p><code class="docutils literal notranslate"><span class="pre">rho</span></code> – float [dust mass density in g cm^-3]</p>
-<p><code class="docutils literal notranslate"><span class="pre">shape</span></code> – xdust.graindist.shape object (abstract class)</p>
+<section id="sizedistclass">
+<span id="id1"></span><h2>Sizedist<a class="headerlink" href="#sizedistclass" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.graindist.sizedist.Sizedist">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.sizedist.</span></span><span class="sig-name descname"><span class="pre">Sizedist</span></span><a class="reference internal" href="_modules/xdust/graindist/sizedist.html#Sizedist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.Sizedist" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Abstract class for grain size distributions</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.graindist.sizedist.Sizedist.dtype">
+<span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#xdust.graindist.sizedist.Sizedist.dtype" title="Link to this definition">¶</a></dt>
+<dd><p>String description of the size distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
-</li>
-<li><dl>
-<dt><code class="docutils literal notranslate"><span class="pre">mdens(md,</span> <span class="pre">rho,</span> <span class="pre">shape=xdust.graindist.shape.Sphere)</span></code></dt><dd><p>Returns the mass density of dust grains [e.g. in g cm^-2 um^-1]</p>
-<p><code class="docutils literal notranslate"><span class="pre">md</span></code> – float [dust mass column density in g cm^-2]</p>
-<p><code class="docutils literal notranslate"><span class="pre">rho</span></code> – float [dust mass density in g cm^-3]</p>
-<p><code class="docutils literal notranslate"><span class="pre">shape</span></code> – xdust.graindist.shape object (abstract class)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.graindist.sizedist.Sizedist.a">
+<span class="sig-name descname"><span class="pre">a</span></span><a class="headerlink" href="#xdust.graindist.sizedist.Sizedist.a" title="Link to this definition">¶</a></dt>
+<dd><p>Grain radius grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>astropy.units.Quantity</p>
 </dd>
 </dl>
-</li>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.graindist.sizedist.Sizedist.mdens">
+<span class="sig-name descname"><span class="pre">mdens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist.html#Sizedist.mdens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.Sizedist.mdens" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate mass density function for the dust grains, given a total dust mass column</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>md</strong> (<em>float</em>) – Mass column density [g cm^-2].</p></li>
+<li><p><strong>rho</strong> (<em>float</em>) – Grain material density [g cm^-3].</p></li>
+<li><p><strong>shape</strong> (<em>xdust.graindist.shape object</em>) – Grain shape (default: <code class="docutils literal notranslate"><span class="pre">Sphere</span></code>, the only supported option)</p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Mass column distribution [g cm^-2 um^-1].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.graindist.sizedist.Sizedist.ndens">
+<span class="sig-name descname"><span class="pre">ndens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist.html#Sizedist.ndens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.Sizedist.ndens" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate number density of dust grains, given a dust mass column</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>md</strong> (<em>float</em>) – Mass column density [g cm^-2].</p></li>
+<li><p><strong>rho</strong> (<em>float</em>) – Grain material density [g cm^-3].</p></li>
+<li><p><strong>shape</strong> (<em>xdust.graindist.shape object</em>) – Grain shape (default: <code class="docutils literal notranslate"><span class="pre">Sphere</span></code>, the only supported option)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Column density of grains [cm^-2 um^-1].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="grain">
-<span id="id1"></span><h2>Grain<a class="headerlink" href="#grain" title="Link to this heading">¶</a></h2>
+<span id="id2"></span><h2>Grain<a class="headerlink" href="#grain" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.sizedist.Grain">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.sizedist.</span></span><span class="sig-name descname"><span class="pre">Grain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;Quantity</span> <span class="pre">1.</span> <span class="pre">micron&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/grain.html#Grain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.Grain" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#xdust.graindist.sizedist.Sizedist" title="xdust.graindist.sizedist.Sizedist"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sizedist</span></code></a></p>
 <p>A single grain size distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rad</strong> (<em>astropy.units.Quantity</em><em> or </em><em>float</em>) – Grain radius; plain floats are assumed to be in microns.</p>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.graindist.sizedist.Grain.a">
 <span class="sig-name descname"><span class="pre">a</span></span><a class="headerlink" href="#xdust.graindist.sizedist.Grain.a" title="Link to this definition">¶</a></dt>
@@ -331,12 +397,23 @@ Other distributions return a continuous function that can be integrated.</p>
 
 </section>
 <section id="powerlaw">
-<span id="id2"></span><h2>Powerlaw<a class="headerlink" href="#powerlaw" title="Link to this heading">¶</a></h2>
+<span id="id3"></span><h2>Powerlaw<a class="headerlink" href="#powerlaw" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.sizedist.Powerlaw">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.sizedist.</span></span><span class="sig-name descname"><span class="pre">Powerlaw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.005</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/powerlaw.html#Powerlaw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.Powerlaw" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#xdust.graindist.sizedist.Sizedist" title="xdust.graindist.sizedist.Sizedist"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sizedist</span></code></a></p>
 <p>A power law grain size distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amin</strong> (<em>astropy.units.Quantity</em><em> or </em><em>float</em>) – Minimum grain radius; plain floats are assumed to be in microns.</p></li>
+<li><p><strong>amax</strong> (<em>astropy.units.Quantity</em><em> or </em><em>float</em>) – Maximum grain radius; plain floats are assumed to be in microns.</p></li>
+<li><p><strong>p</strong> (<em>float</em>) – Power law slope for <span class="math notranslate nohighlight">\(dn/da \propto a^{-p}\)</span>.</p></li>
+<li><p><strong>na</strong> (<em>int</em>) – Number of grain size grid points.</p></li>
+<li><p><strong>log</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, use log-spaced grain size grid. Default <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="xdust.graindist.sizedist.Powerlaw.mdens">
 <span class="sig-name descname"><span class="pre">mdens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;xdust.graindist.shape.sphere.Sphere</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/powerlaw.html#Powerlaw.mdens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.Powerlaw.mdens" title="Link to this definition">¶</a></dt>
@@ -383,12 +460,24 @@ Other distributions return a continuous function that can be integrated.</p>
 
 </section>
 <section id="expcutoff">
-<span id="id3"></span><h2>ExpCutoff<a class="headerlink" href="#expcutoff" title="Link to this heading">¶</a></h2>
+<span id="id4"></span><h2>ExpCutoff<a class="headerlink" href="#expcutoff" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.sizedist.ExpCutoff">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.sizedist.</span></span><span class="sig-name descname"><span class="pre">ExpCutoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.005</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acut</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/exp_cutoff.html#ExpCutoff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.ExpCutoff" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Power law grain size distribution with an exponential cut-off at the large end</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amin</strong> (<em>astropy.units.Quantity</em><em> or </em><em>float</em>) – Minimum grain radius; plain floats are assumed to be in microns.</p></li>
+<li><p><strong>acut</strong> (<em>astropy.units.Quantity</em><em> or </em><em>float</em>) – Exponential cut-off grain radius; plain floats are assumed to be in microns.</p></li>
+<li><p><strong>p</strong> (<em>float</em>) – Power law slope for <span class="math notranslate nohighlight">\(dn/da \propto a^{-p}\)</span>.</p></li>
+<li><p><strong>na</strong> (<em>int</em>) – Number of grain size grid points.</p></li>
+<li><p><strong>log</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, use log-spaced grain size grid. Default <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>nfold</strong> (<em>int</em>) – Number of e-foldings past <code class="docutils literal notranslate"><span class="pre">acut</span></code> to extend the grid.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="xdust.graindist.sizedist.ExpCutoff.mdens">
 <span class="sig-name descname"><span class="pre">mdens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;xdust.graindist.shape.sphere.Sphere</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/exp_cutoff.html#ExpCutoff.mdens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.ExpCutoff.mdens" title="Link to this definition">¶</a></dt>
@@ -435,12 +524,25 @@ Other distributions return a continuous function that can be integrated.</p>
 
 </section>
 <section id="wd01">
-<span id="id4"></span><h2>WD01<a class="headerlink" href="#wd01" title="Link to this heading">¶</a></h2>
+<span id="id5"></span><h2>WD01<a class="headerlink" href="#wd01" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.sizedist.WD01">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.sizedist.</span></span><span class="sig-name descname"><span class="pre">WD01</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">galaxy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">form</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'silicate'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.00035</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/weingartner.html#WD01"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.WD01" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#xdust.graindist.sizedist.Sizedist" title="xdust.graindist.sizedist.Sizedist"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sizedist</span></code></a></p>
 <p>Weingartner &amp; Draine (2001) grain size distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>galaxy</strong> (<em>str</em>) – Name of the galaxy. Default <code class="docutils literal notranslate"><span class="pre">'MW'</span></code>.</p></li>
+<li><p><strong>RV</strong> (<em>float</em>) – Total-to-selective extinction ratio. Default <code class="docutils literal notranslate"><span class="pre">3.1</span></code>.</p></li>
+<li><p><strong>form</strong> (<em>str</em>) – Dust grain composition; <code class="docutils literal notranslate"><span class="pre">'silicate'</span></code> or <code class="docutils literal notranslate"><span class="pre">'graphite'</span></code>.</p></li>
+<li><p><strong>amin</strong> (<em>astropy.units.Quantity</em><em> or </em><em>float</em>) – Minimum grain radius; plain floats are assumed to be in microns.</p></li>
+<li><p><strong>amax</strong> (<em>astropy.units.Quantity</em><em> or </em><em>float</em>) – Maximum grain radius; plain floats are assumed to be in microns.</p></li>
+<li><p><strong>na</strong> (<em>int</em>) – Number of grain size bins. Default <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p></li>
+<li><p><strong>log</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, use log-spaced grain size grid. Default <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="xdust.graindist.sizedist.WD01.mdens">
 <span class="sig-name descname"><span class="pre">mdens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;xdust.graindist.shape.sphere.Sphere</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/weingartner.html#WD01.mdens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.WD01.mdens" title="Link to this definition">¶</a></dt>
@@ -489,12 +591,22 @@ Other distributions return a continuous function that can be integrated.</p>
 
 </section>
 <section id="astrodust">
-<span id="id5"></span><h2>Astrodust<a class="headerlink" href="#astrodust" title="Link to this heading">¶</a></h2>
+<span id="id6"></span><h2>Astrodust<a class="headerlink" href="#astrodust" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.sizedist.Astrodust">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.sizedist.</span></span><span class="sig-name descname"><span class="pre">Astrodust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.00045</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/astrodust.html#Astrodust"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.Astrodust" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.sizedist.</span></span><span class="sig-name descname"><span class="pre">Astrodust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.00045</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/astrodust.html#Astrodust"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.Astrodust" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xdust.graindist.sizedist.Sizedist" title="xdust.graindist.sizedist.Sizedist"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sizedist</span></code></a></p>
 <p>The Astrodust grain size distribution accroding to Hensley &amp; Draine 2022</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amin</strong> (<em>astropy.units.Quantity</em><em> or </em><em>float</em>) – Minimum grain radius; plain floats are assumed to be in microns.</p></li>
+<li><p><strong>amax</strong> (<em>astropy.units.Quantity</em><em> or </em><em>float</em>) – Maximum grain radius; plain floats are assumed to be in microns.</p></li>
+<li><p><strong>na</strong> (<em>int</em>) – Number of grain size grid points.</p></li>
+<li><p><strong>log</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), use a log-spaced grain size grid; otherwise, use a linear grid.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="xdust.graindist.sizedist.Astrodust.mdens">
 <span class="sig-name descname"><span class="pre">mdens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;xdust.graindist.shape.sphere.Sphere</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/sizedist/astrodust.html#Astrodust.mdens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.sizedist.Astrodust.mdens" title="Link to this definition">¶</a></dt>
@@ -598,7 +710,16 @@ Other distributions return a continuous function that can be integrated.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">xdust.graindist.sizedist</a><ul>
-<li><a class="reference internal" href="#abstract-class-sizedist">Abstract Class: <em>Sizedist</em></a></li>
+<li><a class="reference internal" href="#sizedistclass">Sizedist</a><ul>
+<li><a class="reference internal" href="#xdust.graindist.sizedist.Sizedist"><code class="docutils literal notranslate"><span class="pre">Sizedist</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.graindist.sizedist.Sizedist.dtype"><code class="docutils literal notranslate"><span class="pre">Sizedist.dtype</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.sizedist.Sizedist.a"><code class="docutils literal notranslate"><span class="pre">Sizedist.a</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.sizedist.Sizedist.mdens"><code class="docutils literal notranslate"><span class="pre">Sizedist.mdens()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.sizedist.Sizedist.ndens"><code class="docutils literal notranslate"><span class="pre">Sizedist.ndens()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#grain">Grain</a><ul>
 <li><a class="reference internal" href="#xdust.graindist.sizedist.Grain"><code class="docutils literal notranslate"><span class="pre">Grain</span></code></a><ul>
 <li><a class="reference internal" href="#xdust.graindist.sizedist.Grain.a"><code class="docutils literal notranslate"><span class="pre">Grain.a</span></code></a></li>
@@ -656,5 +777,6 @@ Other distributions return a continuous function that can be integrated.</p>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     </body>
 </html>

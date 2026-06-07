@@ -1,6 +1,7 @@
 import numpy as np
 import astropy.units as u
 
+from . import Sizedist
 from .. import shape
 
 __all__ = ['Grain']
@@ -13,9 +14,14 @@ SHAPE    = shape.Sphere()
 
 #-------------------------------
 
-class Grain(object):
+class Grain(Sizedist):
     """
     A single grain size distribution
+
+    Parameters
+    ----------
+    rad : astropy.units.Quantity or float
+        Grain radius; plain floats are assumed to be in microns.
 
     Attributes
     ----------
@@ -26,12 +32,7 @@ class Grain(object):
         ``'Grain'``.
     """
     def __init__(self, rad=AMICRON):
-        """
-        Parameters
-        ----------
-        rad : astropy.units.Quantity or float
-            Grain radius; plain floats are assumed to be in microns.
-        """
+        Sizedist.__init__(self)
         self.dtype = 'Grain'
         assert np.size(rad) == 1
         if isinstance(rad, u.Quantity):

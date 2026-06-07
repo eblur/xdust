@@ -1,6 +1,7 @@
 import numpy as np
 import astropy.units as u
 from scipy.integrate import trapezoid as trapz
+from . import Sizedist
 from .. import shape
 
 __all__ = ['Astrodust']
@@ -8,7 +9,7 @@ __all__ = ['Astrodust']
 # Some default values
 RHO      = 3.0     # g cm^-3 (average grain material density)
 
-NA       = 100     # default number for grain size dist resolution
+NA       = 24     # default number for grain size dist resolution
 
 # min and max grain radii
 AMIN     = 4.5e-4   # micron (equivalent to 4.5 angstrom)
@@ -18,26 +19,26 @@ SHAPE    = shape.Sphere()
 
 #------------------------------------
 
-class Astrodust(object):
+class Astrodust(Sizedist):
     """
     The Astrodust grain size distribution accroding to Hensley & Draine 2022
+    
+    Parameters
+    ----------
+    amin : astropy.units.Quantity or float
+        Minimum grain radius; plain floats are assumed to be in microns.
+
+    amax : astropy.units.Quantity or float
+        Maximum grain radius; plain floats are assumed to be in microns.
+
+    na : int
+        Number of grain size grid points.
+
+    log : bool
+        If ``True`` (default), use a log-spaced grain size grid; otherwise, use a linear grid.
     """
-    def __init__(self, amin=AMIN, amax=AMAX, na=NA, log=False):
-        """
-        Parameters
-        ----------
-        amin : astropy.units.Quantity or float
-            Minimum grain radius; plain floats are assumed to be in microns.
-
-        amax : astropy.units.Quantity or float
-            Maximum grain radius; plain floats are assumed to be in microns.
-
-        na : int
-            Number of grain size grid points.
-
-        log : bool
-            If ``True``, use log-spaced grain size grid. Default ``False``.
-        """
+    def __init__(self, amin=AMIN, amax=AMAX, na=NA, log=True):
+        Sizedist.__init__(self)
         # Set the name of this size disribution
         self.dtype = 'Astrodust'
 

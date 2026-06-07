@@ -1,6 +1,7 @@
 import numpy as np
 import astropy.units as u
 from scipy.integrate import trapezoid as trapz
+from . import Sizedist
 from .. import shape
 
 __all__ = ['ExpCutoff']
@@ -8,7 +9,7 @@ __all__ = ['ExpCutoff']
 # Some default values
 RHO      = 3.0     # g cm^-3 (average grain material density)
 
-NA       = 100     # default number for grain size dist resolution
+NA       = 24      # default number for grain size dist resolution
 PDIST    = 3.5     # default slope for power law distribution
 
 # min and max grain radii for MRN distribution
@@ -23,29 +24,29 @@ SHAPE    = shape.Sphere()
 class ExpCutoff(object):
     """
     Power law grain size distribution with an exponential cut-off at the large end
+
+    Parameters
+    ----------
+    amin : astropy.units.Quantity or float
+        Minimum grain radius; plain floats are assumed to be in microns.
+
+    acut : astropy.units.Quantity or float
+        Exponential cut-off grain radius; plain floats are assumed to be in microns.
+
+    p : float
+        Power law slope for :math:`dn/da \\propto a^{-p}`.
+
+    na : int
+        Number of grain size grid points.
+
+    log : bool
+        If ``True`` (default), use log-spaced grain size grid; otherwise, use a linear grid.
+
+    nfold : int
+        Number of e-foldings past ``acut`` to extend the grid.
     """
-    def __init__(self, amin=AMIN, acut=ACUT, p=PDIST, na=NA, log=False, nfold=NFOLD):
-        """
-        Parameters
-        ----------
-        amin : astropy.units.Quantity or float
-            Minimum grain radius; plain floats are assumed to be in microns.
-
-        acut : astropy.units.Quantity or float
-            Exponential cut-off grain radius; plain floats are assumed to be in microns.
-
-        p : float
-            Power law slope for :math:`dn/da \\propto a^{-p}`.
-
-        na : int
-            Number of grain size grid points.
-
-        log : bool
-            If ``True``, use log-spaced grain size grid. Default ``False``.
-
-        nfold : int
-            Number of e-foldings past ``acut`` to extend the grid.
-        """
+    def __init__(self, amin=AMIN, acut=ACUT, p=PDIST, na=NA, log=True, nfold=NFOLD):
+        Sizedist.__init__(self)
         self.dtype = 'ExpCutoff'
 
         # Put amin and acut into units of micron

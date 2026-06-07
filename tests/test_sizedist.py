@@ -15,39 +15,17 @@ def test_Grain():
     tot_mass = test.mdens(MDTEST, RHOTEST)
     assert percent_diff(tot_mass, MDTEST) <= 0.01
 
-def test_Powerlaw():
-    test = sizedist.Powerlaw()
-    nd   = test.ndens(MDTEST, RHOTEST)
-    assert len(test.a) == len(nd)
-    md   = test.mdens(MDTEST, RHOTEST)
-    tot_mass = trapz(md, test.a.to('micron').value)
+@pytest.mark.parametrize('sd',
+                         [sizedist.Powerlaw(),
+                          sizedist.ExpCutoff(),
+                          sizedist.Astrodust(),
+                          sizedist.WD01()])
+def test_continuous(sd):
+    nd   = sd.ndens(MDTEST, RHOTEST)
+    assert len(sd.a) == len(nd)
+    md   = sd.mdens(MDTEST, RHOTEST)
+    tot_mass = trapz(md, sd.a.to('micron').value)
     assert percent_diff(tot_mass, MDTEST) <= 0.01
-
-def test_ExpCutoff():
-    test = sizedist.ExpCutoff()
-    nd   = test.ndens(MDTEST, RHOTEST)
-    assert len(test.a) == len(nd)
-    md   = test.mdens(MDTEST, RHOTEST)
-    tot_mass = trapz(md, test.a.to('micron').value)
-    assert percent_diff(tot_mass, MDTEST) <= 0.01
-
-def test_WD01():
-    test = sizedist.WD01()
-    nd   = test.ndens(MDTEST, RHOTEST)
-    assert len(test.a) == len(nd)
-    md   = test.mdens(MDTEST, RHOTEST)
-    tot_mass = trapz(md, test.a.to('micron').value)
-    assert percent_diff(tot_mass, MDTEST) <= 0.01
-
-def test_Astrodust():
-    test = sizedist.Astrodust()
-    nd   = test.ndens(MDTEST, RHOTEST)
-    assert len(test.a) == len(nd)
-    md   = test.mdens(MDTEST, RHOTEST)
-    tot_mass = trapz(md, test.a.to('micron').value)
-    assert percent_diff(tot_mass, MDTEST) <= 0.01
-
-
 
 # Test that doubling the dust mass column doubles the total mass
 MDTEST2 = 2.0 * MDTEST
@@ -55,7 +33,9 @@ MDTEST2 = 2.0 * MDTEST
 @pytest.mark.parametrize('sd',
                          [sizedist.Grain(),
                           sizedist.Powerlaw(),
-                          sizedist.ExpCutoff()])
+                          sizedist.ExpCutoff(),
+                          sizedist.Astrodust(),
+                          sizedist.WD01()])
 def test_dmass(sd):
     md1 = sd.mdens(MDTEST, RHOTEST)
     md2 = sd.mdens(MDTEST2, RHOTEST)

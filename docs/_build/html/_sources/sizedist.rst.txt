@@ -3,36 +3,29 @@
 xdust.graindist.sizedist
 ============================
 
-Abstract Class: *Sizedist*
---------------------------
+The size distribution library is built on the superclass :ref:`SizedistClass`, which holds the grain size distribution function and the grain size array. 
 
-Abstract class *Sizedist* must contain the following:
+The grain size distribution function is defined as the number of grains per unit volume per unit grain size, i.e. :math:`dn/da`.
 
-**Atributes**
+.. note:: 
+   Within this library the functions are used to describe column density :math:`N(a) = \int dn/da \, dl`, where :math:`dl` is the path length along the line of sight. 
+   However, one can always convert between column density and number density by dividing by the path length, i.e. :math:`n(a) = N(a)/L`.
 
-- ``dtype`` : a string description
+**Premade size distributions**
 
-- ``a`` : float or np.array [grain size, micron] or astropy Quantity
+* :ref:`Grain`
+* :ref:`Powerlaw`
+* :ref:`ExpCutoff`
+* :ref:`WD01`
+* :ref:`Astrodust`
 
-**Methods**
+.. _SizedistClass:
 
-- ``ndens(md, rho, shape=xdust.graindist.shape.Sphere)`` 
-   Returns number density of dust grains [e.g. cm^-2 um^-1]
+Sizedist
+--------
 
-   ``md`` -- float [dust mass column density in g cm^-2]
+.. autoclass:: xdust.graindist.sizedist.Sizedist
 
-   ``rho`` -- float [dust mass density in g cm^-3]
-
-   ``shape`` -- xdust.graindist.shape object (abstract class)
-
-- ``mdens(md, rho, shape=xdust.graindist.shape.Sphere)`` 
-   Returns the mass density of dust grains [e.g. in g cm^-2 um^-1]
-
-   ``md`` -- float [dust mass column density in g cm^-2]
-
-   ``rho`` -- float [dust mass density in g cm^-3]
-
-   ``shape`` -- xdust.graindist.shape object (abstract class)
 
 .. _Grain:
 

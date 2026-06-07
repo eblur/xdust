@@ -238,6 +238,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">trapezoid</span> <span class="k">as</span> <span class="n">trapz</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">erf</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">..</span><span class="w"> </span><span class="kn">import</span> <span class="n">shape</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sizedist</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;WD01&#39;</span><span class="p">]</span>
 
@@ -417,35 +418,36 @@
 
 <div class="viewcode-block" id="WD01">
 <a class="viewcode-back" href="../../../../sizedist.html#xdust.graindist.sizedist.WD01">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">WD01</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">WD01</span><span class="p">(</span><span class="n">Sizedist</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Weingartner &amp; Draine (2001) grain size distribution</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    galaxy : str</span>
+<span class="sd">        Name of the galaxy. Default ``&#39;MW&#39;``.</span>
+
+<span class="sd">    RV : float</span>
+<span class="sd">        Total-to-selective extinction ratio. Default ``3.1``.</span>
+
+<span class="sd">    form : str</span>
+<span class="sd">        Dust grain composition; ``&#39;silicate&#39;`` or ``&#39;graphite&#39;``.</span>
+
+<span class="sd">    amin : astropy.units.Quantity or float</span>
+<span class="sd">        Minimum grain radius; plain floats are assumed to be in microns.</span>
+
+<span class="sd">    amax : astropy.units.Quantity or float</span>
+<span class="sd">        Maximum grain radius; plain floats are assumed to be in microns.</span>
+
+<span class="sd">    na : int</span>
+<span class="sd">        Number of grain size bins. Default ``100``.</span>
+
+<span class="sd">    log : bool</span>
+<span class="sd">        If ``True``, use log-spaced grain size grid. Default ``True``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">galaxy</span><span class="o">=</span><span class="s1">&#39;MW&#39;</span><span class="p">,</span> <span class="n">RV</span><span class="o">=</span><span class="mf">3.1</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="s1">&#39;silicate&#39;</span><span class="p">,</span> <span class="n">amin</span><span class="o">=</span><span class="n">AMIN</span><span class="p">,</span> <span class="n">amax</span><span class="o">=</span><span class="n">AMAX</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="n">NA</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        galaxy : str</span>
-<span class="sd">            Name of the galaxy. Default ``&#39;MW&#39;``.</span>
-
-<span class="sd">        RV : float</span>
-<span class="sd">            Total-to-selective extinction ratio. Default ``3.1``.</span>
-
-<span class="sd">        form : str</span>
-<span class="sd">            Dust grain composition; ``&#39;silicate&#39;`` or ``&#39;graphite&#39;``.</span>
-
-<span class="sd">        amin : astropy.units.Quantity or float</span>
-<span class="sd">            Minimum grain radius; plain floats are assumed to be in microns.</span>
-
-<span class="sd">        amax : astropy.units.Quantity or float</span>
-<span class="sd">            Maximum grain radius; plain floats are assumed to be in microns.</span>
-
-<span class="sd">        na : int</span>
-<span class="sd">            Number of grain size bins. Default ``100``.</span>
-
-<span class="sd">        log : bool</span>
-<span class="sd">            If ``True``, use log-spaced grain size grid. Default ``True``.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">Sizedist</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        
         <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;WD01-</span><span class="si">{</span><span class="n">galaxy</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">RV</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">form</span><span class="si">}</span><span class="s1">&#39;</span>
 
         <span class="c1"># Put amin and acut into units of micron</span>

@@ -4,6 +4,7 @@ import astropy.constants as c
 from scipy.integrate import trapezoid as trapz
 from scipy.special import erf
 from .. import shape
+from . import Sizedist
 
 __all__ = ['WD01']
 
@@ -11,7 +12,7 @@ __all__ = ['WD01']
 RHO_C    = 2.24    # g cm^-3 (graphite grain material density), p.298
 RHO_S    = 3.5     # g cm^-3 (silicate grain material density), p.298
 
-NA       = 100     # default number for grain size dist resolution
+NA       = 24     # default number for grain size dist resolution
 
 # min and max grain radii
 AMIN     = 0.00035   # micron
@@ -181,35 +182,36 @@ MW_RV5p5_params = _WD01_params({
 
 #------------------------------------
 
-class WD01(object):
+class WD01(Sizedist):
     """
     Weingartner & Draine (2001) grain size distribution
+
+    Parameters
+    ----------
+    galaxy : str
+        Name of the galaxy. Default ``'MW'``.
+
+    RV : float
+        Total-to-selective extinction ratio. Default ``3.1``.
+
+    form : str
+        Dust grain composition; ``'silicate'`` or ``'graphite'``.
+
+    amin : astropy.units.Quantity or float
+        Minimum grain radius; plain floats are assumed to be in microns.
+
+    amax : astropy.units.Quantity or float
+        Maximum grain radius; plain floats are assumed to be in microns.
+
+    na : int
+        Number of grain size bins. Default ``100``.
+
+    log : bool
+        If ``True`` (default), use log-spaced grain size grid; otherwise, use a linear grid.
     """
     def __init__(self, galaxy='MW', RV=3.1, form='silicate', amin=AMIN, amax=AMAX, na=NA, log=True):
-        """
-        Parameters
-        ----------
-        galaxy : str
-            Name of the galaxy. Default ``'MW'``.
-
-        RV : float
-            Total-to-selective extinction ratio. Default ``3.1``.
-
-        form : str
-            Dust grain composition; ``'silicate'`` or ``'graphite'``.
-
-        amin : astropy.units.Quantity or float
-            Minimum grain radius; plain floats are assumed to be in microns.
-
-        amax : astropy.units.Quantity or float
-            Maximum grain radius; plain floats are assumed to be in microns.
-
-        na : int
-            Number of grain size bins. Default ``100``.
-
-        log : bool
-            If ``True``, use log-spaced grain size grid. Default ``True``.
-        """
+        Sizedist.__init__(self)
+        
         self.dtype = f'WD01-{galaxy}-{RV}-{form}'
 
         # Put amin and acut into units of micron
