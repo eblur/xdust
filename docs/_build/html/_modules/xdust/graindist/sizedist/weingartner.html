@@ -1,529 +1,641 @@
-<!DOCTYPE html>
-<html lang="en" data-accent-color="violet" data-content_root="../../../../">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>xdust.graindist.sizedist.weingartner - xdust 0.1 documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" /><script>
-    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
-    setColorMode(localStorage._theme||"auto");
-  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=e1a1ceaf" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=9454f7d5" />
-    <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root {
-  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
-  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
-}
-</style>
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../genindex.html"><link rel="search" title="Search" href="../../../../search.html">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>xdust.graindist.sizedist.weingartner - xdust 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?v=8dab3a3b" />
     
-  <meta property="og:type" content="website"/><meta property="og:title" content="xdust.graindist.sizedist.weingartner"/>
-    <meta name="twitter:card" content="summary"/>
-  </head>
-<body><div class="sy-head">
-  <div class="sy-head-blur"></div>
-  <div class="sy-head-inner sy-container mx-auto">
-    <a class="sy-head-brand" href="../../../../index.html">
-      
-      
-      <strong>xdust</strong>
-    </a>
-    <div class="sy-head-nav" id="head-nav">
-      <nav class="sy-head-links"><ul><li class="link">
-          <a href="https://github.com/eblur/xdust">
-            <span>GitHub</span></a>
-        </li></ul></nav>
-      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../search.html" method="get">
-  <input type="text" name="q" placeholder="Search" />
-  <kbd>/</kbd>
-</form><div class="sy-head-socials"></div></div>
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
     </div>
-    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
-data-aria-auto="Switch to light color mode"
-data-aria-light="Switch to dark color mode"
-data-aria-dark="Switch to auto color mode">
-<i class="i-lucide theme-icon"></i>
-</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
-        <div class="hamburger">
-          <span class="hamburger_1"></span>
-          <span class="hamburger_2"></span>
-          <span class="hamburger_3"></span>
-        </div>
-      </button>
+    <div class="header-center">
+      <a href="../../../../index.html"><div class="brand">xdust 0.1 documentation</div></a>
     </div>
-  </div>
-</div>
-<div class="sy-page sy-container flex mx-auto">
-  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
-    <div class="sy-lside-inner md:sticky">
-      <div class="sy-scrollbar p-6">
-        <div class="globaltoc" data-expand-depth="0"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../grainpop.html">xdust.grainpop</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../../graindist.html">xdust.graindist</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../sizedist.html">xdust.graindist.sizedist</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../composition.html">astrodust.graindist.composition</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../minerals.html">astrodust.graindist.composition.minerals</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../shape.html">astrodust.graindist.shape</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../scatmodels.html">xdust.scatteringmodel</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../graindist.html">xdust.graindist</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../../sizedist.html">xdust.graindist.sizedist</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../composition.html">astrodust.graindist.composition</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../minerals.html">astrodust.graindist.composition.minerals</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../shape.html">astrodust.graindist.shape</a><ul class="simple">
-</ul>
-</li>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
+  
+  <span class="sidebar-brand-text">xdust 0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../grainpop.html">xdust.grainpop</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../graindist.html">xdust.graindist</a><input aria-label="Toggle navigation of xdust.graindist" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../sizedist.html">xdust.graindist.sizedist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../composition.html">xdust.graindist.composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../shape.html">xdust.graindist.shape</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../scatmodels.html">xdust.scatteringmodel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../halos.html">xdust.halos</a></li>
 </ul>
 
-        </div>
+</div>
+</div>
+
       </div>
+      
     </div>
   </aside>
-  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
-  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
-    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
-      <i class="i-lucide close"></i>
-    </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
-  </aside>
-  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
-  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
-<div class="sy-breadcrumbs" role="navigation">
-  <div class="sy-breadcrumbs-inner flex items-center">
-    <div class="md:hidden mr-3">
-      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
-        <i class="i-lucide menu"></i>
-      </button>
-    </div>
-    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="../../../../index.html"><span itemprop="name">xdust</span></a>
-        <span>/</span>
-        <meta itemprop="position" content="1" />
-      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="../../../index.html"><span itemprop="name">Module code</span></a>
-        <span>/</span>
-        <meta itemprop="position" content="2" />
-      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">xdust.graindist.sizedist.weingartner</strong>
-        <meta itemprop="position" content="3" />
-      </li></ol>
-    <div class="xl:hidden ml-1">
-      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
-        aria-expanded="false">
-        <i class="i-lucide outdent"></i>
-      </button>
-    </div>
-  </div>
-</div><div class="flex flex-col break-words justify-between">
-      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-  <article class="yue" role="main">
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
           <h1>Source code for xdust.graindist.sizedist.weingartner</h1><div class="highlight"><pre>
-<span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-</span><span data-line="2"><span class="kn">import</span><span class="w"> </span><span class="nn">astropy.units</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">u</span>
-</span><span data-line="3"><span class="kn">import</span><span class="w"> </span><span class="nn">astropy.constants</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">c</span>
-</span><span data-line="4"><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">trapezoid</span> <span class="k">as</span> <span class="n">trapz</span>
-</span><span data-line="5"><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">erf</span>
-</span><span data-line="6"><span class="kn">from</span><span class="w"> </span><span class="nn">..</span><span class="w"> </span><span class="kn">import</span> <span class="n">shape</span>
-</span><span data-line="7">
-</span><span data-line="8"><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;WD01&#39;</span><span class="p">]</span>
-</span><span data-line="9">
-</span><span data-line="10"><span class="c1"># Some default values</span>
-</span><span data-line="11"><span class="n">RHO_C</span>    <span class="o">=</span> <span class="mf">2.24</span>    <span class="c1"># g cm^-3 (graphite grain material density), p.298</span>
-</span><span data-line="12"><span class="n">RHO_S</span>    <span class="o">=</span> <span class="mf">3.5</span>     <span class="c1"># g cm^-3 (silicate grain material density), p.298</span>
-</span><span data-line="13">
-</span><span data-line="14"><span class="n">NA</span>       <span class="o">=</span> <span class="mi">100</span>     <span class="c1"># default number for grain size dist resolution</span>
-</span><span data-line="15">
-</span><span data-line="16"><span class="c1"># min and max grain radii</span>
-</span><span data-line="17"><span class="n">AMIN</span>     <span class="o">=</span> <span class="mf">0.00035</span>   <span class="c1"># micron</span>
-</span><span data-line="18"><span class="n">AMAX</span>     <span class="o">=</span> <span class="mf">0.5</span>    <span class="c1"># micron, relevant for silicates</span>
-</span><span data-line="19"><span class="c1"># Silicate grain models mostly max out at 0.5 micron</span>
-</span><span data-line="20"><span class="c1"># Carbonaceous grain models can go out to 10 micron for RV=5.5, 1 micron for RV=3.1</span>
-</span><span data-line="21">
-</span><span data-line="22"><span class="n">SHAPE</span>    <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">Sphere</span><span class="p">()</span>
-</span><span data-line="23">
-</span><span data-line="24"><span class="c1"># I will take cases only where 10^5 bc = 0 because with current instruments</span>
-</span><span data-line="25"><span class="c1"># we don&#39;t have a lot of constraints on small graphitic grains</span>
-</span><span data-line="26"><span class="k">class</span><span class="w"> </span><span class="nc">_WD01_params</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-</span><span data-line="27">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table1</span><span class="p">):</span>
-</span><span data-line="28">        <span class="bp">self</span><span class="o">.</span><span class="n">RV</span>       <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;RV-case&#39;</span><span class="p">]</span> <span class="c1"># Note the RV value and &quot;Case&quot; for solving</span>
-</span><span data-line="29">        <span class="c1"># Case A - assumes A(I)/NH is independent of RV (makes it so that less grain volume can account for high RV)</span>
-</span><span data-line="30">        <span class="c1"># Case B - assumes grain volume is held fixed to value for RV=3.1</span>
-</span><span data-line="31">        <span class="c1"># Case B is more physical (it is unlikely that grains are removed from solid phase in denser regions, where RV is higher)</span>
-</span><span data-line="32">        <span class="bp">self</span><span class="o">.</span><span class="n">bc</span>       <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;bc&#39;</span><span class="p">]</span>
-</span><span data-line="33">        <span class="bp">self</span><span class="o">.</span><span class="n">alpha_g</span>  <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;alpha_g&#39;</span><span class="p">]</span>
-</span><span data-line="34">        <span class="bp">self</span><span class="o">.</span><span class="n">beta_g</span>   <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;beta_g&#39;</span><span class="p">]</span>
-</span><span data-line="35">        <span class="bp">self</span><span class="o">.</span><span class="n">a_tg</span>     <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;a_tg&#39;</span><span class="p">]</span> <span class="c1"># micron</span>
-</span><span data-line="36">        <span class="bp">self</span><span class="o">.</span><span class="n">a_cg</span>     <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;a_cg&#39;</span><span class="p">]</span> <span class="c1"># micron</span>
-</span><span data-line="37">        <span class="bp">self</span><span class="o">.</span><span class="n">C_g</span>      <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;C_g&#39;</span><span class="p">]</span>
-</span><span data-line="38">        <span class="bp">self</span><span class="o">.</span><span class="n">alpha_s</span>  <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;alpha_s&#39;</span><span class="p">]</span>
-</span><span data-line="39">        <span class="bp">self</span><span class="o">.</span><span class="n">beta_s</span>   <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;beta_s&#39;</span><span class="p">]</span>
-</span><span data-line="40">        <span class="bp">self</span><span class="o">.</span><span class="n">a_ts</span>     <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;a_ts&#39;</span><span class="p">]</span> <span class="c1"># micron</span>
-</span><span data-line="41">        <span class="bp">self</span><span class="o">.</span><span class="n">C_s</span>      <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;C_s&#39;</span><span class="p">]</span>
-</span><span data-line="42">        <span class="bp">self</span><span class="o">.</span><span class="n">a_cs</span>     <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># micron, see Table 1 of the paper</span>
-</span><span data-line="43">    
-</span><span data-line="44">    <span class="k">def</span><span class="w"> </span><span class="nf">silicate_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agrid</span><span class="p">):</span>
-</span><span data-line="45"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="46"><span class="sd">        Returns shape of silicate grain size distribution function [um^-1]</span>
-</span><span data-line="47"><span class="sd">        agrid : numpy ndarray of grain sizes in micron</span>
-</span><span data-line="48"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="49">        <span class="n">F</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># default, if not set properly, the final result will be all zeros</span>
-</span><span data-line="50">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_s</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-</span><span data-line="51">            <span class="n">F</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_s</span> <span class="o">*</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_ts</span><span class="p">)</span>
-</span><span data-line="52">        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_s</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-</span><span data-line="53">            <span class="n">F</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_s</span> <span class="o">*</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_ts</span><span class="p">))</span>
-</span><span data-line="54">
-</span><span data-line="55">        <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">C_s</span> <span class="o">/</span> <span class="n">agrid</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_ts</span><span class="p">)</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha_s</span> <span class="o">*</span> <span class="n">F</span>
-</span><span data-line="56">
-</span><span data-line="57">        <span class="n">ii</span> <span class="o">=</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_ts</span><span class="p">)</span>
-</span><span data-line="58">        <span class="n">result</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">agrid</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_ts</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_cs</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
-</span><span data-line="59">        <span class="k">return</span> <span class="n">result</span>
-</span><span data-line="60">    
-</span><span data-line="61">    <span class="k">def</span><span class="w"> </span><span class="nf">graphite_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agrid</span><span class="p">):</span>
-</span><span data-line="62"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="63"><span class="sd">        Returns shape of graphite grain size distribution function [um^-1]</span>
-</span><span data-line="64"><span class="sd">        agrid : numpy ndarray of grain sizes in micron</span>
-</span><span data-line="65"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="66">        <span class="n">m_c</span> <span class="o">=</span> <span class="mf">12.011</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="n">u</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
-</span><span data-line="67">        <span class="n">B1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">**</span><span class="mf">1.5</span><span class="p">)</span>
-</span><span data-line="68">        <span class="n">B1</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">4.5</span> <span class="o">*</span> <span class="mf">0.4</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.24</span> <span class="o">*</span> <span class="mf">3.5</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Angstrom</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cm&#39;</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
-</span><span data-line="69">        <span class="n">B1</span> <span class="o">*=</span> <span class="mf">0.75</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">bc</span> <span class="o">*</span> <span class="n">m_c</span>
-</span><span data-line="70">        <span class="n">B1</span> <span class="o">/=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">erf</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mf">0.4</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
-</span><span data-line="71">        <span class="n">B2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">**</span><span class="mf">1.5</span><span class="p">)</span>
-</span><span data-line="72">        <span class="n">B2</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">4.5</span> <span class="o">*</span> <span class="mf">0.4</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.24</span> <span class="o">*</span> <span class="mf">30.</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Angstrom</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cm&#39;</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
-</span><span data-line="73">        <span class="n">B2</span> <span class="o">*=</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">bc</span> <span class="o">*</span> <span class="n">m_c</span>
-</span><span data-line="74">        <span class="n">B2</span> <span class="o">/=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">erf</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mf">0.4</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">30.</span><span class="o">/</span><span class="mf">3.5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
-</span><span data-line="75">        <span class="n">D</span> <span class="o">=</span> <span class="p">(</span><span class="n">B1</span> <span class="o">/</span> <span class="n">agrid</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="mf">0.00035</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-</span><span data-line="76">        <span class="n">D</span> <span class="o">+=</span> <span class="p">(</span><span class="n">B2</span> <span class="o">/</span> <span class="n">agrid</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="mf">0.00300</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-</span><span data-line="77">
-</span><span data-line="78">        <span class="n">F</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># default, if not set properly, the final result will be all zeros</span>
-</span><span data-line="79">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_g</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-</span><span data-line="80">            <span class="n">F</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_g</span> <span class="o">*</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_tg</span><span class="p">)</span>
-</span><span data-line="81">        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_g</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-</span><span data-line="82">            <span class="n">F</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_g</span> <span class="o">*</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_tg</span><span class="p">))</span>
-</span><span data-line="83">        
-</span><span data-line="84">        <span class="n">result</span> <span class="o">=</span> <span class="n">F</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">C_g</span> <span class="o">/</span> <span class="n">agrid</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_tg</span><span class="p">)</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha_g</span>
-</span><span data-line="85">
-</span><span data-line="86">        <span class="n">ii</span> <span class="o">=</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_tg</span><span class="p">)</span>
-</span><span data-line="87">        <span class="n">result</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">agrid</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_tg</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_cg</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
-</span><span data-line="88">
-</span><span data-line="89">        <span class="n">result</span> <span class="o">+=</span> <span class="n">D</span>
-</span><span data-line="90">        <span class="k">return</span> <span class="n">result</span>
-</span><span data-line="91">
-</span><span data-line="92"><span class="c1"># bc = 0 cases</span>
-</span><span data-line="93"><span class="c1"># MW_RV3p1_params = _WD01_params({</span>
-</span><span data-line="94"><span class="c1">#     &#39;RV-case&#39;: &#39;3.1-A&#39;,</span>
-</span><span data-line="95"><span class="c1">#     &#39;bc&#39;     : 0.0,</span>
-</span><span data-line="96"><span class="c1">#     &#39;alpha_g&#39;: -2.25,</span>
-</span><span data-line="97"><span class="c1">#     &#39;beta_g&#39; : -0.0648,</span>
-</span><span data-line="98"><span class="c1">#     &#39;a_tg&#39;   : 0.00745,</span>
-</span><span data-line="99"><span class="c1">#     &#39;a_cg&#39;   : 0.606,</span>
-</span><span data-line="100"><span class="c1">#     &#39;C_g&#39;    : 9.94e-11,</span>
-</span><span data-line="101"><span class="c1">#     &#39;alpha_s&#39;: -1.48,</span>
-</span><span data-line="102"><span class="c1">#     &#39;beta_s&#39; : -9.34,</span>
-</span><span data-line="103"><span class="c1">#     &#39;a_ts&#39;   : 0.172,</span>
-</span><span data-line="104"><span class="c1">#     &#39;C_s&#39;    : 1.02e-12</span>
-</span><span data-line="105"><span class="c1"># })</span>
-</span><span data-line="106">
-</span><span data-line="107"><span class="c1"># MW_RV4p0_params = _WD01_params({</span>
-</span><span data-line="108"><span class="c1">#     &#39;RV-case&#39;: &#39;4.0-B&#39;,</span>
-</span><span data-line="109"><span class="c1">#     &#39;bc&#39;     : 0.0,</span>
-</span><span data-line="110"><span class="c1">#     &#39;alpha_g&#39;: -2.62,</span>
-</span><span data-line="111"><span class="c1">#     &#39;beta_g&#39; : -0.0144,</span>
-</span><span data-line="112"><span class="c1">#     &#39;a_tg&#39;   : 0.0187,</span>
-</span><span data-line="113"><span class="c1">#     &#39;a_cg&#39;   : 5.74,</span>
-</span><span data-line="114"><span class="c1">#     &#39;C_g&#39;    : 6.46e-12,</span>
-</span><span data-line="115"><span class="c1">#     &#39;alpha_s&#39;: -2.01,</span>
-</span><span data-line="116"><span class="c1">#     &#39;beta_s&#39; : 0.894,</span>
-</span><span data-line="117"><span class="c1">#     &#39;a_ts&#39;   : 0.198,</span>
-</span><span data-line="118"><span class="c1">#     &#39;C_s&#39;    : 4.95e-14</span>
-</span><span data-line="119"><span class="c1"># })</span>
-</span><span data-line="120">
-</span><span data-line="121"><span class="c1"># MW_RV5p5_params = _WD01_params({</span>
-</span><span data-line="122"><span class="c1">#     &#39;RV-case&#39;: &#39;5.5-B&#39;,</span>
-</span><span data-line="123"><span class="c1">#     &#39;bc&#39;     : 0.0,</span>
-</span><span data-line="124"><span class="c1">#     &#39;alpha_g&#39;: -2.80,</span>
-</span><span data-line="125"><span class="c1">#     &#39;beta_g&#39; : 0.0356,</span>
-</span><span data-line="126"><span class="c1">#     &#39;a_tg&#39;   : 0.0203,</span>
-</span><span data-line="127"><span class="c1">#     &#39;a_cg&#39;   : 3.43,</span>
-</span><span data-line="128"><span class="c1">#     &#39;C_g&#39;    : 2.74e-12,</span>
-</span><span data-line="129"><span class="c1">#     &#39;alpha_s&#39;: -1.09,</span>
-</span><span data-line="130"><span class="c1">#     &#39;beta_s&#39; : -0.370,</span>
-</span><span data-line="131"><span class="c1">#     &#39;a_ts&#39;   : 0.218,</span>
-</span><span data-line="132"><span class="c1">#     &#39;C_s&#39;    : 1.17e-13</span>
-</span><span data-line="133"><span class="c1"># })</span>
-</span><span data-line="134">
-</span><span data-line="135">
-</span><span data-line="136"><span class="c1"># distribution favored by WD01</span>
-</span><span data-line="137"><span class="n">MW_RV3p1_params</span> <span class="o">=</span> <span class="n">_WD01_params</span><span class="p">({</span>
-</span><span data-line="138">    <span class="s1">&#39;RV-case&#39;</span><span class="p">:</span> <span class="s1">&#39;3.1-A&#39;</span><span class="p">,</span>
-</span><span data-line="139">    <span class="s1">&#39;bc&#39;</span>     <span class="p">:</span> <span class="mf">6.0e-5</span><span class="p">,</span>
-</span><span data-line="140">    <span class="s1">&#39;alpha_g&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.54</span><span class="p">,</span>
-</span><span data-line="141">    <span class="s1">&#39;beta_g&#39;</span> <span class="p">:</span> <span class="o">-</span><span class="mf">0.165</span><span class="p">,</span>
-</span><span data-line="142">    <span class="s1">&#39;a_tg&#39;</span>   <span class="p">:</span> <span class="mf">0.0107</span><span class="p">,</span>
-</span><span data-line="143">    <span class="s1">&#39;a_cg&#39;</span>   <span class="p">:</span> <span class="mf">0.428</span><span class="p">,</span>
-</span><span data-line="144">    <span class="s1">&#39;C_g&#39;</span>    <span class="p">:</span> <span class="mf">9.99e-12</span><span class="p">,</span>
-</span><span data-line="145">    <span class="s1">&#39;alpha_s&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">2.21</span><span class="p">,</span>
-</span><span data-line="146">    <span class="s1">&#39;beta_s&#39;</span> <span class="p">:</span> <span class="mf">0.300</span><span class="p">,</span>
-</span><span data-line="147">    <span class="s1">&#39;a_ts&#39;</span>   <span class="p">:</span> <span class="mf">0.164</span><span class="p">,</span>
-</span><span data-line="148">    <span class="s1">&#39;C_s&#39;</span>    <span class="p">:</span> <span class="mf">1.00e-13</span>
-</span><span data-line="149"><span class="p">})</span>
-</span><span data-line="150">
-</span><span data-line="151"><span class="c1"># distribution favored by WD01</span>
-</span><span data-line="152"><span class="n">MW_RV4p0_params</span> <span class="o">=</span> <span class="n">_WD01_params</span><span class="p">({</span>
-</span><span data-line="153">    <span class="s1">&#39;RV-case&#39;</span><span class="p">:</span> <span class="s1">&#39;4.0-B&#39;</span><span class="p">,</span>
-</span><span data-line="154">    <span class="s1">&#39;bc&#39;</span>     <span class="p">:</span> <span class="mf">4.0e-5</span><span class="p">,</span>
-</span><span data-line="155">    <span class="s1">&#39;alpha_g&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.96</span><span class="p">,</span>
-</span><span data-line="156">    <span class="s1">&#39;beta_g&#39;</span> <span class="p">:</span> <span class="o">-</span><span class="mf">0.813</span><span class="p">,</span>
-</span><span data-line="157">    <span class="s1">&#39;a_tg&#39;</span>   <span class="p">:</span> <span class="mf">0.0693</span><span class="p">,</span>
-</span><span data-line="158">    <span class="s1">&#39;a_cg&#39;</span>   <span class="p">:</span> <span class="mf">3.48</span><span class="p">,</span>
-</span><span data-line="159">    <span class="s1">&#39;C_g&#39;</span>    <span class="p">:</span> <span class="mf">2.95e-13</span><span class="p">,</span>
-</span><span data-line="160">    <span class="s1">&#39;alpha_s&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">2.11</span><span class="p">,</span>
-</span><span data-line="161">    <span class="s1">&#39;beta_s&#39;</span> <span class="p">:</span> <span class="mf">2.10</span><span class="p">,</span>
-</span><span data-line="162">    <span class="s1">&#39;a_ts&#39;</span>   <span class="p">:</span> <span class="mf">0.198</span><span class="p">,</span>
-</span><span data-line="163">    <span class="s1">&#39;C_s&#39;</span>    <span class="p">:</span> <span class="mf">3.13e-14</span>
-</span><span data-line="164"><span class="p">})</span>
-</span><span data-line="165">
-</span><span data-line="166"><span class="n">MW_RV5p5_params</span> <span class="o">=</span> <span class="n">_WD01_params</span><span class="p">({</span>
-</span><span data-line="167">    <span class="s1">&#39;RV-case&#39;</span><span class="p">:</span> <span class="s1">&#39;5.5-B&#39;</span><span class="p">,</span>
-</span><span data-line="168">    <span class="s1">&#39;bc&#39;</span>     <span class="p">:</span> <span class="mf">3.0e-5</span><span class="p">,</span>
-</span><span data-line="169">    <span class="s1">&#39;alpha_g&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.90</span><span class="p">,</span>
-</span><span data-line="170">    <span class="s1">&#39;beta_g&#39;</span> <span class="p">:</span> <span class="o">-</span><span class="mf">0.0517</span><span class="p">,</span>
-</span><span data-line="171">    <span class="s1">&#39;a_tg&#39;</span>   <span class="p">:</span> <span class="mf">0.0120</span><span class="p">,</span>
-</span><span data-line="172">    <span class="s1">&#39;a_cg&#39;</span>   <span class="p">:</span> <span class="mf">7.28</span><span class="p">,</span>
-</span><span data-line="173">    <span class="s1">&#39;C_g&#39;</span>    <span class="p">:</span> <span class="mf">2.86e-12</span><span class="p">,</span>
-</span><span data-line="174">    <span class="s1">&#39;alpha_s&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.13</span><span class="p">,</span>
-</span><span data-line="175">    <span class="s1">&#39;beta_s&#39;</span> <span class="p">:</span> <span class="o">-</span><span class="mf">0.109</span><span class="p">,</span>
-</span><span data-line="176">    <span class="s1">&#39;a_ts&#39;</span>   <span class="p">:</span> <span class="mf">0.211</span><span class="p">,</span>
-</span><span data-line="177">    <span class="s1">&#39;C_s&#39;</span>    <span class="p">:</span> <span class="mf">1.04e-13</span>
-</span><span data-line="178"><span class="p">})</span>
-</span><span data-line="179">
-</span><span data-line="180">
-</span><span data-line="181">
-</span><span data-line="182"><span class="c1">#------------------------------------</span>
-</span><span data-line="183">
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">astropy.units</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">u</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">astropy.constants</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">c</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">trapezoid</span> <span class="k">as</span> <span class="n">trapz</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">erf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..</span><span class="w"> </span><span class="kn">import</span> <span class="n">shape</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;WD01&#39;</span><span class="p">]</span>
+
+<span class="c1"># Some default values</span>
+<span class="n">RHO_C</span>    <span class="o">=</span> <span class="mf">2.24</span>    <span class="c1"># g cm^-3 (graphite grain material density), p.298</span>
+<span class="n">RHO_S</span>    <span class="o">=</span> <span class="mf">3.5</span>     <span class="c1"># g cm^-3 (silicate grain material density), p.298</span>
+
+<span class="n">NA</span>       <span class="o">=</span> <span class="mi">100</span>     <span class="c1"># default number for grain size dist resolution</span>
+
+<span class="c1"># min and max grain radii</span>
+<span class="n">AMIN</span>     <span class="o">=</span> <span class="mf">0.00035</span>   <span class="c1"># micron</span>
+<span class="n">AMAX</span>     <span class="o">=</span> <span class="mf">0.5</span>    <span class="c1"># micron, relevant for silicates</span>
+<span class="c1"># Silicate grain models mostly max out at 0.5 micron</span>
+<span class="c1"># Carbonaceous grain models can go out to 10 micron for RV=5.5, 1 micron for RV=3.1</span>
+
+<span class="n">SHAPE</span>    <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">Sphere</span><span class="p">()</span>
+
+<span class="c1"># I will take cases only where 10^5 bc = 0 because with current instruments</span>
+<span class="c1"># we don&#39;t have a lot of constraints on small graphitic grains</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_WD01_params</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">RV</span>       <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;RV-case&#39;</span><span class="p">]</span> <span class="c1"># Note the RV value and &quot;Case&quot; for solving</span>
+        <span class="c1"># Case A - assumes A(I)/NH is independent of RV (makes it so that less grain volume can account for high RV)</span>
+        <span class="c1"># Case B - assumes grain volume is held fixed to value for RV=3.1</span>
+        <span class="c1"># Case B is more physical (it is unlikely that grains are removed from solid phase in denser regions, where RV is higher)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bc</span>       <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;bc&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha_g</span>  <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;alpha_g&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta_g</span>   <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;beta_g&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_tg</span>     <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;a_tg&#39;</span><span class="p">]</span> <span class="c1"># micron</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_cg</span>     <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;a_cg&#39;</span><span class="p">]</span> <span class="c1"># micron</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">C_g</span>      <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;C_g&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha_s</span>  <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;alpha_s&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta_s</span>   <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;beta_s&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_ts</span>     <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;a_ts&#39;</span><span class="p">]</span> <span class="c1"># micron</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">C_s</span>      <span class="o">=</span> <span class="n">table1</span><span class="p">[</span><span class="s1">&#39;C_s&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_cs</span>     <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># micron, see Table 1 of the paper</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">silicate_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agrid</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns shape of silicate grain size distribution function [um^-1]</span>
+<span class="sd">        agrid : numpy ndarray of grain sizes in micron</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># default, if not set properly, the final result will be all zeros</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_s</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">F</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_s</span> <span class="o">*</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_ts</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_s</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">F</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_s</span> <span class="o">*</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_ts</span><span class="p">))</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">C_s</span> <span class="o">/</span> <span class="n">agrid</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_ts</span><span class="p">)</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha_s</span> <span class="o">*</span> <span class="n">F</span>
+
+        <span class="n">ii</span> <span class="o">=</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_ts</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">agrid</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_ts</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_cs</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">graphite_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agrid</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns shape of graphite grain size distribution function [um^-1]</span>
+<span class="sd">        agrid : numpy ndarray of grain sizes in micron</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">m_c</span> <span class="o">=</span> <span class="mf">12.011</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="n">u</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">B1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">**</span><span class="mf">1.5</span><span class="p">)</span>
+        <span class="n">B1</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">4.5</span> <span class="o">*</span> <span class="mf">0.4</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.24</span> <span class="o">*</span> <span class="mf">3.5</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Angstrom</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cm&#39;</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">B1</span> <span class="o">*=</span> <span class="mf">0.75</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">bc</span> <span class="o">*</span> <span class="n">m_c</span>
+        <span class="n">B1</span> <span class="o">/=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">erf</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mf">0.4</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+        <span class="n">B2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">**</span><span class="mf">1.5</span><span class="p">)</span>
+        <span class="n">B2</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">4.5</span> <span class="o">*</span> <span class="mf">0.4</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.24</span> <span class="o">*</span> <span class="mf">30.</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Angstrom</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cm&#39;</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">B2</span> <span class="o">*=</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">bc</span> <span class="o">*</span> <span class="n">m_c</span>
+        <span class="n">B2</span> <span class="o">/=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">erf</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mf">0.4</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">30.</span><span class="o">/</span><span class="mf">3.5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+        <span class="n">D</span> <span class="o">=</span> <span class="p">(</span><span class="n">B1</span> <span class="o">/</span> <span class="n">agrid</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="mf">0.00035</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">D</span> <span class="o">+=</span> <span class="p">(</span><span class="n">B2</span> <span class="o">/</span> <span class="n">agrid</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="mf">0.00300</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="n">F</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># default, if not set properly, the final result will be all zeros</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_g</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">F</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_g</span> <span class="o">*</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_tg</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_g</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">F</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_g</span> <span class="o">*</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_tg</span><span class="p">))</span>
+        
+        <span class="n">result</span> <span class="o">=</span> <span class="n">F</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">C_g</span> <span class="o">/</span> <span class="n">agrid</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_tg</span><span class="p">)</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha_g</span>
+
+        <span class="n">ii</span> <span class="o">=</span> <span class="p">(</span><span class="n">agrid</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_tg</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">agrid</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_tg</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_cg</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">+=</span> <span class="n">D</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># bc = 0 cases</span>
+<span class="c1"># MW_RV3p1_params = _WD01_params({</span>
+<span class="c1">#     &#39;RV-case&#39;: &#39;3.1-A&#39;,</span>
+<span class="c1">#     &#39;bc&#39;     : 0.0,</span>
+<span class="c1">#     &#39;alpha_g&#39;: -2.25,</span>
+<span class="c1">#     &#39;beta_g&#39; : -0.0648,</span>
+<span class="c1">#     &#39;a_tg&#39;   : 0.00745,</span>
+<span class="c1">#     &#39;a_cg&#39;   : 0.606,</span>
+<span class="c1">#     &#39;C_g&#39;    : 9.94e-11,</span>
+<span class="c1">#     &#39;alpha_s&#39;: -1.48,</span>
+<span class="c1">#     &#39;beta_s&#39; : -9.34,</span>
+<span class="c1">#     &#39;a_ts&#39;   : 0.172,</span>
+<span class="c1">#     &#39;C_s&#39;    : 1.02e-12</span>
+<span class="c1"># })</span>
+
+<span class="c1"># MW_RV4p0_params = _WD01_params({</span>
+<span class="c1">#     &#39;RV-case&#39;: &#39;4.0-B&#39;,</span>
+<span class="c1">#     &#39;bc&#39;     : 0.0,</span>
+<span class="c1">#     &#39;alpha_g&#39;: -2.62,</span>
+<span class="c1">#     &#39;beta_g&#39; : -0.0144,</span>
+<span class="c1">#     &#39;a_tg&#39;   : 0.0187,</span>
+<span class="c1">#     &#39;a_cg&#39;   : 5.74,</span>
+<span class="c1">#     &#39;C_g&#39;    : 6.46e-12,</span>
+<span class="c1">#     &#39;alpha_s&#39;: -2.01,</span>
+<span class="c1">#     &#39;beta_s&#39; : 0.894,</span>
+<span class="c1">#     &#39;a_ts&#39;   : 0.198,</span>
+<span class="c1">#     &#39;C_s&#39;    : 4.95e-14</span>
+<span class="c1"># })</span>
+
+<span class="c1"># MW_RV5p5_params = _WD01_params({</span>
+<span class="c1">#     &#39;RV-case&#39;: &#39;5.5-B&#39;,</span>
+<span class="c1">#     &#39;bc&#39;     : 0.0,</span>
+<span class="c1">#     &#39;alpha_g&#39;: -2.80,</span>
+<span class="c1">#     &#39;beta_g&#39; : 0.0356,</span>
+<span class="c1">#     &#39;a_tg&#39;   : 0.0203,</span>
+<span class="c1">#     &#39;a_cg&#39;   : 3.43,</span>
+<span class="c1">#     &#39;C_g&#39;    : 2.74e-12,</span>
+<span class="c1">#     &#39;alpha_s&#39;: -1.09,</span>
+<span class="c1">#     &#39;beta_s&#39; : -0.370,</span>
+<span class="c1">#     &#39;a_ts&#39;   : 0.218,</span>
+<span class="c1">#     &#39;C_s&#39;    : 1.17e-13</span>
+<span class="c1"># })</span>
+
+
+<span class="c1"># distribution favored by WD01</span>
+<span class="n">MW_RV3p1_params</span> <span class="o">=</span> <span class="n">_WD01_params</span><span class="p">({</span>
+    <span class="s1">&#39;RV-case&#39;</span><span class="p">:</span> <span class="s1">&#39;3.1-A&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bc&#39;</span>     <span class="p">:</span> <span class="mf">6.0e-5</span><span class="p">,</span>
+    <span class="s1">&#39;alpha_g&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.54</span><span class="p">,</span>
+    <span class="s1">&#39;beta_g&#39;</span> <span class="p">:</span> <span class="o">-</span><span class="mf">0.165</span><span class="p">,</span>
+    <span class="s1">&#39;a_tg&#39;</span>   <span class="p">:</span> <span class="mf">0.0107</span><span class="p">,</span>
+    <span class="s1">&#39;a_cg&#39;</span>   <span class="p">:</span> <span class="mf">0.428</span><span class="p">,</span>
+    <span class="s1">&#39;C_g&#39;</span>    <span class="p">:</span> <span class="mf">9.99e-12</span><span class="p">,</span>
+    <span class="s1">&#39;alpha_s&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">2.21</span><span class="p">,</span>
+    <span class="s1">&#39;beta_s&#39;</span> <span class="p">:</span> <span class="mf">0.300</span><span class="p">,</span>
+    <span class="s1">&#39;a_ts&#39;</span>   <span class="p">:</span> <span class="mf">0.164</span><span class="p">,</span>
+    <span class="s1">&#39;C_s&#39;</span>    <span class="p">:</span> <span class="mf">1.00e-13</span>
+<span class="p">})</span>
+
+<span class="c1"># distribution favored by WD01</span>
+<span class="n">MW_RV4p0_params</span> <span class="o">=</span> <span class="n">_WD01_params</span><span class="p">({</span>
+    <span class="s1">&#39;RV-case&#39;</span><span class="p">:</span> <span class="s1">&#39;4.0-B&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bc&#39;</span>     <span class="p">:</span> <span class="mf">4.0e-5</span><span class="p">,</span>
+    <span class="s1">&#39;alpha_g&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.96</span><span class="p">,</span>
+    <span class="s1">&#39;beta_g&#39;</span> <span class="p">:</span> <span class="o">-</span><span class="mf">0.813</span><span class="p">,</span>
+    <span class="s1">&#39;a_tg&#39;</span>   <span class="p">:</span> <span class="mf">0.0693</span><span class="p">,</span>
+    <span class="s1">&#39;a_cg&#39;</span>   <span class="p">:</span> <span class="mf">3.48</span><span class="p">,</span>
+    <span class="s1">&#39;C_g&#39;</span>    <span class="p">:</span> <span class="mf">2.95e-13</span><span class="p">,</span>
+    <span class="s1">&#39;alpha_s&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">2.11</span><span class="p">,</span>
+    <span class="s1">&#39;beta_s&#39;</span> <span class="p">:</span> <span class="mf">2.10</span><span class="p">,</span>
+    <span class="s1">&#39;a_ts&#39;</span>   <span class="p">:</span> <span class="mf">0.198</span><span class="p">,</span>
+    <span class="s1">&#39;C_s&#39;</span>    <span class="p">:</span> <span class="mf">3.13e-14</span>
+<span class="p">})</span>
+
+<span class="n">MW_RV5p5_params</span> <span class="o">=</span> <span class="n">_WD01_params</span><span class="p">({</span>
+    <span class="s1">&#39;RV-case&#39;</span><span class="p">:</span> <span class="s1">&#39;5.5-B&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bc&#39;</span>     <span class="p">:</span> <span class="mf">3.0e-5</span><span class="p">,</span>
+    <span class="s1">&#39;alpha_g&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.90</span><span class="p">,</span>
+    <span class="s1">&#39;beta_g&#39;</span> <span class="p">:</span> <span class="o">-</span><span class="mf">0.0517</span><span class="p">,</span>
+    <span class="s1">&#39;a_tg&#39;</span>   <span class="p">:</span> <span class="mf">0.0120</span><span class="p">,</span>
+    <span class="s1">&#39;a_cg&#39;</span>   <span class="p">:</span> <span class="mf">7.28</span><span class="p">,</span>
+    <span class="s1">&#39;C_g&#39;</span>    <span class="p">:</span> <span class="mf">2.86e-12</span><span class="p">,</span>
+    <span class="s1">&#39;alpha_s&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.13</span><span class="p">,</span>
+    <span class="s1">&#39;beta_s&#39;</span> <span class="p">:</span> <span class="o">-</span><span class="mf">0.109</span><span class="p">,</span>
+    <span class="s1">&#39;a_ts&#39;</span>   <span class="p">:</span> <span class="mf">0.211</span><span class="p">,</span>
+    <span class="s1">&#39;C_s&#39;</span>    <span class="p">:</span> <span class="mf">1.04e-13</span>
+<span class="p">})</span>
+
+
+
+<span class="c1">#------------------------------------</span>
+
 <div class="viewcode-block" id="WD01">
 <a class="viewcode-back" href="../../../../sizedist.html#xdust.graindist.sizedist.WD01">[docs]</a>
-</span><span data-line="184"><span class="k">class</span><span class="w"> </span><span class="nc">WD01</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-</span><span data-line="185"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="186"><span class="sd">    Weingartner &amp; Draine (2001) grain size distribution</span>
-</span><span data-line="187"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="188">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">galaxy</span><span class="o">=</span><span class="s1">&#39;MW&#39;</span><span class="p">,</span> <span class="n">RV</span><span class="o">=</span><span class="mf">3.1</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="s1">&#39;silicate&#39;</span><span class="p">,</span> <span class="n">amin</span><span class="o">=</span><span class="n">AMIN</span><span class="p">,</span> <span class="n">amax</span><span class="o">=</span><span class="n">AMAX</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="n">NA</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-</span><span data-line="189"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="190"><span class="sd">        Inputs</span>
-</span><span data-line="191"><span class="sd">        ------</span>
-</span><span data-line="192"><span class="sd">        galaxy : str : name of the galaxy (default: &#39;MW&#39;)</span>
-</span><span data-line="193">
-</span><span data-line="194"><span class="sd">        RV : float : total-to-selective extinction ratio (default: 3.1)</span>
-</span><span data-line="195">
-</span><span data-line="196"><span class="sd">        form : str : dust grain form (default: &#39;silicate&#39;)</span>
-</span><span data-line="197">
-</span><span data-line="198"><span class="sd">        amin : astropy.units.Quantity -or- float :  minimum grain radius; if a float, micron units assumed</span>
-</span><span data-line="199">
-</span><span data-line="200"><span class="sd">        amax : astropy.units.Quantity -or- float :  maximum grain radius; if a float, micron units assumed</span>
-</span><span data-line="201">
-</span><span data-line="202"><span class="sd">        na : int : number of grain size bins (default: 100)</span>
-</span><span data-line="203">
-</span><span data-line="204"><span class="sd">        log : bool : whether to use logarithmic spacing for grain sizes (default: False)</span>
-</span><span data-line="205"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="206">        <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;WD01-</span><span class="si">{</span><span class="n">galaxy</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">RV</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">form</span><span class="si">}</span><span class="s1">&#39;</span>
-</span><span data-line="207">
-</span><span data-line="208">        <span class="c1"># Put amin and acut into units of micron</span>
-</span><span data-line="209">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">amin</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">):</span>
-</span><span data-line="210">            <span class="n">amin_um</span> <span class="o">=</span> <span class="n">amin</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;micron&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
-</span><span data-line="211">        <span class="k">else</span><span class="p">:</span>
-</span><span data-line="212">            <span class="n">amin_um</span> <span class="o">=</span> <span class="n">amin</span>
-</span><span data-line="213">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">amax</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">):</span>
-</span><span data-line="214">            <span class="n">amax_um</span> <span class="o">=</span> <span class="n">amax</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;micron&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
-</span><span data-line="215">        <span class="k">else</span><span class="p">:</span>
-</span><span data-line="216">            <span class="n">amax_um</span> <span class="o">=</span> <span class="n">amax</span>
-</span><span data-line="217">
-</span><span data-line="218">        <span class="c1"># Set up the grid of grain sizes</span>
-</span><span data-line="219">        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span data-line="220">        <span class="k">if</span> <span class="n">log</span><span class="p">:</span>
-</span><span data-line="221">            <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">amin_um</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">amax_um</span><span class="p">),</span> <span class="n">na</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span>
-</span><span data-line="222">        <span class="k">else</span><span class="p">:</span>
-</span><span data-line="223">            <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">amin_um</span><span class="p">,</span> <span class="n">amax_um</span><span class="p">,</span> <span class="n">na</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span>
-</span><span data-line="224">
-</span><span data-line="225">        <span class="c1"># Set up the relevant parameters</span>
-</span><span data-line="226">        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span data-line="227">        <span class="k">if</span> <span class="n">galaxy</span> <span class="o">==</span> <span class="s1">&#39;MW&#39;</span><span class="p">:</span>
-</span><span data-line="228">            <span class="k">if</span> <span class="n">RV</span> <span class="o">==</span> <span class="mf">3.1</span><span class="p">:</span>
-</span><span data-line="229">                <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">MW_RV3p1_params</span>
-</span><span data-line="230">            <span class="k">elif</span> <span class="n">RV</span> <span class="o">==</span> <span class="mf">4.0</span><span class="p">:</span>
-</span><span data-line="231">                <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">MW_RV4p0_params</span>
-</span><span data-line="232">            <span class="k">elif</span> <span class="n">RV</span> <span class="o">==</span> <span class="mf">5.5</span><span class="p">:</span>
-</span><span data-line="233">                <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">MW_RV5p5_params</span>
-</span><span data-line="234">            <span class="k">else</span><span class="p">:</span>
-</span><span data-line="235">                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RV=</span><span class="si">{</span><span class="n">RV</span><span class="si">}</span><span class="s2"> not implemented for galaxy=</span><span class="si">{</span><span class="n">galaxy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span data-line="236">        
-</span><span data-line="237">        <span class="bp">self</span><span class="o">.</span><span class="n">form</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span data-line="238">        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;silicate&#39;</span><span class="p">,</span> <span class="s1">&#39;silicates&#39;</span><span class="p">]:</span>
-</span><span data-line="239">            <span class="bp">self</span><span class="o">.</span><span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;silicate&#39;</span>
-</span><span data-line="240">        <span class="k">elif</span> <span class="n">form</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;carbon&#39;</span><span class="p">,</span> <span class="s1">&#39;carbonaceous&#39;</span><span class="p">,</span> <span class="s1">&#39;graphite&#39;</span><span class="p">,</span> <span class="s1">&#39;graphitic&#39;</span><span class="p">]:</span>
-</span><span data-line="241">            <span class="bp">self</span><span class="o">.</span><span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;graphite&#39;</span>
-</span><span data-line="242">        <span class="k">else</span><span class="p">:</span>
-</span><span data-line="243">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;form=</span><span class="si">{</span><span class="n">form</span><span class="si">}</span><span class="s2"> not recognized; choose from &#39;silicate&#39; or &#39;graphite&#39;&quot;</span><span class="p">)</span>
-</span><span data-line="244">        
-</span><span data-line="245">        <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span data-line="246">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">form</span> <span class="o">==</span> <span class="s1">&#39;silicate&#39;</span><span class="p">:</span>
-</span><span data-line="247">            <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="n">RHO_S</span>
-</span><span data-line="248">        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">form</span> <span class="o">==</span> <span class="s1">&#39;graphite&#39;</span><span class="p">:</span>
-</span><span data-line="249">            <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="n">RHO_C</span>
-</span><span data-line="250">
+<span class="k">class</span><span class="w"> </span><span class="nc">WD01</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Weingartner &amp; Draine (2001) grain size distribution</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">galaxy</span><span class="o">=</span><span class="s1">&#39;MW&#39;</span><span class="p">,</span> <span class="n">RV</span><span class="o">=</span><span class="mf">3.1</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="s1">&#39;silicate&#39;</span><span class="p">,</span> <span class="n">amin</span><span class="o">=</span><span class="n">AMIN</span><span class="p">,</span> <span class="n">amax</span><span class="o">=</span><span class="n">AMAX</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="n">NA</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        galaxy : str</span>
+<span class="sd">            Name of the galaxy. Default ``&#39;MW&#39;``.</span>
+
+<span class="sd">        RV : float</span>
+<span class="sd">            Total-to-selective extinction ratio. Default ``3.1``.</span>
+
+<span class="sd">        form : str</span>
+<span class="sd">            Dust grain composition; ``&#39;silicate&#39;`` or ``&#39;graphite&#39;``.</span>
+
+<span class="sd">        amin : astropy.units.Quantity or float</span>
+<span class="sd">            Minimum grain radius; plain floats are assumed to be in microns.</span>
+
+<span class="sd">        amax : astropy.units.Quantity or float</span>
+<span class="sd">            Maximum grain radius; plain floats are assumed to be in microns.</span>
+
+<span class="sd">        na : int</span>
+<span class="sd">            Number of grain size bins. Default ``100``.</span>
+
+<span class="sd">        log : bool</span>
+<span class="sd">            If ``True``, use log-spaced grain size grid. Default ``True``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;WD01-</span><span class="si">{</span><span class="n">galaxy</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">RV</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">form</span><span class="si">}</span><span class="s1">&#39;</span>
+
+        <span class="c1"># Put amin and acut into units of micron</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">amin</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">):</span>
+            <span class="n">amin_um</span> <span class="o">=</span> <span class="n">amin</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;micron&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">amin_um</span> <span class="o">=</span> <span class="n">amin</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">amax</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">):</span>
+            <span class="n">amax_um</span> <span class="o">=</span> <span class="n">amax</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;micron&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">amax_um</span> <span class="o">=</span> <span class="n">amax</span>
+
+        <span class="c1"># Set up the grid of grain sizes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">log</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">amin_um</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">amax_um</span><span class="p">),</span> <span class="n">na</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">amin_um</span><span class="p">,</span> <span class="n">amax_um</span><span class="p">,</span> <span class="n">na</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span>
+
+        <span class="c1"># Set up the relevant parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">galaxy</span> <span class="o">==</span> <span class="s1">&#39;MW&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">RV</span> <span class="o">==</span> <span class="mf">3.1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">MW_RV3p1_params</span>
+            <span class="k">elif</span> <span class="n">RV</span> <span class="o">==</span> <span class="mf">4.0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">MW_RV4p0_params</span>
+            <span class="k">elif</span> <span class="n">RV</span> <span class="o">==</span> <span class="mf">5.5</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">MW_RV5p5_params</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RV=</span><span class="si">{</span><span class="n">RV</span><span class="si">}</span><span class="s2"> not implemented for galaxy=</span><span class="si">{</span><span class="n">galaxy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">form</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;silicate&#39;</span><span class="p">,</span> <span class="s1">&#39;silicates&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;silicate&#39;</span>
+        <span class="k">elif</span> <span class="n">form</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;carbon&#39;</span><span class="p">,</span> <span class="s1">&#39;carbonaceous&#39;</span><span class="p">,</span> <span class="s1">&#39;graphite&#39;</span><span class="p">,</span> <span class="s1">&#39;graphitic&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;graphite&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;form=</span><span class="si">{</span><span class="n">form</span><span class="si">}</span><span class="s2"> not recognized; choose from &#39;silicate&#39; or &#39;graphite&#39;&quot;</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">form</span> <span class="o">==</span> <span class="s1">&#39;silicate&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="n">RHO_S</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">form</span> <span class="o">==</span> <span class="s1">&#39;graphite&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="n">RHO_C</span>
+
 <div class="viewcode-block" id="WD01.ndens">
 <a class="viewcode-back" href="../../../../sizedist.html#xdust.graindist.sizedist.WD01.ndens">[docs]</a>
-</span><span data-line="251">    <span class="k">def</span><span class="w"> </span><span class="nf">ndens</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">md</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">SHAPE</span><span class="p">):</span>
-</span><span data-line="252"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="253"><span class="sd">        Calculate number density of dust grains, given a dust mass column</span>
-</span><span data-line="254">
-</span><span data-line="255"><span class="sd">        Inputs</span>
-</span><span data-line="256"><span class="sd">        ------</span>
-</span><span data-line="257"><span class="sd">        </span>
-</span><span data-line="258"><span class="sd">        md : float : mass column density [g cm^-2]</span>
-</span><span data-line="259">
-</span><span data-line="260"><span class="sd">        rho : float : grain material density [g cm^-3]</span>
-</span><span data-line="261"><span class="sd">            If called upon running, it will override the default grain density.</span>
-</span><span data-line="262"><span class="sd">            Then self.rho will be reset to this value</span>
-</span><span data-line="263">
-</span><span data-line="264"><span class="sd">        shape : xdust.graindist.shape object (default is a Sphere)</span>
-</span><span data-line="265">
-</span><span data-line="266"><span class="sd">        Returns</span>
-</span><span data-line="267"><span class="sd">        -------</span>
-</span><span data-line="268"><span class="sd">        </span>
-</span><span data-line="269"><span class="sd">        Column density of grains in [cm^-2 um^-2]</span>
-</span><span data-line="270"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="271">        <span class="n">a_um</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;micron&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
-</span><span data-line="272">
-</span><span data-line="273">        <span class="n">adep</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># unit will be um^-1</span>
-</span><span data-line="274">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">form</span> <span class="o">==</span> <span class="s1">&#39;silicate&#39;</span><span class="p">:</span>
-</span><span data-line="275">            <span class="n">adep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">silicate_function</span><span class="p">(</span><span class="n">a_um</span><span class="p">)</span>
-</span><span data-line="276">        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">form</span> <span class="o">==</span> <span class="s1">&#39;graphite&#39;</span><span class="p">:</span>
-</span><span data-line="277">            <span class="n">adep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">graphite_function</span><span class="p">(</span><span class="n">a_um</span><span class="p">)</span>
-</span><span data-line="278">
-</span><span data-line="279">        <span class="k">if</span> <span class="p">(</span><span class="n">rho</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">rho</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">):</span>
-</span><span data-line="280">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overriding default grain density of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="si">}</span><span class="s2"> g cm^-3 with </span><span class="si">{</span><span class="n">rho</span><span class="si">}</span><span class="s2"> g cm^-3&quot;</span><span class="p">)</span>
-</span><span data-line="281">            <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="n">rho</span>
-</span><span data-line="282">
-</span><span data-line="283">        <span class="c1"># get the mass dependence, units of g um^-1</span>
-</span><span data-line="284">        <span class="n">mgra</span>  <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">vol</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span>  <span class="c1"># g (mass of each grain)</span>
-</span><span data-line="285">        <span class="n">dmda</span>  <span class="o">=</span> <span class="n">adep</span> <span class="o">*</span> <span class="n">mgra</span>
-</span><span data-line="286">
-</span><span data-line="287">        <span class="c1"># integrate to get the correct scaling constant</span>
-</span><span data-line="288">        <span class="n">const</span> <span class="o">=</span> <span class="n">md</span> <span class="o">/</span> <span class="n">trapz</span><span class="p">(</span><span class="n">dmda</span><span class="p">,</span> <span class="n">a_um</span><span class="p">)</span>  <span class="c1"># g cm^-2 / g = cm^-2</span>
-</span><span data-line="289">
-</span><span data-line="290">        <span class="c1"># Final units are number column density per grain size unit</span>
-</span><span data-line="291">        <span class="k">return</span> <span class="n">const</span> <span class="o">*</span> <span class="n">adep</span>  <span class="c1"># cm^-2 um^-1</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ndens</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">md</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">SHAPE</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate number density of dust grains, given a dust mass column</span>
 
-</span><span data-line="292">
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        md : float</span>
+<span class="sd">            Mass column density [g cm^-2].</span>
+
+<span class="sd">        rho : float, optional</span>
+<span class="sd">            Grain material density [g cm^-3]. If provided and different from</span>
+<span class="sd">            ``self.rho``, overrides the default density.</span>
+
+<span class="sd">        shape : xdust.graindist.shape object</span>
+<span class="sd">            Grain shape (default: ``Sphere``).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy.ndarray</span>
+<span class="sd">            Column density of grains [cm^-2 um^-1].</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">a_um</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;micron&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+
+        <span class="n">adep</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># unit will be um^-1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">form</span> <span class="o">==</span> <span class="s1">&#39;silicate&#39;</span><span class="p">:</span>
+            <span class="n">adep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">silicate_function</span><span class="p">(</span><span class="n">a_um</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">form</span> <span class="o">==</span> <span class="s1">&#39;graphite&#39;</span><span class="p">:</span>
+            <span class="n">adep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">graphite_function</span><span class="p">(</span><span class="n">a_um</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">rho</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">rho</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overriding default grain density of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="si">}</span><span class="s2"> g cm^-3 with </span><span class="si">{</span><span class="n">rho</span><span class="si">}</span><span class="s2"> g cm^-3&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="n">rho</span>
+
+        <span class="c1"># get the mass dependence, units of g um^-1</span>
+        <span class="n">mgra</span>  <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">vol</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span>  <span class="c1"># g (mass of each grain)</span>
+        <span class="n">dmda</span>  <span class="o">=</span> <span class="n">adep</span> <span class="o">*</span> <span class="n">mgra</span>
+
+        <span class="c1"># integrate to get the correct scaling constant</span>
+        <span class="n">const</span> <span class="o">=</span> <span class="n">md</span> <span class="o">/</span> <span class="n">trapz</span><span class="p">(</span><span class="n">dmda</span><span class="p">,</span> <span class="n">a_um</span><span class="p">)</span>  <span class="c1"># g cm^-2 / g = cm^-2</span>
+
+        <span class="c1"># Final units are number column density per grain size unit</span>
+        <span class="k">return</span> <span class="n">const</span> <span class="o">*</span> <span class="n">adep</span>  <span class="c1"># cm^-2 um^-1</span></div>
+
+
 <div class="viewcode-block" id="WD01.mdens">
 <a class="viewcode-back" href="../../../../sizedist.html#xdust.graindist.sizedist.WD01.mdens">[docs]</a>
-</span><span data-line="293">    <span class="k">def</span><span class="w"> </span><span class="nf">mdens</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">md</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">SHAPE</span><span class="p">):</span>
-</span><span data-line="294"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="295"><span class="sd">        Calculate mass density function for the dust grains, given a total dust mass column</span>
-</span><span data-line="296">
-</span><span data-line="297"><span class="sd">        Inputs</span>
-</span><span data-line="298"><span class="sd">        ------</span>
-</span><span data-line="299"><span class="sd">        </span>
-</span><span data-line="300"><span class="sd">        md : float : mass column density [g cm^-2]</span>
-</span><span data-line="301">
-</span><span data-line="302"><span class="sd">        rho : float : grain material density [g cm^-3]</span>
-</span><span data-line="303">
-</span><span data-line="304"><span class="sd">        shape : xdust.graindist.shape object (default is a Sphere)</span>
-</span><span data-line="305">
-</span><span data-line="306"><span class="sd">        Returns</span>
-</span><span data-line="307"><span class="sd">        -------</span>
-</span><span data-line="308"><span class="sd">        </span>
-</span><span data-line="309"><span class="sd">        Mass column distribution of grains in [cg m^-2 um^-1]</span>
-</span><span data-line="310"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="311">        <span class="k">if</span> <span class="p">(</span><span class="n">rho</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">rho</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">):</span>
-</span><span data-line="312">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overriding default grain density of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="si">}</span><span class="s2"> g cm^-3 with </span><span class="si">{</span><span class="n">rho</span><span class="si">}</span><span class="s2"> g cm^-3&quot;</span><span class="p">)</span>
-</span><span data-line="313">            <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="n">rho</span>
-</span><span data-line="314">
-</span><span data-line="315">        <span class="n">nd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndens</span><span class="p">(</span><span class="n">md</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>  <span class="c1"># dn/da [cm^-2 um^-1]</span>
-</span><span data-line="316">        <span class="n">mg</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">vol</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span>     <span class="c1"># grain mass for each radius [g]</span>
-</span><span data-line="317">        <span class="k">return</span> <span class="n">nd</span> <span class="o">*</span> <span class="n">mg</span>  <span class="c1"># g cm^-2 um^-1</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mdens</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">md</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">SHAPE</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate mass density function for the dust grains, given a total dust mass column</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        md : float</span>
+<span class="sd">            Mass column density [g cm^-2].</span>
+
+<span class="sd">        rho : float, optional</span>
+<span class="sd">            Grain material density [g cm^-3]. If provided and different from</span>
+<span class="sd">            ``self.rho``, overrides the default density.</span>
+
+<span class="sd">        shape : xdust.graindist.shape object</span>
+<span class="sd">            Grain shape (default: ``Sphere``).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy.ndarray</span>
+<span class="sd">            Mass column distribution [g cm^-2 um^-1].</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rho</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">rho</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overriding default grain density of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="si">}</span><span class="s2"> g cm^-3 with </span><span class="si">{</span><span class="n">rho</span><span class="si">}</span><span class="s2"> g cm^-3&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="n">rho</span>
+
+        <span class="n">nd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndens</span><span class="p">(</span><span class="n">md</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>  <span class="c1"># dn/da [cm^-2 um^-1]</span>
+        <span class="n">mg</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">vol</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span>     <span class="c1"># grain mass for each radius [g]</span>
+        <span class="k">return</span> <span class="n">nd</span> <span class="o">*</span> <span class="n">mg</span>  <span class="c1"># g cm^-2 um^-1</span></div>
 </div>
 
-</span><span data-line="318">
-</span><span data-line="319">
-</span><span data-line="320">
-</span><span data-line="321"><span class="k">def</span><span class="w"> </span><span class="nf">WD01_validation_plot</span><span class="p">(</span><span class="n">galaxy</span><span class="o">=</span><span class="s1">&#39;MW&#39;</span><span class="p">,</span> <span class="n">RV</span><span class="o">=</span><span class="mf">3.1</span><span class="p">,</span> <span class="n">amax</span><span class="o">=</span><span class="n">AMAX</span><span class="p">):</span>
-</span><span data-line="322"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="323"><span class="sd">    Make a plot to validate the WD01 implementation</span>
-</span><span data-line="324"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="325">    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-</span><span data-line="326">
-</span><span data-line="327">    <span class="n">agrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">0.00035</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">amax</span><span class="p">),</span> <span class="mi">200</span><span class="p">)</span> <span class="c1"># micron</span>
-</span><span data-line="328">    <span class="c1"># agrid = np.logspace(np.log10(0.00035), np.log10(amax), 20) # for debugging</span>
-</span><span data-line="329">
-</span><span data-line="330">    <span class="k">if</span> <span class="n">galaxy</span> <span class="o">==</span> <span class="s1">&#39;MW&#39;</span> <span class="ow">and</span> <span class="n">RV</span> <span class="o">==</span> <span class="mf">3.1</span><span class="p">:</span>
-</span><span data-line="331">        <span class="n">params</span> <span class="o">=</span> <span class="n">MW_RV3p1_params</span>
-</span><span data-line="332">    <span class="k">elif</span> <span class="n">galaxy</span> <span class="o">==</span> <span class="s1">&#39;MW&#39;</span> <span class="ow">and</span> <span class="n">RV</span> <span class="o">==</span> <span class="mf">4.0</span><span class="p">:</span>
-</span><span data-line="333">        <span class="n">params</span> <span class="o">=</span> <span class="n">MW_RV4p0_params</span>
-</span><span data-line="334">    <span class="k">elif</span> <span class="n">galaxy</span> <span class="o">==</span> <span class="s1">&#39;MW&#39;</span> <span class="ow">and</span> <span class="n">RV</span> <span class="o">==</span> <span class="mf">5.5</span><span class="p">:</span>
-</span><span data-line="335">        <span class="n">params</span> <span class="o">=</span> <span class="n">MW_RV5p5_params</span>
-</span><span data-line="336">    <span class="k">else</span><span class="p">:</span>
-</span><span data-line="337">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RV=</span><span class="si">{</span><span class="n">RV</span><span class="si">}</span><span class="s2"> not implemented for galaxy=</span><span class="si">{</span><span class="n">galaxy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span data-line="338">    
-</span><span data-line="339">    <span class="n">dnda_sil</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">silicate_function</span><span class="p">(</span><span class="n">agrid</span><span class="p">)</span>
-</span><span data-line="340">    <span class="n">dnda_gra</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">graphite_function</span><span class="p">(</span><span class="n">agrid</span><span class="p">)</span>
-</span><span data-line="341">
-</span><span data-line="342">    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-</span><span data-line="343">    <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">agrid</span><span class="p">,</span> <span class="n">agrid</span><span class="o">**</span><span class="mi">4</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cm&#39;</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="mf">1e29</span> <span class="o">*</span> <span class="n">dnda_gra</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">galaxy</span><span class="si">}</span><span class="s1"> RV=</span><span class="si">{</span><span class="n">RV</span><span class="si">}</span><span class="s1"> graphite&#39;</span><span class="p">)</span>
-</span><span data-line="344">    <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">agrid</span><span class="p">,</span> <span class="n">agrid</span><span class="o">**</span><span class="mi">4</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cm&#39;</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="mf">1e29</span> <span class="o">*</span> <span class="n">dnda_sil</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">galaxy</span><span class="si">}</span><span class="s1"> RV=</span><span class="si">{</span><span class="n">RV</span><span class="si">}</span><span class="s1"> silicate&#39;</span><span class="p">)</span>
-</span><span data-line="345">    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Grain radius [micron]&#39;</span><span class="p">)</span>
-</span><span data-line="346">    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$10^</span><span class="si">{29}</span><span class="s1"> n_H^{-1} a^4 dn/da$ [cm$^</span><span class="si">{3}</span><span class="s1">$]&#39;</span><span class="p">)</span>
-</span><span data-line="347">    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Weingartner &amp; Draine (2001) distribution&#39;</span><span class="p">)</span>
-</span><span data-line="348">    <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">()</span>
-</span><span data-line="349">    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-</span></pre></div>
-        </article><button class="back-to-top" type="button">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
-  </svg>
-  <span>Back to top</span>
-</button><div class="navigation flex print:hidden"></div></div>
-    </div>
-  </main>
-</div>
-<footer class="sy-foot">
-  <div class="sy-foot-inner sy-container mx-auto">
-    <div class="sy-foot-reserved md:flex justify-between items-center">
-      <div class="sy-foot-copyright"><p>2024, Lia Corrales</p>
-  
-  <p>
-    Made with
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">WD01_validation_plot</span><span class="p">(</span><span class="n">galaxy</span><span class="o">=</span><span class="s1">&#39;MW&#39;</span><span class="p">,</span> <span class="n">RV</span><span class="o">=</span><span class="mf">3.1</span><span class="p">,</span> <span class="n">amax</span><span class="o">=</span><span class="n">AMAX</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make a plot to validate the WD01 implementation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+    <span class="n">agrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">0.00035</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">amax</span><span class="p">),</span> <span class="mi">200</span><span class="p">)</span> <span class="c1"># micron</span>
+    <span class="c1"># agrid = np.logspace(np.log10(0.00035), np.log10(amax), 20) # for debugging</span>
+
+    <span class="k">if</span> <span class="n">galaxy</span> <span class="o">==</span> <span class="s1">&#39;MW&#39;</span> <span class="ow">and</span> <span class="n">RV</span> <span class="o">==</span> <span class="mf">3.1</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">MW_RV3p1_params</span>
+    <span class="k">elif</span> <span class="n">galaxy</span> <span class="o">==</span> <span class="s1">&#39;MW&#39;</span> <span class="ow">and</span> <span class="n">RV</span> <span class="o">==</span> <span class="mf">4.0</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">MW_RV4p0_params</span>
+    <span class="k">elif</span> <span class="n">galaxy</span> <span class="o">==</span> <span class="s1">&#39;MW&#39;</span> <span class="ow">and</span> <span class="n">RV</span> <span class="o">==</span> <span class="mf">5.5</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">MW_RV5p5_params</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RV=</span><span class="si">{</span><span class="n">RV</span><span class="si">}</span><span class="s2"> not implemented for galaxy=</span><span class="si">{</span><span class="n">galaxy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     
-    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
-    
-    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
-  </p>
-</div>
-      <div class="sy-foot-socials"></div>
+    <span class="n">dnda_sil</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">silicate_function</span><span class="p">(</span><span class="n">agrid</span><span class="p">)</span>
+    <span class="n">dnda_gra</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">graphite_function</span><span class="p">(</span><span class="n">agrid</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">agrid</span><span class="p">,</span> <span class="n">agrid</span><span class="o">**</span><span class="mi">4</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cm&#39;</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="mf">1e29</span> <span class="o">*</span> <span class="n">dnda_gra</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">galaxy</span><span class="si">}</span><span class="s1"> RV=</span><span class="si">{</span><span class="n">RV</span><span class="si">}</span><span class="s1"> graphite&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">agrid</span><span class="p">,</span> <span class="n">agrid</span><span class="o">**</span><span class="mi">4</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cm&#39;</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="mf">1e29</span> <span class="o">*</span> <span class="n">dnda_sil</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">galaxy</span><span class="si">}</span><span class="s1"> RV=</span><span class="si">{</span><span class="n">RV</span><span class="si">}</span><span class="s1"> silicate&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Grain radius [micron]&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$10^</span><span class="si">{29}</span><span class="s1"> n_H^{-1} a^4 dn/da$ [cm$^</span><span class="si">{3}</span><span class="s1">$]&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Weingartner &amp; Draine (2001) distribution&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Lia Corrales
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
     </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
   </div>
-</footer>
-      <script src="../../../../_static/documentation_options.js?v=2709fde1"></script>
-      <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
-      <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
-      <script src="../../../../_static/shibuya.js?v=50760d75"></script></body>
+</div><script src="../../../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
 </html>

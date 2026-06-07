@@ -254,7 +254,8 @@ frequently needed information.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.graindist.GrainDist.size">
 <span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.size" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Grain size distribution.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>xdust.graindist.sizedist object</p>
 </dd>
@@ -264,7 +265,8 @@ frequently needed information.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.graindist.GrainDist.comp">
 <span class="sig-name descname"><span class="pre">comp</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.comp" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Optical constants and material density.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>xdust.graindist.composition object</p>
 </dd>
@@ -274,7 +276,8 @@ frequently needed information.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.graindist.GrainDist.shape">
 <span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.shape" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Grain shape object.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>xdust.graindist.shape object</p>
 </dd>
@@ -284,81 +287,32 @@ frequently needed information.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.graindist.GrainDist.md">
 <span class="sig-name descname"><span class="pre">md</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.md" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Dust mass column density [g cm^-2].</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float : dust mass column density [g cm^-2]</p>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
+<dl class="py property">
 <dt class="sig sig-object py" id="xdust.graindist.GrainDist.a">
-<span class="sig-name descname"><span class="pre">a</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.a" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>grain radii (returns size.a)</p>
-</dd>
-</dl>
-</dd></dl>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">a</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.a" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="xdust.graindist.GrainDist.ndens">
-<span class="sig-name descname"><span class="pre">ndens</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.ndens" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>number density from (returns size.ndens based on other attributes)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="xdust.graindist.GrainDist.mdens">
-<span class="sig-name descname"><span class="pre">mdens</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.mdens" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>mass density as a function of grain radius (returns size.mdens based on other attributes)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
+<dl class="py property">
 <dt class="sig sig-object py" id="xdust.graindist.GrainDist.cgeo">
-<span class="sig-name descname"><span class="pre">cgeo</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.cgeo" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>physical cross-sectional area based on grain shape [cm^2]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="xdust.graindist.GrainDist.vol">
-<span class="sig-name descname"><span class="pre">vol</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.vol" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>physical grain volume based on grain shape [cm^2]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="id0">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">a</span></span><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">cgeo</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.cgeo" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id2">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">cgeo</span></span><a class="headerlink" href="#id2" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xdust.graindist.GrainDist.mdens">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">mdens</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.mdens" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id3">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">mdens</span></span><a class="headerlink" href="#id3" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="id4">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ndens</span></span><a class="headerlink" href="#id4" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xdust.graindist.GrainDist.ndens">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ndens</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.ndens" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -372,8 +326,8 @@ frequently needed information.</p>
 <dd></dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id5">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">vol</span></span><a class="headerlink" href="#id5" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xdust.graindist.GrainDist.vol">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">vol</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.vol" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -472,17 +426,12 @@ frequently needed information.</p>
 <li><a class="reference internal" href="#xdust.graindist.GrainDist.shape"><code class="docutils literal notranslate"><span class="pre">GrainDist.shape</span></code></a></li>
 <li><a class="reference internal" href="#xdust.graindist.GrainDist.md"><code class="docutils literal notranslate"><span class="pre">GrainDist.md</span></code></a></li>
 <li><a class="reference internal" href="#xdust.graindist.GrainDist.a"><code class="docutils literal notranslate"><span class="pre">GrainDist.a</span></code></a></li>
-<li><a class="reference internal" href="#xdust.graindist.GrainDist.ndens"><code class="docutils literal notranslate"><span class="pre">GrainDist.ndens</span></code></a></li>
-<li><a class="reference internal" href="#xdust.graindist.GrainDist.mdens"><code class="docutils literal notranslate"><span class="pre">GrainDist.mdens</span></code></a></li>
 <li><a class="reference internal" href="#xdust.graindist.GrainDist.cgeo"><code class="docutils literal notranslate"><span class="pre">GrainDist.cgeo</span></code></a></li>
-<li><a class="reference internal" href="#xdust.graindist.GrainDist.vol"><code class="docutils literal notranslate"><span class="pre">GrainDist.vol</span></code></a></li>
-<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">GrainDist.a</span></code></a></li>
-<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">GrainDist.cgeo</span></code></a></li>
-<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">GrainDist.mdens</span></code></a></li>
-<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">GrainDist.ndens</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.GrainDist.mdens"><code class="docutils literal notranslate"><span class="pre">GrainDist.mdens</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.GrainDist.ndens"><code class="docutils literal notranslate"><span class="pre">GrainDist.ndens</span></code></a></li>
 <li><a class="reference internal" href="#xdust.graindist.GrainDist.plot"><code class="docutils literal notranslate"><span class="pre">GrainDist.plot()</span></code></a></li>
 <li><a class="reference internal" href="#xdust.graindist.GrainDist.rho"><code class="docutils literal notranslate"><span class="pre">GrainDist.rho</span></code></a></li>
-<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">GrainDist.vol</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.GrainDist.vol"><code class="docutils literal notranslate"><span class="pre">GrainDist.vol</span></code></a></li>
 </ul>
 </li>
 </ul>

@@ -37,11 +37,12 @@ class UniformGalHalo(Halo):
         nx : int
             Number of x-values to use for calculation (Default: 500)
         
-        **kwargs are passed to grainpop extinction calculator
+        **kwargs
+            Passed to ``gpop.calculate_ext``.
 
         Returns
         -------
-        None. Updates the md, norm_int, and taux attributes.
+        None. Updates the ``md``, ``norm_int``, and ``taux`` attributes.
         """
         assert isinstance(gpop, SingleGrainPop)
         self.md    = gpop.mdens
@@ -96,11 +97,12 @@ class ScreenGalHalo(Halo):
         x : float (0.0, 1.0]
             1.0 - (distance to screen / distance to X-ray source)
 
-        **kwargs are passed to grainpop extinction calculator
-        
+        **kwargs
+            Passed to ``gpop.calculate_ext``.
+
         Returns
         -------
-        None. Updates the md, x, norm_int, and taux attributes.
+        None. Updates the ``md``, ``x``, ``norm_int``, and ``taux`` attributes.
         """
         assert isinstance(gpop, SingleGrainPop)
         assert (x > 0.0) & (x <= 1.0)
@@ -195,7 +197,7 @@ class ScreenGalHalo(Halo):
             Light curve in units of source flux
             (i.e. will be multiplied by self.fabs)
 
-        arf : string
+        arf : str
             Filename of telescope ARF
 
         exposure : float [seconds]
@@ -222,27 +224,9 @@ class ScreenGalHalo(Halo):
             Maximum halo.lam value
             (Default:None uses entire range)
 
-        save_file : string (Default:None)
+        save_file : str, optional
             Filename to use if you want to save the output to a FITS file
-
-        Returns
-        -------
-        2D numpy.ndarray of shape (nx, ny), representing the image of
-        a dust scattering halo. The halo intensity at different
-        energies are converted into counts using the ARF. Then a
-        Poisson distribution is used to simulate the number of counts
-        in each pixel.
-
-        If the user supplies a file name string using the save_file
-        keyword, a FITS file will be saved.
         """
-        assert np.all(time >= 0.0)
-        if tnow is None:
-            time_now = time[-1]
-        else:
-            time_now = tnow
-
-        var_profile = self.variable_profile(time, lc, tnow=time_now, dist=dist)
         # intensity cube (NE x NTH), phot/cm^2/s/arcsec^2
 
         # Decide which energy indexes to use
@@ -313,19 +297,24 @@ class UniformGalHaloCP15(Halo):
 
         Parameters
         ----------
-        amin: float or astropy.units.Quantity [micron] - minimum grain radius
+        md : float or astropy.units.Quantity
+            Dust mass column [g cm^-2].
 
-        amax: float or astropy.units.Quantity [micron] - maximum grain radius
+        amin : float or astropy.units.Quantity
+            Minimum grain radius [micron].
 
-        p: float [unitless] - slope of power law distribution
+        amax : float or astropy.units.Quantity
+            Maximum grain radius [micron].
 
-        rho: float or astropy.units.Quantity [g cm^-3] - grain mass density
+        p : float
+            Slope of the power law grain size distribution.
 
-        md: float or astropy.units.Quantity [g cm^-2] -  dust mass column
+        rho : float or astropy.units.Quantity
+            Grain mass density [g cm^-3].
 
         Returns
         -------
-        None. Updates norm_int [arcsec^-2], and taux [unitless] attributes.
+        None. Updates ``norm_int`` [arcsec^-2] and ``taux`` [unitless] attributes.
         """
         lam_keV = self.lam.to(u.keV, equivalencies=u.spectral())
         theta_arcsec = self.theta.to(u.arcsec)
@@ -378,21 +367,29 @@ class ScreenGalHaloCP15(Halo):
 
         Parameters
         ----------
-        amin: float or astropy.units.Quantity [micron] - minimum grain radius
+        md : float or astropy.units.Quantity
+            Dust mass column [g cm^-2].
 
-        amax: float or astropy.units.Quantity [micron] - maximum grain radius
+        amin : float or astropy.units.Quantity
+            Minimum grain radius [micron].
 
-        p: float [unitless] - slope of power law distribution
+        amax : float or astropy.units.Quantity
+            Maximum grain radius [micron].
 
-        rho: float or astropy.units.Quantity [g cm^-3] - grain mass density
+        p : float
+            Slope of the power law grain size distribution.
 
-        md: float or astropy.units.Quantity [g cm^-2] -  dust mass column
+        rho : float or astropy.units.Quantity
+            Grain mass density [g cm^-3].
 
-        x : float (0.0, 1.0] [unitless] - (distance to screen / distance to X-ray source)
+        x : float
+            Screen position :math:`x = 1 - d/D` where :math:`d` is the distance
+            to the screen and :math:`D` is the distance to the X-ray source.
+            Must be in ``(0.0, 1.0]``.
 
         Returns
         -------
-        None. Updates the md, x, norm_int, and taux attributes.
+        None. Updates the ``md``, ``x``, ``norm_int``, and ``taux`` attributes.
         """
 
         lam_keV = self.lam.to(u.keV, equivalencies=u.spectral())
@@ -449,26 +446,26 @@ def gammainc_fun( a, z ):
     
 def calculate_taux(lam, amin, amax, p, rho, md):
     """
-        Calculate the integrated X-ray scattering opacity taux
+    Calculate the integrated X-ray scattering opacity taux
 
-        Parameters
-        ----------
-        lam: astropy.units.Quantity [KeV] - Energy
+    Parameters
+    ----------
+    lam: astropy.units.Quantity [KeV] - Energy
 
-        amin: astropy.units.Quantity [micron] - minimum grain radius
+    amin: astropy.units.Quantity [micron] - minimum grain radius
 
-        amax: astropy.units.Quantity [micron] - maximum grain radius
+    amax: astropy.units.Quantity [micron] - maximum grain radius
 
-        p: float [unitless] - slope of power law distribution
+    p: float [unitless] - slope of power law distribution
 
-        rho: astropy.units.Quantity [g cm^-3] - grain mass density
+    rho: astropy.units.Quantity [g cm^-3] - grain mass density
 
-        md: astropy.units.Quantity [g cm^-2] -  dust mass column
+    md: astropy.units.Quantity [g cm^-2] -  dust mass column
 
-        Returns
-        -------
-        taux: numpy.ndarray or astropy.units.Quantity (NE) - integrated X-ray scattering opacity
-        """
+    Returns
+    -------
+    taux: numpy.ndarray or astropy.units.Quantity (NE) - integrated X-ray scattering opacity
+    """
 
     rho_um = rho.to(u.g*u.micron**(-3)) # g micron^-3
     constA = (6.27e-7 *u.cm**2) * (rho/(3*u.g*u.cm**(-3)))/(1*u.micron)**4 # cm^2 micron^-4
@@ -511,10 +508,9 @@ def G_u(lam, theta, amin, amax, p):
     return ( (A1-B1) - (A0-B0) ) / power
 
 def G_s(lam, theta, amin, amax, p, x):
-    '''
+    """
     Function used for evaluating halo from power law distribution of grain sizes (Screen case)
-    '''
-
+    """
     charsig0 = 1.04 * 60.0 * u.arcsec / (lam / u.keV) * u.micron # arcsec micron
     pfrac    = (7.0-p)/2.0
     const    = theta**2/(2.0*charsig0**2*x**2) # micron^-2

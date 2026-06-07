@@ -265,7 +265,7 @@ as a dictionary.</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">lam</span></code> – astropy Quantity [wavelength or energy grid]</p>
 <p><code class="docutils literal notranslate"><span class="pre">a</span></code>   – float [grain size, micron] or astropy Quantity</p>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a>cm `` – xdust.graindist.composition object</p>
+<p><code class="docutils literal notranslate"><span class="pre">cm</span></code> – xdust.graindist.composition object</p>
 <p><code class="docutils literal notranslate"><span class="pre">mem_lim</span></code> – float [memory limit for scattering calculation, GB, default 8.0]</p>
 <p><code class="docutils literal notranslate"><span class="pre">theta</span></code> – float or np.array [radians] or astropy Quantity, angles to calculate differential scattering [default 0.0]</p>
 </div></blockquote>
@@ -285,7 +285,7 @@ as a dictionary.</p>
 </ul>
 </section>
 <section id="rgscattering">
-<span id="id3"></span><h2>RGscattering<a class="headerlink" href="#rgscattering" title="Link to this heading">¶</a></h2>
+<span id="id1"></span><h2>RGscattering<a class="headerlink" href="#rgscattering" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.scatteringmodel.RGscattering">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.scatteringmodel.</span></span><span class="sig-name descname"><span class="pre">RGscattering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/scatteringmodel/rgscat.html#RGscattering"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.scatteringmodel.RGscattering" title="Link to this definition">¶</a></dt>
@@ -296,20 +296,20 @@ Smith &amp; Dwek (1998), ApJ, 503, 831</p>
 <dt class="sig sig-object py" id="xdust.scatteringmodel.RGscattering.calculate">
 <span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lam</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/scatteringmodel/rgscat.html#RGscattering.calculate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.scatteringmodel.RGscattering.calculate" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate the extinction efficiences with the Rayleigh-Gans approximation.</p>
-<dl class="simple">
-<dt>lam<span class="classifier">astropy.units.Quantity -or- numpy.ndarray</span></dt><dd><p>Wavelength or energy values for calculating the cross-sections;
-if no units specified, defaults to keV</p>
-</dd>
-<dt>a<span class="classifier">astropy.units.Quantity -or- numpy.ndarray</span></dt><dd><p>Grain radius value(s) to use in the calculation;
-if no units specified, defaults to micron</p>
-</dd>
-<dt>cm<span class="classifier">xdust.graindist.composition object</span></dt><dd><p>Holds the optical constants and density for the compound.</p>
-</dd>
-<dt>theta<span class="classifier">astropy.units.Quantity -or- numpy.ndarray -or- float</span></dt><dd><p>Scattering angles for computing the differential scattering cross-section;
-if no units specified, defaults to radian</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lam</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em>) – Wavelength or energy; plain arrays are assumed to be in keV.</p></li>
+<li><p><strong>a</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em>) – Grain radius; plain arrays are assumed to be in microns.</p></li>
+<li><p><strong>cm</strong> (<em>xdust.graindist.composition object</em>) – Holds the optical constants and density for the compound.</p></li>
+<li><p><strong>theta</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em><em> or </em><em>float</em>) – Scattering angles; plain values are assumed to be in radians.</p></li>
+<li><p><strong>qsca</strong> (<em>Updates the</em>)</p></li>
+<li><p><strong>qext</strong></p></li>
+<li><p><strong>qabs</strong></p></li>
+<li><p><strong>attributes.</strong> (<em>and diff</em>)</p></li>
+</ul>
 </dd>
 </dl>
-<p>Updates the <cite>qsca</cite>, <cite>qext</cite>, <cite>qabs</cite>, and <cite>diff</cite> attributes</p>
 </dd></dl>
 
 <dl class="py method">
@@ -317,17 +317,19 @@ if no units specified, defaults to radian</p>
 <span class="sig-name descname"><span class="pre">characteristic_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lam</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/scatteringmodel/rgscat.html#RGscattering.characteristic_angle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.scatteringmodel.RGscattering.characteristic_angle" title="Link to this definition">¶</a></dt>
 <dd><p>Calculates the characteristic scattering angle under the Rayleigh-Gans approximation,
 with the Gaussian approximation to the bessel functions.</p>
-<dl class="simple">
-<dt>lam<span class="classifier">astropy.units.Quantity -or- numpy.ndarray</span></dt><dd><p>Wavelength or energy values for calculating the cross-sections;
-if no units specified, defaults to keV</p>
-</dd>
-<dt>a<span class="classifier">astropy.units.Quantity -or- numpy.ndarray</span></dt><dd><p>Grain radius value(s) to use in the calculation;
-if no units specified, defaults to micron</p>
-</dd>
-</dl>
 <dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lam</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em>) – Wavelength or energy; plain arrays are assumed to be in keV.</p></li>
+<li><p><strong>a</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em>) – Grain radius; plain arrays are assumed to be in microns.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Characteristic scattering angle using
+<span class="math notranslate nohighlight">\(\sigma = 1.04\,\mathrm{arcmin}\,(E/\mathrm{keV})^{-1}(a/\mu\mathrm{m})^{-1}\)</span>.</p>
+</dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>astropy.units.Quantity using the formula 1.04 arcmin (E/keV)^-1 (a/micron)^-1</p>
+<dd class="field-odd"><p>astropy.units.Quantity</p>
 </dd>
 </dl>
 </dd></dl>
@@ -336,7 +338,7 @@ if no units specified, defaults to micron</p>
 
 </section>
 <section id="mie">
-<span id="id4"></span><h2>Mie<a class="headerlink" href="#mie" title="Link to this heading">¶</a></h2>
+<span id="id2"></span><h2>Mie<a class="headerlink" href="#mie" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.scatteringmodel.Mie">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.scatteringmodel.</span></span><span class="sig-name descname"><span class="pre">Mie</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/scatteringmodel/miescat.html#Mie"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.scatteringmodel.Mie" title="Link to this definition">¶</a></dt>
@@ -344,16 +346,12 @@ if no units specified, defaults to micron</p>
 <p>Mie scattering algorithms of Bohren &amp; Hoffman.
 See their book: <em>Absorption and Scattering of Light by Small Particles</em></p>
 <dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">In</span> <span class="pre">addition</span> <span class="pre">to</span> <span class="pre">those</span> <span class="pre">inherited</span> <span class="pre">from</span> <span class="pre">ScatteringModel</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.scatteringmodel.Mie.gsca">
 <span class="sig-name descname"><span class="pre">gsca</span></span><a class="headerlink" href="#xdust.scatteringmodel.Mie.gsca" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Average cosine of the scattering angle.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>numpy.ndarray : average cosine of scattering angle</p>
+<dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
 </dd></dl>
@@ -361,9 +359,10 @@ See their book: <em>Absorption and Scattering of Light by Small Particles</em></
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.scatteringmodel.Mie.qback">
 <span class="sig-name descname"><span class="pre">qback</span></span><a class="headerlink" href="#xdust.scatteringmodel.Mie.qback" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Back-scattering efficiency.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>numpy.ndarray : back-scattering efficiency</p>
+<dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
 </dd></dl>
@@ -372,102 +371,37 @@ See their book: <em>Absorption and Scattering of Light by Small Particles</em></
 <dt class="sig sig-object py" id="xdust.scatteringmodel.Mie.calculate">
 <span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lam</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memlim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/scatteringmodel/miescat.html#Mie.calculate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.scatteringmodel.Mie.calculate" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate the extinction efficiences using the Mie formula for spherical particles.</p>
-<dl class="simple">
-<dt>lam<span class="classifier">astropy.units.Quantity -or- numpy.ndarray</span></dt><dd><p>Wavelength or energy values for calculating the cross-sections;
-if no units specified, defaults to keV</p>
-</dd>
-<dt>a<span class="classifier">astropy.units.Quantity -or- numpy.ndarray</span></dt><dd><p>Grain radius value(s) to use in the calculation;
-if no units specified, defaults to micron</p>
-</dd>
-<dt>cm<span class="classifier">xdust.graindist.composition object</span></dt><dd><p>Holds the optical constants and density for the compound.</p>
-</dd>
-<dt>theta<span class="classifier">astropy.units.Quantity -or- numpy.ndarray -or- float</span></dt><dd><p>Scattering angles for computing the differential scattering cross-section;
-if no units specified, defaults to radian</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lam</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em>) – Wavelength or energy; plain arrays are assumed to be in keV.</p></li>
+<li><p><strong>a</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em>) – Grain radius; plain arrays are assumed to be in microns.</p></li>
+<li><p><strong>cm</strong> (<em>xdust.graindist.composition object</em>) – Holds the optical constants and density for the compound.</p></li>
+<li><p><strong>theta</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em><em> or </em><em>float</em>) – Scattering angles; plain values are assumed to be in radians.</p></li>
+<li><p><strong>memlim</strong> (<em>float</em>) – Memory limit for the calculation [GB]. Default <code class="docutils literal notranslate"><span class="pre">8.0</span></code>.</p></li>
+<li><p><strong>qsca</strong> (<em>Updates the</em>)</p></li>
+<li><p><strong>qext</strong></p></li>
+<li><p><strong>qabs</strong></p></li>
+<li><p><strong>diff</strong></p></li>
+<li><p><strong>gsca</strong></p></li>
+<li><p><strong>attributes.</strong> (<em>and qback</em>)</p></li>
+</ul>
 </dd>
 </dl>
-<p>Updates the <cite>qsca</cite>, <cite>qext</cite>, <cite>qabs</cite>, <cite>diff</cite>, <cite>gsca</cite>, and <cite>qback</cite> attributes</p>
 </dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="ggadt">
-<span id="id5"></span><h2>GGADT<a class="headerlink" href="#ggadt" title="Link to this heading">¶</a></h2>
+<span id="id3"></span><h2>GGADT<a class="headerlink" href="#ggadt" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.scatteringmodel.GGADT">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.scatteringmodel.</span></span><span class="sig-name descname"><span class="pre">GGADT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/scatteringmodel/ggadt.html#GGADT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.scatteringmodel.GGADT" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ScatteringModel</span></code></p>
-<p>Child of scatteringModel class</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="xdust.scatteringmodel.GGADT.qsca">
-<span class="sig-name descname"><span class="pre">qsca</span></span><a class="headerlink" href="#xdust.scatteringmodel.GGADT.qsca" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>numpy.ndarray : Scattering efficiency Q (cross-section / geometric cross-section)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="xdust.scatteringmodel.GGADT.qext">
-<span class="sig-name descname"><span class="pre">qext</span></span><a class="headerlink" href="#xdust.scatteringmodel.GGADT.qext" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>numpy.ndarray : Extinction efficiency Q (cross-section / geometric cross-section)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="xdust.scatteringmodel.GGADT.qabs">
-<span class="sig-name descname"><span class="pre">qabs</span></span><a class="headerlink" href="#xdust.scatteringmodel.GGADT.qabs" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>numpy.ndarray : Absorption efficiency Q (cross-section / geometric cross-section)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="xdust.scatteringmodel.GGADT.diff">
-<span class="sig-name descname"><span class="pre">diff</span></span><a class="headerlink" href="#xdust.scatteringmodel.GGADT.diff" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>numpy.ndarray : Differential scattering efficiency per steridian</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="xdust.scatteringmodel.GGADT.pars">
-<span class="sig-name descname"><span class="pre">pars</span></span><a class="headerlink" href="#xdust.scatteringmodel.GGADT.pars" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict : Parameters from most recent calculation are stored here</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="xdust.scatteringmodel.GGADT.stype">
-<span class="sig-name descname"><span class="pre">stype</span></span><a class="headerlink" href="#xdust.scatteringmodel.GGADT.stype" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>string : A label for the model</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="xdust.scatteringmodel.GGADT.citation">
-<span class="sig-name descname"><span class="pre">citation</span></span><a class="headerlink" href="#xdust.scatteringmodel.GGADT.citation" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>string : A description of how to cite this model</p>
-</dd>
-</dl>
-</dd></dl>
-
+<p>Scattering model loaded from pre-computed GGADT output files.</p>
+<p>Attributes inherited from <a class="reference internal" href="#scatmodels"><span class="std std-ref">xdust.scatteringmodel</span></a>.
+See <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2016ApJ...817..139H">Hoffman &amp; Draine (2016)</a>.</p>
 </dd></dl>
 
 </section>
@@ -548,16 +482,7 @@ if no units specified, defaults to radian</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#ggadt">GGADT</a><ul>
-<li><a class="reference internal" href="#xdust.scatteringmodel.GGADT"><code class="docutils literal notranslate"><span class="pre">GGADT</span></code></a><ul>
-<li><a class="reference internal" href="#xdust.scatteringmodel.GGADT.qsca"><code class="docutils literal notranslate"><span class="pre">GGADT.qsca</span></code></a></li>
-<li><a class="reference internal" href="#xdust.scatteringmodel.GGADT.qext"><code class="docutils literal notranslate"><span class="pre">GGADT.qext</span></code></a></li>
-<li><a class="reference internal" href="#xdust.scatteringmodel.GGADT.qabs"><code class="docutils literal notranslate"><span class="pre">GGADT.qabs</span></code></a></li>
-<li><a class="reference internal" href="#xdust.scatteringmodel.GGADT.diff"><code class="docutils literal notranslate"><span class="pre">GGADT.diff</span></code></a></li>
-<li><a class="reference internal" href="#xdust.scatteringmodel.GGADT.pars"><code class="docutils literal notranslate"><span class="pre">GGADT.pars</span></code></a></li>
-<li><a class="reference internal" href="#xdust.scatteringmodel.GGADT.stype"><code class="docutils literal notranslate"><span class="pre">GGADT.stype</span></code></a></li>
-<li><a class="reference internal" href="#xdust.scatteringmodel.GGADT.citation"><code class="docutils literal notranslate"><span class="pre">GGADT.citation</span></code></a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#xdust.scatteringmodel.GGADT"><code class="docutils literal notranslate"><span class="pre">GGADT</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -575,5 +500,6 @@ if no units specified, defaults to radian</p>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     </body>
 </html>

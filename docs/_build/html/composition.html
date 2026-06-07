@@ -250,9 +250,10 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.graindist.composition.Composition.cmtype">
 <span class="sig-name descname"><span class="pre">cmtype</span></span><a class="headerlink" href="#xdust.graindist.composition.Composition.cmtype" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Label for the compound.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>string : label for the compound</p>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -260,9 +261,10 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.graindist.composition.Composition.rho">
 <span class="sig-name descname"><span class="pre">rho</span></span><a class="headerlink" href="#xdust.graindist.composition.Composition.rho" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Density of the material [g cm^-3].</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float : density of the material (g cm^-3)</p>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -270,9 +272,10 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.graindist.composition.Composition.citation">
 <span class="sig-name descname"><span class="pre">citation</span></span><a class="headerlink" href="#xdust.graindist.composition.Composition.citation" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Citation for the optical constants loaded.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>string : citation for the optical constants loaded</p>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -280,9 +283,10 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.graindist.composition.Composition.wavel">
 <span class="sig-name descname"><span class="pre">wavel</span></span><a class="headerlink" href="#xdust.graindist.composition.Composition.wavel" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Wavelength grid for optical constants.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>astropy.units.Quantity : wavelength grid for optical constants</p>
+<dd class="field-odd"><p>astropy.units.Quantity</p>
 </dd>
 </dl>
 </dd></dl>
@@ -290,9 +294,10 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.graindist.composition.Composition.revals">
 <span class="sig-name descname"><span class="pre">revals</span></span><a class="headerlink" href="#xdust.graindist.composition.Composition.revals" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Real part of the complex index of refraction.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>numpy.ndarray : real part of the complex index of refraction</p>
+<dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
 </dd></dl>
@@ -300,9 +305,10 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.graindist.composition.Composition.imvals">
 <span class="sig-name descname"><span class="pre">imvals</span></span><a class="headerlink" href="#xdust.graindist.composition.Composition.imvals" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Imaginary part of the complex index of refraction.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>numpy.ndarray : imaginary part of the complex index of refraction</p>
+<dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
 </dd></dl>
@@ -311,13 +317,18 @@
 <dt class="sig sig-object py" id="xdust.graindist.composition.Composition.cm">
 <span class="sig-name descname"><span class="pre">cm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/composition.html#Composition.cm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.Composition.cm" title="Link to this definition">¶</a></dt>
 <dd><p>Returns the complex index of refraction using Python complex numbers</p>
-<section id="inputs">
-<h3>Inputs<a class="headerlink" href="#inputs" title="Link to this heading">¶</a></h3>
-<dl class="simple">
-<dt>x<span class="classifier">if astropy.units.Quantity, convert to same units as self.wavel;</span></dt><dd><p>if numpy.ndarray, assume keV units</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em>) – Wavelength or energy; if an <code class="docutils literal notranslate"><span class="pre">astropy.units.Quantity</span></code>, converted to
+the same units as <code class="docutils literal notranslate"><span class="pre">self.wavel</span></code>; if a plain array, keV units are assumed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Complex index of refraction <span class="math notranslate nohighlight">\(n = n_r + i n_i\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>complex or numpy.ndarray of complex</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
@@ -325,39 +336,38 @@
 <span class="sig-name descname"><span class="pre">ip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/composition.html#Composition.ip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.Composition.ip" title="Link to this definition">¶</a></dt>
 <dd><p>Interpolate over the input wavelength grid to get the imaginary part of the
 complex index of refraction.</p>
-<section id="id1">
-<h3>Inputs<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
-<dl class="simple">
-<dt>x<span class="classifier">if astropy.units.Quantity, convert to same units as self.wavel;</span></dt><dd><p>if numpy.ndarray, assume keV units</p>
-</dd>
-</dl>
 <dl class="field-list simple">
-<dt class="field-odd">rtype<span class="colon">:</span></dt>
-<dd class="field-odd"><p>np.interp(x, self.wavel, self.imvals, left=1.0, right=1.0)</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em>) – Wavelength or energy; if an <code class="docutils literal notranslate"><span class="pre">astropy.units.Quantity</span></code>, converted to
+the same units as <code class="docutils literal notranslate"><span class="pre">self.wavel</span></code>; if a plain array, keV units are assumed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">np.interp(x,</span> <span class="pre">self.wavel,</span> <span class="pre">self.imvals,</span> <span class="pre">left=0.0,</span> <span class="pre">right=0.0)</span></code></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="xdust.graindist.composition.Composition.plot">
 <span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rppart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">impart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xunit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/composition.html#Composition.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.Composition.plot" title="Link to this definition">¶</a></dt>
 <dd><p>Plots the different parts of the complex index of refraction on a matplotlib axis</p>
-<section id="id2">
-<h3>Inputs<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
-<p>ax : matplotlib.pyplot.axes object : the axes on which to plot</p>
-<dl class="simple">
-<dt>lam<span class="classifier">if None, will plot the default values; if not None, will interpolate onto the new grid;</span></dt><dd><p>if not an astropy.units.Quantity, the units are assumed to be keV</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> (<em>matplotlib.pyplot.Axes</em>) – The axes on which to plot.</p></li>
+<li><p><strong>lam</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">None</span></code>, plots using the default <code class="docutils literal notranslate"><span class="pre">self.wavel</span></code> grid; otherwise
+interpolates onto the provided grid. Plain arrays are assumed to be
+in keV.</p></li>
+<li><p><strong>rppart</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), plot the real part <span class="math notranslate nohighlight">\(|Re(m)-1|\)</span>.</p></li>
+<li><p><strong>impart</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), plot the imaginary part <span class="math notranslate nohighlight">\(Im(m)\)</span>.</p></li>
+<li><p><strong>xunit</strong> (<em>str</em><em>, </em><em>optional</em>) – Unit string for the x-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">self.wavel.unit</span></code>.</p></li>
+<li><p><strong>label</strong> (<em>str</em>) – Prefix string appended to legend labels.</p></li>
+</ul>
 </dd>
 </dl>
-<p>rppart : bool (True) : whether or not to plot the real part</p>
-<p>impart : bool (True) : whether or not to plot the imaginary part</p>
-<dl class="simple">
-<dt>xunit<span class="classifier">string</span><span class="classifier">unit for plotting the X-axis</span></dt><dd><p>(Default: None will defer to self.wavel.unit)</p>
-</dd>
-</dl>
-<p>label : string : to add to the labels</p>
-</section>
 </dd></dl>
 
 <dl class="py method">
@@ -365,25 +375,25 @@ complex index of refraction.</p>
 <span class="sig-name descname"><span class="pre">rp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/composition.html#Composition.rp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.Composition.rp" title="Link to this definition">¶</a></dt>
 <dd><p>Interpolate over the input wavelength grid to get the real part of the
 complex index of refraction.</p>
-<section id="id3">
-<h3>Inputs<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
-<dl class="simple">
-<dt>x<span class="classifier">if astropy.units.Quantity, convert to same units as self.wavel;</span></dt><dd><p>if numpy.ndarray, assume keV units</p>
-</dd>
-</dl>
 <dl class="field-list simple">
-<dt class="field-odd">rtype<span class="colon">:</span></dt>
-<dd class="field-odd"><p>np.interp(x, self.wavel, self.revals, left=1.0, right=1.0)</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em>) – Wavelength or energy; if an <code class="docutils literal notranslate"><span class="pre">astropy.units.Quantity</span></code>, converted to
+the same units as <code class="docutils literal notranslate"><span class="pre">self.wavel</span></code>; if a plain array, keV units are assumed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">np.interp(x,</span> <span class="pre">self.wavel,</span> <span class="pre">self.revals,</span> <span class="pre">left=1.0,</span> <span class="pre">right=1.0)</span></code></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="cmdrude">
-<span id="id4"></span><h2>CmDrude<a class="headerlink" href="#cmdrude" title="Link to this heading">¶</a></h2>
+<span id="id1"></span><h2>CmDrude<a class="headerlink" href="#cmdrude" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.composition.CmDrude">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.</span></span><span class="sig-name descname"><span class="pre">CmDrude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmdrude.html#CmDrude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmDrude" title="Link to this definition">¶</a></dt>
@@ -393,46 +403,42 @@ complex index of refraction.</p>
 <dt class="sig sig-object py" id="xdust.graindist.composition.CmDrude.ip">
 <span class="sig-name descname"><span class="pre">ip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmdrude.html#CmDrude.ip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmDrude.ip" title="Link to this definition">¶</a></dt>
 <dd><p>Gives the imaginary part of the complex index of refraction under the Drude approximation.</p>
-<section id="id5">
-<h3>Inputs<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
-<dl class="simple">
-<dt>x<span class="classifier">if astropy.units.Quantity, convert to same units as self.wavel;</span></dt><dd><p>if numpy.ndarray, assume keV units</p>
-</dd>
-</dl>
 <dl class="field-list simple">
-<dt class="field-odd">returns<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><em>0.0 if x is a float or quantity of no length</em></p></li>
-<li><p><em>numpy.ndarray filled with zeros, same length as x</em></p></li>
-</ul>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em>) – Wavelength or energy; plain arrays are assumed to be in keV.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code> for scalar input; array of zeros matching the length of <code class="docutils literal notranslate"><span class="pre">x</span></code>
+for array input.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float or numpy.ndarray</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="xdust.graindist.composition.CmDrude.rp">
 <span class="sig-name descname"><span class="pre">rp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmdrude.html#CmDrude.rp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmDrude.rp" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate the real part of the complex index of refraction under the Drude approximation.</p>
-<section id="id6">
-<h3>Inputs<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
-<dl class="simple">
-<dt>x<span class="classifier">if astropy.units.Quantity, convert to same units as self.wavel;</span></dt><dd><p>if numpy.ndarray, assume keV units</p>
-</dd>
-</dl>
 <dl class="field-list simple">
-<dt class="field-odd">rtype<span class="colon">:</span></dt>
-<dd class="field-odd"><p>(rho / 2 m_p) * (r_e / 2 pi) * wavel^2</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em>) – Wavelength or energy; plain arrays are assumed to be in keV.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="math notranslate nohighlight">\(1 + (\rho / 2 m_p)(r_e / 2\pi)\lambda^2\)</span></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="cmsilicate">
-<span id="id7"></span><h2>CmSilicate<a class="headerlink" href="#cmsilicate" title="Link to this heading">¶</a></h2>
+<span id="id2"></span><h2>CmSilicate<a class="headerlink" href="#cmsilicate" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.composition.CmSilicate">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.</span></span><span class="sig-name descname"><span class="pre">CmSilicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmsilicate.html#CmSilicate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmSilicate" title="Link to this definition">¶</a></dt>
@@ -442,26 +448,36 @@ complex index of refraction.</p>
 
 </section>
 <section id="cmgraphite">
-<span id="id8"></span><h2>CmGraphite<a class="headerlink" href="#cmgraphite" title="Link to this heading">¶</a></h2>
+<span id="id3"></span><h2>CmGraphite<a class="headerlink" href="#cmgraphite" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.composition.CmGraphite">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.composition.</span></span><span class="sig-name descname"><span class="pre">CmGraphite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'big'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'perp'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/composition/cmgraphite.html#CmGraphite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.composition.CmGraphite" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#xdust.graindist.composition.Composition" title="xdust.graindist.composition.composition.Composition"><code class="xref py py-class docutils literal notranslate"><span class="pre">Composition</span></code></a></p>
 <p>Optical constants for Graphite from Draine (2003)</p>
-<div class="line-block">
-<div class="line">Additional Attributes</div>
-<div class="line">———————</div>
-<div class="line">size   : ‘big’ or ‘small’;</div>
-<div class="line-block">
-<div class="line">‘big’ gives results for 0.1 um sized graphite grains at 20 K [Draine (2003)];</div>
-<div class="line">‘small’ gives results for 0.01 um sized grains at 20 K</div>
-</div>
-<div class="line">orient : ‘perp’ or ‘para’</div>
-<div class="line-block">
-<div class="line">‘perp’ gives results for E-field perpendicular to c-axis</div>
-<div class="line">‘para’ gives results for E-field parallel to c-axis</div>
-</div>
-</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.graindist.composition.CmGraphite.size">
+<span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#xdust.graindist.composition.CmGraphite.size" title="Link to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">'big'</span></code> gives results for 0.1 um sized graphite grains at 20 K
+[Draine (2003)]; <code class="docutils literal notranslate"><span class="pre">'small'</span></code> gives results for 0.01 um sized grains at 20 K.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xdust.graindist.composition.CmGraphite.orient">
+<span class="sig-name descname"><span class="pre">orient</span></span><a class="headerlink" href="#xdust.graindist.composition.CmGraphite.orient" title="Link to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">'perp'</span></code> gives results for E-field perpendicular to the c-axis;
+<code class="docutils literal notranslate"><span class="pre">'para'</span></code> gives results for E-field parallel to the c-axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -552,7 +568,11 @@ complex index of refraction.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#cmgraphite">CmGraphite</a><ul>
-<li><a class="reference internal" href="#xdust.graindist.composition.CmGraphite"><code class="docutils literal notranslate"><span class="pre">CmGraphite</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.composition.CmGraphite"><code class="docutils literal notranslate"><span class="pre">CmGraphite</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.graindist.composition.CmGraphite.size"><code class="docutils literal notranslate"><span class="pre">CmGraphite.size</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.composition.CmGraphite.orient"><code class="docutils literal notranslate"><span class="pre">CmGraphite.orient</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -570,5 +590,6 @@ complex index of refraction.</p>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     </body>
 </html>

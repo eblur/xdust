@@ -26,22 +26,25 @@ class ExpCutoff(object):
     """
     def __init__(self, amin=AMIN, acut=ACUT, p=PDIST, na=NA, log=False, nfold=NFOLD):
         """
-        Inputs
-        ------
-        
-        amin : astropy.units.Quantity -or- float :  minimum grain radius; if a float, micron units assumed
-        
-        acut : astropy.units.Quantity -or- float : maximum grain radius, 
-        after which exponential function will cause a turn over in grain size;
-        if a float, micron units assumed
-        
-        p   : float : slope for power law dn/da \propto a^-p
-        
-        NA  : int : number of a values to use
-        
-        log : boolean : False (default), True = use log-spaced a values
-        
-        nfold : number of e-foldings to go beyond `acut`
+        Parameters
+        ----------
+        amin : astropy.units.Quantity or float
+            Minimum grain radius; plain floats are assumed to be in microns.
+
+        acut : astropy.units.Quantity or float
+            Exponential cut-off grain radius; plain floats are assumed to be in microns.
+
+        p : float
+            Power law slope for :math:`dn/da \\propto a^{-p}`.
+
+        na : int
+            Number of grain size grid points.
+
+        log : bool
+            If ``True``, use log-spaced grain size grid. Default ``False``.
+
+        nfold : int
+            Number of e-foldings past ``acut`` to extend the grid.
         """
         self.dtype = 'ExpCutoff'
 
@@ -69,19 +72,21 @@ class ExpCutoff(object):
         """
         Calculate number density of dust grains, given a dust mass column
 
-        Inputs
-        ------
-        
-        md : float : mass column density [g cm^-2]
+        Parameters
+        ----------
+        md : float
+            Mass column density [g cm^-2].
 
-        rho : float : grain material density [g cm^-3]
+        rho : float
+            Grain material density [g cm^-3].
 
-        shape : xdust.graindist.shape object (default is a Sphere)
+        shape : xdust.graindist.shape object
+            Grain shape (default: ``Sphere``).
 
         Returns
         -------
-        
-        Column density of grains in [cm^-2]
+        numpy.ndarray
+            Column density of grains [cm^-2 um^-1].
         """
         a_um = self.a.to('micron').value
         acut_um = self.acut.to('micron').value
@@ -103,19 +108,21 @@ class ExpCutoff(object):
         """
         Calculate mass density function for the dust grains, given a total dust mass column
 
-        Inputs
-        ------
-        
-        md : float : mass column density [g cm^-2]
+        Parameters
+        ----------
+        md : float
+            Mass column density [g cm^-2].
 
-        rho : float : grain material density [g cm^-3]
+        rho : float
+            Grain material density [g cm^-3].
 
-        shape : xdust.graindist.shape object (default is a Sphere)
+        shape : xdust.graindist.shape object
+            Grain shape (default: ``Sphere``).
 
         Returns
         -------
-        
-        Mass column distribution of grains in [cg m^-2 um^-1]
+        numpy.ndarray
+            Mass column distribution [g cm^-2 um^-1].
         """
         nd = self.ndens(md, rho, shape)  # dn/da [cm^-2 um^-1]
         mg = shape.vol(self.a) * rho     # grain mass for each radius [g]

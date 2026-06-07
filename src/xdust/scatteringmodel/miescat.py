@@ -23,11 +23,11 @@ class Mie(ScatteringModel):
 
     Attributes
     ----------
-    In addition to those inherited from ScatteringModel
+    gsca : numpy.ndarray
+        Average cosine of the scattering angle.
 
-    gsca : numpy.ndarray : average cosine of scattering angle
-
-    qback : numpy.ndarray : back-scattering efficiency
+    qback : numpy.ndarray
+        Back-scattering efficiency.
     """
     def __init__(self, **kwargs):
         ScatteringModel.__init__(self, **kwargs)
@@ -40,22 +40,24 @@ class Mie(ScatteringModel):
         """
         Calculate the extinction efficiences using the Mie formula for spherical particles.
 
-        lam : astropy.units.Quantity -or- numpy.ndarray
-            Wavelength or energy values for calculating the cross-sections;
-            if no units specified, defaults to keV
-        
-        a : astropy.units.Quantity -or- numpy.ndarray
-            Grain radius value(s) to use in the calculation;
-            if no units specified, defaults to micron
-        
+        Parameters
+        ----------
+        lam : astropy.units.Quantity or numpy.ndarray
+            Wavelength or energy; plain arrays are assumed to be in keV.
+
+        a : astropy.units.Quantity or numpy.ndarray
+            Grain radius; plain arrays are assumed to be in microns.
+
         cm : xdust.graindist.composition object
             Holds the optical constants and density for the compound.
-        
-        theta : astropy.units.Quantity -or- numpy.ndarray -or- float
-            Scattering angles for computing the differential scattering cross-section;
-            if no units specified, defaults to radian
 
-        Updates the `qsca`, `qext`, `qabs`, `diff`, `gsca`, and `qback` attributes
+        theta : astropy.units.Quantity or numpy.ndarray or float
+            Scattering angles; plain values are assumed to be in radians.
+
+        memlim : float
+            Memory limit for the calculation [GB]. Default ``8.0``.
+
+        Updates the ``qsca``, ``qext``, ``qabs``, ``diff``, ``gsca``, and ``qback`` attributes.
         """
         # Store the parameters
         lam_cm0, a_cm0, theta_rad0 = self._store_parameters(lam, a, cm, theta)

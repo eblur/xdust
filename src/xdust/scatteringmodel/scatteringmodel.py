@@ -11,25 +11,33 @@ class ScatteringModel(object):
 
     Attributes
     ----------
-    qsca : numpy.ndarray : Scattering efficiency Q (cross-section / geometric cross-section)
+    qsca : numpy.ndarray
+        Scattering efficiency Q (cross-section / geometric cross-section).
 
-    qext : numpy.ndarray : Extinction efficiency Q (cross-section / geometric cross-section)    
+    qext : numpy.ndarray
+        Extinction efficiency Q (cross-section / geometric cross-section).
 
-    qabs : numpy.ndarray : Absorption efficiency Q (cross-section / geometric cross-section)
+    qabs : numpy.ndarray
+        Absorption efficiency Q (cross-section / geometric cross-section).
 
-    diff : numpy.ndarray : Differential scattering efficiency per steridian
+    diff : numpy.ndarray
+        Differential scattering efficiency [ster^-1].
 
-    pars : dict : Parameters from most recent calculation are stored here
+    pars : dict
+        Parameters from the most recent calculation.
 
-    stype : string : A label for the model
+    stype : str
+        A label for the model.
 
-    citation : string : A description of how to cite this model
+    citation : str
+        Description of how to cite this model.
     """
     def __init__(self, from_file=None):
         """
-        Inputs
-        ------
-        from_file : string : Optional, string that one can use to load the scattering model
+        Parameters
+        ----------
+        from_file : str, optional
+            Name of a FITS file to load a previously computed scattering model.
         """
         self.qsca = None
         self.qext = None
@@ -46,22 +54,23 @@ class ScatteringModel(object):
         """
         Calculate the extinction efficiences with the Rayleigh-Gans approximation.
 
-        lam : astropy.units.Quantity -or- numpy.ndarray
-            Wavelength or energy values for calculating the cross-sections;
-            if no units specified, defaults to keV
-        
-        a : astropy.units.Quantity -or- numpy.ndarray
-            Grain radius value(s) to use in the calculation;
-            if no units specified, defaults to micron
-        
+        Parameters
+        ----------
+        lam : astropy.units.Quantity or numpy.ndarray
+            Wavelength or energy; plain arrays are assumed to be in keV.
+
+        a : astropy.units.Quantity or numpy.ndarray
+            Grain radius; plain arrays are assumed to be in microns.
+
         cm : xdust.graindist.composition object
             Holds the optical constants and density for the compound.
-        
-        theta : astropy.units.Quantity -or- numpy.ndarray -or- float
-            Scattering angles for computing the differential scattering cross-section;
-            if no units specified, defaults to radian
 
-        Returns None.
+        theta : astropy.units.Quantity or numpy.ndarray or float
+            Scattering angles; plain values are assumed to be in radians.
+
+        Returns
+        -------
+        None
         """
         return None
 
@@ -69,27 +78,25 @@ class ScatteringModel(object):
         """
         Parses parameter units and stores them.
 
-         lam : astropy.units.Quantity -or- numpy.ndarray
-            Wavelength or energy values for calculating the cross-sections;
-            if no units specified, defaults to keV
-        
-        a : astropy.units.Quantity -or- numpy.ndarray
-            Grain radius value(s) to use in the calculation;
-            if no units specified, defaults to micron
-        
+        Parameters
+        ----------
+        lam : astropy.units.Quantity or numpy.ndarray
+            Wavelength or energy; plain arrays are assumed to be in keV.
+
+        a : astropy.units.Quantity or numpy.ndarray
+            Grain radius; plain arrays are assumed to be in microns.
+
         cm : xdust.graindist.composition object
             Holds the optical constants and density for the compound.
-        
-        theta : astropy.units.Quantity -or- numpy.ndarray -or- float
-            Scattering angles for computing the differential scattering cross-section;
-            if no units specified, defaults to radian
-        
+
+        theta : astropy.units.Quantity or numpy.ndarray or float
+            Scattering angles; plain values are assumed to be in radians.
+
         Returns
         -------
-        A three element tuple:
-        |   `lam` in units of keV, 
-        |   `a` in units of cm, and 
-        |   `theta` in units of radians
+        tuple
+            ``(lam_keV, a_cm, theta_rad)`` — wavelength in cm, grain radius in
+            cm, and scattering angle in radians.
         """
         # Store the parameters
         self.pars = dict()
@@ -129,9 +136,13 @@ class ScatteringModel(object):
         """
         Write the current scattering model calculation to a FITS file
 
-        outfile : string : Name of output file
+        Parameters
+        ----------
+        outfile : str
+            Name of the output file.
 
-        overwrite : bool (True) : if True, will overwrite a file of the same name
+        overwrite : bool
+            If ``True`` (default), overwrite an existing file of the same name.
         """
         # Don't write a table that has not been calculated
         try:
@@ -161,10 +172,10 @@ class ScatteringModel(object):
         """
         Reads in a previous scattering model calculation from a FITS file
 
-        Inputs
-        ------
-
-        infile : string : Name of the input file
+        Parameters
+        ----------
+        infile : str
+            Name of the input FITS file.
         """
         ff = fits.open(infile)
         # Load parameteric information

@@ -1,518 +1,615 @@
-<!DOCTYPE html>
-<html lang="en" data-accent-color="violet" data-content_root="../../../">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>xdust.scatteringmodel.miescat - xdust 0.1 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><script>
-    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
-    setColorMode(localStorage._theme||"auto");
-  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e1a1ceaf" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=9454f7d5" />
-    <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root {
-  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
-  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
-}
-</style>
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html"><link rel="search" title="Search" href="../../../search.html">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>xdust.scatteringmodel.miescat - xdust 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=8dab3a3b" />
     
-  <meta property="og:type" content="website"/><meta property="og:title" content="xdust.scatteringmodel.miescat"/>
-    <meta name="twitter:card" content="summary"/>
-  </head>
-<body><div class="sy-head">
-  <div class="sy-head-blur"></div>
-  <div class="sy-head-inner sy-container mx-auto">
-    <a class="sy-head-brand" href="../../../index.html">
-      
-      
-      <strong>xdust</strong>
-    </a>
-    <div class="sy-head-nav" id="head-nav">
-      <nav class="sy-head-links"><ul><li class="link">
-          <a href="https://github.com/eblur/xdust">
-            <span>GitHub</span></a>
-        </li></ul></nav>
-      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get">
-  <input type="text" name="q" placeholder="Search" />
-  <kbd>/</kbd>
-</form><div class="sy-head-socials"></div></div>
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
     </div>
-    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
-data-aria-auto="Switch to light color mode"
-data-aria-light="Switch to dark color mode"
-data-aria-dark="Switch to auto color mode">
-<i class="i-lucide theme-icon"></i>
-</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
-        <div class="hamburger">
-          <span class="hamburger_1"></span>
-          <span class="hamburger_2"></span>
-          <span class="hamburger_3"></span>
-        </div>
-      </button>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">xdust 0.1 documentation</div></a>
     </div>
-  </div>
-</div>
-<div class="sy-page sy-container flex mx-auto">
-  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
-    <div class="sy-lside-inner md:sticky">
-      <div class="sy-scrollbar p-6">
-        <div class="globaltoc" data-expand-depth="0"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../grainpop.html">astrodust.grainpop</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../graindist.html">astrodust.graindist</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  
+  <span class="sidebar-brand-text">xdust 0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../grainpop.html">xdust.grainpop</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../graindist.html">xdust.graindist</a><input aria-label="Toggle navigation of xdust.graindist" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../sizedist.html">xdust.graindist.sizedist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../composition.html">xdust.graindist.composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../shape.html">xdust.graindist.shape</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../composition.html">astrodust.graindist.composition</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../minerals.html">astrodust.graindist.composition.minerals</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../shape.html">astrodust.graindist.shape</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../extinction.html">astrodust.extinction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../scatmodels.html">astrodust.extinction.scatmodels</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../graindist.html">astrodust.graindist</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../sizedist.html">astrodust.graindist.sizedist</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../composition.html">astrodust.graindist.composition</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../minerals.html">astrodust.graindist.composition.minerals</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../shape.html">astrodust.graindist.shape</a><ul class="simple">
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../extinction.html">astrodust.extinction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../scatmodels.html">astrodust.extinction.scatmodels</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../scatmodels.html">xdust.scatteringmodel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../halos.html">xdust.halos</a></li>
 </ul>
 
-        </div>
+</div>
+</div>
+
       </div>
+      
     </div>
   </aside>
-  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
-  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
-    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
-      <i class="i-lucide close"></i>
-    </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
-  </aside>
-  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
-  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
-<div class="sy-breadcrumbs" role="navigation">
-  <div class="sy-breadcrumbs-inner flex items-center">
-    <div class="md:hidden mr-3">
-      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
-        <i class="i-lucide menu"></i>
-      </button>
-    </div>
-    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="../../../index.html"><span itemprop="name">xdust</span></a>
-        <span>/</span>
-        <meta itemprop="position" content="1" />
-      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="../../index.html"><span itemprop="name">Module code</span></a>
-        <span>/</span>
-        <meta itemprop="position" content="2" />
-      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">xdust.scatteringmodel.miescat</strong>
-        <meta itemprop="position" content="3" />
-      </li></ol>
-    <div class="xl:hidden ml-1">
-      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
-        aria-expanded="false">
-        <i class="i-lucide outdent"></i>
-      </button>
-    </div>
-  </div>
-</div><div class="flex flex-col break-words justify-between">
-      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-  <article class="yue" role="main">
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
           <h1>Source code for xdust.scatteringmodel.miescat</h1><div class="highlight"><pre>
-<span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-</span><span data-line="2"><span class="kn">import</span><span class="w"> </span><span class="nn">astropy.units</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">u</span>
-</span><span data-line="3"><span class="kn">from</span><span class="w"> </span><span class="nn">..</span><span class="w"> </span><span class="kn">import</span> <span class="n">helpers</span>
-</span><span data-line="4"><span class="kn">from</span><span class="w"> </span><span class="nn">.scatteringmodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScatteringModel</span>
-</span><span data-line="5">
-</span><span data-line="6"><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Mie&#39;</span><span class="p">]</span>
-</span><span data-line="7">
-</span><span data-line="8"><span class="n">MAX_RAM</span> <span class="o">=</span> <span class="mf">8.0</span>
-</span><span data-line="9">
-</span><span data-line="10"><span class="c1"># Major update: March 27, 2016</span>
-</span><span data-line="11"><span class="c1"># This code is slow, so to avoid running getQs over and over again, create</span>
-</span><span data-line="12"><span class="c1"># &quot;calculate&quot; function that runs getQs and stores it, then returns the appropriate values later??  Not sure ...</span>
-</span><span data-line="13">
-</span><span data-line="14"><span class="c1"># Copied from ~/code/mie/bhmie_mod.pro</span>
-</span><span data-line="15"><span class="c1"># &#39;&#39;Subroutine BHMIE is the Bohren-Huffman Mie scattering subroutine</span>
-</span><span data-line="16"><span class="c1">#    to calculate scattering and absorption by a homogenous isotropic</span>
-</span><span data-line="17"><span class="c1">#    sphere.&#39;&#39;</span>
-</span><span data-line="18"><span class="c1">#</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">astropy.units</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">u</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..</span><span class="w"> </span><span class="kn">import</span> <span class="n">helpers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.scatteringmodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScatteringModel</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Mie&#39;</span><span class="p">]</span>
+
+<span class="n">MAX_RAM</span> <span class="o">=</span> <span class="mf">8.0</span>
+
+<span class="c1"># Major update: March 27, 2016</span>
+<span class="c1"># This code is slow, so to avoid running getQs over and over again, create</span>
+<span class="c1"># &quot;calculate&quot; function that runs getQs and stores it, then returns the appropriate values later??  Not sure ...</span>
+
+<span class="c1"># Copied from ~/code/mie/bhmie_mod.pro</span>
+<span class="c1"># &#39;&#39;Subroutine BHMIE is the Bohren-Huffman Mie scattering subroutine</span>
+<span class="c1">#    to calculate scattering and absorption by a homogenous isotropic</span>
+<span class="c1">#    sphere.&#39;&#39;</span>
+<span class="c1">#</span>
 <div class="viewcode-block" id="Mie">
 <a class="viewcode-back" href="../../../scatmodels.html#xdust.scatteringmodel.Mie">[docs]</a>
-</span><span data-line="19"><span class="k">class</span><span class="w"> </span><span class="nc">Mie</span><span class="p">(</span><span class="n">ScatteringModel</span><span class="p">):</span>
-</span><span data-line="20"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="21"><span class="sd">    Mie scattering algorithms of Bohren &amp; Hoffman.</span>
-</span><span data-line="22"><span class="sd">    See their book: *Absorption and Scattering of Light by Small Particles*</span>
-</span><span data-line="23">
-</span><span data-line="24"><span class="sd">    Attributes</span>
-</span><span data-line="25"><span class="sd">    ----------</span>
-</span><span data-line="26"><span class="sd">    In addition to those inherited from ScatteringModel</span>
-</span><span data-line="27">
-</span><span data-line="28"><span class="sd">    gsca : numpy.ndarray : average cosine of scattering angle</span>
-</span><span data-line="29">
-</span><span data-line="30"><span class="sd">    qback : numpy.ndarray : back-scattering efficiency</span>
-</span><span data-line="31"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="32">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span data-line="33">        <span class="n">ScatteringModel</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span data-line="34">        <span class="bp">self</span><span class="o">.</span><span class="n">stype</span> <span class="o">=</span> <span class="s1">&#39;Mie&#39;</span>
-</span><span data-line="35">        <span class="bp">self</span><span class="o">.</span><span class="n">citation</span> <span class="o">=</span> <span class="s1">&#39;Mie scattering algorithm from Bohren &amp; Hoffman</span><span class="se">\n</span><span class="s1">*Absorption and Scattering of Light by Small Particles*&#39;</span>
-</span><span data-line="36">        <span class="bp">self</span><span class="o">.</span><span class="n">gsca</span>  <span class="o">=</span> <span class="kc">None</span>
-</span><span data-line="37">        <span class="bp">self</span><span class="o">.</span><span class="n">qback</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span data-line="38">
+<span class="k">class</span><span class="w"> </span><span class="nc">Mie</span><span class="p">(</span><span class="n">ScatteringModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mie scattering algorithms of Bohren &amp; Hoffman.</span>
+<span class="sd">    See their book: *Absorption and Scattering of Light by Small Particles*</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    gsca : numpy.ndarray</span>
+<span class="sd">        Average cosine of the scattering angle.</span>
+
+<span class="sd">    qback : numpy.ndarray</span>
+<span class="sd">        Back-scattering efficiency.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">ScatteringModel</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stype</span> <span class="o">=</span> <span class="s1">&#39;Mie&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">citation</span> <span class="o">=</span> <span class="s1">&#39;Mie scattering algorithm from Bohren &amp; Hoffman</span><span class="se">\n</span><span class="s1">*Absorption and Scattering of Light by Small Particles*&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gsca</span>  <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">qback</span> <span class="o">=</span> <span class="kc">None</span>
+
 <div class="viewcode-block" id="Mie.calculate">
 <a class="viewcode-back" href="../../../scatmodels.html#xdust.scatteringmodel.Mie.calculate">[docs]</a>
-</span><span data-line="39">    <span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">cm</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">memlim</span><span class="o">=</span><span class="n">MAX_RAM</span><span class="p">):</span>
-</span><span data-line="40"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="41"><span class="sd">        Calculate the extinction efficiences using the Mie formula for spherical particles.</span>
-</span><span data-line="42">
-</span><span data-line="43"><span class="sd">        lam : astropy.units.Quantity -or- numpy.ndarray</span>
-</span><span data-line="44"><span class="sd">            Wavelength or energy values for calculating the cross-sections;</span>
-</span><span data-line="45"><span class="sd">            if no units specified, defaults to keV</span>
-</span><span data-line="46"><span class="sd">        </span>
-</span><span data-line="47"><span class="sd">        a : astropy.units.Quantity -or- numpy.ndarray</span>
-</span><span data-line="48"><span class="sd">            Grain radius value(s) to use in the calculation;</span>
-</span><span data-line="49"><span class="sd">            if no units specified, defaults to micron</span>
-</span><span data-line="50"><span class="sd">        </span>
-</span><span data-line="51"><span class="sd">        cm : xdust.graindist.composition object</span>
-</span><span data-line="52"><span class="sd">            Holds the optical constants and density for the compound.</span>
-</span><span data-line="53"><span class="sd">        </span>
-</span><span data-line="54"><span class="sd">        theta : astropy.units.Quantity -or- numpy.ndarray -or- float</span>
-</span><span data-line="55"><span class="sd">            Scattering angles for computing the differential scattering cross-section;</span>
-</span><span data-line="56"><span class="sd">            if no units specified, defaults to radian</span>
-</span><span data-line="57">
-</span><span data-line="58"><span class="sd">        Updates the `qsca`, `qext`, `qabs`, `diff`, `gsca`, and `qback` attributes</span>
-</span><span data-line="59"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="60">        <span class="c1"># Store the parameters</span>
-</span><span data-line="61">        <span class="n">lam_cm0</span><span class="p">,</span> <span class="n">a_cm0</span><span class="p">,</span> <span class="n">theta_rad0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store_parameters</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">cm</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
-</span><span data-line="62">        <span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="n">NTH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">lam_cm0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">a_cm0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">theta_rad0</span><span class="p">)</span>
-</span><span data-line="63">
-</span><span data-line="64">        <span class="c1"># Deal with the 1d stuff first</span>
-</span><span data-line="65">        <span class="c1"># Make sure every variable is an array</span>
-</span><span data-line="66">        <span class="n">lam_cm_1d</span>    <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">_make_array</span><span class="p">(</span><span class="n">lam_cm0</span><span class="p">)</span>
-</span><span data-line="67">        <span class="n">a_cm_1d</span>      <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">_make_array</span><span class="p">(</span><span class="n">a_cm0</span><span class="p">)</span>
-</span><span data-line="68">        <span class="n">theta_rad_1d</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">_make_array</span><span class="p">(</span><span class="n">theta_rad0</span><span class="p">)</span>
-</span><span data-line="69">
-</span><span data-line="70">        <span class="c1"># Complex index of refraction</span>
-</span><span data-line="71">        <span class="n">refrel_1d</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">cm</span><span class="p">(</span><span class="n">lam_cm_1d</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="p">)</span>
-</span><span data-line="72">
-</span><span data-line="73">        <span class="c1"># Make everything NE x NA</span>
-</span><span data-line="74">        <span class="n">a_cm</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">a_cm_1d</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">NA</span><span class="p">),</span> <span class="n">NE</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</span><span data-line="75">        <span class="n">lam_cm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">lam_cm_1d</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">NA</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span><span data-line="76">        <span class="n">refrel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">refrel_1d</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">NA</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span><span data-line="77">        <span class="c1"># Size parameter (grain circumference to incoming wavelength)</span>
-</span><span data-line="78">        <span class="n">x</span>      <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">a_cm</span> <span class="o">/</span> <span class="n">lam_cm</span>
-</span><span data-line="79">
-</span><span data-line="80">        <span class="n">qsca</span><span class="p">,</span> <span class="n">qext</span><span class="p">,</span> <span class="n">qback</span><span class="p">,</span> <span class="n">gsca</span><span class="p">,</span> <span class="n">Cdiff</span> <span class="o">=</span> <span class="n">_mie_helper</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">refrel</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta_rad_1d</span><span class="p">,</span> <span class="n">memlim</span><span class="o">=</span><span class="n">memlim</span><span class="p">)</span>
-</span><span data-line="81">
-</span><span data-line="82">        <span class="bp">self</span><span class="o">.</span><span class="n">qsca</span>  <span class="o">=</span> <span class="n">qsca</span>  <span class="c1"># NE x NA</span>
-</span><span data-line="83">        <span class="bp">self</span><span class="o">.</span><span class="n">qext</span>  <span class="o">=</span> <span class="n">qext</span>
-</span><span data-line="84">        <span class="bp">self</span><span class="o">.</span><span class="n">qabs</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qext</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">qsca</span>
-</span><span data-line="85">        <span class="bp">self</span><span class="o">.</span><span class="n">qback</span> <span class="o">=</span> <span class="n">qback</span>
-</span><span data-line="86">        <span class="bp">self</span><span class="o">.</span><span class="n">gsca</span>  <span class="o">=</span> <span class="n">gsca</span>
-</span><span data-line="87">        <span class="bp">self</span><span class="o">.</span><span class="n">diff</span>  <span class="o">=</span> <span class="n">Cdiff</span> <span class="c1"># ster^-1,  NE x NA x NTH</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">cm</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">memlim</span><span class="o">=</span><span class="n">MAX_RAM</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the extinction efficiences using the Mie formula for spherical particles.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        lam : astropy.units.Quantity or numpy.ndarray</span>
+<span class="sd">            Wavelength or energy; plain arrays are assumed to be in keV.</span>
+
+<span class="sd">        a : astropy.units.Quantity or numpy.ndarray</span>
+<span class="sd">            Grain radius; plain arrays are assumed to be in microns.</span>
+
+<span class="sd">        cm : xdust.graindist.composition object</span>
+<span class="sd">            Holds the optical constants and density for the compound.</span>
+
+<span class="sd">        theta : astropy.units.Quantity or numpy.ndarray or float</span>
+<span class="sd">            Scattering angles; plain values are assumed to be in radians.</span>
+
+<span class="sd">        memlim : float</span>
+<span class="sd">            Memory limit for the calculation [GB]. Default ``8.0``.</span>
+
+<span class="sd">        Updates the ``qsca``, ``qext``, ``qabs``, ``diff``, ``gsca``, and ``qback`` attributes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Store the parameters</span>
+        <span class="n">lam_cm0</span><span class="p">,</span> <span class="n">a_cm0</span><span class="p">,</span> <span class="n">theta_rad0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store_parameters</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">cm</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+        <span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="n">NTH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">lam_cm0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">a_cm0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">theta_rad0</span><span class="p">)</span>
+
+        <span class="c1"># Deal with the 1d stuff first</span>
+        <span class="c1"># Make sure every variable is an array</span>
+        <span class="n">lam_cm_1d</span>    <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">_make_array</span><span class="p">(</span><span class="n">lam_cm0</span><span class="p">)</span>
+        <span class="n">a_cm_1d</span>      <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">_make_array</span><span class="p">(</span><span class="n">a_cm0</span><span class="p">)</span>
+        <span class="n">theta_rad_1d</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">_make_array</span><span class="p">(</span><span class="n">theta_rad0</span><span class="p">)</span>
+
+        <span class="c1"># Complex index of refraction</span>
+        <span class="n">refrel_1d</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">cm</span><span class="p">(</span><span class="n">lam_cm_1d</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="p">)</span>
+
+        <span class="c1"># Make everything NE x NA</span>
+        <span class="n">a_cm</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">a_cm_1d</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">NA</span><span class="p">),</span> <span class="n">NE</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">lam_cm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">lam_cm_1d</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">NA</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">refrel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">refrel_1d</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">NA</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Size parameter (grain circumference to incoming wavelength)</span>
+        <span class="n">x</span>      <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">a_cm</span> <span class="o">/</span> <span class="n">lam_cm</span>
+
+        <span class="n">qsca</span><span class="p">,</span> <span class="n">qext</span><span class="p">,</span> <span class="n">qback</span><span class="p">,</span> <span class="n">gsca</span><span class="p">,</span> <span class="n">Cdiff</span> <span class="o">=</span> <span class="n">_mie_helper</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">refrel</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta_rad_1d</span><span class="p">,</span> <span class="n">memlim</span><span class="o">=</span><span class="n">memlim</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">qsca</span>  <span class="o">=</span> <span class="n">qsca</span>  <span class="c1"># NE x NA</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">qext</span>  <span class="o">=</span> <span class="n">qext</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">qabs</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qext</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">qsca</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">qback</span> <span class="o">=</span> <span class="n">qback</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gsca</span>  <span class="o">=</span> <span class="n">gsca</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">diff</span>  <span class="o">=</span> <span class="n">Cdiff</span> <span class="c1"># ster^-1,  NE x NA x NTH</span></div>
 </div>
 
-</span><span data-line="88">
-</span><span data-line="89"><span class="c1">#---------------- Helper function that does the actual calculation</span>
-</span><span data-line="90">
-</span><span data-line="91"><span class="k">def</span><span class="w"> </span><span class="nf">_mie_helper</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">refrel</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">memlim</span><span class="o">=</span><span class="n">MAX_RAM</span><span class="p">):</span>
-</span><span data-line="92"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="93"><span class="sd">    theta is array of length NTH, units of radians</span>
-</span><span data-line="94"><span class="sd">    </span>
-</span><span data-line="95"><span class="sd">    x and refrel are NE x NA</span>
-</span><span data-line="96"><span class="sd">    </span>
-</span><span data-line="97"><span class="sd">    need to make outputs that are NE x NA x NTH</span>
-</span><span data-line="98"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="99">    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">refrel</span><span class="p">)</span>
-</span><span data-line="100">    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="mi">2</span>
-</span><span data-line="101">    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span>
-</span><span data-line="102">
-</span><span data-line="103">    <span class="n">NE</span><span class="p">,</span> <span class="n">NA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span data-line="104">    <span class="n">NTH</span>    <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-</span><span data-line="105">
-</span><span data-line="106">    <span class="c1"># Make 3D array for the calculations on angular dependence</span>
-</span><span data-line="107">    <span class="n">theta_rad_3d</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span>
-</span><span data-line="108">        <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">NTH</span><span class="p">),</span> <span class="n">NE</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
-</span><span data-line="109">        <span class="n">NA</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span><span data-line="110">    <span class="n">x_3d</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">NTH</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</span><span data-line="111">
-</span><span data-line="112">    <span class="n">amu</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta_rad_3d</span><span class="p">))</span>
-</span><span data-line="113">    <span class="n">indl90</span>    <span class="o">=</span> <span class="p">(</span><span class="n">theta_rad_3d</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span>
-</span><span data-line="114">    <span class="n">indg90</span>    <span class="o">=</span> <span class="p">(</span><span class="n">theta_rad_3d</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span>
-</span><span data-line="115">
-</span><span data-line="116">    <span class="n">s1</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="n">NTH</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
-</span><span data-line="117">    <span class="n">s2</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="n">NTH</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
-</span><span data-line="118">    <span class="n">pi</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="n">NTH</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
-</span><span data-line="119">    <span class="n">pi0</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="n">NTH</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
-</span><span data-line="120">    <span class="n">pi1</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="n">NTH</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.0</span>
-</span><span data-line="121">    <span class="n">tau</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="n">NTH</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
-</span><span data-line="122">
-</span><span data-line="123">    <span class="n">y</span>      <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">refrel</span>
-</span><span data-line="124">    <span class="n">ymod</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</span><span data-line="125">    <span class="n">nx</span>     <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>  <span class="c1"># total number of NE x NA</span>
-</span><span data-line="126">
-</span><span data-line="127">    <span class="c1"># *** Series expansion terminated after NSTOP terms</span>
-</span><span data-line="128">    <span class="c1"># Logarithmic derivatives calculated from NMX on down</span>
-</span><span data-line="129">
-</span><span data-line="130">    <span class="n">xstop</span>  <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.3333</span><span class="p">)</span> <span class="o">+</span> <span class="mf">2.0</span>
-</span><span data-line="131">    <span class="n">test</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xstop</span><span class="p">,</span> <span class="n">ymod</span><span class="p">)</span>
-</span><span data-line="132">    <span class="n">nmx</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">test</span><span class="p">)</span> <span class="o">+</span> <span class="mi">15</span>
-</span><span data-line="133">    <span class="n">nmx</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">(</span><span class="n">nmx</span><span class="p">)</span>  <span class="c1"># max number of iterations</span>
-</span><span data-line="134">
-</span><span data-line="135">    <span class="n">nstop</span>  <span class="o">=</span> <span class="n">xstop</span>
-</span><span data-line="136"><span class="c1">#   nmxx   = 150000</span>
-</span><span data-line="137">
-</span><span data-line="138"><span class="c1">#    if (nmx &gt; nmxx):</span>
-</span><span data-line="139"><span class="c1">#        print(&#39;error: nmx &gt; nmxx=&#39;, nmxx, &#39; for |m|x=&#39;, ymod)</span>
-</span><span data-line="140">    <span class="c1"># *** Logarithmic derivative D(J) calculated by downward recurrence</span>
-</span><span data-line="141">    <span class="c1"># beginning with initial value (0.,0.) at J=NMX</span>
-</span><span data-line="142">
-</span><span data-line="143">    <span class="c1">## Check memory usage</span>
-</span><span data-line="144">    <span class="c1">## If it is above the memory limit, stop the calculation</span>
-</span><span data-line="145">    <span class="n">dsize</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">(</span><span class="n">NE</span> <span class="o">*</span> <span class="n">NA</span> <span class="o">*</span> <span class="n">nmx</span><span class="p">)</span>
-</span><span data-line="146">    <span class="n">dspace</span> <span class="o">=</span> <span class="n">_test_complex_mem_usage</span><span class="p">(</span><span class="n">dsize</span><span class="p">)</span>  <span class="c1"># GB</span>
-</span><span data-line="147">    <span class="k">if</span> <span class="n">dspace</span> <span class="o">&gt;</span> <span class="n">memlim</span><span class="p">:</span>
-</span><span data-line="148">        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WARNING!! Space needed (</span><span class="si">%f</span><span class="s2"> GB) exceeds memory limit (</span><span class="si">%.2f</span><span class="s2"> GB)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dspace</span><span class="p">,</span> <span class="n">memlim</span><span class="p">))</span>
-</span><span data-line="149">        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WARNING!! Try increasing the memlim keyword to match available RAM, or decrease sampling&quot;</span><span class="p">)</span>
-</span><span data-line="150">        <span class="k">return</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
-</span><span data-line="151">
-</span><span data-line="152">    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">,</span><span class="n">nmx</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>  <span class="c1"># NE x NA x nmx</span>
-</span><span data-line="153">    <span class="n">dold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nmx</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
-</span><span data-line="154">    <span class="c1"># Original code set size to nmxx.</span>
-</span><span data-line="155">    <span class="c1"># I see that the array only needs to be slightly larger than nmx</span>
-</span><span data-line="156">
-</span><span data-line="157">    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nmx</span><span class="p">):</span>  <span class="c1"># for n=1, nmx-1 do begin</span>
-</span><span data-line="158">        <span class="n">en</span> <span class="o">=</span> <span class="n">nmx</span> <span class="o">-</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
-</span><span data-line="159">        <span class="c1">#assert isinstance(en, int)</span>
-</span><span data-line="160">        <span class="c1">#assert isinstance(nmx-n, int)</span>
-</span><span data-line="161">        <span class="c1">#assert isinstance(nmx-n+1, int)</span>
-</span><span data-line="162">        <span class="n">d</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">nmx</span><span class="o">-</span><span class="n">n</span><span class="p">]</span>  <span class="o">=</span> <span class="p">(</span><span class="n">en</span><span class="o">/</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">nmx</span><span class="o">-</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">en</span><span class="o">/</span><span class="n">y</span><span class="p">))</span>
-</span><span data-line="163">
-</span><span data-line="164">    <span class="c1"># *** Riccati-Bessel functions with real argument X</span>
-</span><span data-line="165">    <span class="c1"># calculated by upward recurrence</span>
-</span><span data-line="166">
-</span><span data-line="167">    <span class="n">psi0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># NE x NA</span>
-</span><span data-line="168">    <span class="n">psi1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span data-line="169">    <span class="n">chi0</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span data-line="170">    <span class="n">chi1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span data-line="171">    <span class="n">xi1</span>  <span class="o">=</span> <span class="n">psi1</span> <span class="o">-</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">chi1</span>
-</span><span data-line="172">
-</span><span data-line="173">    <span class="n">qsca</span> <span class="o">=</span> <span class="mf">0.0</span>    <span class="c1"># scattering efficiency</span>
-</span><span data-line="174">    <span class="n">gsca</span> <span class="o">=</span> <span class="mf">0.0</span>    <span class="c1"># &lt;cos(theta)&gt;</span>
-</span><span data-line="175">
-</span><span data-line="176">    <span class="n">s1_ext</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="177">    <span class="n">s2_ext</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="178">    <span class="n">s1_back</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="179">    <span class="n">s2_back</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="180">
-</span><span data-line="181">    <span class="n">pi_ext</span>  <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="182">    <span class="n">pi0_ext</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="183">    <span class="n">pi1_ext</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span data-line="184">    <span class="n">tau_ext</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="185">
-</span><span data-line="186">    <span class="n">p</span>    <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
-</span><span data-line="187">
-</span><span data-line="188">    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">nstop</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># for n=1, nstop do begin</span>
-</span><span data-line="189">        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
-</span><span data-line="190">        <span class="n">en</span> <span class="o">=</span> <span class="n">n</span>
-</span><span data-line="191">        <span class="n">fn</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">en</span><span class="o">+</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">en</span> <span class="o">*</span> <span class="p">(</span><span class="n">en</span><span class="o">+</span><span class="mf">1.0</span><span class="p">))</span>
-</span><span data-line="192">
-</span><span data-line="193">        <span class="c1"># for given N, PSI  = psi_n        CHI  = chi_n</span>
-</span><span data-line="194">        <span class="c1">#              PSI1 = psi_{n-1}    CHI1 = chi_{n-1}</span>
-</span><span data-line="195">        <span class="c1">#              PSI0 = psi_{n-2}    CHI0 = chi_{n-2}</span>
-</span><span data-line="196">        <span class="c1"># Calculate psi_n and chi_n</span>
-</span><span data-line="197">        <span class="c1"># *** Compute AN and BN:</span>
-</span><span data-line="198">
-</span><span data-line="199">        <span class="c1">#*** Store previous values of AN and BN for use</span>
-</span><span data-line="200">        <span class="c1">#    in computation of g=&lt;cos(theta)&gt;</span>
-</span><span data-line="201">        <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-</span><span data-line="202">            <span class="n">an1</span> <span class="o">=</span> <span class="n">an</span>
-</span><span data-line="203">            <span class="n">bn1</span> <span class="o">=</span> <span class="n">bn</span>
-</span><span data-line="204">
-</span><span data-line="205">        <span class="n">ig</span>  <span class="o">=</span> <span class="p">(</span><span class="n">nstop</span> <span class="o">&gt;=</span> <span class="n">n</span><span class="p">)</span>
-</span><span data-line="206">
-</span><span data-line="207">        <span class="n">psi</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">))</span>
-</span><span data-line="208">        <span class="n">chi</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">))</span>
-</span><span data-line="209">
-</span><span data-line="210">        <span class="n">psi</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">en</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">psi1</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">-</span> <span class="n">psi0</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span>
-</span><span data-line="211">        <span class="n">chi</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">en</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">chi1</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">-</span> <span class="n">chi0</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span>
-</span><span data-line="212">        <span class="n">xi</span>      <span class="o">=</span> <span class="n">psi</span> <span class="o">-</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">chi</span>
-</span><span data-line="213">
-</span><span data-line="214">        <span class="n">an</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
-</span><span data-line="215">        <span class="n">bn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
-</span><span data-line="216">
-</span><span data-line="217">        <span class="n">d_n</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">n</span><span class="p">]</span>
-</span><span data-line="218">        <span class="n">an</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">d_n</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">/</span> <span class="n">refrel</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">+</span> <span class="n">en</span> <span class="o">/</span> <span class="n">x</span><span class="p">[</span><span class="n">ig</span><span class="p">])</span> <span class="o">*</span> <span class="n">psi</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">-</span> <span class="n">psi1</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span>
-</span><span data-line="219">        <span class="n">an</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">=</span> <span class="n">an</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">/</span> <span class="p">((</span><span class="n">d_n</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">/</span> <span class="n">refrel</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">+</span> <span class="n">en</span> <span class="o">/</span> <span class="n">x</span><span class="p">[</span><span class="n">ig</span><span class="p">])</span> <span class="o">*</span> <span class="n">xi</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">-</span> <span class="n">xi1</span><span class="p">[</span><span class="n">ig</span><span class="p">])</span>
-</span><span data-line="220">        <span class="n">bn</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">refrel</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">*</span> <span class="n">d_n</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">+</span> <span class="n">en</span> <span class="o">/</span> <span class="n">x</span><span class="p">[</span><span class="n">ig</span><span class="p">])</span> <span class="o">*</span> <span class="n">psi</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">-</span> <span class="n">psi1</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span>
-</span><span data-line="221">        <span class="n">bn</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">=</span> <span class="n">bn</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">/</span> <span class="p">((</span><span class="n">refrel</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">*</span> <span class="n">d_n</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">+</span> <span class="n">en</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="n">ig</span><span class="p">])</span> <span class="o">*</span> <span class="n">xi</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">-</span> <span class="n">xi1</span><span class="p">[</span><span class="n">ig</span><span class="p">])</span>
-</span><span data-line="222">
-</span><span data-line="223">        <span class="n">an_3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">an</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">NTH</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</span><span data-line="224">        <span class="n">bn_3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">bn</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">NTH</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</span><span data-line="225">
-</span><span data-line="226">        <span class="c1"># *** Augment sums for Qsca and g=&lt;cos(theta)&gt;</span>
-</span><span data-line="227">        <span class="c1"># NOTE from LIA: In IDL version, bhmie casts double(an)</span>
-</span><span data-line="228">        <span class="c1"># and double(bn).  This disgards the imaginary part.  To</span>
-</span><span data-line="229">        <span class="c1"># avoid type casting errors, I use an.real and bn.real</span>
-</span><span data-line="230">        <span class="c1"># Because animag and bnimag were intended to isolate the</span>
-</span><span data-line="231">        <span class="c1"># real from imaginary parts, I replaced all instances of</span>
-</span><span data-line="232">        <span class="c1"># double( foo * complex(0.d0,-1.d0) ) with foo.imag</span>
-</span><span data-line="233">
-</span><span data-line="234">        <span class="n">qsca</span>   <span class="o">=</span> <span class="n">qsca</span> <span class="o">+</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">an</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">bn</span><span class="p">),</span><span class="mi">2</span><span class="p">))</span>
-</span><span data-line="235">        <span class="n">gsca</span>   <span class="o">=</span> <span class="n">gsca</span> <span class="o">+</span> <span class="p">((</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">en</span> <span class="o">*</span> <span class="p">(</span><span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)))</span> <span class="o">*</span> <span class="p">(</span><span class="n">an</span><span class="o">.</span><span class="n">real</span> <span class="o">*</span> <span class="n">bn</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">an</span><span class="o">.</span><span class="n">imag</span> <span class="o">*</span> <span class="n">bn</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
-</span><span data-line="236">
-</span><span data-line="237">        <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-</span><span data-line="238">            <span class="n">gsca</span>    <span class="o">=</span> <span class="n">gsca</span> <span class="o">+</span> <span class="p">((</span><span class="n">en</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">en</span><span class="o">+</span><span class="mf">1.0</span><span class="p">)</span><span class="o">/</span><span class="n">en</span><span class="p">)</span> <span class="o">*</span> \
-</span><span data-line="239">                <span class="p">(</span><span class="n">an1</span><span class="o">.</span><span class="n">real</span><span class="o">*</span><span class="n">an</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">an1</span><span class="o">.</span><span class="n">imag</span><span class="o">*</span><span class="n">an</span><span class="o">.</span><span class="n">imag</span> <span class="o">+</span> <span class="n">bn1</span><span class="o">.</span><span class="n">real</span><span class="o">*</span><span class="n">bn</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">bn1</span><span class="o">.</span><span class="n">imag</span><span class="o">*</span><span class="n">bn</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
-</span><span data-line="240">
-</span><span data-line="241">        <span class="c1"># *** Now calculate scattering intensity pattern</span>
-</span><span data-line="242">        <span class="c1">#     First do angles from 0 to 90</span>
-</span><span data-line="243">
-</span><span data-line="244">        <span class="c1"># LIA : Altered the two loops below so that only the indices where ang</span>
-</span><span data-line="245">        <span class="c1"># &lt; 90 are used.  Replaced (j) with [indl90]</span>
-</span><span data-line="246">
-</span><span data-line="247">        <span class="c1"># Note also: If theta is specified, and np.size(E) &gt; 1,</span>
-</span><span data-line="248">        <span class="c1"># the number of E values must match the number of theta</span>
-</span><span data-line="249">        <span class="c1"># values.  Cosmological halo functions will utilize this</span>
-</span><span data-line="250">        <span class="c1"># Diff this way.</span>
-</span><span data-line="251">
-</span><span data-line="252">        <span class="n">pi</span>  <span class="o">=</span> <span class="n">pi1</span>
-</span><span data-line="253">        <span class="n">tau</span> <span class="o">=</span> <span class="n">en</span> <span class="o">*</span> <span class="n">amu</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">-</span> <span class="p">(</span><span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi0</span>
-</span><span data-line="254">
-</span><span data-line="255">        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">indl90</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-</span><span data-line="256">            <span class="n">antmp</span> <span class="o">=</span> <span class="n">an_3d</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span>
-</span><span data-line="257">            <span class="n">bntmp</span> <span class="o">=</span> <span class="n">bn_3d</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span>  <span class="c1"># For case where multiple E and theta are specified</span>
-</span><span data-line="258">            <span class="n">s1</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span> <span class="o">=</span> <span class="n">s1</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="p">(</span><span class="n">antmp</span> <span class="o">*</span> <span class="n">pi</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span> <span class="o">+</span> <span class="n">bntmp</span> <span class="o">*</span> <span class="n">tau</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">])</span>
-</span><span data-line="259">            <span class="n">s2</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span> <span class="o">=</span> <span class="n">s2</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="p">(</span><span class="n">antmp</span> <span class="o">*</span> <span class="n">tau</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span> <span class="o">+</span> <span class="n">bntmp</span> <span class="o">*</span> <span class="n">pi</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">])</span>
-</span><span data-line="260">        <span class="c1">#ENDIF</span>
-</span><span data-line="261">
-</span><span data-line="262">        <span class="n">pi_ext</span> <span class="o">=</span> <span class="n">pi1_ext</span>
-</span><span data-line="263">        <span class="n">tau_ext</span> <span class="o">=</span> <span class="n">en</span> <span class="o">*</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">pi_ext</span> <span class="o">-</span> <span class="p">(</span><span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi0_ext</span>
-</span><span data-line="264">
-</span><span data-line="265">        <span class="n">s1_ext</span> <span class="o">=</span> <span class="n">s1_ext</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="p">(</span><span class="n">an</span> <span class="o">*</span> <span class="n">pi_ext</span> <span class="o">+</span> <span class="n">bn</span> <span class="o">*</span> <span class="n">tau_ext</span><span class="p">)</span>
-</span><span data-line="266">        <span class="n">s2_ext</span> <span class="o">=</span> <span class="n">s2_ext</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="p">(</span><span class="n">bn</span> <span class="o">*</span> <span class="n">pi_ext</span> <span class="o">+</span> <span class="n">an</span> <span class="o">*</span> <span class="n">tau_ext</span><span class="p">)</span>
-</span><span data-line="267">
-</span><span data-line="268">        <span class="c1"># *** Now do angles greater than 90 using PI and TAU from</span>
-</span><span data-line="269">        <span class="c1">#     angles less than 90.</span>
-</span><span data-line="270">        <span class="c1">#     P=1 for N=1,3,...; P=-1 for N=2,4,...</span>
-</span><span data-line="271">
-</span><span data-line="272">        <span class="n">p</span> <span class="o">=</span> <span class="o">-</span><span class="n">p</span>
-</span><span data-line="273">
-</span><span data-line="274">        <span class="c1"># LIA : Previous code used tau(j) from the previous loop.  How do I</span>
-</span><span data-line="275">        <span class="c1"># get around this?</span>
-</span><span data-line="276">
-</span><span data-line="277">        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">indg90</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-</span><span data-line="278">            <span class="n">antmp</span> <span class="o">=</span> <span class="n">an_3d</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span>
-</span><span data-line="279">            <span class="n">bntmp</span> <span class="o">=</span> <span class="n">bn_3d</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span>
-</span><span data-line="280">            <span class="n">s1</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span> <span class="o">=</span> <span class="n">s1</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="n">antmp</span> <span class="o">*</span> <span class="n">pi</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span> <span class="o">-</span> <span class="n">bntmp</span> <span class="o">*</span> <span class="n">tau</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">])</span>
-</span><span data-line="281">            <span class="n">s2</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span> <span class="o">=</span> <span class="n">s2</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="n">bntmp</span> <span class="o">*</span> <span class="n">pi</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span> <span class="o">-</span> <span class="n">antmp</span> <span class="o">*</span> <span class="n">tau</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">])</span>
-</span><span data-line="282">        <span class="c1">#ENDIF</span>
-</span><span data-line="283">
-</span><span data-line="284">        <span class="n">s1_back</span> <span class="o">=</span> <span class="n">s1_back</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="n">an</span> <span class="o">*</span> <span class="n">pi_ext</span> <span class="o">-</span> <span class="n">bn</span> <span class="o">*</span> <span class="n">tau_ext</span><span class="p">)</span>
-</span><span data-line="285">        <span class="n">s2_back</span> <span class="o">=</span> <span class="n">s2_back</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="n">bn</span> <span class="o">*</span> <span class="n">pi_ext</span> <span class="o">-</span> <span class="n">an</span> <span class="o">*</span> <span class="n">tau_ext</span><span class="p">)</span>
-</span><span data-line="286">
-</span><span data-line="287">        <span class="n">psi0</span> <span class="o">=</span> <span class="n">psi1</span>
-</span><span data-line="288">        <span class="n">psi1</span> <span class="o">=</span> <span class="n">psi</span>
-</span><span data-line="289">        <span class="n">chi0</span> <span class="o">=</span> <span class="n">chi1</span>
-</span><span data-line="290">        <span class="n">chi1</span> <span class="o">=</span> <span class="n">chi</span>
-</span><span data-line="291">        <span class="n">xi1</span>  <span class="o">=</span> <span class="n">psi1</span> <span class="o">-</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">chi1</span>
-</span><span data-line="292">
-</span><span data-line="293">        <span class="c1"># *** Compute pi_n for next value of n</span>
-</span><span data-line="294">        <span class="c1">#     For each angle J, compute pi_n+1</span>
-</span><span data-line="295">        <span class="c1">#     from PI = pi_n , PI0 = pi_n-1</span>
-</span><span data-line="296">
-</span><span data-line="297">        <span class="n">pi1</span>  <span class="o">=</span> <span class="p">((</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">amu</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">-</span> <span class="p">(</span><span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi0</span><span class="p">)</span> <span class="o">/</span> <span class="n">en</span>
-</span><span data-line="298">        <span class="n">pi0</span>  <span class="o">=</span> <span class="n">pi</span>
-</span><span data-line="299">
-</span><span data-line="300">        <span class="n">pi1_ext</span> <span class="o">=</span> <span class="p">((</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">pi_ext</span> <span class="o">-</span> <span class="p">(</span><span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi0_ext</span><span class="p">)</span> <span class="o">/</span> <span class="n">en</span>
-</span><span data-line="301">        <span class="n">pi0_ext</span> <span class="o">=</span> <span class="n">pi_ext</span>
-</span><span data-line="302">
-</span><span data-line="303">        <span class="c1"># ENDFOR</span>
-</span><span data-line="304">
-</span><span data-line="305">    <span class="c1"># *** Have summed sufficient terms.</span>
-</span><span data-line="306">    <span class="c1">#     Now compute QSCA,QEXT,QBACK,and GSCA</span>
-</span><span data-line="307">    <span class="n">gsca</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">gsca</span> <span class="o">/</span> <span class="n">qsca</span>
-</span><span data-line="308">    <span class="n">qsca</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">qsca</span>
-</span><span data-line="309">
-</span><span data-line="310">    <span class="c1"># LIA : Changed qext to use s1(theta=0) instead of s1(1).  Why did the</span>
-</span><span data-line="311">    <span class="c1"># original code use s1(1)?</span>
-</span><span data-line="312">
-</span><span data-line="313">    <span class="n">qext</span> <span class="o">=</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">s1_ext</span><span class="o">.</span><span class="n">real</span>
-</span><span data-line="314">    <span class="n">qback</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">s1_back</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
-</span><span data-line="315">
-</span><span data-line="316">    <span class="n">Cdiff</span> <span class="o">=</span> <span class="mf">0.0</span>
-</span><span data-line="317">    <span class="n">bad_theta</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">theta_rad_3d</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>  <span class="c1"># Set to 0 values where theta &gt; !pi</span>
-</span><span data-line="318">    <span class="n">s1</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">bad_theta</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="319">    <span class="n">s2</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">bad_theta</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="320">    <span class="n">Cdiff</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">s1</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">s2</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x_3d</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-</span><span data-line="321">
-</span><span data-line="322">    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">qsca</span><span class="p">,</span> <span class="n">qext</span><span class="p">,</span> <span class="n">qback</span><span class="p">,</span> <span class="n">gsca</span><span class="p">,</span> <span class="n">Cdiff</span><span class="p">)</span>
-</span><span data-line="323">    <span class="k">return</span> <span class="n">result</span>
-</span><span data-line="324">
-</span><span data-line="325"><span class="c1">##------ GENERAL HELPER FUNCTION</span>
-</span><span data-line="326">
-</span><span data-line="327"><span class="k">def</span><span class="w"> </span><span class="nf">_test_complex_mem_usage</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
-</span><span data-line="328">    <span class="c1">## Test memory usage for an array of complex numbers of length numbers</span>
-</span><span data-line="329">    <span class="c1">## Returns size of complex number array in units of GB</span>
-</span><span data-line="330">    <span class="c1"># 64 bit numbers are 8 bytes each</span>
-</span><span data-line="331">    <span class="c1"># Assume 64 bit, times two (real and imaginary part), so each complex number is 16 bytes</span>
-</span><span data-line="332">    <span class="n">bytes_per_num</span> <span class="o">=</span> <span class="mf">16.</span>   <span class="c1"># bytes per complex number</span>
-</span><span data-line="333">    <span class="n">GB_to_bytes</span>   <span class="o">=</span> <span class="mf">1.e9</span>  <span class="c1"># bytes per GB</span>
-</span><span data-line="334">    <span class="n">total_mem_GB</span>  <span class="o">=</span> <span class="n">num</span> <span class="o">*</span> <span class="n">bytes_per_num</span> <span class="o">/</span> <span class="n">GB_to_bytes</span>
-</span><span data-line="335">    <span class="k">return</span> <span class="n">total_mem_GB</span>
-</span></pre></div>
-        </article><button class="back-to-top" type="button">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
-  </svg>
-  <span>Back to top</span>
-</button><div class="navigation flex print:hidden"></div></div>
+
+<span class="c1">#---------------- Helper function that does the actual calculation</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_mie_helper</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">refrel</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">memlim</span><span class="o">=</span><span class="n">MAX_RAM</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    theta is array of length NTH, units of radians</span>
+<span class="sd">    </span>
+<span class="sd">    x and refrel are NE x NA</span>
+<span class="sd">    </span>
+<span class="sd">    need to make outputs that are NE x NA x NTH</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">refrel</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+
+    <span class="n">NE</span><span class="p">,</span> <span class="n">NA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">NTH</span>    <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+
+    <span class="c1"># Make 3D array for the calculations on angular dependence</span>
+    <span class="n">theta_rad_3d</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">NTH</span><span class="p">),</span> <span class="n">NE</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">NA</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">x_3d</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">NTH</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">amu</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta_rad_3d</span><span class="p">))</span>
+    <span class="n">indl90</span>    <span class="o">=</span> <span class="p">(</span><span class="n">theta_rad_3d</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span>
+    <span class="n">indg90</span>    <span class="o">=</span> <span class="p">(</span><span class="n">theta_rad_3d</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span>
+
+    <span class="n">s1</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="n">NTH</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
+    <span class="n">s2</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="n">NTH</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
+    <span class="n">pi</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="n">NTH</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
+    <span class="n">pi0</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="n">NTH</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
+    <span class="n">pi1</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="n">NTH</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.0</span>
+    <span class="n">tau</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span> <span class="n">NA</span><span class="p">,</span> <span class="n">NTH</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
+
+    <span class="n">y</span>      <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">refrel</span>
+    <span class="n">ymod</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">nx</span>     <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>  <span class="c1"># total number of NE x NA</span>
+
+    <span class="c1"># *** Series expansion terminated after NSTOP terms</span>
+    <span class="c1"># Logarithmic derivatives calculated from NMX on down</span>
+
+    <span class="n">xstop</span>  <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.3333</span><span class="p">)</span> <span class="o">+</span> <span class="mf">2.0</span>
+    <span class="n">test</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xstop</span><span class="p">,</span> <span class="n">ymod</span><span class="p">)</span>
+    <span class="n">nmx</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">test</span><span class="p">)</span> <span class="o">+</span> <span class="mi">15</span>
+    <span class="n">nmx</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">(</span><span class="n">nmx</span><span class="p">)</span>  <span class="c1"># max number of iterations</span>
+
+    <span class="n">nstop</span>  <span class="o">=</span> <span class="n">xstop</span>
+<span class="c1">#   nmxx   = 150000</span>
+
+<span class="c1">#    if (nmx &gt; nmxx):</span>
+<span class="c1">#        print(&#39;error: nmx &gt; nmxx=&#39;, nmxx, &#39; for |m|x=&#39;, ymod)</span>
+    <span class="c1"># *** Logarithmic derivative D(J) calculated by downward recurrence</span>
+    <span class="c1"># beginning with initial value (0.,0.) at J=NMX</span>
+
+    <span class="c1">## Check memory usage</span>
+    <span class="c1">## If it is above the memory limit, stop the calculation</span>
+    <span class="n">dsize</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">(</span><span class="n">NE</span> <span class="o">*</span> <span class="n">NA</span> <span class="o">*</span> <span class="n">nmx</span><span class="p">)</span>
+    <span class="n">dspace</span> <span class="o">=</span> <span class="n">_test_complex_mem_usage</span><span class="p">(</span><span class="n">dsize</span><span class="p">)</span>  <span class="c1"># GB</span>
+    <span class="k">if</span> <span class="n">dspace</span> <span class="o">&gt;</span> <span class="n">memlim</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WARNING!! Space needed (</span><span class="si">%f</span><span class="s2"> GB) exceeds memory limit (</span><span class="si">%.2f</span><span class="s2"> GB)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dspace</span><span class="p">,</span> <span class="n">memlim</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WARNING!! Try increasing the memlim keyword to match available RAM, or decrease sampling&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">,</span><span class="n">nmx</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>  <span class="c1"># NE x NA x nmx</span>
+    <span class="n">dold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nmx</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
+    <span class="c1"># Original code set size to nmxx.</span>
+    <span class="c1"># I see that the array only needs to be slightly larger than nmx</span>
+
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nmx</span><span class="p">):</span>  <span class="c1"># for n=1, nmx-1 do begin</span>
+        <span class="n">en</span> <span class="o">=</span> <span class="n">nmx</span> <span class="o">-</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="c1">#assert isinstance(en, int)</span>
+        <span class="c1">#assert isinstance(nmx-n, int)</span>
+        <span class="c1">#assert isinstance(nmx-n+1, int)</span>
+        <span class="n">d</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">nmx</span><span class="o">-</span><span class="n">n</span><span class="p">]</span>  <span class="o">=</span> <span class="p">(</span><span class="n">en</span><span class="o">/</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">nmx</span><span class="o">-</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">en</span><span class="o">/</span><span class="n">y</span><span class="p">))</span>
+
+    <span class="c1"># *** Riccati-Bessel functions with real argument X</span>
+    <span class="c1"># calculated by upward recurrence</span>
+
+    <span class="n">psi0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># NE x NA</span>
+    <span class="n">psi1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">chi0</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">chi1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">xi1</span>  <span class="o">=</span> <span class="n">psi1</span> <span class="o">-</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">chi1</span>
+
+    <span class="n">qsca</span> <span class="o">=</span> <span class="mf">0.0</span>    <span class="c1"># scattering efficiency</span>
+    <span class="n">gsca</span> <span class="o">=</span> <span class="mf">0.0</span>    <span class="c1"># &lt;cos(theta)&gt;</span>
+
+    <span class="n">s1_ext</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">s2_ext</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">s1_back</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">s2_back</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">pi_ext</span>  <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">pi0_ext</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">pi1_ext</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">tau_ext</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">p</span>    <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
+
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">nstop</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># for n=1, nstop do begin</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+        <span class="n">en</span> <span class="o">=</span> <span class="n">n</span>
+        <span class="n">fn</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">en</span><span class="o">+</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">en</span> <span class="o">*</span> <span class="p">(</span><span class="n">en</span><span class="o">+</span><span class="mf">1.0</span><span class="p">))</span>
+
+        <span class="c1"># for given N, PSI  = psi_n        CHI  = chi_n</span>
+        <span class="c1">#              PSI1 = psi_{n-1}    CHI1 = chi_{n-1}</span>
+        <span class="c1">#              PSI0 = psi_{n-2}    CHI0 = chi_{n-2}</span>
+        <span class="c1"># Calculate psi_n and chi_n</span>
+        <span class="c1"># *** Compute AN and BN:</span>
+
+        <span class="c1">#*** Store previous values of AN and BN for use</span>
+        <span class="c1">#    in computation of g=&lt;cos(theta)&gt;</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">an1</span> <span class="o">=</span> <span class="n">an</span>
+            <span class="n">bn1</span> <span class="o">=</span> <span class="n">bn</span>
+
+        <span class="n">ig</span>  <span class="o">=</span> <span class="p">(</span><span class="n">nstop</span> <span class="o">&gt;=</span> <span class="n">n</span><span class="p">)</span>
+
+        <span class="n">psi</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">))</span>
+        <span class="n">chi</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">))</span>
+
+        <span class="n">psi</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">en</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">psi1</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">-</span> <span class="n">psi0</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span>
+        <span class="n">chi</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">en</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">chi1</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">-</span> <span class="n">chi0</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span>
+        <span class="n">xi</span>      <span class="o">=</span> <span class="n">psi</span> <span class="o">-</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">chi</span>
+
+        <span class="n">an</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
+        <span class="n">bn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
+
+        <span class="n">d_n</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">n</span><span class="p">]</span>
+        <span class="n">an</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">d_n</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">/</span> <span class="n">refrel</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">+</span> <span class="n">en</span> <span class="o">/</span> <span class="n">x</span><span class="p">[</span><span class="n">ig</span><span class="p">])</span> <span class="o">*</span> <span class="n">psi</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">-</span> <span class="n">psi1</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span>
+        <span class="n">an</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">=</span> <span class="n">an</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">/</span> <span class="p">((</span><span class="n">d_n</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">/</span> <span class="n">refrel</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">+</span> <span class="n">en</span> <span class="o">/</span> <span class="n">x</span><span class="p">[</span><span class="n">ig</span><span class="p">])</span> <span class="o">*</span> <span class="n">xi</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">-</span> <span class="n">xi1</span><span class="p">[</span><span class="n">ig</span><span class="p">])</span>
+        <span class="n">bn</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">refrel</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">*</span> <span class="n">d_n</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">+</span> <span class="n">en</span> <span class="o">/</span> <span class="n">x</span><span class="p">[</span><span class="n">ig</span><span class="p">])</span> <span class="o">*</span> <span class="n">psi</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">-</span> <span class="n">psi1</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span>
+        <span class="n">bn</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">=</span> <span class="n">bn</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">/</span> <span class="p">((</span><span class="n">refrel</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">*</span> <span class="n">d_n</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">+</span> <span class="n">en</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="n">ig</span><span class="p">])</span> <span class="o">*</span> <span class="n">xi</span><span class="p">[</span><span class="n">ig</span><span class="p">]</span> <span class="o">-</span> <span class="n">xi1</span><span class="p">[</span><span class="n">ig</span><span class="p">])</span>
+
+        <span class="n">an_3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">an</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">NTH</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">bn_3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">bn</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NE</span><span class="p">,</span><span class="n">NA</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">NTH</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># *** Augment sums for Qsca and g=&lt;cos(theta)&gt;</span>
+        <span class="c1"># NOTE from LIA: In IDL version, bhmie casts double(an)</span>
+        <span class="c1"># and double(bn).  This disgards the imaginary part.  To</span>
+        <span class="c1"># avoid type casting errors, I use an.real and bn.real</span>
+        <span class="c1"># Because animag and bnimag were intended to isolate the</span>
+        <span class="c1"># real from imaginary parts, I replaced all instances of</span>
+        <span class="c1"># double( foo * complex(0.d0,-1.d0) ) with foo.imag</span>
+
+        <span class="n">qsca</span>   <span class="o">=</span> <span class="n">qsca</span> <span class="o">+</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">an</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">bn</span><span class="p">),</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">gsca</span>   <span class="o">=</span> <span class="n">gsca</span> <span class="o">+</span> <span class="p">((</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">en</span> <span class="o">*</span> <span class="p">(</span><span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)))</span> <span class="o">*</span> <span class="p">(</span><span class="n">an</span><span class="o">.</span><span class="n">real</span> <span class="o">*</span> <span class="n">bn</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">an</span><span class="o">.</span><span class="n">imag</span> <span class="o">*</span> <span class="n">bn</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">gsca</span>    <span class="o">=</span> <span class="n">gsca</span> <span class="o">+</span> <span class="p">((</span><span class="n">en</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">en</span><span class="o">+</span><span class="mf">1.0</span><span class="p">)</span><span class="o">/</span><span class="n">en</span><span class="p">)</span> <span class="o">*</span> \
+                <span class="p">(</span><span class="n">an1</span><span class="o">.</span><span class="n">real</span><span class="o">*</span><span class="n">an</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">an1</span><span class="o">.</span><span class="n">imag</span><span class="o">*</span><span class="n">an</span><span class="o">.</span><span class="n">imag</span> <span class="o">+</span> <span class="n">bn1</span><span class="o">.</span><span class="n">real</span><span class="o">*</span><span class="n">bn</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">bn1</span><span class="o">.</span><span class="n">imag</span><span class="o">*</span><span class="n">bn</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+
+        <span class="c1"># *** Now calculate scattering intensity pattern</span>
+        <span class="c1">#     First do angles from 0 to 90</span>
+
+        <span class="c1"># LIA : Altered the two loops below so that only the indices where ang</span>
+        <span class="c1"># &lt; 90 are used.  Replaced (j) with [indl90]</span>
+
+        <span class="c1"># Note also: If theta is specified, and np.size(E) &gt; 1,</span>
+        <span class="c1"># the number of E values must match the number of theta</span>
+        <span class="c1"># values.  Cosmological halo functions will utilize this</span>
+        <span class="c1"># Diff this way.</span>
+
+        <span class="n">pi</span>  <span class="o">=</span> <span class="n">pi1</span>
+        <span class="n">tau</span> <span class="o">=</span> <span class="n">en</span> <span class="o">*</span> <span class="n">amu</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">-</span> <span class="p">(</span><span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi0</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">indl90</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">antmp</span> <span class="o">=</span> <span class="n">an_3d</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span>
+            <span class="n">bntmp</span> <span class="o">=</span> <span class="n">bn_3d</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span>  <span class="c1"># For case where multiple E and theta are specified</span>
+            <span class="n">s1</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span> <span class="o">=</span> <span class="n">s1</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="p">(</span><span class="n">antmp</span> <span class="o">*</span> <span class="n">pi</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span> <span class="o">+</span> <span class="n">bntmp</span> <span class="o">*</span> <span class="n">tau</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">])</span>
+            <span class="n">s2</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span> <span class="o">=</span> <span class="n">s2</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="p">(</span><span class="n">antmp</span> <span class="o">*</span> <span class="n">tau</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">]</span> <span class="o">+</span> <span class="n">bntmp</span> <span class="o">*</span> <span class="n">pi</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indl90</span><span class="p">])</span>
+        <span class="c1">#ENDIF</span>
+
+        <span class="n">pi_ext</span> <span class="o">=</span> <span class="n">pi1_ext</span>
+        <span class="n">tau_ext</span> <span class="o">=</span> <span class="n">en</span> <span class="o">*</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">pi_ext</span> <span class="o">-</span> <span class="p">(</span><span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi0_ext</span>
+
+        <span class="n">s1_ext</span> <span class="o">=</span> <span class="n">s1_ext</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="p">(</span><span class="n">an</span> <span class="o">*</span> <span class="n">pi_ext</span> <span class="o">+</span> <span class="n">bn</span> <span class="o">*</span> <span class="n">tau_ext</span><span class="p">)</span>
+        <span class="n">s2_ext</span> <span class="o">=</span> <span class="n">s2_ext</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="p">(</span><span class="n">bn</span> <span class="o">*</span> <span class="n">pi_ext</span> <span class="o">+</span> <span class="n">an</span> <span class="o">*</span> <span class="n">tau_ext</span><span class="p">)</span>
+
+        <span class="c1"># *** Now do angles greater than 90 using PI and TAU from</span>
+        <span class="c1">#     angles less than 90.</span>
+        <span class="c1">#     P=1 for N=1,3,...; P=-1 for N=2,4,...</span>
+
+        <span class="n">p</span> <span class="o">=</span> <span class="o">-</span><span class="n">p</span>
+
+        <span class="c1"># LIA : Previous code used tau(j) from the previous loop.  How do I</span>
+        <span class="c1"># get around this?</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">indg90</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">antmp</span> <span class="o">=</span> <span class="n">an_3d</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span>
+            <span class="n">bntmp</span> <span class="o">=</span> <span class="n">bn_3d</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span>
+            <span class="n">s1</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span> <span class="o">=</span> <span class="n">s1</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="n">antmp</span> <span class="o">*</span> <span class="n">pi</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span> <span class="o">-</span> <span class="n">bntmp</span> <span class="o">*</span> <span class="n">tau</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">])</span>
+            <span class="n">s2</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span> <span class="o">=</span> <span class="n">s2</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="n">bntmp</span> <span class="o">*</span> <span class="n">pi</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">]</span> <span class="o">-</span> <span class="n">antmp</span> <span class="o">*</span> <span class="n">tau</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">indg90</span><span class="p">])</span>
+        <span class="c1">#ENDIF</span>
+
+        <span class="n">s1_back</span> <span class="o">=</span> <span class="n">s1_back</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="n">an</span> <span class="o">*</span> <span class="n">pi_ext</span> <span class="o">-</span> <span class="n">bn</span> <span class="o">*</span> <span class="n">tau_ext</span><span class="p">)</span>
+        <span class="n">s2_back</span> <span class="o">=</span> <span class="n">s2_back</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="n">bn</span> <span class="o">*</span> <span class="n">pi_ext</span> <span class="o">-</span> <span class="n">an</span> <span class="o">*</span> <span class="n">tau_ext</span><span class="p">)</span>
+
+        <span class="n">psi0</span> <span class="o">=</span> <span class="n">psi1</span>
+        <span class="n">psi1</span> <span class="o">=</span> <span class="n">psi</span>
+        <span class="n">chi0</span> <span class="o">=</span> <span class="n">chi1</span>
+        <span class="n">chi1</span> <span class="o">=</span> <span class="n">chi</span>
+        <span class="n">xi1</span>  <span class="o">=</span> <span class="n">psi1</span> <span class="o">-</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">chi1</span>
+
+        <span class="c1"># *** Compute pi_n for next value of n</span>
+        <span class="c1">#     For each angle J, compute pi_n+1</span>
+        <span class="c1">#     from PI = pi_n , PI0 = pi_n-1</span>
+
+        <span class="n">pi1</span>  <span class="o">=</span> <span class="p">((</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">amu</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">-</span> <span class="p">(</span><span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi0</span><span class="p">)</span> <span class="o">/</span> <span class="n">en</span>
+        <span class="n">pi0</span>  <span class="o">=</span> <span class="n">pi</span>
+
+        <span class="n">pi1_ext</span> <span class="o">=</span> <span class="p">((</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">pi_ext</span> <span class="o">-</span> <span class="p">(</span><span class="n">en</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi0_ext</span><span class="p">)</span> <span class="o">/</span> <span class="n">en</span>
+        <span class="n">pi0_ext</span> <span class="o">=</span> <span class="n">pi_ext</span>
+
+        <span class="c1"># ENDFOR</span>
+
+    <span class="c1"># *** Have summed sufficient terms.</span>
+    <span class="c1">#     Now compute QSCA,QEXT,QBACK,and GSCA</span>
+    <span class="n">gsca</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">gsca</span> <span class="o">/</span> <span class="n">qsca</span>
+    <span class="n">qsca</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">qsca</span>
+
+    <span class="c1"># LIA : Changed qext to use s1(theta=0) instead of s1(1).  Why did the</span>
+    <span class="c1"># original code use s1(1)?</span>
+
+    <span class="n">qext</span> <span class="o">=</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">s1_ext</span><span class="o">.</span><span class="n">real</span>
+    <span class="n">qback</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">s1_back</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+
+    <span class="n">Cdiff</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">bad_theta</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">theta_rad_3d</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>  <span class="c1"># Set to 0 values where theta &gt; !pi</span>
+    <span class="n">s1</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">bad_theta</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">s2</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">bad_theta</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Cdiff</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">s1</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">s2</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x_3d</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">qsca</span><span class="p">,</span> <span class="n">qext</span><span class="p">,</span> <span class="n">qback</span><span class="p">,</span> <span class="n">gsca</span><span class="p">,</span> <span class="n">Cdiff</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1">##------ GENERAL HELPER FUNCTION</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_test_complex_mem_usage</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="c1">## Test memory usage for an array of complex numbers of length numbers</span>
+    <span class="c1">## Returns size of complex number array in units of GB</span>
+    <span class="c1"># 64 bit numbers are 8 bytes each</span>
+    <span class="c1"># Assume 64 bit, times two (real and imaginary part), so each complex number is 16 bytes</span>
+    <span class="n">bytes_per_num</span> <span class="o">=</span> <span class="mf">16.</span>   <span class="c1"># bytes per complex number</span>
+    <span class="n">GB_to_bytes</span>   <span class="o">=</span> <span class="mf">1.e9</span>  <span class="c1"># bytes per GB</span>
+    <span class="n">total_mem_GB</span>  <span class="o">=</span> <span class="n">num</span> <span class="o">*</span> <span class="n">bytes_per_num</span> <span class="o">/</span> <span class="n">GB_to_bytes</span>
+    <span class="k">return</span> <span class="n">total_mem_GB</span>
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Lia Corrales
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
     </div>
-  </main>
-</div>
-<footer class="sy-foot">
-  <div class="sy-foot-inner sy-container mx-auto">
-    <div class="sy-foot-reserved md:flex justify-between items-center">
-      <div class="sy-foot-copyright"><p>2024, Lia Corrales</p>
-  
-  <p>
-    Made with
-    
-    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
-    
-    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
-  </p>
-</div>
-      <div class="sy-foot-socials"></div>
-    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
   </div>
-</footer>
-      <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
-      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
-      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
-      <script src="../../../_static/shibuya.js?v=50760d75"></script></body>
+</div><script src="../../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
 </html>

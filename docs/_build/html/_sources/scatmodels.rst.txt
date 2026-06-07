@@ -38,7 +38,7 @@ A dust scattering model must contain the following:
 
            ``a``   -- float [grain size, micron] or astropy Quantity 
 
-           ``cm `` -- xdust.graindist.composition object
+           ``cm`` -- xdust.graindist.composition object
 
            ``mem_lim`` -- float [memory limit for scattering calculation, GB, default 8.0]
 

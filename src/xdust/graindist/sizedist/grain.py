@@ -17,16 +17,20 @@ class Grain(object):
     """
     A single grain size distribution
 
-    ATTRIBUTES
+    Attributes
     ----------
-   
-    a : astropy.Quantity : grain radius
-   
-    dtype : string : 'Grain'
+    a : astropy.units.Quantity
+        Grain radius.
+
+    dtype : str
+        ``'Grain'``.
     """
     def __init__(self, rad=AMICRON):
         """
-        rad : astropy.Quantity -or- float (if no units attached, assumed to be microns)
+        Parameters
+        ----------
+        rad : astropy.units.Quantity or float
+            Grain radius; plain floats are assumed to be in microns.
         """
         self.dtype = 'Grain'
         assert np.size(rad) == 1
@@ -39,19 +43,21 @@ class Grain(object):
         """
         Calculate number density of dust grains, given a dust mass column
 
-        Inputs
-        ------
-        
-        md : float : mass column density [g cm^-2]
+        Parameters
+        ----------
+        md : float
+            Mass column density [g cm^-2].
 
-        rho : float : grain material density [g cm^-3]
+        rho : float
+            Grain material density [g cm^-3].
 
-        shape : xdust.graindist.shape object (default is a Sphere)
+        shape : xdust.graindist.shape object
+            Grain shape (default: ``Sphere``).
 
         Returns
         -------
-        
-        Column density of grains in [cm^-2]
+        numpy.ndarray
+            Column density of grains [cm^-2].
         """
         gvol = shape.vol(self.a) # cm^3
         return md / (gvol * rho)  # cm^-2

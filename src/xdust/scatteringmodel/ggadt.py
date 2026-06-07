@@ -3,29 +3,17 @@ from .scatteringmodel import ScatteringModel
 
 class GGADT(ScatteringModel):
     """
-    Child of scatteringModel class
+    Scattering model loaded from pre-computed GGADT output files.
 
-    Attributes
-    ----------
-    qsca : numpy.ndarray : Scattering efficiency Q (cross-section / geometric cross-section)
-
-    qext : numpy.ndarray : Extinction efficiency Q (cross-section / geometric cross-section)    
-
-    qabs : numpy.ndarray : Absorption efficiency Q (cross-section / geometric cross-section)
-
-    diff : numpy.ndarray : Differential scattering efficiency per steridian
-
-    pars : dict : Parameters from most recent calculation are stored here
-
-    stype : string : A label for the model
-
-    citation : string : A description of how to cite this model
+    Attributes inherited from :ref:`scatmodels`.
+    See `Hoffman & Draine (2016) <https://ui.adsabs.harvard.edu/abs/2016ApJ...817..139H>`_.
     """
     def __init__(self, from_file):
       """
-      Inputs
-      ------
-      from_file: string: REQUIRED, the name of the fits file with GGADT data in it
+      Parameters
+      ----------
+      from_file : str
+          Name of the FITS file containing pre-computed GGADT data.
       """
 
       self.read_from_table(from_file)

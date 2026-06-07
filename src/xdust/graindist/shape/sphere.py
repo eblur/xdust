@@ -16,13 +16,15 @@ class Sphere(object):
         """
         Return the grain's volume in units of cm^3
 
-        Inputs
-        ------
-        a : astropy.units.Quantity -or- float : if a float, unit of microns assumed
+        Parameters
+        ----------
+        a : astropy.units.Quantity or float
+            Grain radius; plain floats are assumed to be in microns.
 
         Returns
         -------
-        (4/3) * pi * a^3
+        numpy.ndarray
+            Grain volume :math:`\\frac{4}{3}\\pi a^3` [cm^3].
         """
         if isinstance(a, u.Quantity):
             a_cm = a.to('cm').value
@@ -34,13 +36,15 @@ class Sphere(object):
         """
         Return the geometric cross-section of a spherical particle, in units of cm^2
 
-        Inputs
-        ------
-        a : astropy.units.Quantity -or- float : if a float, unit of microns assumed
+        Parameters
+        ----------
+        a : astropy.units.Quantity or float
+            Grain radius; plain floats are assumed to be in microns.
 
         Returns
         -------
-        pi * a^2
+        numpy.ndarray
+            Geometric cross-section :math:`\\pi a^2` [cm^2].
         """
         if isinstance(a, u.Quantity):
             a_cm = a.to('cm').value

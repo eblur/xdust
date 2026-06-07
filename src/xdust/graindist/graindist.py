@@ -23,43 +23,41 @@ class GrainDist(object):
     Attributes
     ----------
     size : xdust.graindist.sizedist object
-    
-    comp : xdust.graindist.composition object
-    
-    shape : xdust.graindist.shape object
-    
-    md : float : dust mass column density [g cm^-2]
+        Grain size distribution.
 
-    a  : grain radii (returns size.a)
-    
-    ndens : number density from (returns size.ndens based on other attributes)
-    
-    mdens : mass density as a function of grain radius (returns size.mdens based on other attributes)
-    
-    cgeo  : physical cross-sectional area based on grain shape [cm^2]
-    
-    vol   : physical grain volume based on grain shape [cm^2]
+    comp : xdust.graindist.composition object
+        Optical constants and material density.
+
+    shape : xdust.graindist.shape object
+        Grain shape object.
+
+    md : float
+        Dust mass column density [g cm^-2].
     """
     def __init__(self, dtype, cmtype, shape='Sphere', md=MD_DEFAULT, rho=None, **kwargs):
         """
-        Inputs
-        ------
-      
-        dtype : string ('Grain', 'Powerlaw', 'ExpCutoff', 'Astrodust', 'WD01') or 
-        xdust.graindist.sizedist object defining the grain radius distribution
+        Parameters
+        ----------
+        dtype : str or xdust.graindist.sizedist object
+            Grain radius distribution. String options: ``'Grain'``, ``'Powerlaw'``,
+            ``'ExpCutoff'``, ``'Astrodust'``, ``'WD01'``.
 
-        cmtype : string ('Drude', 'Silicate', 'Graphite') or
-        xdust.graindist.composition object defining the optical constants and compound density
+        cmtype : str or xdust.graindist.composition object
+            Optical constants and compound density. String options: ``'Drude'``,
+            ``'Silicate'``, ``'Graphite'``.
 
-        shape : string ('Sphere' is the only option), otherwise could be used to define a custom shape
+        shape : str
+            Grain shape. ``'Sphere'`` is the only supported option.
 
-        md : float : dust mass column [g cm^-2]
+        md : float
+            Dust mass column [g cm^-2].
 
-        rho : if defined, will be provide as input to the `rho` keyword in composition
+        rho : float, optional
+            If provided, passed to the ``rho`` keyword of the composition object.
 
-        **kwargs : extra inputs passed to sizedist.__init__
+        **kwargs
+            Extra inputs passed to ``sizedist.__init__``.
         """
-
         self.md = md
 
         if isinstance(dtype, str):

@@ -9,17 +9,23 @@ class Composition(object):
     
     Attributes
     ----------
-    cmtype : string : label for the compound
+    cmtype : str
+        Label for the compound.
 
-    rho : float : density of the material (g cm^-3)
+    rho : float
+        Density of the material [g cm^-3].
 
-    citation : string : citation for the optical constants loaded
+    citation : str
+        Citation for the optical constants loaded.
 
-    wavel : astropy.units.Quantity : wavelength grid for optical constants
+    wavel : astropy.units.Quantity
+        Wavelength grid for optical constants.
 
-    revals : numpy.ndarray : real part of the complex index of refraction
-    
-    imvals : numpy.ndarray : imaginary part of the complex index of refraction
+    revals : numpy.ndarray
+        Real part of the complex index of refraction.
+
+    imvals : numpy.ndarray
+        Imaginary part of the complex index of refraction.
     """
     def __init__(self):
         self.cmtype = None
@@ -34,14 +40,16 @@ class Composition(object):
         Interpolate over the input wavelength grid to get the real part of the 
         complex index of refraction.
 
-        Inputs
-        ------
-        x : if astropy.units.Quantity, convert to same units as self.wavel;
-            if numpy.ndarray, assume keV units
-        
+        Parameters
+        ----------
+        x : astropy.units.Quantity or numpy.ndarray
+            Wavelength or energy; if an ``astropy.units.Quantity``, converted to
+            the same units as ``self.wavel``; if a plain array, keV units are assumed.
+
         Returns
         -------
-        np.interp(x, self.wavel, self.revals, left=1.0, right=1.0)
+        numpy.ndarray
+            ``np.interp(x, self.wavel, self.revals, left=1.0, right=1.0)``
         """
         # If the input is an astropy quantity, convert it to the same unit as wavel
         if isinstance(x, u.Quantity):
@@ -56,14 +64,16 @@ class Composition(object):
         Interpolate over the input wavelength grid to get the imaginary part of the 
         complex index of refraction.
 
-        Inputs
-        ------
-        x : if astropy.units.Quantity, convert to same units as self.wavel;
-            if numpy.ndarray, assume keV units
-        
+        Parameters
+        ----------
+        x : astropy.units.Quantity or numpy.ndarray
+            Wavelength or energy; if an ``astropy.units.Quantity``, converted to
+            the same units as ``self.wavel``; if a plain array, keV units are assumed.
+
         Returns
         -------
-        np.interp(x, self.wavel, self.imvals, left=1.0, right=1.0)
+        numpy.ndarray
+            ``np.interp(x, self.wavel, self.imvals, left=0.0, right=0.0)``
         """
         # If the input is an astropy quantity, convert it to the same unit as wavel
         if isinstance(x, u.Quantity):
@@ -77,10 +87,16 @@ class Composition(object):
         """
         Returns the complex index of refraction using Python complex numbers
 
-        Inputs
-        ------
-        x : if astropy.units.Quantity, convert to same units as self.wavel;
-            if numpy.ndarray, assume keV units
+        Parameters
+        ----------
+        x : astropy.units.Quantity or numpy.ndarray
+            Wavelength or energy; if an ``astropy.units.Quantity``, converted to
+            the same units as ``self.wavel``; if a plain array, keV units are assumed.
+
+        Returns
+        -------
+        complex or numpy.ndarray of complex
+            Complex index of refraction :math:`n = n_r + i n_i`.
         """
         return self.rp(x) + 1j * self.ip(x)
     
@@ -88,22 +104,27 @@ class Composition(object):
         """
         Plots the different parts of the complex index of refraction on a matplotlib axis
 
-        Inputs
-        ------
-        
-        ax : matplotlib.pyplot.axes object : the axes on which to plot
+        Parameters
+        ----------
+        ax : matplotlib.pyplot.Axes
+            The axes on which to plot.
 
-        lam : if None, will plot the default values; if not None, will interpolate onto the new grid;
-            if not an astropy.units.Quantity, the units are assumed to be keV
-        
-        rppart : bool (True) : whether or not to plot the real part
+        lam : astropy.units.Quantity or numpy.ndarray, optional
+            If ``None``, plots using the default ``self.wavel`` grid; otherwise
+            interpolates onto the provided grid. Plain arrays are assumed to be
+            in keV.
 
-        impart : bool (True) : whether or not to plot the imaginary part
+        rppart : bool
+            If ``True`` (default), plot the real part :math:`|Re(m)-1|`.
 
-        xunit : string : unit for plotting the X-axis
-            (Default: None will defer to self.wavel.unit)
+        impart : bool
+            If ``True`` (default), plot the imaginary part :math:`Im(m)`.
 
-        label : string : to add to the labels
+        xunit : str, optional
+            Unit string for the x-axis. Defaults to ``self.wavel.unit``.
+
+        label : str
+            Prefix string appended to legend labels.
         """
         if xunit is None:
             xunit = self.wavel.unit

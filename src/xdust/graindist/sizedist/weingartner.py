@@ -187,21 +187,28 @@ class WD01(object):
     """
     def __init__(self, galaxy='MW', RV=3.1, form='silicate', amin=AMIN, amax=AMAX, na=NA, log=True):
         """
-        Inputs
-        ------
-        galaxy : str : name of the galaxy (default: 'MW')
+        Parameters
+        ----------
+        galaxy : str
+            Name of the galaxy. Default ``'MW'``.
 
-        RV : float : total-to-selective extinction ratio (default: 3.1)
+        RV : float
+            Total-to-selective extinction ratio. Default ``3.1``.
 
-        form : str : dust grain form (default: 'silicate')
+        form : str
+            Dust grain composition; ``'silicate'`` or ``'graphite'``.
 
-        amin : astropy.units.Quantity -or- float :  minimum grain radius; if a float, micron units assumed
+        amin : astropy.units.Quantity or float
+            Minimum grain radius; plain floats are assumed to be in microns.
 
-        amax : astropy.units.Quantity -or- float :  maximum grain radius; if a float, micron units assumed
+        amax : astropy.units.Quantity or float
+            Maximum grain radius; plain floats are assumed to be in microns.
 
-        na : int : number of grain size bins (default: 100)
+        na : int
+            Number of grain size bins. Default ``100``.
 
-        log : bool : whether to use logarithmic spacing for grain sizes (default: False)
+        log : bool
+            If ``True``, use log-spaced grain size grid. Default ``True``.
         """
         self.dtype = f'WD01-{galaxy}-{RV}-{form}'
 
@@ -252,21 +259,22 @@ class WD01(object):
         """
         Calculate number density of dust grains, given a dust mass column
 
-        Inputs
-        ------
-        
-        md : float : mass column density [g cm^-2]
+        Parameters
+        ----------
+        md : float
+            Mass column density [g cm^-2].
 
-        rho : float : grain material density [g cm^-3]
-            If called upon running, it will override the default grain density.
-            Then self.rho will be reset to this value
+        rho : float, optional
+            Grain material density [g cm^-3]. If provided and different from
+            ``self.rho``, overrides the default density.
 
-        shape : xdust.graindist.shape object (default is a Sphere)
+        shape : xdust.graindist.shape object
+            Grain shape (default: ``Sphere``).
 
         Returns
         -------
-        
-        Column density of grains in [cm^-2 um^-2]
+        numpy.ndarray
+            Column density of grains [cm^-2 um^-1].
         """
         a_um = self.a.to('micron').value
 
@@ -294,19 +302,22 @@ class WD01(object):
         """
         Calculate mass density function for the dust grains, given a total dust mass column
 
-        Inputs
-        ------
-        
-        md : float : mass column density [g cm^-2]
+        Parameters
+        ----------
+        md : float
+            Mass column density [g cm^-2].
 
-        rho : float : grain material density [g cm^-3]
+        rho : float, optional
+            Grain material density [g cm^-3]. If provided and different from
+            ``self.rho``, overrides the default density.
 
-        shape : xdust.graindist.shape object (default is a Sphere)
+        shape : xdust.graindist.shape object
+            Grain shape (default: ``Sphere``).
 
         Returns
         -------
-        
-        Mass column distribution of grains in [cg m^-2 um^-1]
+        numpy.ndarray
+            Mass column distribution [g cm^-2 um^-1].
         """
         if (rho is not None) and (rho != self.rho):
             print(f"Overriding default grain density of {self.rho} g cm^-3 with {rho} g cm^-3")

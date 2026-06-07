@@ -33,14 +33,15 @@ class CmDrude(Composition):
         """
         Calculate the real part of the complex index of refraction under the Drude approximation.
 
-        Inputs
-        ------
-        x : if astropy.units.Quantity, convert to same units as self.wavel;
-            if numpy.ndarray, assume keV units
-        
+        Parameters
+        ----------
+        x : astropy.units.Quantity or numpy.ndarray
+            Wavelength or energy; plain arrays are assumed to be in keV.
+
         Returns
         -------
-        (rho / 2 m_p) * (r_e / 2 pi) * wavel^2
+        numpy.ndarray
+            :math:`1 + (\\rho / 2 m_p)(r_e / 2\\pi)\\lambda^2`
         """
         if isinstance(x, u.Quantity):
             lam_cm = x.to('cm', equivalencies=u.spectral()).value
@@ -54,17 +55,16 @@ class CmDrude(Composition):
         """
         Gives the imaginary part of the complex index of refraction under the Drude approximation.
 
-        Inputs
-        ------
-        x : if astropy.units.Quantity, convert to same units as self.wavel;
-            if numpy.ndarray, assume keV units
-        
+        Parameters
+        ----------
+        x : astropy.units.Quantity or numpy.ndarray
+            Wavelength or energy; plain arrays are assumed to be in keV.
+
         Returns
         -------
-        
-        0.0 if x is a float or quantity of no length
-
-        numpy.ndarray filled with zeros, same length as x
+        float or numpy.ndarray
+            ``0.0`` for scalar input; array of zeros matching the length of ``x``
+            for array input.
         """
         if np.size(x) > 1:
             return np.zeros(np.size(x))

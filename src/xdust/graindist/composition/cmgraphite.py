@@ -13,14 +13,15 @@ class CmGraphite(Composition):
     """
     Optical constants for Graphite from Draine (2003)
 
-    | Additional Attributes
-    | ---------------------
-    | size   : 'big' or 'small'; 
-    |   'big' gives results for 0.1 um sized graphite grains at 20 K [Draine (2003)];
-    |   'small' gives results for 0.01 um sized grains at 20 K
-    | orient : 'perp' or 'para'
-    |   'perp' gives results for E-field perpendicular to c-axis
-    |   'para' gives results for E-field parallel to c-axis
+    Attributes
+    ----------
+    size : str
+        ``'big'`` gives results for 0.1 um sized graphite grains at 20 K
+        [Draine (2003)]; ``'small'`` gives results for 0.01 um sized grains at 20 K.
+
+    orient : str
+        ``'perp'`` gives results for E-field perpendicular to the c-axis;
+        ``'para'`` gives results for E-field parallel to the c-axis.
     """
     def __init__(self, rho=RHO_GRA, size='big', orient='perp'):
         Composition.__init__(self)

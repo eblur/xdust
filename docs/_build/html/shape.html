@@ -275,30 +275,34 @@ It must contain the following attributes:</p>
 <dt class="sig sig-object py" id="xdust.graindist.shape.Sphere.cgeo">
 <span class="sig-name descname"><span class="pre">cgeo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/shape/sphere.html#Sphere.cgeo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.shape.Sphere.cgeo" title="Link to this definition">¶</a></dt>
 <dd><p>Return the geometric cross-section of a spherical particle, in units of cm^2</p>
-<section id="inputs">
-<h3>Inputs<a class="headerlink" href="#inputs" title="Link to this heading">¶</a></h3>
-<p>a : astropy.units.Quantity -or- float : if a float, unit of microns assumed</p>
 <dl class="field-list simple">
-<dt class="field-odd">rtype<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pi * a^2</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>a</strong> (<em>astropy.units.Quantity</em><em> or </em><em>float</em>) – Grain radius; plain floats are assumed to be in microns.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Geometric cross-section <span class="math notranslate nohighlight">\(\pi a^2\)</span> [cm^2].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="xdust.graindist.shape.Sphere.vol">
 <span class="sig-name descname"><span class="pre">vol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/shape/sphere.html#Sphere.vol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.shape.Sphere.vol" title="Link to this definition">¶</a></dt>
 <dd><p>Return the grain’s volume in units of cm^3</p>
-<section id="id2">
-<h3>Inputs<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
-<p>a : astropy.units.Quantity -or- float : if a float, unit of microns assumed</p>
 <dl class="field-list simple">
-<dt class="field-odd">rtype<span class="colon">:</span></dt>
-<dd class="field-odd"><p>(4/3) * pi * a^3</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>a</strong> (<em>astropy.units.Quantity</em><em> or </em><em>float</em>) – Grain radius; plain floats are assumed to be in microns.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Grain volume <span class="math notranslate nohighlight">\(\frac{4}{3}\pi a^3\)</span> [cm^3].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 </dd></dl>
@@ -387,5 +391,6 @@ It must contain the following attributes:</p>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     </body>
 </html>
