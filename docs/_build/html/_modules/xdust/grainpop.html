@@ -267,17 +267,21 @@
 <span class="sd">    stype : string or custom :ref:`scatmodels`</span>
 <span class="sd">        Defines what extinction model calculator to use, string options: &#39;RG&#39; (Rayleigh-Gans), &#39;Mie&#39; (Mie scattering)</span>
 <span class="sd">    </span>
-<span class="sd">    .. note::</span>
-<span class="sd">    </span>
-<span class="sd">        If an input for ``scatm_from_file`` is provided, then the ``stype`` input will be ignored.</span>
-
 <span class="sd">    shape : string</span>
 <span class="sd">        Only &#39;Sphere&#39; is supported, some day might be used to define a custom shape</span>
 
 <span class="sd">    md : float </span>
 <span class="sd">        Dust mass column [g cm^-2]</span>
 <span class="sd">    </span>
-<span class="sd">    **kwargs : extra inputs passed to GrainDist.__init__</span>
+<span class="sd">    scatm_from_file : string</span>
+<span class="sd">        If provided, will read in a scattering model from a FITS file, and use the scattering model parameters and scattering properties from the file.</span>
+<span class="sd">    </span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Extra inputs passed to ``GrainDist.__init__``.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    If an input for ``scatm_from_file`` is provided, then the ``stype`` input will be ignored.</span>
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
@@ -298,7 +302,7 @@
 <span class="sd">        [cm^2 ster^-1] differential scattering cross-section as a function of wavelength/energy, grain size, and angle (NE x NA x NTH)</span>
 
 <span class="sd">    int_diff : astropy.units.Quantity </span>
-<span class="sd">        [ster^-1] differential cross-section integrated over grain size distribution effectively dtau / dOmega$  (NE x NTH)</span>
+<span class="sd">        [ster^-1] differential cross-section integrated over grain size distribution, :math:`d\tau/d\Omega` (NE x NTH)</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
@@ -350,12 +354,13 @@
 <span class="sd">        lam : astropy.units.Quantity or numpy.ndarray</span>
 <span class="sd">            Wavelength or energy values for calculating the cross-sections;</span>
 <span class="sd">            if no units specified, defaults to keV</span>
-<span class="sd">        </span>
+
 <span class="sd">        theta : astropy.units.Quantity or numpy.ndarray or float</span>
 <span class="sd">            Scattering angles for computing the differential scattering cross-section;</span>
-<span class="sd">            if no units specified, defaults to radian</span>
-<span class="sd">        </span>
-<span class="sd">        **kwargs passed to self.scatm.calculate</span>
+<span class="sd">            if no units specified, defaults to radian.</span>
+
+<span class="sd">        **kwargs</span>
+<span class="sd">            Passed to ``self.scatm.calculate``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">scatm</span><span class="o">.</span><span class="n">calculate</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">comp</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lam</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scatm</span><span class="o">.</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;lam&#39;</span><span class="p">]</span>
@@ -429,13 +434,15 @@
 
 <span class="sd">        ax : matplotlib.pyplot.axes object</span>
 
-<span class="sd">        keyword : string </span>
-<span class="sd">            (&#39;ext&#39;, &#39;sca&#39;, &#39;abs&#39;, &#39;all&#39;) extinction value(s) to plot</span>
+<span class="sd">        keyword : str</span>
+<span class="sd">            Extinction value(s) to plot. Options: ``&#39;ext&#39;``, ``&#39;sca&#39;``, ``&#39;abs&#39;``, ``&#39;all&#39;``.</span>
 
-<span class="sd">        unit : string parsable by astropy.units </span>
-<span class="sd">            Unit to use for the x-axis values. If None, defaults to the unit assigned to self.lam</span>
+<span class="sd">        unit : str, optional</span>
+<span class="sd">            Unit for the x-axis, parsable by ``astropy.units``.</span>
+<span class="sd">            If ``None``, defaults to the unit of ``self.lam``.</span>
 
-<span class="sd">        **kwargs passed to ax.legend()</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            Passed to ``ax.legend()``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ext&#39;</span><span class="p">,</span><span class="s1">&#39;sca&#39;</span><span class="p">,</span><span class="s1">&#39;abs&#39;</span><span class="p">,</span><span class="s1">&#39;all&#39;</span><span class="p">]</span>
         <span class="k">try</span><span class="p">:</span>
@@ -496,10 +503,11 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 
-<span class="sd">        outfile : string </span>
-<span class="sd">            Name of file to write</span>
+<span class="sd">        outfile : str</span>
+<span class="sd">            Name of file to write.</span>
 
-<span class="sd">        **kwargs passed to self.scatm.write_table</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            Passed to ``self.scatm.write_table``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">scatm</span><span class="o">.</span><span class="n">write_table</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span></div>
@@ -585,15 +593,20 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate the extinction model.</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
 <span class="sd">        lam : astropy.units.Quantity or numpy.ndarray</span>
 <span class="sd">            Wavelength or energy values for calculating the cross-sections;</span>
-<span class="sd">            if no units specified, defaults to keV</span>
-<span class="sd">        </span>
+<span class="sd">            if no units specified, defaults to keV.</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ----------------</span>
 <span class="sd">        theta : astropy.units.Quantity or numpy.ndarray or float</span>
 <span class="sd">            Scattering angles for computing the differential scattering cross-section;</span>
-<span class="sd">            if no units specified, defaults to radian</span>
-<span class="sd">        </span>
-<span class="sd">        **kwargs passed to SingleGrainPop.scatm.calculate for each grain population in the list</span>
+<span class="sd">            if no units specified, defaults to radian.</span>
+
+<span class="sd">        **kwargs</span>
+<span class="sd">            Passed to each ``SingleGrainPop.calculate_ext``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Assing units if an Astropy Quantity is not input</span>
         <span class="n">input_lam</span> <span class="o">=</span> <span class="n">lam</span>
@@ -677,14 +690,15 @@
 
 <span class="sd">        ax : matplotlib.pyplot.axes object</span>
 
-<span class="sd">        keyword : string </span>
-<span class="sd">            Extinction value(s) to plot (&#39;ext&#39;, &#39;sca&#39;, &#39;abs&#39;, &#39;all&#39;)</span>
+<span class="sd">        keyword : str</span>
+<span class="sd">            Extinction value(s) to plot. Options: ``&#39;ext&#39;``, ``&#39;sca&#39;``, ``&#39;abs&#39;``, ``&#39;all&#39;``.</span>
 
-<span class="sd">        unit : string parsable by astropy.units </span>
-<span class="sd">            Unit to use for the x-axis values.</span>
-<span class="sd">            If None, defaults to the unit assigned to self.lam</span>
+<span class="sd">        unit : str, optional</span>
+<span class="sd">            Unit for the x-axis, parsable by ``astropy.units``.</span>
+<span class="sd">            If ``None``, defaults to the unit of ``self.lam``.</span>
 
-<span class="sd">        **kwargs passed to ax.legend()</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            Passed to ``ax.legend()``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">,</span><span class="s1">&#39;ext&#39;</span><span class="p">,</span><span class="s1">&#39;sca&#39;</span><span class="p">,</span><span class="s1">&#39;abs&#39;</span><span class="p">]</span>
 
@@ -770,11 +784,14 @@
 <span class="sd">    fsil : float </span>
 <span class="sd">        Fraction of dust mass in silicate grains</span>
 
-<span class="sd">    **kwargs passed to graindist.sizedist.Powerlaw()</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Passed to ``graindist.sizedist.Powerlaw()``.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    :ref:`GrainPop` object with the keys &#39;sil&#39;, &#39;gra_para&#39;, and &#39;gra_perp&#39; for the silicate, graphite parallel, and graphite perpendicular grain populations, respectively.</span>
+<span class="sd">    GrainPop</span>
+<span class="sd">        A :ref:`GrainPop` with keys ``&#39;sil&#39;``, ``&#39;gra_para&#39;``, and ``&#39;gra_perp&#39;`` for the</span>
+<span class="sd">        silicate, graphite parallel, and graphite perpendicular grain populations, respectively.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fsil</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">fsil</span> <span class="o">&gt;=</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">fsil</span> <span class="o">&lt;=</span> <span class="mf">1.0</span>
@@ -825,11 +842,13 @@
 <span class="sd">    md : float</span>
 <span class="sd">        Dust mass column [g cm^-2]</span>
 
-<span class="sd">    **kwargs passed to graindist.sizedist.Powerlaw()</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Passed to ``graindist.sizedist.Powerlaw()``.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    :ref:`SingleGrainPop` object with the &#39;RG&#39; scattering model and &#39;Drude&#39; composition</span>
+<span class="sd">    SingleGrainPop</span>
+<span class="sd">        A :ref:`SingleGrainPop` using the ``&#39;RG&#39;`` scattering model and ``&#39;Drude&#39;`` composition.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">pl</span>      <span class="o">=</span> <span class="n">graindist</span><span class="o">.</span><span class="n">sizedist</span><span class="o">.</span><span class="n">Powerlaw</span><span class="p">(</span><span class="n">amin</span><span class="o">=</span><span class="n">amin</span><span class="p">,</span> <span class="n">amax</span><span class="o">=</span><span class="n">amax</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">dru</span>     <span class="o">=</span> <span class="n">graindist</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">CmDrude</span><span class="p">(</span><span class="n">rho</span><span class="o">=</span><span class="n">rho</span><span class="p">)</span>

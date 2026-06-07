@@ -272,13 +272,17 @@ composition can be modeled at a time.</p>
 <li><p><strong>dtype</strong> (string or custom <a class="reference internal" href="sizedist.html#sizedist"><span class="std std-ref">xdust.graindist.sizedist</span></a>) – Defines the grain radius distribution, string options: ‘Grain’, ‘Powerlaw’, ‘ExpCutoff’</p></li>
 <li><p><strong>cmtype</strong> (string or custom <a class="reference internal" href="composition.html#composition"><span class="std std-ref">xdust.graindist.composition</span></a>) – Defines the optical constants and material density of the compound, string options: ‘Drude’, ‘Silicate’, ‘Graphite’</p></li>
 <li><p><strong>stype</strong> (string or custom <a class="reference internal" href="scatmodels.html#scatmodels"><span class="std std-ref">xdust.scatteringmodel</span></a>) – Defines what extinction model calculator to use, string options: ‘RG’ (Rayleigh-Gans), ‘Mie’ (Mie scattering)</p></li>
-<li><p><strong>note::</strong> (<em>..</em>) – If an input for <code class="docutils literal notranslate"><span class="pre">scatm_from_file</span></code> is provided, then the <code class="docutils literal notranslate"><span class="pre">stype</span></code> input will be ignored.</p></li>
 <li><p><strong>shape</strong> (<em>string</em>) – Only ‘Sphere’ is supported, some day might be used to define a custom shape</p></li>
 <li><p><strong>md</strong> (<em>float</em>) – Dust mass column [g cm^-2]</p></li>
-<li><p><strong>**kwargs</strong> (<em>extra inputs passed to GrainDist.__init__</em>)</p></li>
+<li><p><strong>scatm_from_file</strong> (<em>string</em>) – If provided, will read in a scattering model from a FITS file, and use the scattering model parameters and scattering properties from the file.</p></li>
+<li><p><strong>**kwargs</strong> – Extra inputs passed to <code class="docutils literal notranslate"><span class="pre">GrainDist.__init__</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If an input for <code class="docutils literal notranslate"><span class="pre">scatm_from_file</span></code> is provided, then the <code class="docutils literal notranslate"><span class="pre">stype</span></code> input will be ignored.</p>
+</div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.grainpop.SingleGrainPop.lam">
 <span class="sig-name descname"><span class="pre">lam</span></span><a class="headerlink" href="#xdust.grainpop.SingleGrainPop.lam" title="Link to this definition">¶</a></dt>
@@ -337,7 +341,7 @@ composition can be modeled at a time.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.grainpop.SingleGrainPop.int_diff">
 <span class="sig-name descname"><span class="pre">int_diff</span></span><a class="headerlink" href="#xdust.grainpop.SingleGrainPop.int_diff" title="Link to this definition">¶</a></dt>
-<dd><p>[ster^-1] differential cross-section integrated over grain size distribution effectively dtau / dOmega$  (NE x NTH)</p>
+<dd><p>[ster^-1] differential cross-section integrated over grain size distribution, <span class="math notranslate nohighlight">\(d  au/d\Omega\)</span> (NE x NTH)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>astropy.units.Quantity</p>
@@ -359,8 +363,8 @@ composition can be modeled at a time.</p>
 <li><p><strong>lam</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em>) – Wavelength or energy values for calculating the cross-sections;
 if no units specified, defaults to keV</p></li>
 <li><p><strong>theta</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em><em> or </em><em>float</em>) – Scattering angles for computing the differential scattering cross-section;
-if no units specified, defaults to radian</p></li>
-<li><p><strong>self.scatm.calculate</strong> (<em>**kwargs passed to</em>)</p></li>
+if no units specified, defaults to radian.</p></li>
+<li><p><strong>**kwargs</strong> – Passed to <code class="docutils literal notranslate"><span class="pre">self.scatm.calculate</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -380,9 +384,10 @@ if no units specified, defaults to radian</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ax</strong> (<em>matplotlib.pyplot.axes object</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>string</em>) – (‘ext’, ‘sca’, ‘abs’, ‘all’) extinction value(s) to plot</p></li>
-<li><p><strong>unit</strong> (<em>string parsable by astropy.units</em>) – Unit to use for the x-axis values. If None, defaults to the unit assigned to self.lam</p></li>
-<li><p><strong>ax.legend</strong><strong>(</strong><strong>)</strong> (<em>**kwargs passed to</em>)</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – Extinction value(s) to plot. Options: <code class="docutils literal notranslate"><span class="pre">'ext'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sca'</span></code>, <code class="docutils literal notranslate"><span class="pre">'abs'</span></code>, <code class="docutils literal notranslate"><span class="pre">'all'</span></code>.</p></li>
+<li><p><strong>unit</strong> (<em>str</em><em>, </em><em>optional</em>) – Unit for the x-axis, parsable by <code class="docutils literal notranslate"><span class="pre">astropy.units</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, defaults to the unit of <code class="docutils literal notranslate"><span class="pre">self.lam</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Passed to <code class="docutils literal notranslate"><span class="pre">ax.legend()</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -407,8 +412,8 @@ if no units specified, defaults to radian</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>outfile</strong> (<em>string</em>) – Name of file to write</p></li>
-<li><p><strong>self.scatm.write_table</strong> (<em>**kwargs passed to</em>)</p></li>
+<li><p><strong>outfile</strong> (<em>str</em>) – Name of file to write.</p></li>
+<li><p><strong>**kwargs</strong> – Passed to <code class="docutils literal notranslate"><span class="pre">self.scatm.write_table</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -533,15 +538,17 @@ key-value pairs are accessed in a Python dictionary.</p>
 <dt class="sig sig-object py" id="xdust.grainpop.GrainPop.calculate_ext">
 <span class="sig-name descname"><span class="pre">calculate_ext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lam</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/grainpop.html#GrainPop.calculate_ext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.grainpop.GrainPop.calculate_ext" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate the extinction model.</p>
-<dl class="simple">
-<dt>lam<span class="classifier">astropy.units.Quantity or numpy.ndarray</span></dt><dd><p>Wavelength or energy values for calculating the cross-sections;
-if no units specified, defaults to keV</p>
-</dd>
-<dt>theta<span class="classifier">astropy.units.Quantity or numpy.ndarray or float</span></dt><dd><p>Scattering angles for computing the differential scattering cross-section;
-if no units specified, defaults to radian</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lam</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em>) – Wavelength or energy values for calculating the cross-sections;
+if no units specified, defaults to keV.</p></li>
+<li><p><strong>theta</strong> (<em>astropy.units.Quantity</em><em> or </em><em>numpy.ndarray</em><em> or </em><em>float</em>) – Scattering angles for computing the differential scattering cross-section;
+if no units specified, defaults to radian.</p></li>
+<li><p><strong>**kwargs</strong> – Passed to each <code class="docutils literal notranslate"><span class="pre">SingleGrainPop.calculate_ext</span></code>.</p></li>
+</ul>
 </dd>
 </dl>
-<p><a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs passed to SingleGrainPop.scatm.calculate for each grain population in the list</p>
 </dd></dl>
 
 <dl class="py method">
@@ -570,30 +577,30 @@ If None, systematically prints information for every SingleGrainPop in the colle
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ax</strong> (<em>matplotlib.pyplot.axes object</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>string</em>) – Extinction value(s) to plot (‘ext’, ‘sca’, ‘abs’, ‘all’)</p></li>
-<li><p><strong>unit</strong> (<em>string parsable by astropy.units</em>) – Unit to use for the x-axis values.
-If None, defaults to the unit assigned to self.lam</p></li>
-<li><p><strong>ax.legend</strong><strong>(</strong><strong>)</strong> (<em>**kwargs passed to</em>)</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – Extinction value(s) to plot. Options: <code class="docutils literal notranslate"><span class="pre">'ext'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sca'</span></code>, <code class="docutils literal notranslate"><span class="pre">'abs'</span></code>, <code class="docutils literal notranslate"><span class="pre">'all'</span></code>.</p></li>
+<li><p><strong>unit</strong> (<em>str</em><em>, </em><em>optional</em>) – Unit for the x-axis, parsable by <code class="docutils literal notranslate"><span class="pre">astropy.units</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, defaults to the unit of <code class="docutils literal notranslate"><span class="pre">self.lam</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Passed to <code class="docutils literal notranslate"><span class="pre">ax.legend()</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id5">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">tau_abs</span></span><a class="headerlink" href="#id5" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id3">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">tau_abs</span></span><a class="headerlink" href="#id3" title="Link to this definition">¶</a></dt>
 <dd><p>Return the sum of the <cite>tau_abs</cite> values from each SingleGrainPop</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id6">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">tau_ext</span></span><a class="headerlink" href="#id6" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id4">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">tau_ext</span></span><a class="headerlink" href="#id4" title="Link to this definition">¶</a></dt>
 <dd><p>Return the sum of the <cite>tau_ext</cite> values from each SingleGrainPop</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id7">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">tau_sca</span></span><a class="headerlink" href="#id7" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id5">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">tau_sca</span></span><a class="headerlink" href="#id5" title="Link to this definition">¶</a></dt>
 <dd><p>Return the sum of the <cite>tau_sca</cite> values from each SingleGrainPop</p>
 </dd></dl>
 
@@ -616,11 +623,15 @@ which is a mixture of silicate and graphite grains. Applies the 1/3 parallel,
 <li><p><strong>p</strong> (<em>float</em>) – Powerlaw slope for grain size distribution</p></li>
 <li><p><strong>md</strong> (<em>float</em>) – Dust mass column [g cm^-2]</p></li>
 <li><p><strong>fsil</strong> (<em>float</em>) – Fraction of dust mass in silicate grains</p></li>
-<li><p><strong>graindist.sizedist.Powerlaw</strong><strong>(</strong><strong>)</strong> (<em>**kwargs passed to</em>)</p></li>
+<li><p><strong>**kwargs</strong> – Passed to <code class="docutils literal notranslate"><span class="pre">graindist.sizedist.Powerlaw()</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#grainpop"><span class="std std-ref">xdust.grainpop</span></a> object with the keys ‘sil’, ‘gra_para’, and ‘gra_perp’ for the silicate, graphite parallel, and graphite perpendicular grain populations, respectively.</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A <a class="reference internal" href="#grainpop"><span class="std std-ref">xdust.grainpop</span></a> with keys <code class="docutils literal notranslate"><span class="pre">'sil'</span></code>, <code class="docutils literal notranslate"><span class="pre">'gra_para'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'gra_perp'</span></code> for the
+silicate, graphite parallel, and graphite perpendicular grain populations, respectively.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#xdust.grainpop.GrainPop" title="xdust.grainpop.GrainPop">GrainPop</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -639,11 +650,14 @@ the dust grain as a sphere of free electrons.</p>
 <li><p><strong>p</strong> (<em>float</em>) – Powerlaw slope for grain size distribution</p></li>
 <li><p><strong>rho</strong> (<em>float</em>) – Density of the dust grain material [g cm^-3]</p></li>
 <li><p><strong>md</strong> (<em>float</em>) – Dust mass column [g cm^-2]</p></li>
-<li><p><strong>graindist.sizedist.Powerlaw</strong><strong>(</strong><strong>)</strong> (<em>**kwargs passed to</em>)</p></li>
+<li><p><strong>**kwargs</strong> – Passed to <code class="docutils literal notranslate"><span class="pre">graindist.sizedist.Powerlaw()</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#singlegrainpop"><span class="std std-ref">SingleGrainPop</span></a> object with the ‘RG’ scattering model and ‘Drude’ composition</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A <a class="reference internal" href="#singlegrainpop"><span class="std std-ref">SingleGrainPop</span></a> using the <code class="docutils literal notranslate"><span class="pre">'RG'</span></code> scattering model and <code class="docutils literal notranslate"><span class="pre">'Drude'</span></code> composition.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#xdust.grainpop.SingleGrainPop" title="xdust.grainpop.SingleGrainPop">SingleGrainPop</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -738,9 +752,9 @@ the dust grain as a sphere of free electrons.</p>
 <li><a class="reference internal" href="#xdust.grainpop.GrainPop.info"><code class="docutils literal notranslate"><span class="pre">GrainPop.info()</span></code></a></li>
 <li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">GrainPop.md</span></code></a></li>
 <li><a class="reference internal" href="#xdust.grainpop.GrainPop.plot_ext"><code class="docutils literal notranslate"><span class="pre">GrainPop.plot_ext()</span></code></a></li>
-<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">GrainPop.tau_abs</span></code></a></li>
-<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">GrainPop.tau_ext</span></code></a></li>
-<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">GrainPop.tau_sca</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">GrainPop.tau_abs</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">GrainPop.tau_ext</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">GrainPop.tau_sca</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -765,5 +779,6 @@ the dust grain as a sphere of free electrons.</p>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     </body>
 </html>

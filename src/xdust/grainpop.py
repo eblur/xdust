@@ -31,17 +31,21 @@ class SingleGrainPop(graindist.GrainDist):
     stype : string or custom :ref:`scatmodels`
         Defines what extinction model calculator to use, string options: 'RG' (Rayleigh-Gans), 'Mie' (Mie scattering)
     
-    .. note::
-    
-        If an input for ``scatm_from_file`` is provided, then the ``stype`` input will be ignored.
-
     shape : string
         Only 'Sphere' is supported, some day might be used to define a custom shape
 
     md : float 
         Dust mass column [g cm^-2]
     
-    **kwargs : extra inputs passed to GrainDist.__init__
+    scatm_from_file : string
+        If provided, will read in a scattering model from a FITS file, and use the scattering model parameters and scattering properties from the file.
+    
+    **kwargs
+        Extra inputs passed to ``GrainDist.__init__``.
+
+    Note
+    ----
+    If an input for ``scatm_from_file`` is provided, then the ``stype`` input will be ignored.
 
     Attributes
     ----------
@@ -62,7 +66,7 @@ class SingleGrainPop(graindist.GrainDist):
         [cm^2 ster^-1] differential scattering cross-section as a function of wavelength/energy, grain size, and angle (NE x NA x NTH)
 
     int_diff : astropy.units.Quantity 
-        [ster^-1] differential cross-section integrated over grain size distribution effectively dtau / dOmega$  (NE x NTH)
+        [ster^-1] differential cross-section integrated over grain size distribution, :math:`d\tau/d\Omega` (NE x NTH)
 
     See Also
     --------
@@ -112,12 +116,13 @@ class SingleGrainPop(graindist.GrainDist):
         lam : astropy.units.Quantity or numpy.ndarray
             Wavelength or energy values for calculating the cross-sections;
             if no units specified, defaults to keV
-        
+
         theta : astropy.units.Quantity or numpy.ndarray or float
             Scattering angles for computing the differential scattering cross-section;
-            if no units specified, defaults to radian
-        
-        **kwargs passed to self.scatm.calculate
+            if no units specified, defaults to radian.
+
+        **kwargs
+            Passed to ``self.scatm.calculate``.
         """
         self.scatm.calculate(lam, self.a, self.comp, theta=theta, **kwargs)
         self.lam      = self.scatm.pars['lam']
@@ -185,13 +190,15 @@ class SingleGrainPop(graindist.GrainDist):
 
         ax : matplotlib.pyplot.axes object
 
-        keyword : string 
-            ('ext', 'sca', 'abs', 'all') extinction value(s) to plot
+        keyword : str
+            Extinction value(s) to plot. Options: ``'ext'``, ``'sca'``, ``'abs'``, ``'all'``.
 
-        unit : string parsable by astropy.units 
-            Unit to use for the x-axis values. If None, defaults to the unit assigned to self.lam
+        unit : str, optional
+            Unit for the x-axis, parsable by ``astropy.units``.
+            If ``None``, defaults to the unit of ``self.lam``.
 
-        **kwargs passed to ax.legend()
+        **kwargs
+            Passed to ``ax.legend()``.
         """
         assert keyword in ['ext','sca','abs','all']
         try:
@@ -246,10 +253,11 @@ class SingleGrainPop(graindist.GrainDist):
         Parameters
         ----------
 
-        outfile : string 
-            Name of file to write
+        outfile : str
+            Name of file to write.
 
-        **kwargs passed to self.scatm.write_table
+        **kwargs
+            Passed to ``self.scatm.write_table``.
         """
         self.scatm.write_table(outfile, **kwargs)
         return
@@ -329,15 +337,20 @@ class GrainPop(object):
         """
         Calculate the extinction model.
 
+        Parameters
+        ----------
         lam : astropy.units.Quantity or numpy.ndarray
             Wavelength or energy values for calculating the cross-sections;
-            if no units specified, defaults to keV
-        
+            if no units specified, defaults to keV.
+
+        Other Parameters
+        ----------------
         theta : astropy.units.Quantity or numpy.ndarray or float
             Scattering angles for computing the differential scattering cross-section;
-            if no units specified, defaults to radian
-        
-        **kwargs passed to SingleGrainPop.scatm.calculate for each grain population in the list
+            if no units specified, defaults to radian.
+
+        **kwargs
+            Passed to each ``SingleGrainPop.calculate_ext``.
         """
         # Assing units if an Astropy Quantity is not input
         input_lam = lam
@@ -418,14 +431,15 @@ class GrainPop(object):
 
         ax : matplotlib.pyplot.axes object
 
-        keyword : string 
-            Extinction value(s) to plot ('ext', 'sca', 'abs', 'all')
+        keyword : str
+            Extinction value(s) to plot. Options: ``'ext'``, ``'sca'``, ``'abs'``, ``'all'``.
 
-        unit : string parsable by astropy.units 
-            Unit to use for the x-axis values.
-            If None, defaults to the unit assigned to self.lam
+        unit : str, optional
+            Unit for the x-axis, parsable by ``astropy.units``.
+            If ``None``, defaults to the unit of ``self.lam``.
 
-        **kwargs passed to ax.legend()
+        **kwargs
+            Passed to ``ax.legend()``.
         """
         assert keyword in ['all','ext','sca','abs']
 
@@ -504,11 +518,14 @@ def make_MRN(amin=AMIN, amax=AMAX, p=P, md=MD_DEFAULT, fsil=0.6, **kwargs):
     fsil : float 
         Fraction of dust mass in silicate grains
 
-    **kwargs passed to graindist.sizedist.Powerlaw()
+    **kwargs
+        Passed to ``graindist.sizedist.Powerlaw()``.
 
     Returns
     -------
-    :ref:`GrainPop` object with the keys 'sil', 'gra_para', and 'gra_perp' for the silicate, graphite parallel, and graphite perpendicular grain populations, respectively.
+    GrainPop
+        A :ref:`GrainPop` with keys ``'sil'``, ``'gra_para'``, and ``'gra_perp'`` for the
+        silicate, graphite parallel, and graphite perpendicular grain populations, respectively.
     """
     assert isinstance(fsil, float)
     assert fsil >= 0.0 and fsil <= 1.0
@@ -556,11 +573,13 @@ def make_MRN_RGDrude(amin=AMIN, amax=AMAX, p=P, rho=RHO_AVG, md=MD_DEFAULT, **kw
     md : float
         Dust mass column [g cm^-2]
 
-    **kwargs passed to graindist.sizedist.Powerlaw()
+    **kwargs
+        Passed to ``graindist.sizedist.Powerlaw()``.
 
     Returns
     -------
-    :ref:`SingleGrainPop` object with the 'RG' scattering model and 'Drude' composition
+    SingleGrainPop
+        A :ref:`SingleGrainPop` using the ``'RG'`` scattering model and ``'Drude'`` composition.
     """
     pl      = graindist.sizedist.Powerlaw(amin=amin, amax=amax, p=p, **kwargs)
     dru     = graindist.composition.CmDrude(rho=rho)
