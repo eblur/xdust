@@ -240,27 +240,64 @@
         <article role="main" id="furo-main-content">
           <section id="xdust-graindist-shape">
 <span id="shape"></span><h1>xdust.graindist.shape<a class="headerlink" href="#xdust-graindist-shape" title="Link to this heading">¶</a></h1>
-<p>At this time, only spherical dust grains are supported.
-For non-spherical dust grains, the grain size distribution
-can be specified using the effective grain radius $a_{rm eff}$, defined as
-$$ V_g = frac{4}{3} pi a_{rm eff}^3 $$
-where $V_g$ is the volume of the grain.</p>
-<section id="abstract-class-shape">
-<h2>Abstract Class: <em>Shape</em><a class="headerlink" href="#abstract-class-shape" title="Link to this heading">¶</a></h2>
-<p>Abstract class <em>Shape</em> describes the shape of the dust grains.
-It must contain the following attributes:</p>
-<ul class="simple">
-<li><p><cite>shape</cite> (a string)</p></li>
-<li><p><cite>vol</cite> (a function giving the volume of the grain [cm^3])</p></li>
-<li><p><cite>cgeo</cite> (a function giving the geometric area of the grain [cm^2])</p></li>
-</ul>
+<p>The superclass <a class="reference internal" href="#shapeclass"><span class="std std-ref">Shape</span></a> describes the geometric properties of the dust grains.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At this time, only spherical dust grains are supported (see <a class="reference internal" href="#sphere"><span class="std std-ref">Sphere</span></a>).</p>
+</div>
+<p>For non-spherical dust grains, the grain size distribution
+can be specified using the effective grain radius <span class="math notranslate nohighlight">\(a_{\rm eff}\)</span>, defined as
+<span class="math notranslate nohighlight">\(V_g = \frac{4}{3} \pi a_{\rm eff}^3\)</span> where <span class="math notranslate nohighlight">\(V_g\)</span> is the volume of the grain.</p>
+<section id="shapeclass">
+<span id="id1"></span><h2>Shape<a class="headerlink" href="#shapeclass" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xdust.graindist.shape.Shape">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.shape.</span></span><span class="sig-name descname"><span class="pre">Shape</span></span><a class="reference internal" href="_modules/xdust/graindist/shape.html#Shape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.shape.Shape" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Abstract class for grain shape.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.graindist.shape.Shape.cgeo">
+<span class="sig-name descname"><span class="pre">cgeo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/shape.html#Shape.cgeo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.shape.Shape.cgeo" title="Link to this definition">¶</a></dt>
+<dd><p>Geometric cross-section of the grain as a function of grain size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>a</strong> (<em>astropy.units.Quantity</em><em> or </em><em>float</em>) – Grain size; plain floats are assumed to be in microns.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Geometric cross-section of the grain [cm^2]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float or numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xdust.graindist.shape.Shape.vol">
+<span class="sig-name descname"><span class="pre">vol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/shape.html#Shape.vol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.shape.Shape.vol" title="Link to this definition">¶</a></dt>
+<dd><p>Volume of the grain as a function of grain size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>a</strong> (<em>astropy.units.Quantity</em><em> or </em><em>float</em>) – Grain size; plain floats are assumed to be in microns.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Volume of the grain [cm^-3]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="sphere">
-<span id="id1"></span><h2>Sphere<a class="headerlink" href="#sphere" title="Link to this heading">¶</a></h2>
+<span id="id2"></span><h2>Sphere<a class="headerlink" href="#sphere" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.shape.Sphere">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.shape.</span></span><span class="sig-name descname"><span class="pre">Sphere</span></span><a class="reference internal" href="_modules/xdust/graindist/shape/sphere.html#Sphere"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.shape.Sphere" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#xdust.graindist.shape.Shape" title="xdust.graindist.shape.Shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shape</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.graindist.shape.Sphere.shape">
 <span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#xdust.graindist.shape.Sphere.shape" title="Link to this definition">¶</a></dt>
@@ -366,7 +403,14 @@ It must contain the following attributes:</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">xdust.graindist.shape</a><ul>
-<li><a class="reference internal" href="#abstract-class-shape">Abstract Class: <em>Shape</em></a></li>
+<li><a class="reference internal" href="#shapeclass">Shape</a><ul>
+<li><a class="reference internal" href="#xdust.graindist.shape.Shape"><code class="docutils literal notranslate"><span class="pre">Shape</span></code></a><ul>
+<li><a class="reference internal" href="#xdust.graindist.shape.Shape.cgeo"><code class="docutils literal notranslate"><span class="pre">Shape.cgeo()</span></code></a></li>
+<li><a class="reference internal" href="#xdust.graindist.shape.Shape.vol"><code class="docutils literal notranslate"><span class="pre">Shape.vol()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#sphere">Sphere</a><ul>
 <li><a class="reference internal" href="#xdust.graindist.shape.Sphere"><code class="docutils literal notranslate"><span class="pre">Sphere</span></code></a><ul>
 <li><a class="reference internal" href="#xdust.graindist.shape.Sphere.shape"><code class="docutils literal notranslate"><span class="pre">Sphere.shape</span></code></a></li>

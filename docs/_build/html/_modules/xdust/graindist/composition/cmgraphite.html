@@ -237,7 +237,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">_find_cmfile</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">.composition</span><span class="w"> </span><span class="kn">import</span> <span class="n">Composition</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">Composition</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CmGraphite&#39;</span><span class="p">]</span>
 
@@ -247,13 +247,14 @@
 <a class="viewcode-back" href="../../../../composition.html#xdust.graindist.composition.CmGraphite">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CmGraphite</span><span class="p">(</span><span class="n">Composition</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Optical constants for Graphite from Draine (2003)</span>
+<span class="sd">    Optical constants for Graphite from</span>
+<span class="sd">    `Draine (2003), ApJ 598, 1026 &lt;http://adsabs.harvard.edu/abs/2003ApJ...598.1026D&gt;`_</span>
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
 <span class="sd">    size : str</span>
-<span class="sd">        ``&#39;big&#39;`` gives results for 0.1 um sized graphite grains at 20 K</span>
-<span class="sd">        [Draine (2003)]; ``&#39;small&#39;`` gives results for 0.01 um sized grains at 20 K.</span>
+<span class="sd">        ``&#39;big&#39;`` gives results for 0.1 um sized graphite grains at 20 K;</span>
+<span class="sd">        ``&#39;small&#39;`` gives results for 0.01 um sized grains at 20 K.</span>
 
 <span class="sd">    orient : str</span>
 <span class="sd">        ``&#39;perp&#39;`` gives results for E-field perpendicular to the c-axis;</span>

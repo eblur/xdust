@@ -237,7 +237,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">_find_cmfile</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">.composition</span><span class="w"> </span><span class="kn">import</span> <span class="n">Composition</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">Composition</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CmSilicate&#39;</span><span class="p">]</span>
 
@@ -247,7 +247,8 @@
 <a class="viewcode-back" href="../../../../composition.html#xdust.graindist.composition.CmSilicate">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CmSilicate</span><span class="p">(</span><span class="n">Composition</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Optical constants for Silicate from Draine (2003)</span>
+<span class="sd">    Optical constants for Silicate from</span>
+<span class="sd">    `Draine (2003), ApJ 598, 1026 &lt;http://adsabs.harvard.edu/abs/2003ApJ...598.1026D&gt;`_</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="n">RHO_SIL</span><span class="p">):</span>
         <span class="n">Composition</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>

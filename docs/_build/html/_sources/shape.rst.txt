@@ -3,23 +3,21 @@
 xdust.graindist.shape
 =====================
 
-At this time, only spherical dust grains are supported. 
+The superclass :ref:`ShapeClass` describes the geometric properties of the dust grains.
+
+.. note::
+   At this time, only spherical dust grains are supported (see :ref:`Sphere`).
+
 For non-spherical dust grains, the grain size distribution 
-can be specified using the effective grain radius $a_{\rm eff}$, defined as
-$$ V_g = \frac{4}{3} \pi a_{\rm eff}^3 $$
-where $V_g$ is the volume of the grain.
+can be specified using the effective grain radius :math:`a_{\rm eff}`, defined as
+:math:`V_g = \frac{4}{3} \pi a_{\rm eff}^3` where :math:`V_g` is the volume of the grain.
 
-Abstract Class: *Shape*
---------------------------
+.. _ShapeClass:
 
-Abstract class *Shape* describes the shape of the dust grains.
-It must contain the following attributes:
+Shape
+-----
 
-- `shape` (a string)
-
-- `vol` (a function giving the volume of the grain [cm^3])
-
-- `cgeo` (a function giving the geometric area of the grain [cm^2])
+.. autoclass:: xdust.graindist.shape.Shape
 
 .. _Sphere:
 

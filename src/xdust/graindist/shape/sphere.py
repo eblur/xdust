@@ -1,15 +1,16 @@
 import numpy as np
 import astropy.units as u
 
-__all__ = ['Sphere']
+from . import Shape
 
-class Sphere(object):
+class Sphere(Shape):
     """
     Attributes
     ----------
     shape : string : Describes the shape ('sphere')
     """
     def __init__(self):
+        Shape.__init__(self)
         self.shape = 'Sphere'
 
     def vol(self, a):
