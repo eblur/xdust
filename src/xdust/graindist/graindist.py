@@ -15,49 +15,48 @@ __all__ = ['GrainDist']
 
 class GrainDist(object):
     """
-    Graindist ties together the size distribution (which has no set abundance) 
+    Graindist ties together the size distribution (which has no set column density) 
     and composition (which contains optical constants and density) and anchors them
     with dust mass density and a series of convenience functions to get at some of the
     frequently needed information.
 
+    Parameters
+    ----------
+    dtype : str or xdust.graindist.sizedist object
+        Grain radius distribution. String options: ``'Grain'``, ``'Powerlaw'``,
+        ``'ExpCutoff'``, ``'Astrodust'``, ``'WD01'``.
+
+    cmtype : str or xdust.graindist.composition object
+        Optical constants and compound density. String options: ``'Drude'``,
+        ``'Silicate'``, ``'Graphite'``.
+
+    shape : str
+        Grain shape. ``'Sphere'`` is the only supported option.
+
+    md : float
+        Dust mass column [g cm^-2].
+
+    rho : float, optional
+        If provided, passed to the ``rho`` keyword of the composition object.
+
+    **kwargs
+        Extra inputs passed to ``sizedist.__init__``.
+    
     Attributes
     ----------
-    size : xdust.graindist.sizedist object
+    size : :ref:`sizedist` object
         Grain size distribution.
 
-    comp : xdust.graindist.composition object
+    comp : :ref:`composition` object
         Optical constants and material density.
 
-    shape : xdust.graindist.shape object
+    shape : :ref:`shape` object
         Grain shape object.
 
     md : float
         Dust mass column density [g cm^-2].
     """
     def __init__(self, dtype, cmtype, shape='Sphere', md=MD_DEFAULT, rho=None, **kwargs):
-        """
-        Parameters
-        ----------
-        dtype : str or xdust.graindist.sizedist object
-            Grain radius distribution. String options: ``'Grain'``, ``'Powerlaw'``,
-            ``'ExpCutoff'``, ``'Astrodust'``, ``'WD01'``.
-
-        cmtype : str or xdust.graindist.composition object
-            Optical constants and compound density. String options: ``'Drude'``,
-            ``'Silicate'``, ``'Graphite'``.
-
-        shape : str
-            Grain shape. ``'Sphere'`` is the only supported option.
-
-        md : float
-            Dust mass column [g cm^-2].
-
-        rho : float, optional
-            If provided, passed to the ``rho`` keyword of the composition object.
-
-        **kwargs
-            Extra inputs passed to ``sizedist.__init__``.
-        """
         self.md = md
 
         if isinstance(dtype, str):
@@ -75,33 +74,82 @@ class GrainDist(object):
         else:
             self.shape = shape
 
-
     @property
     def a(self):
+        """
+        Grain radius grid
+
+        Returns
+        -------
+        astropy.units.Quantity
+        """
         return self.size.a
 
     @property
     def ndens(self):
+        """
+        Number column density of dust grains as a function of radius [cm^-2 um^-1], using the dust mass column density in ``self.md`` and the grain material density in ``self.comp.rho``.
+        
+        Returns
+        -------
+        numpy.ndarray
+        """
         return self.size.ndens(self.md, rho=self.comp.rho, shape=self.shape)
 
     @property
     def mdens(self):
+        """
+        Mass column density of dust grains as a function of radius [g cm^-2 um^-1], using the dust mass column density in ``self.md`` and the grain material density in ``self.comp.rho``.
+
+        Returns
+        -------
+        numpy.ndarray
+        """
         mg = self.shape.vol(self.a) * self.comp.rho  # mass of each dust grain [g]
         return self.ndens * mg
 
     @property
     def rho(self):
+        """
+        Grain material density [g cm^-3]
+
+        Returns
+        -------
+        float
+        """
         return self.comp.rho
 
     @property
     def cgeo(self):
+        """
+        Geometric cross section of the grains [float, cm^2].
+
+        Returns
+        -------
+        numpy.ndarray    
+        """
         return self.shape.cgeo(self.a)
 
     @property
     def vol(self):
+        """
+        Volume of the grains [float, cm^3].
+        
+        Returns
+        -------
+        numpy.ndarray
+        """
         return self.shape.vol(self.a)
 
     def plot(self, ax, **kwargs):
+        """
+        Plots the grain size distribution on a given matplotlib axis        
+
+        Parameters
+        ----------
+        ax : matplotlib.axes.Axes
+            Axes on which to plot the grain size distribution
+        """
         ax.plot(self.a.to('micron').value, self.ndens * np.power(self.a.to('micron').value, 4), **kwargs)
         ax.set_xlabel("Radius (micron)")
         ax.set_ylabel("$(dn/da) a^4$ (cm$^{-2}$ um$^{3}$)")

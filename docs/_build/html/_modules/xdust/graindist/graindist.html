@@ -251,50 +251,48 @@
 <a class="viewcode-back" href="../../../graindist.html#xdust.graindist.GrainDist">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">GrainDist</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Graindist ties together the size distribution (which has no set abundance) </span>
+<span class="sd">    Graindist ties together the size distribution (which has no set column density) </span>
 <span class="sd">    and composition (which contains optical constants and density) and anchors them</span>
 <span class="sd">    with dust mass density and a series of convenience functions to get at some of the</span>
 <span class="sd">    frequently needed information.</span>
 
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dtype : str or xdust.graindist.sizedist object</span>
+<span class="sd">        Grain radius distribution. String options: ``&#39;Grain&#39;``, ``&#39;Powerlaw&#39;``,</span>
+<span class="sd">        ``&#39;ExpCutoff&#39;``, ``&#39;Astrodust&#39;``, ``&#39;WD01&#39;``.</span>
+
+<span class="sd">    cmtype : str or xdust.graindist.composition object</span>
+<span class="sd">        Optical constants and compound density. String options: ``&#39;Drude&#39;``,</span>
+<span class="sd">        ``&#39;Silicate&#39;``, ``&#39;Graphite&#39;``.</span>
+
+<span class="sd">    shape : str</span>
+<span class="sd">        Grain shape. ``&#39;Sphere&#39;`` is the only supported option.</span>
+
+<span class="sd">    md : float</span>
+<span class="sd">        Dust mass column [g cm^-2].</span>
+
+<span class="sd">    rho : float, optional</span>
+<span class="sd">        If provided, passed to the ``rho`` keyword of the composition object.</span>
+
+<span class="sd">    **kwargs</span>
+<span class="sd">        Extra inputs passed to ``sizedist.__init__``.</span>
+<span class="sd">    </span>
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    size : xdust.graindist.sizedist object</span>
+<span class="sd">    size : :ref:`sizedist` object</span>
 <span class="sd">        Grain size distribution.</span>
 
-<span class="sd">    comp : xdust.graindist.composition object</span>
+<span class="sd">    comp : :ref:`composition` object</span>
 <span class="sd">        Optical constants and material density.</span>
 
-<span class="sd">    shape : xdust.graindist.shape object</span>
+<span class="sd">    shape : :ref:`shape` object</span>
 <span class="sd">        Grain shape object.</span>
 
 <span class="sd">    md : float</span>
 <span class="sd">        Dust mass column density [g cm^-2].</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">cmtype</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s1">&#39;Sphere&#39;</span><span class="p">,</span> <span class="n">md</span><span class="o">=</span><span class="n">MD_DEFAULT</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        dtype : str or xdust.graindist.sizedist object</span>
-<span class="sd">            Grain radius distribution. String options: ``&#39;Grain&#39;``, ``&#39;Powerlaw&#39;``,</span>
-<span class="sd">            ``&#39;ExpCutoff&#39;``, ``&#39;Astrodust&#39;``, ``&#39;WD01&#39;``.</span>
-
-<span class="sd">        cmtype : str or xdust.graindist.composition object</span>
-<span class="sd">            Optical constants and compound density. String options: ``&#39;Drude&#39;``,</span>
-<span class="sd">            ``&#39;Silicate&#39;``, ``&#39;Graphite&#39;``.</span>
-
-<span class="sd">        shape : str</span>
-<span class="sd">            Grain shape. ``&#39;Sphere&#39;`` is the only supported option.</span>
-
-<span class="sd">        md : float</span>
-<span class="sd">            Dust mass column [g cm^-2].</span>
-
-<span class="sd">        rho : float, optional</span>
-<span class="sd">            If provided, passed to the ``rho`` keyword of the composition object.</span>
-
-<span class="sd">        **kwargs</span>
-<span class="sd">            Extra inputs passed to ``sizedist.__init__``.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">md</span> <span class="o">=</span> <span class="n">md</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -312,35 +310,84 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">shape</span>
 
-
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Grain radius grid</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        astropy.units.Quantity</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">a</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">ndens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Number column density of dust grains as a function of radius [cm^-2 um^-1], using the dust mass column density in ``self.md`` and the grain material density in ``self.comp.rho``.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy.ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">ndens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">md</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">comp</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">mdens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Mass column density of dust grains as a function of radius [g cm^-2 um^-1], using the dust mass column density in ``self.md`` and the grain material density in ``self.comp.rho``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy.ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">mg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">vol</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">comp</span><span class="o">.</span><span class="n">rho</span>  <span class="c1"># mass of each dust grain [g]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndens</span> <span class="o">*</span> <span class="n">mg</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">rho</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Grain material density [g cm^-3]</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">comp</span><span class="o">.</span><span class="n">rho</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">cgeo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Geometric cross section of the grains [float, cm^2].</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy.ndarray    </span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">cgeo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">vol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Volume of the grains [float, cm^3].</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy.ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">vol</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">)</span>
 
 <div class="viewcode-block" id="GrainDist.plot">
 <a class="viewcode-back" href="../../../graindist.html#xdust.graindist.GrainDist.plot">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots the grain size distribution on a given matplotlib axis        </span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ax : matplotlib.axes.Axes</span>
+<span class="sd">            Axes on which to plot the grain size distribution</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;micron&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndens</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;micron&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Radius (micron)&quot;</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$(dn/da) a^4$ (cm$^{-2}$ um$^</span><span class="si">{3}</span><span class="s2">$)&quot;</span><span class="p">)</span>

@@ -240,24 +240,44 @@
         <article role="main" id="furo-main-content">
           <section id="xdust-graindist">
 <span id="graindist"></span><h1>xdust.graindist<a class="headerlink" href="#xdust-graindist" title="Link to this heading">¶</a></h1>
-<p>This module provides the essential <strong>SingleGrainPop</strong> and <strong>GrainPop</strong> classes.</p>
+<p>This module contains:</p>
+<ul class="simple">
+<li><p>a library of size distribution functions (see <a class="reference internal" href="sizedist.html#sizedist"><span class="std std-ref">xdust.graindist.sizedist</span></a>)</p></li>
+<li><p>a library of grain compositions, which defines the optical constants and material density (see <a class="reference internal" href="composition.html#composition"><span class="std std-ref">xdust.graindist.composition</span></a>)</p></li>
+<li><p>a shape module (see <a class="reference internal" href="shape.html#shape"><span class="std std-ref">xdust.graindist.shape</span></a>)</p></li>
+</ul>
+<p>This is tied together by the <a class="reference internal" href="#graindistclass"><span class="std std-ref">`GrainDist</span></a> superclass.</p>
 <section id="graindistclass">
-<span id="id1"></span><h2>GrainDist<a class="headerlink" href="#graindistclass" title="Link to this heading">¶</a></h2>
+<span id="id1"></span><h2><code class="docutils literal notranslate"><span class="pre">`GrainDist</span></code><a class="headerlink" href="#graindistclass" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="xdust.graindist.GrainDist">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">xdust.graindist.</span></span><span class="sig-name descname"><span class="pre">GrainDist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Sphere'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">md</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/graindist.html#GrainDist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.GrainDist" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Graindist ties together the size distribution (which has no set abundance)
+<p>Graindist ties together the size distribution (which has no set column density)
 and composition (which contains optical constants and density) and anchors them
 with dust mass density and a series of convenience functions to get at some of the
 frequently needed information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dtype</strong> (<em>str</em><em> or </em><em>xdust.graindist.sizedist object</em>) – Grain radius distribution. String options: <code class="docutils literal notranslate"><span class="pre">'Grain'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Powerlaw'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'ExpCutoff'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Astrodust'</span></code>, <code class="docutils literal notranslate"><span class="pre">'WD01'</span></code>.</p></li>
+<li><p><strong>cmtype</strong> (<em>str</em><em> or </em><em>xdust.graindist.composition object</em>) – Optical constants and compound density. String options: <code class="docutils literal notranslate"><span class="pre">'Drude'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'Silicate'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Graphite'</span></code>.</p></li>
+<li><p><strong>shape</strong> (<em>str</em>) – Grain shape. <code class="docutils literal notranslate"><span class="pre">'Sphere'</span></code> is the only supported option.</p></li>
+<li><p><strong>md</strong> (<em>float</em>) – Dust mass column [g cm^-2].</p></li>
+<li><p><strong>rho</strong> (<em>float</em><em>, </em><em>optional</em>) – If provided, passed to the <code class="docutils literal notranslate"><span class="pre">rho</span></code> keyword of the composition object.</p></li>
+<li><p><strong>**kwargs</strong> – Extra inputs passed to <code class="docutils literal notranslate"><span class="pre">sizedist.__init__</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="xdust.graindist.GrainDist.size">
 <span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.size" title="Link to this definition">¶</a></dt>
 <dd><p>Grain size distribution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>xdust.graindist.sizedist object</p>
+<dd class="field-odd"><p><a class="reference internal" href="sizedist.html#sizedist"><span class="std std-ref">xdust.graindist.sizedist</span></a> object</p>
 </dd>
 </dl>
 </dd></dl>
@@ -268,7 +288,7 @@ frequently needed information.</p>
 <dd><p>Optical constants and material density.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>xdust.graindist.composition object</p>
+<dd class="field-odd"><p><a class="reference internal" href="composition.html#composition"><span class="std std-ref">xdust.graindist.composition</span></a> object</p>
 </dd>
 </dl>
 </dd></dl>
@@ -279,7 +299,7 @@ frequently needed information.</p>
 <dd><p>Grain shape object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>xdust.graindist.shape object</p>
+<dd class="field-odd"><p><a class="reference internal" href="shape.html#shape"><span class="std std-ref">xdust.graindist.shape</span></a> object</p>
 </dd>
 </dl>
 </dd></dl>
@@ -298,37 +318,79 @@ frequently needed information.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="xdust.graindist.GrainDist.a">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">a</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.a" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Grain radius grid</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>astropy.units.Quantity</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="xdust.graindist.GrainDist.cgeo">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">cgeo</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.cgeo" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Geometric cross section of the grains [float, cm^2].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="xdust.graindist.GrainDist.mdens">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">mdens</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.mdens" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Mass column density of dust grains as a function of radius [g cm^-2 um^-1], using the dust mass column density in <code class="docutils literal notranslate"><span class="pre">self.md</span></code> and the grain material density in <code class="docutils literal notranslate"><span class="pre">self.comp.rho</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="xdust.graindist.GrainDist.ndens">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ndens</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.ndens" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Number column density of dust grains as a function of radius [cm^-2 um^-1], using the dust mass column density in <code class="docutils literal notranslate"><span class="pre">self.md</span></code> and the grain material density in <code class="docutils literal notranslate"><span class="pre">self.comp.rho</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="xdust.graindist.GrainDist.plot">
 <span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xdust/graindist/graindist.html#GrainDist.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xdust.graindist.GrainDist.plot" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Plots the grain size distribution on a given matplotlib axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em>) – Axes on which to plot the grain size distribution</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="xdust.graindist.GrainDist.rho">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rho</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.rho" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Grain material density [g cm^-3]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="xdust.graindist.GrainDist.vol">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">vol</span></span><a class="headerlink" href="#xdust.graindist.GrainDist.vol" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Volume of the grains [float, cm^3].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -419,7 +481,7 @@ frequently needed information.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">xdust.graindist</a><ul>
-<li><a class="reference internal" href="#graindistclass">GrainDist</a><ul>
+<li><a class="reference internal" href="#graindistclass"><code class="docutils literal notranslate"><span class="pre">`GrainDist</span></code></a><ul>
 <li><a class="reference internal" href="#xdust.graindist.GrainDist"><code class="docutils literal notranslate"><span class="pre">GrainDist</span></code></a><ul>
 <li><a class="reference internal" href="#xdust.graindist.GrainDist.size"><code class="docutils literal notranslate"><span class="pre">GrainDist.size</span></code></a></li>
 <li><a class="reference internal" href="#xdust.graindist.GrainDist.comp"><code class="docutils literal notranslate"><span class="pre">GrainDist.comp</span></code></a></li>

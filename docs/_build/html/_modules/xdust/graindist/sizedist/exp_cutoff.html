@@ -326,6 +326,8 @@
 <span class="sd">        numpy.ndarray</span>
 <span class="sd">            Column density of grains [cm^-2 um^-1].</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">a_um</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;micron&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">acut_um</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">acut</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;micron&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
 
         <span class="c1"># power law slope component</span>
         <span class="n">adep</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">a_um</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a_um</span><span class="o">/</span><span class="n">acut_um</span><span class="p">)</span>   <span class="c1"># um^-p</span>
