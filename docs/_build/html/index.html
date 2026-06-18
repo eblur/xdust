@@ -253,7 +253,7 @@ to calculate dust scattering halo images in the X-ray.</p>
 provided, but they can be fully customized by the user by invoking
 custom objects of the approporiate class.  Provided dust models
 include:</p>
-<ul>
+<ul class="simple">
 <li><p>Grain size distributions: single grain size, power law, and a power law with an exponential cut-off</p></li>
 <li><p><a class="reference external" href="http://adsabs.harvard.edu/abs/2001ApJ...548..296W">Weingartner &amp; Draine (2001)</a>
 grain size distributions for Milky Way dust</p></li>
@@ -264,11 +264,8 @@ grain size distributions for Milky Way dust</p></li>
 * <a class="reference external" href="http://adsabs.harvard.edu/abs/1998ApJ...503..831S">Smith &amp; Dwek (1998)</a>
 * <a class="reference external" href="http://adsabs.harvard.edu/abs/1986ApJ...302..371M">Mauche &amp; Gorenstein (1986)</a></p></li>
 <li><p>Mie scattering physics using the algorithms of
-<a class="reference external" href="http://adsabs.harvard.edu/abs/1983asls.book.....B">Bohren &amp; Huffman (1986)</a> converted from <a href="#id1"><span class="problematic" id="id2">`</span></a>fortran and IDL</p>
-<blockquote>
-<div><p>&lt;<a class="reference external" href="http://www.met.tamu.edu/class/atmo689-lc/bhmie.pro">http://www.met.tamu.edu/class/atmo689-lc/bhmie.pro</a>&gt;`_ to python</p>
-</div></blockquote>
-</li>
+<a class="reference external" href="http://adsabs.harvard.edu/abs/1983asls.book.....B">Bohren &amp; Huffman (1986)</a> converted from
+<a class="reference external" href="http://www.met.tamu.edu/class/atmo689-lc/bhmie.pro">fortran and IDL</a> to python</p></li>
 </ul>
 </section>
 <section id="grain-populations">
@@ -311,10 +308,11 @@ through an optically thin sight line (Corrales &amp; Paerels 2015, Corrales et a
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="scatmodels.html">xdust.scatteringmodel</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scatmodels.html#abstract-class-scatteringmodel">Abstract Class: <em>ScatteringModel</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="scatmodels.html#scatteringmodel">ScatteringModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scatmodels.html#rgscattering">RGscattering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scatmodels.html#mie">Mie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scatmodels.html#ggadt">GGADT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scatmodels.html#pah">PAH</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="halos.html">xdust.halos</a><ul>

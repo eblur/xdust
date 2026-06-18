@@ -9,7 +9,7 @@ import numpy as np
 import astropy.units as u
 
 from xdust.graindist.composition import _find_cmfile
-from .scatteringmodel import ScatteringModel
+from . import ScatteringModel
 
 __all__ = ['PAH']
 
@@ -63,17 +63,23 @@ def parse_PAH( option, ignore='#', flag='>', verbose=False ):
 class PAH(ScatteringModel):
     """
     PAH properties loaded from Draine tables (public on B. Draine's website). 
-    *See* Li & Draine (2001)
 
+    *See* `Li & Draine (2001) <https://ui.adsabs.harvard.edu/abs/2001ApJ...554..778L/abstract>`_
+
+    Parameters
+    ----------
+    
+    pahtype : string
+        Type of PAH to load; options are 'ion' (ionized) or 'neu' (neutral)
+    
     Attributes
     ----------
-    In addition to those inherited from ScatteringModel
-
-    pahtype  : string : 'ion' (ionized) or 'neu' (neutral)
     
-    stype : string : 'PAH' + type
-
-    No differential scattering cross-section calculation.
+    pahtype  : string 
+        'ion' (ionized) or 'neu' (neutral)
+    
+    stype : string 
+        'PAHion' or 'PAHneu' depending on the type of PAH loaded
     """
     def __init__(self, pahtype, **kwargs):
         ScatteringModel.__init__(self, **kwargs)
@@ -110,7 +116,10 @@ class PAH(ScatteringModel):
             Scattering angles for computing the differential scattering cross-section;
             if no units specified, defaults to radian
 
-        Updates the `qsca`, `qext`, `qabs`, `diff`, `gsca`, and `qback` attributes
+        Returns
+        -------
+        None
+        Updates the ``qsca``, ``qext``, ``qabs``, ``diff``, ``gsca``, and ``qback`` attributes using the lookup tables from Li & Draine (2001).
         """
         # Parameters are not stored the same with this moel type
         self.pars = dict()

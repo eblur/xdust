@@ -1,11 +1,10 @@
 
-from .scatteringmodel import ScatteringModel
+from . import ScatteringModel
 
 class GGADT(ScatteringModel):
     """
-    Scattering model loaded from pre-computed GGADT output files.
+    This scattering model loads data from pre-computed GGADT output files.
 
-    Attributes inherited from :ref:`scatmodels`.
     See `Hoffman & Draine (2016) <https://ui.adsabs.harvard.edu/abs/2016ApJ...817..139H>`_.
     """
     def __init__(self, from_file):

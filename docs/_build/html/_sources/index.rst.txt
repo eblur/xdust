@@ -39,8 +39,8 @@ include:
   * `Mauche & Gorenstein (1986) <http://adsabs.harvard.edu/abs/1986ApJ...302..371M>`_
 
 * Mie scattering physics using the algorithms of
-  `Bohren & Huffman (1986) <http://adsabs.harvard.edu/abs/1983asls.book.....B>`_ converted from `fortran and IDL
-    <http://www.met.tamu.edu/class/atmo689-lc/bhmie.pro>`_ to python
+  `Bohren & Huffman (1986) <http://adsabs.harvard.edu/abs/1983asls.book.....B>`_ converted from 
+  `fortran and IDL <http://www.met.tamu.edu/class/atmo689-lc/bhmie.pro>`_ to python
 
 
 Grain Populations

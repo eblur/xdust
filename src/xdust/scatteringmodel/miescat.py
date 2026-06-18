@@ -1,7 +1,7 @@
 import numpy as np
 import astropy.units as u
 from .. import helpers
-from .scatteringmodel import ScatteringModel
+from . import ScatteringModel
 
 __all__ = ['Mie']
 
@@ -57,6 +57,9 @@ class Mie(ScatteringModel):
         memlim : float
             Memory limit for the calculation [GB]. Default ``8.0``.
 
+        Returns
+        -------
+        None
         Updates the ``qsca``, ``qext``, ``qabs``, ``diff``, ``gsca``, and ``qback`` attributes.
         """
         # Store the parameters
