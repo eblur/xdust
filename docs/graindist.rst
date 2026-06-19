@@ -13,7 +13,7 @@ This is tied together by the :ref:`GrainDistClass` superclass.
 
 .. _GrainDistClass:
    
-```GrainDist``
+GrainDist
 ---------------------------
 
 .. autoclass:: xdust.graindist.GrainDist

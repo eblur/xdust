@@ -280,7 +280,8 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        None. Updates the ``md``, ``norm_int``, and ``taux`` attributes.</span>
+<span class="sd">        None</span>
+<span class="sd">            Updates the ``md``, ``norm_int``, and ``taux`` attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">gpop</span><span class="p">,</span> <span class="n">SingleGrainPop</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">md</span>    <span class="o">=</span> <span class="n">gpop</span><span class="o">.</span><span class="n">mdens</span>
@@ -346,7 +347,8 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        None. Updates the ``md``, ``x``, ``norm_int``, and ``taux`` attributes.</span>
+<span class="sd">        None</span>
+<span class="sd">            Updates the ``md``, ``x``, ``norm_int``, and ``taux`` attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">gpop</span><span class="p">,</span> <span class="n">SingleGrainPop</span><span class="p">)</span>
         <span class="k">assert</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">)</span>
@@ -475,7 +477,14 @@
 <span class="sd">            (Default:None uses entire range)</span>
 
 <span class="sd">        save_file : str, optional</span>
-<span class="sd">            Filename to use if you want to save the output to a FITS file</span>
+<span class="sd">            Filename to use if you want to save the output to a FITS file.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy.ndarray (2D)</span>
+<span class="sd">            Image of a time variable dust scattering halo. The halo intensity at different energies </span>
+<span class="sd">            are converted into counts using the ARF. Then a Poisson distribution is used </span>
+<span class="sd">            to simulate the number of counts in each pixel.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># intensity cube (NE x NTH), phot/cm^2/s/arcsec^2</span>
 
@@ -570,7 +579,8 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        None. Updates ``norm_int`` [arcsec^-2] and ``taux`` [unitless] attributes.</span>
+<span class="sd">        None</span>
+<span class="sd">            Updates ``norm_int`` [arcsec^-2] and ``taux`` [unitless] attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">lam_keV</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">keV</span><span class="p">,</span> <span class="n">equivalencies</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">spectral</span><span class="p">())</span>
         <span class="n">theta_arcsec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">arcsec</span><span class="p">)</span>
@@ -651,7 +661,8 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        None. Updates the ``md``, ``x``, ``norm_int``, and ``taux`` attributes.</span>
+<span class="sd">        None</span>
+<span class="sd">            Updates the ``md``, ``x``, ``norm_int``, and ``taux`` attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">lam_keV</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">keV</span><span class="p">,</span> <span class="n">equivalencies</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">spectral</span><span class="p">())</span>
@@ -698,6 +709,9 @@
 <span class="c1"># -------------- Useful Function -------------------</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">gammainc_fun</span><span class="p">(</span> <span class="n">a</span><span class="p">,</span> <span class="n">z</span> <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The gamma incomplete function needed for the analytic halo calculation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">z</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ERROR: z must be &gt;= 0&#39;</span><span class="p">)</span>
         <span class="k">return</span>
@@ -708,32 +722,37 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">gammaincc</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
     
+<div class="viewcode-block" id="calculate_taux">
+<a class="viewcode-back" href="../../../halos.html#xdust.halos.galhalo.calculate_taux">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">calculate_taux</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">amin</span><span class="p">,</span> <span class="n">amax</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">md</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculate the integrated X-ray scattering opacity taux</span>
+<span class="sd">    Calculate the integrated X-ray scattering opacity taux using an analytic expression</span>
+<span class="sd">    for a power-law distribution of dust grain sizes, using the Rayleigh-Gans and Drude approximations.</span>
+<span class="sd">    See Corrales &amp; Paerels 2015 for details.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    lam: astropy.units.Quantity [KeV] - Energy</span>
+<span class="sd">    lam : astropy.units.Quantity</span>
+<span class="sd">        Energy or wavelength of the photons.</span>
 
-<span class="sd">    amin: astropy.units.Quantity [micron] - minimum grain radius</span>
+<span class="sd">    amin : astropy.units.Quantity [micron] - minimum grain radius</span>
 
-<span class="sd">    amax: astropy.units.Quantity [micron] - maximum grain radius</span>
+<span class="sd">    amax : astropy.units.Quantity [micron] - maximum grain radius</span>
 
-<span class="sd">    p: float [unitless] - slope of power law distribution</span>
+<span class="sd">    p : float [unitless] - slope of power law distribution</span>
 
-<span class="sd">    rho: astropy.units.Quantity [g cm^-3] - grain mass density</span>
+<span class="sd">    rho : astropy.units.Quantity [g cm^-3] - grain mass density</span>
 
-<span class="sd">    md: astropy.units.Quantity [g cm^-2] -  dust mass column</span>
+<span class="sd">    md : astropy.units.Quantity [g cm^-2] -  dust mass column</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    taux: numpy.ndarray or astropy.units.Quantity (NE) - integrated X-ray scattering opacity</span>
+<span class="sd">    taux : numpy.ndarray or astropy.units.Quantity (NE)</span>
+<span class="sd">        Integrated X-ray scattering opacity</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">rho_um</span> <span class="o">=</span> <span class="n">rho</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">g</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">micron</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># g micron^-3</span>
     <span class="n">constA</span> <span class="o">=</span> <span class="p">(</span><span class="mf">6.27e-7</span> <span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">rho</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">g</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">micron</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span> <span class="c1"># cm^2 micron^-4</span>
-    <span class="n">E_keV</span> <span class="o">=</span> <span class="n">lam</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">keV</span> <span class="c1"># unitless</span>
+    <span class="n">E_keV</span> <span class="o">=</span> <span class="n">lam</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;keV&#39;</span><span class="p">,</span> <span class="n">equivalencies</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">spectral</span><span class="p">())</span><span class="o">.</span><span class="n">value</span> <span class="c1"># unitless</span>
     
     <span class="c1"># Calculate Normalization Constant C in Power Law Distribution</span>
     <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
@@ -746,19 +765,22 @@
         <span class="n">taux</span> <span class="o">=</span> <span class="n">constA</span><span class="o">*</span><span class="n">constC</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">amax</span><span class="o">/</span><span class="n">amin</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">E_keV</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">taux</span> <span class="o">=</span> <span class="n">constA</span><span class="o">*</span><span class="n">constC</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">amax</span><span class="p">,</span> <span class="mi">5</span><span class="o">-</span><span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">amin</span><span class="p">,</span> <span class="mi">5</span><span class="o">-</span><span class="n">p</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">E_keV</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">5</span><span class="o">-</span><span class="n">p</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">taux</span>
+    <span class="k">return</span> <span class="n">taux</span></div>
+
    
 <span class="k">def</span><span class="w"> </span><span class="nf">G_p</span><span class="p">(</span><span class="n">amin</span><span class="p">,</span> <span class="n">amax</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Returns integral_a0^a1 a^(4-p) da</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns :math:`\int_{a_0}^{a_1} a^{4-p} da`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span> <span class="n">amax</span><span class="o">/</span><span class="n">amin</span> <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="mf">5.0</span><span class="o">-</span><span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">amax</span><span class="p">,</span><span class="mf">5.0</span><span class="o">-</span><span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">amin</span><span class="p">,</span><span class="mf">5.0</span><span class="o">-</span><span class="n">p</span><span class="p">)</span> <span class="p">)</span>
         
 <span class="k">def</span><span class="w"> </span><span class="nf">G_u</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">amin</span><span class="p">,</span> <span class="n">amax</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function used for evaluating halo from power law distribution of grain sizes (Uniform case)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># input lam and theta must be NE x NTH</span>
     <span class="n">power</span> <span class="o">=</span> <span class="mf">6.0</span> <span class="o">-</span> <span class="n">p</span>
     <span class="n">pfrac</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="o">-</span><span class="n">p</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
@@ -792,14 +814,29 @@
         <span class="k">return</span> <span class="kc">True</span>
 
 
+<div class="viewcode-block" id="path_diff">
+<a class="viewcode-back" href="../../../halos.html#xdust.halos.galhalo.path_diff">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">path_diff</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    | Calculates path difference associated with a particular alpha and x : alpha^2*(1-x)/(2x), units of D (distance to X-ray source)</span>
-<span class="sd">    | ASSUMES SMALL ANGLES</span>
-<span class="sd">    |</span>
-<span class="sd">    | **INPUTS**</span>
-<span class="sd">    | alpha  : scalar : observation angle [arcsec]</span>
-<span class="sd">    | x      : scalar or np.array : position of dust patch (source is at x=0, observer at x=1)</span>
+<span class="sd">    Calculates path difference associated with a particular observation angle (:math:`\\alpha`)</span>
+<span class="sd">    and x using :math:`\\alpha^2 (1-x) / (2x)`</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Observation angle [arcsec]</span>
+
+<span class="sd">    x : float or numpy.ndarray </span>
+<span class="sd">        Position of dust patch (source is at x=0, observer at x=1)</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or numpy.ndarray</span>
+<span class="sd">        Path difference in units of :math:`D` (distance to X-ray source)</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Assumes small angle scattering.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">assert</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">):</span>
@@ -807,21 +844,38 @@
     <span class="n">alpha_rad</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcsec</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;rad&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">_is_small_angle</span><span class="p">(</span><span class="n">alpha_rad</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WARNING: astrodust.halos.galhalo functions assume small angle scattering and the largest angle is &gt; 0.01 rad&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">alpha_rad</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">alpha_rad</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="time_delay">
+<a class="viewcode-back" href="../../../halos.html#xdust.halos.galhalo.time_delay">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">time_delay</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dkpc</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    | Returns time delay [seconds] associated with a particular alpha and x, given distance to X-ray source.</span>
-<span class="sd">    | ASSUMES SMALL ANGLES</span>
-<span class="sd">    |</span>
-<span class="sd">    | **INPUTS**</span>
-<span class="sd">    | alpha : observation angle [arcsec]</span>
-<span class="sd">    | x     : position of a dust patch (source is at x=0, observer at x=1)</span>
-<span class="sd">    | D     : distance to the X-ray source [kpc]</span>
+<span class="sd">    Computes the time delay associated with a particular observation angle (:math:`\\alpha`), </span>
+<span class="sd">    and x given a distance (in kpc) to the X-ray source.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Observation angle [arcsec]</span>
+<span class="sd">    x : float or numpy.ndarray</span>
+<span class="sd">        Position of a dust patch (source is at x=0, observer at x=1)</span>
+<span class="sd">    dkpc : float</span>
+<span class="sd">        Distance to the X-ray source [kpc]</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or numpy.ndarray</span>
+<span class="sd">        Time delay in seconds</span>
+<span class="sd">    </span>
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Assumes small angle scattering.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">delta_x</span> <span class="o">=</span> <span class="n">path_diff</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
     <span class="n">d_cm</span>    <span class="o">=</span> <span class="n">dkpc</span> <span class="o">*</span> <span class="mf">1.e3</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">pc</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cm&#39;</span><span class="p">)</span>  <span class="c1"># cm</span>
-    <span class="k">return</span> <span class="n">delta_x</span> <span class="o">*</span> <span class="p">(</span><span class="n">d_cm</span> <span class="o">/</span> <span class="n">c</span><span class="o">.</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="c1"># seconds</span>
+    <span class="k">return</span> <span class="n">delta_x</span> <span class="o">*</span> <span class="p">(</span><span class="n">d_cm</span> <span class="o">/</span> <span class="n">c</span><span class="o">.</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="c1"># seconds</span></div>
+
 </pre></div>
         </article>
       </div>

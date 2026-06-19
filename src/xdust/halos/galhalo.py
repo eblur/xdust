@@ -42,7 +42,8 @@ class UniformGalHalo(Halo):
 
         Returns
         -------
-        None. Updates the ``md``, ``norm_int``, and ``taux`` attributes.
+        None
+            Updates the ``md``, ``norm_int``, and ``taux`` attributes.
         """
         assert isinstance(gpop, SingleGrainPop)
         self.md    = gpop.mdens
@@ -102,7 +103,8 @@ class ScreenGalHalo(Halo):
 
         Returns
         -------
-        None. Updates the ``md``, ``x``, ``norm_int``, and ``taux`` attributes.
+        None
+            Updates the ``md``, ``x``, ``norm_int``, and ``taux`` attributes.
         """
         assert isinstance(gpop, SingleGrainPop)
         assert (x > 0.0) & (x <= 1.0)
@@ -225,7 +227,14 @@ class ScreenGalHalo(Halo):
             (Default:None uses entire range)
 
         save_file : str, optional
-            Filename to use if you want to save the output to a FITS file
+            Filename to use if you want to save the output to a FITS file.
+
+        Returns
+        -------
+        numpy.ndarray (2D)
+            Image of a time variable dust scattering halo. The halo intensity at different energies 
+            are converted into counts using the ARF. Then a Poisson distribution is used 
+            to simulate the number of counts in each pixel.
         """
         # intensity cube (NE x NTH), phot/cm^2/s/arcsec^2
 
@@ -314,7 +323,8 @@ class UniformGalHaloCP15(Halo):
 
         Returns
         -------
-        None. Updates ``norm_int`` [arcsec^-2] and ``taux`` [unitless] attributes.
+        None
+            Updates ``norm_int`` [arcsec^-2] and ``taux`` [unitless] attributes.
         """
         lam_keV = self.lam.to(u.keV, equivalencies=u.spectral())
         theta_arcsec = self.theta.to(u.arcsec)
@@ -389,7 +399,8 @@ class ScreenGalHaloCP15(Halo):
 
         Returns
         -------
-        None. Updates the ``md``, ``x``, ``norm_int``, and ``taux`` attributes.
+        None
+            Updates the ``md``, ``x``, ``norm_int``, and ``taux`` attributes.
         """
 
         lam_keV = self.lam.to(u.keV, equivalencies=u.spectral())
@@ -434,6 +445,9 @@ class ScreenGalHaloCP15(Halo):
 # -------------- Useful Function -------------------
 
 def gammainc_fun( a, z ):
+    """
+    The gamma incomplete function needed for the analytic halo calculation.
+    """
     if np.any(z < 0):
         print('ERROR: z must be >= 0')
         return
@@ -446,30 +460,33 @@ def gammainc_fun( a, z ):
     
 def calculate_taux(lam, amin, amax, p, rho, md):
     """
-    Calculate the integrated X-ray scattering opacity taux
+    Calculate the integrated X-ray scattering opacity taux using an analytic expression
+    for a power-law distribution of dust grain sizes, using the Rayleigh-Gans and Drude approximations.
+    See Corrales & Paerels 2015 for details.
 
     Parameters
     ----------
-    lam: astropy.units.Quantity [KeV] - Energy
+    lam : astropy.units.Quantity
+        Energy or wavelength of the photons.
 
-    amin: astropy.units.Quantity [micron] - minimum grain radius
+    amin : astropy.units.Quantity [micron] - minimum grain radius
 
-    amax: astropy.units.Quantity [micron] - maximum grain radius
+    amax : astropy.units.Quantity [micron] - maximum grain radius
 
-    p: float [unitless] - slope of power law distribution
+    p : float [unitless] - slope of power law distribution
 
-    rho: astropy.units.Quantity [g cm^-3] - grain mass density
+    rho : astropy.units.Quantity [g cm^-3] - grain mass density
 
-    md: astropy.units.Quantity [g cm^-2] -  dust mass column
+    md : astropy.units.Quantity [g cm^-2] -  dust mass column
 
     Returns
     -------
-    taux: numpy.ndarray or astropy.units.Quantity (NE) - integrated X-ray scattering opacity
+    taux : numpy.ndarray or astropy.units.Quantity (NE)
+        Integrated X-ray scattering opacity
     """
-
     rho_um = rho.to(u.g*u.micron**(-3)) # g micron^-3
     constA = (6.27e-7 *u.cm**2) * (rho/(3*u.g*u.cm**(-3)))/(1*u.micron)**4 # cm^2 micron^-4
-    E_keV = lam/u.keV # unitless
+    E_keV = lam.to('keV', equivalencies=u.spectral()).value # unitless
     
     # Calculate Normalization Constant C in Power Law Distribution
     if p == 4:
@@ -485,16 +502,18 @@ def calculate_taux(lam, amin, amax, p, rho, md):
     return taux
    
 def G_p(amin, amax, p):
-    '''
-    Returns integral_a0^a1 a^(4-p) da
-    '''
+    r"""
+    Returns :math:`\int_{a_0}^{a_1} a^{4-p} da`
+    """
     if p == 5:
         return np.log( amax/amin )
     else:
         return 1.0/(5.0-p) * ( np.power(amax,5.0-p) - np.power(amin,5.0-p) )
         
 def G_u(lam, theta, amin, amax, p):
-    
+    """
+    Function used for evaluating halo from power law distribution of grain sizes (Uniform case)
+    """
     # input lam and theta must be NE x NTH
     power = 6.0 - p
     pfrac = (7.0-p) / 2.0
@@ -530,12 +549,25 @@ def _is_small_angle(radians):
 
 def path_diff(alpha, x):
     """
-    | Calculates path difference associated with a particular alpha and x : alpha^2*(1-x)/(2x), units of D (distance to X-ray source)
-    | ASSUMES SMALL ANGLES
-    |
-    | **INPUTS**
-    | alpha  : scalar : observation angle [arcsec]
-    | x      : scalar or np.array : position of dust patch (source is at x=0, observer at x=1)
+    Calculates path difference associated with a particular observation angle (:math:`\\alpha`)
+    and x using :math:`\\alpha^2 (1-x) / (2x)`
+    
+    Parameters
+    -----------
+    alpha : float
+        Observation angle [arcsec]
+
+    x : float or numpy.ndarray 
+        Position of dust patch (source is at x=0, observer at x=1)
+    
+    Returns
+    -------
+    float or numpy.ndarray
+        Path difference in units of :math:`D` (distance to X-ray source)
+
+    Note
+    ----
+    Assumes small angle scattering.
     """
     assert (np.max(x) < 1.0) & (np.min(x) > 0)
     if (np.size(alpha) > 1) & (np.size(x) > 1):
@@ -547,13 +579,26 @@ def path_diff(alpha, x):
 
 def time_delay(alpha, x, dkpc):
     """
-    | Returns time delay [seconds] associated with a particular alpha and x, given distance to X-ray source.
-    | ASSUMES SMALL ANGLES
-    |
-    | **INPUTS**
-    | alpha : observation angle [arcsec]
-    | x     : position of a dust patch (source is at x=0, observer at x=1)
-    | D     : distance to the X-ray source [kpc]
+    Computes the time delay associated with a particular observation angle (:math:`\\alpha`), 
+    and x given a distance (in kpc) to the X-ray source.
+
+    Parameters
+    ----------
+    alpha : float
+        Observation angle [arcsec]
+    x : float or numpy.ndarray
+        Position of a dust patch (source is at x=0, observer at x=1)
+    dkpc : float
+        Distance to the X-ray source [kpc]
+    
+    Returns
+    -------
+    float or numpy.ndarray
+        Time delay in seconds
+    
+    Note
+    ----
+    Assumes small angle scattering.
     """
     delta_x = path_diff(alpha, x)
     d_cm    = dkpc * 1.e3 * u.pc.to('cm')  # cm

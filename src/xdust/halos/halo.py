@@ -44,10 +44,19 @@ class Halo(object):
     intensity : astropy.units.Quantity (NTH) [arcsec^-2 x fabs.unit]
         Energy-integrated intensity calculated for the scattering halo [fabs x norm_int]
         
-    fhalo : numpy.ndarray or astropy.units.Quantity (NE) [fabs.unit]
-        Theoretical bin-integrated flux spectrum for the scattering
-        halo. This is computed using the formula Fabs * (1 - exp(-taux))
+    Parameters
+    ----------
 
+    lam : astropy.units.Quantity or numpy.ndarray
+        Wavelength or energy grid; plain values default to keV.
+    
+    theta : astropy.units.Quantity or numpy.ndarray
+        Scattering angle grid; plain values default to arcsec.
+    
+    from_file : str
+        If not ``None``, the filename of a FITS file containing the halo parameters and 
+        normalized intensity. The file should be in the format produced by the ``write`` 
+        method of this class
     """
     def __init__(self, lam=1.0, theta=1.0, from_file=None):
         self.description = None
@@ -93,15 +102,24 @@ class Halo(object):
     @property
     def fext(self):
         """
-        Returns the point-source flux component, Fps = Fabs exp(-tau_sca)
+        The point-source flux component, :math:`F_{ps} = F_{abs} \\exp(-\\tau_{sca})`
+
+        Returns
+        -------
+        numpy.ndarray or astropy.units.Quantity (NE) [fabs.unit]
         """
         assert self.fabs is not None
         return self.fabs * np.exp(-self.taux)
-
+    
     @property
     def fhalo(self):
         """
-        Returns the total scattring halo flux, Fh = Fabs (1 - exp(-tau_sca))
+        The theoretical bin-integrated flux spectrum for the total scattering halo flux. 
+        This is computed using the formula :math:`F_h = F_{abs} (1 - \\exp(-\\tau_{sca}))`
+
+        Returns
+        -------
+        numpy.ndarray or astropy.units.Quantity (NE) [fabs.unit]
         """
         assert self.fabs is not None
         return self.fabs * (1.0 - np.exp(-self.taux))
@@ -109,8 +127,12 @@ class Halo(object):
     @property
     def percent_fabs(self):
         """
-        Calculate fraction of absorbed flux that goes into the scattring halo,
-        effectively (1 - exp(-tau))
+        Calculates the fraction of absorbed flux that goes into the scattring halo,
+        effectively :math:`(1 - \\exp(-\\tau))`
+
+        Returns
+        -------
+        numpy.ndarray or astropy.units.Quantity (NE) [unitless]
         """
         assert self.fabs is not None
         return np.sum(self.fhalo) / np.sum(self.fabs)
@@ -118,8 +140,12 @@ class Halo(object):
     @property
     def percent_fext(self):
         """
-        Calculate fraction of point source flux that goes into the scattring halo,
-        effectively (1 - exp(-tau)) / exp(-tau) = exp(tau) - 1
+        Calculates the fraction of point source flux that goes into the scattering halo,
+        effectively :math:`(1 - \\exp(-\\tau)) / \\exp(-\\tau) = \\exp(\\tau) - 1`
+
+        Returns
+        -------
+        numpy.ndarray or astropy.units.Quantity (NE) [unitless]
         """
         assert self.fabs is not None
         return np.sum(self.fhalo) / np.sum(self.fext)
@@ -277,7 +303,7 @@ class Halo(object):
         overwrite : bool
             If ``True`` (default), overwrite an existing file of the same name.
 
-        Write the ``norm_int`` attribute to a FITS file, along with
+        Writes the ``norm_int`` attribute to a FITS file, along with
         the LAM, THETA, and TAUX values.
         """
         hdr = fits.Header()
@@ -358,14 +384,10 @@ class Halo(object):
 
         Returns
         -------
-        2D numpy.ndarray of shape (nx, ny), representing the image of
-        a dust scattering halo. The halo intensity at different
-        energies are converted into counts using the ARF. Then a
-        Poisson distribution is used to simulate the number of counts
-        in each pixel.
-
-        If the user supplies a file name string using the save_file
-        keyword, a FITS file will be saved.
+        numpy.ndarray (2D)
+            Image of a dust scattering halo. The halo intensity at different energies 
+            are converted into counts using the ARF. Then a Poisson distribution is used 
+            to simulate the number of counts in each pixel.
         """
         assert len(src_flux) == len(self.lam)
 

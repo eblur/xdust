@@ -280,10 +280,19 @@
 <span class="sd">    intensity : astropy.units.Quantity (NTH) [arcsec^-2 x fabs.unit]</span>
 <span class="sd">        Energy-integrated intensity calculated for the scattering halo [fabs x norm_int]</span>
 <span class="sd">        </span>
-<span class="sd">    fhalo : numpy.ndarray or astropy.units.Quantity (NE) [fabs.unit]</span>
-<span class="sd">        Theoretical bin-integrated flux spectrum for the scattering</span>
-<span class="sd">        halo. This is computed using the formula Fabs * (1 - exp(-taux))</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 
+<span class="sd">    lam : astropy.units.Quantity or numpy.ndarray</span>
+<span class="sd">        Wavelength or energy grid; plain values default to keV.</span>
+<span class="sd">    </span>
+<span class="sd">    theta : astropy.units.Quantity or numpy.ndarray</span>
+<span class="sd">        Scattering angle grid; plain values default to arcsec.</span>
+<span class="sd">    </span>
+<span class="sd">    from_file : str</span>
+<span class="sd">        If not ``None``, the filename of a FITS file containing the halo parameters and </span>
+<span class="sd">        normalized intensity. The file should be in the format produced by the ``write`` </span>
+<span class="sd">        method of this class</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">from_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="kc">None</span>
@@ -332,15 +341,24 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">fext</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns the point-source flux component, Fps = Fabs exp(-tau_sca)</span>
+<span class="sd">        The point-source flux component, :math:`F_{ps} = F_{abs} \\exp(-\\tau_{sca})`</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy.ndarray or astropy.units.Quantity (NE) [fabs.unit]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">taux</span><span class="p">)</span>
-
+    
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">fhalo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns the total scattring halo flux, Fh = Fabs (1 - exp(-tau_sca))</span>
+<span class="sd">        The theoretical bin-integrated flux spectrum for the total scattering halo flux. </span>
+<span class="sd">        This is computed using the formula :math:`F_h = F_{abs} (1 - \\exp(-\\tau_{sca}))`</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy.ndarray or astropy.units.Quantity (NE) [fabs.unit]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">taux</span><span class="p">))</span>
@@ -348,8 +366,12 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">percent_fabs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calculate fraction of absorbed flux that goes into the scattring halo,</span>
-<span class="sd">        effectively (1 - exp(-tau))</span>
+<span class="sd">        Calculates the fraction of absorbed flux that goes into the scattring halo,</span>
+<span class="sd">        effectively :math:`(1 - \\exp(-\\tau))`</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy.ndarray or astropy.units.Quantity (NE) [unitless]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fhalo</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fabs</span><span class="p">)</span>
@@ -357,8 +379,12 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">percent_fext</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calculate fraction of point source flux that goes into the scattring halo,</span>
-<span class="sd">        effectively (1 - exp(-tau)) / exp(-tau) = exp(tau) - 1</span>
+<span class="sd">        Calculates the fraction of point source flux that goes into the scattering halo,</span>
+<span class="sd">        effectively :math:`(1 - \\exp(-\\tau)) / \\exp(-\\tau) = \\exp(\\tau) - 1`</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy.ndarray or astropy.units.Quantity (NE) [unitless]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">fabs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fhalo</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fext</span><span class="p">)</span>
@@ -524,7 +550,7 @@
 <span class="sd">        overwrite : bool</span>
 <span class="sd">            If ``True`` (default), overwrite an existing file of the same name.</span>
 
-<span class="sd">        Write the ``norm_int`` attribute to a FITS file, along with</span>
+<span class="sd">        Writes the ``norm_int`` attribute to a FITS file, along with</span>
 <span class="sd">        the LAM, THETA, and TAUX values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">hdr</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">Header</span><span class="p">()</span>
@@ -608,14 +634,10 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        2D numpy.ndarray of shape (nx, ny), representing the image of</span>
-<span class="sd">        a dust scattering halo. The halo intensity at different</span>
-<span class="sd">        energies are converted into counts using the ARF. Then a</span>
-<span class="sd">        Poisson distribution is used to simulate the number of counts</span>
-<span class="sd">        in each pixel.</span>
-
-<span class="sd">        If the user supplies a file name string using the save_file</span>
-<span class="sd">        keyword, a FITS file will be saved.</span>
+<span class="sd">        numpy.ndarray (2D)</span>
+<span class="sd">            Image of a dust scattering halo. The halo intensity at different energies </span>
+<span class="sd">            are converted into counts using the ARF. Then a Poisson distribution is used </span>
+<span class="sd">            to simulate the number of counts in each pixel.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">src_flux</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="p">)</span>
 
