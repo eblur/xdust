@@ -1,0 +1,11 @@
+astrodust.graindist.composition.minerals
+----------------------------------------
+.. toctree::
+   :maxdepth: 1
+
+.. autoclass:: xdust.graindist.composition.minerals.Mineral
+
+.. autofunction:: xdust.graindist.composition.minerals.calc_mass_conversion
+.. autofunction:: xdust.graindist.composition.minerals.calc_element_column
+.. autofunction:: xdust.graindist.composition.minerals.get_ISM_abund
+.. autofunction:: xdust.graindist.composition.minerals.get_dust_abund

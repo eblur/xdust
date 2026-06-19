@@ -2,13 +2,14 @@ import numpy as np
 import astropy.units as u
 from scipy.integrate import trapezoid as trapz
 from .. import shape
+from . import Sizedist
 
 __all__ = ['Powerlaw']
 
 # Some default values
 RHO      = 3.0     # g cm^-3 (average grain material density)
 
-NA       = 100     # default number for grain size dist resolution
+NA       = 24     # default number for grain size dist resolution
 PDIST    = 3.5     # default slope for power law distribution
 
 # min and max grain radii for MRN distribution
@@ -19,24 +20,29 @@ SHAPE    = shape.Sphere()
 
 #------------------------------------
 
-class Powerlaw(object):
+class Powerlaw(Sizedist):
     """
     A power law grain size distribution
+
+    Parameters
+    ----------
+    amin : astropy.units.Quantity or float
+        Minimum grain radius; plain floats are assumed to be in microns.
+
+    amax : astropy.units.Quantity or float
+        Maximum grain radius; plain floats are assumed to be in microns.
+
+    p : float
+        Power law slope for :math:`dn/da \\propto a^{-p}`.
+
+    na : int
+        Number of grain size grid points.
+
+    log : bool
+        If ``True`` (default), use log-spaced grain size grid; otherwise, use a linear grid.
     """
-    def __init__(self, amin=AMIN, amax=AMAX, p=PDIST, na=NA, log=False):
-        """
-        Inputs
-        ------
-        amin : astropy.units.Quantity -or- float :  minimum grain radius; if a float, micron units assumed
-
-        amax : astropy.units.Quantity -or- float : maximum grain radius; if a float, micron units assumed
-
-        p : float : power law slope for function dn/da \propto a^-p
-
-        NA  : int : number of a values to use in grid of grain radii
-
-        log : boolean (False): if True, use log-spaced grid of grain radii
-        """
+    def __init__(self, amin=AMIN, amax=AMAX, p=PDIST, na=NA, log=True):
+        Sizedist.__init__(self)
         # Set the name of this size disribution
         self.dtype = 'Powerlaw'
 
@@ -63,19 +69,21 @@ class Powerlaw(object):
         """
         Calculate number density of dust grains, given a dust mass column
 
-        Inputs
-        ------
-        
-        md : float : mass column density [g cm^-2]
+        Parameters
+        ----------
+        md : float
+            Mass column density [g cm^-2].
 
-        rho : float : grain material density [g cm^-3]
+        rho : float
+            Grain material density [g cm^-3].
 
-        shape : xdust.graindist.shape object (default is a Sphere)
+        shape : xdust.graindist.shape object
+            Grain shape (default: ``Sphere``).
 
         Returns
         -------
-        
-        Column density of grains in [cm^-2]
+        numpy.ndarray
+            Column density of grains [cm^-2 um^-1].
         """
         a_um = self.a.to('micron').value
 
@@ -97,19 +105,21 @@ class Powerlaw(object):
         """
         Calculate mass density function for the dust grains, given a total dust mass column
 
-        Inputs
-        ------
-        
-        md : float : mass column density [g cm^-2]
+        Parameters
+        ----------
+        md : float
+            Mass column density [g cm^-2].
 
-        rho : float : grain material density [g cm^-3]
+        rho : float
+            Grain material density [g cm^-3].
 
-        shape : xdust.graindist.shape object (default is a Sphere)
+        shape : xdust.graindist.shape object
+            Grain shape (default: ``Sphere``).
 
         Returns
         -------
-        
-        Mass column distribution of grains in [cg m^-2 um^-1]
+        numpy.ndarray
+            Mass column distribution [g cm^-2 um^-1].
         """
         nd = self.ndens(md, rho, shape)  # dn/da [cm^-2 um^-1]
         mg = shape.vol(self.a) * rho     # grain mass for each radius [g]

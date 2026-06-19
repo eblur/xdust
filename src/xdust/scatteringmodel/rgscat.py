@@ -1,7 +1,7 @@
 import numpy as np
 import astropy.units as u
 from .. import helpers
-from .scatteringmodel import ScatteringModel
+from . import ScatteringModel
 
 __all__ = ['RGscattering']
 
@@ -9,8 +9,8 @@ CHARSIG       = 1.04 * u.arcmin # characteristic scattering angle [arcmin E(keV)
 
 class RGscattering(ScatteringModel):
     """
-    Rayleigh-Gans scattering model. *See* Mauche & Gorenstein (1986), ApJ 302, 371; 
-    Smith & Dwek (1998), ApJ, 503, 831
+    Rayleigh-Gans scattering model. *See* `Mauche & Gorenstein (1986), ApJ 302, 371 <https://ui.adsabs.harvard.edu/abs/1986ApJ...302..371M/abstract>`_ and
+    `Smith & Dwek (1998), ApJ, 503, 831 <https://ui.adsabs.harvard.edu/abs/1998ApJ...503..831S/abstract>`_
     """
     def __init__(self, **kwargs):
         ScatteringModel.__init__(self, **kwargs)
@@ -21,22 +21,25 @@ class RGscattering(ScatteringModel):
         """
         Calculate the extinction efficiences with the Rayleigh-Gans approximation.
 
-        lam : astropy.units.Quantity -or- numpy.ndarray
-            Wavelength or energy values for calculating the cross-sections;
-            if no units specified, defaults to keV
-        
-        a : astropy.units.Quantity -or- numpy.ndarray
-            Grain radius value(s) to use in the calculation;
-            if no units specified, defaults to micron
-        
+        Parameters
+        ----------
+        lam : astropy.units.Quantity or numpy.ndarray
+            Wavelength or energy; plain arrays are assumed to be in keV.
+
+        a : astropy.units.Quantity or numpy.ndarray
+            Grain radius; plain arrays are assumed to be in microns.
+
         cm : xdust.graindist.composition object
             Holds the optical constants and density for the compound.
-        
-        theta : astropy.units.Quantity -or- numpy.ndarray -or- float
-            Scattering angles for computing the differential scattering cross-section;
-            if no units specified, defaults to radian
 
-        Updates the `qsca`, `qext`, `qabs`, and `diff` attributes
+        theta : astropy.units.Quantity or numpy.ndarray or float
+            Scattering angles; plain values are assumed to be in radians.
+
+        Returns
+        -------
+        None
+
+        Updates the ``qsca``, ``qext``, ``qabs``, and ``diff`` attributes.
         """
         # Store the parameters
         lam_cm0, a_cm0, theta_rad0 = self._store_parameters(lam, a, cm, theta)
@@ -90,17 +93,19 @@ class RGscattering(ScatteringModel):
         Calculates the characteristic scattering angle under the Rayleigh-Gans approximation, 
         with the Gaussian approximation to the bessel functions.
 
-        lam : astropy.units.Quantity -or- numpy.ndarray
-            Wavelength or energy values for calculating the cross-sections;
-            if no units specified, defaults to keV
-        
-        a : astropy.units.Quantity -or- numpy.ndarray
-            Grain radius value(s) to use in the calculation;
-            if no units specified, defaults to micron
-        
+        Parameters
+        ----------
+        lam : astropy.units.Quantity or numpy.ndarray
+            Wavelength or energy; plain arrays are assumed to be in keV.
+
+        a : astropy.units.Quantity or numpy.ndarray
+            Grain radius; plain arrays are assumed to be in microns.
+
         Returns
         -------
-        astropy.units.Quantity using the formula 1.04 arcmin (E/keV)^-1 (a/micron)^-1
+        astropy.units.Quantity
+            Characteristic scattering angle using
+            :math:`\sigma = 1.04~\mathrm{arcmin}~(E/\mathrm{keV})^{-1}(a/\mu\mathrm{m})^{-1}`
         """
         lam_keV = lam
         if isinstance(lam, u.Quantity):

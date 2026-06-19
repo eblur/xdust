@@ -22,16 +22,14 @@ class Halo(object):
     Attributes
     ----------
     
-    description : string
+    description : str
         Text description of this scattering halo.
 
-    lam : astropy.units.Quantity -or- numpy.ndarray
-        Wavelength or energy values for performing the calculation; 
-        if no units specified, defaults to keV
-        
-    theta : astropy.units.Quantity -or- numpy.ndarray 
-        Scattering angles for computing the differential scattering cross-section;
-        if no units specified, defaults to ARCCSEC
+    lam : astropy.units.Quantity
+        Wavelength or energy grid; plain values default to keV.
+
+    theta : astropy.units.Quantity
+        Scattering angle grid; plain values default to arcsec.
     
     norm_int : astropy.units.Quantity array [arcsec^-2]
         Normalized scattering halo intensity as a function of energy (NE x NTH)
@@ -46,10 +44,19 @@ class Halo(object):
     intensity : astropy.units.Quantity (NTH) [arcsec^-2 x fabs.unit]
         Energy-integrated intensity calculated for the scattering halo [fabs x norm_int]
         
-    fhalo : numpy.ndarray or astropy.units.Quantity (NE) [fabs.unit]
-        Theoretical bin-integrated flux spectrum for the scattering
-        halo. This is computed using the formula Fabs * (1 - exp(-taux))
+    Parameters
+    ----------
 
+    lam : astropy.units.Quantity or numpy.ndarray
+        Wavelength or energy grid; plain values default to keV.
+    
+    theta : astropy.units.Quantity or numpy.ndarray
+        Scattering angle grid; plain values default to arcsec.
+    
+    from_file : str
+        If not ``None``, the filename of a FITS file containing the halo parameters and 
+        normalized intensity. The file should be in the format produced by the ``write`` 
+        method of this class
     """
     def __init__(self, lam=1.0, theta=1.0, from_file=None):
         self.description = None
@@ -72,13 +79,14 @@ class Halo(object):
         """
         Calculate the scattering halo intensity from a flux spectrum.
 
-        flux : numpy.ndarray or astropy.units.Quantity (NE)
-            Bin-integrated absorbed flux (photon/cm^2/s -or- erg/cm^2/s), 
-            used for calculating total halo intensity
-        
-        ftype : string ('abs' or 'ext')
-            Describe whether the input spectrum is absorbed flux or 
-            point source component flux (after including scattering component of extinction)
+        Parameters
+        ----------
+        flux : numpy.ndarray or astropy.units.Quantity
+            Bin-integrated absorbed flux [photon/cm^2/s or erg/cm^2/s].
+
+        ftype : str
+            ``'abs'`` if the input is absorbed flux; ``'ext'`` if it is
+            point-source (extinction-corrected) flux.
         """
         assert self.norm_int is not None
         assert ftype in ALLOWED_FTYPE
@@ -94,15 +102,24 @@ class Halo(object):
     @property
     def fext(self):
         """
-        Returns the point-source flux component, Fps = Fabs exp(-tau_sca)
+        The point-source flux component, :math:`F_{ps} = F_{abs} \\exp(-\\tau_{sca})`
+
+        Returns
+        -------
+        numpy.ndarray or astropy.units.Quantity (NE) [fabs.unit]
         """
         assert self.fabs is not None
         return self.fabs * np.exp(-self.taux)
-
+    
     @property
     def fhalo(self):
         """
-        Returns the total scattring halo flux, Fh = Fabs (1 - exp(-tau_sca))
+        The theoretical bin-integrated flux spectrum for the total scattering halo flux. 
+        This is computed using the formula :math:`F_h = F_{abs} (1 - \\exp(-\\tau_{sca}))`
+
+        Returns
+        -------
+        numpy.ndarray or astropy.units.Quantity (NE) [fabs.unit]
         """
         assert self.fabs is not None
         return self.fabs * (1.0 - np.exp(-self.taux))
@@ -110,8 +127,12 @@ class Halo(object):
     @property
     def percent_fabs(self):
         """
-        Calculate fraction of absorbed flux that goes into the scattring halo,
-        effectively (1 - exp(-tau))
+        Calculates the fraction of absorbed flux that goes into the scattring halo,
+        effectively :math:`(1 - \\exp(-\\tau))`
+
+        Returns
+        -------
+        numpy.ndarray or astropy.units.Quantity (NE) [unitless]
         """
         assert self.fabs is not None
         return np.sum(self.fhalo) / np.sum(self.fabs)
@@ -119,8 +140,12 @@ class Halo(object):
     @property
     def percent_fext(self):
         """
-        Calculate fraction of point source flux that goes into the scattring halo,
-        effectively (1 - exp(-tau)) / exp(-tau) = exp(tau) - 1
+        Calculates the fraction of point source flux that goes into the scattering halo,
+        effectively :math:`(1 - \\exp(-\\tau)) / \\exp(-\\tau) = \\exp(\\tau) - 1`
+
+        Returns
+        -------
+        numpy.ndarray or astropy.units.Quantity (NE) [unitless]
         """
         assert self.fabs is not None
         return np.sum(self.fhalo) / np.sum(self.fext)
@@ -171,26 +196,26 @@ class Halo(object):
         """
         Return the fraction of (energy-integrated) scattering halo flux enclosed by theta < th
 
-        Inputs
-        ------
+        Parameters
+        ----------
+        th : astropy.units.Quantity or float
+            Maximum theta value; plain values are assumed to be in arcsec.
 
-        th0 : astropy.units.Quantity -or- float:
-            Maximum theta value for calculating enclosed fraction;
-            if no unit specified, ARCSEC is assumed
-        
-        n : int : number of theta values to use for inteprolating
+        n : int
+            Number of theta values to use for interpolating.
 
-        log : bool : If True, uses a log-spaced theta grid for the integral;
-            If False, uses a linear spaced theta grid.
+        log : bool
+            If ``True``, use a log-spaced theta grid. Default ``False``.
 
         Returns
         -------
-        float : trapz(self.intensity * 2 pi theta_arcsec, theta_arcsec)
+        float
+            Enclosed fraction of halo flux within ``theta < th``.
 
-        SMALL ANGLE SCATTERING IS ASSUMED!
+        Note
+        ----
+        Small-angle scattering is assumed.
         """
-        # Will break if we attempt to run this without an intensity calculation
-        assert self.intensity is not None
 
         if isinstance(th, u.Quantity):
             thmax = th.to('arcsec').value
@@ -219,23 +244,25 @@ class Halo(object):
         """
         Calculate fraction of halo, as a function of energy, enclosed by theta < th
 
-        Inputs
-        ------
+        Parameters
+        ----------
+        th : astropy.units.Quantity or float
+            Maximum theta value; plain values are assumed to be in arcsec.
 
-        th0 : astropy.units.Quantity -or- float:
-            Maximum theta value for calculating enclosed fraction;
-            if no unit specified, ARCSEC is assumed
-        
-        n : int : number of theta values to use for inteprolating
+        n : int
+            Number of theta values to use for interpolating.
 
-        log : bool : If True, uses a log-spaced theta grid for the integral;
-            If False, uses a linear spaced theta grid.
+        log : bool
+            If ``True``, use a log-spaced theta grid. Default ``False``.
 
         Returns
         -------
-        float : trapz(self.intensity * 2 pi theta_arcsec, theta_arcsec)
+        numpy.ndarray
+            Enclosed halo fraction as a function of energy [size NE].
 
-        SMALL ANGLE SCATTERING IS ASSUMED!
+        Note
+        ----
+        Small-angle scattering is assumed.
         """
         # Will break if we attempt to run this without an intensity calculation
         assert self.norm_intensity is not None
@@ -268,13 +295,16 @@ class Halo(object):
 
     def write(self, filename, overwrite=True):
         """
-        Inputs
-        ------
-        filename : string
-            Name for the output FITS file
+        Parameters
+        ----------
+        filename : str
+            Name for the output FITS file.
 
-        Write the scattering halo 'norm_int' attribute to a FITS file.
-        The file will also store the relevant LAM, THETA, and TAUX values.
+        overwrite : bool
+            If ``True`` (default), overwrite an existing file of the same name.
+
+        Writes the ``norm_int`` attribute to a FITS file, along with
+        the LAM, THETA, and TAUX values.
         """
         hdr = fits.Header()
         hdr['COMMENT'] = "Normalized halo intensity as a function of angle"
@@ -323,7 +353,7 @@ class Halo(object):
 
         Parameters
         ----------
-        arf : string
+        arf : str
             Filename of telescope ARF
 
         src_flux : numpy.ndarray [phot/cm^2/s]
@@ -348,19 +378,16 @@ class Halo(object):
             Maximum halo.lam value
             (Default:None uses entire range)
 
-        save_file : string (Default:None)
-            Filename to use if you want to save the output to a .fits
+        save_file : str, optional
+            Filename to use if you want to save the output to a FITS file.
+            Default ``None``.
 
         Returns
         -------
-        2D numpy.ndarray of shape (nx, ny), representing the image of
-        a dust scattering halo. The halo intensity at different
-        energies are converted into counts using the ARF. Then a
-        Poisson distribution is used to simulate the number of counts
-        in each pixel.
-
-        If the user supplies a file name string using the save_file
-        keyword, a FITS file will be saved.
+        numpy.ndarray (2D)
+            Image of a dust scattering halo. The halo intensity at different energies 
+            are converted into counts using the ARF. Then a Poisson distribution is used 
+            to simulate the number of counts in each pixel.
         """
         assert len(src_flux) == len(self.lam)
 
