@@ -35,6 +35,7 @@ include:
   `graphite and astrosilicate grains <https://www.astro.princeton.edu/~draine/dust/dust.diel.html>`_
 
 * Rayleigh-Gans scattering physics following:
+
   * `Smith & Dwek (1998) <http://adsabs.harvard.edu/abs/1998ApJ...503..831S>`_
   * `Mauche & Gorenstein (1986) <http://adsabs.harvard.edu/abs/1986ApJ...302..371M>`_
 
