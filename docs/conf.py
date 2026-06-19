@@ -6,11 +6,11 @@ import sys
 sys.path.insert(0, os.path.abspath('../src'))
 
 # -- Project information -----------------------------------------------------
-project = 'xdust'
-copyright = '2024, Lia Corrales'
+project = 'Xdust'
+copyright = '2026, Lia Corrales'
 author = 'Lia Corrales'
-version = '0.1'
-release = '0.1'
+version = '1.0'
+release = '1.0'
 
 # -- General configuration ---------------------------------------------------
 extensions = [
