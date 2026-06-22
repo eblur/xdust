@@ -1,9 +1,14 @@
 *.pyc
+__pycache__/
 *~
 .DS_Store
 .*
+!.github
+!.gitignore
+!.nojekyll
 *.fits
 *.pdf
 *.png
 *.egg-info
 dist/
+docs/_build/

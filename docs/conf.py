@@ -3,7 +3,7 @@ import os
 import sys
 
 # Make the xdust package importable from the src layout
-sys.path.insert(0, os.path.abspath('../src'))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
 # -- Project information -----------------------------------------------------
 project = 'Xdust'
