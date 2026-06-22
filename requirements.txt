@@ -1,8 +1,0 @@
-#
-###### Requirements without Version Specifiers ######
-numpy
-matplotlib
-astropy
-#
-###### Requirements with Version Specifiers ######
-python <= 3.6

@@ -1,9 +1,0 @@
-*.pyc
-*~
-.DS_Store
-.*
-*.fits
-*.pdf
-*.png
-*.egg-info
-dist/
