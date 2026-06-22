@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "xdust"
-version = "0.1"
+version = "1.0"
 description = "Library of dust scattering codes"
 authors = [
     { name = "Lia Corrales", email = "liac@umich.edu" }
@@ -30,6 +30,7 @@ docs = [
 
 [project.urls]
 Homepage = "https://github.com/eblur/xdust"
+Documentation = "https://eblur.github.io/xdust"
 
 [tool.setuptools.packages.find]
 where = ["src"]
