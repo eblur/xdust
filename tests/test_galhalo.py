@@ -167,3 +167,27 @@ def test_halo_io(test):
     assert np.all(percent_diff(new_halo.taux,test.taux) < 0.01)
     assert np.all(percent_diff(new_halo.norm_int.flatten(),test.norm_int.flatten()) < 0.01)
     assert new_halo.lam.unit == 'keV'
+
+def create_arf(tmp_path, outfile, evals, effarea) -> str:
+    """
+    Create a dummy ARF file for testing
+    """
+    # import numpy as np
+    from astropy.io import fits
+    from astropy.table import Table
+
+    t = Table()
+    t['ENERG_LO'] = evals[:-1]
+    t['ENERG_HI'] = evals[1:]
+    t['SPECRESP'] = np.full(len(evals) - 1, effarea)
+
+    hdu_table = fits.BinTableHDU.from_columns(t.as_array(), name='SPECRESP')
+    hdu_primary = fits.PrimaryHDU()
+    hdul = fits.HDUList([hdu_primary, hdu_table])
+    hdul.writeto(tmp_path / outfile, overwrite=True)
+    return str(tmp_path / outfile)
+
+def test_fake_image(tmp_path):
+    new_halo = Halo(EVALS, THVALS)
+    arf = create_arf(tmp_path, 'test_arf.fits', EVALS, 100.0)
+    new_halo.fake_image(arf, src_flux=FABS, exposure=1e4, pix_scale=1.0, num_pix=[32, 32])
