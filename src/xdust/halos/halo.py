@@ -403,23 +403,18 @@ class Halo(object):
         arf   = InterpolatedUnivariateSpline(arf_x, arf_y, k=1)
 
         # Source counts to use for each energy bin
-        if self.lam_unit == 'angs':
-            ltemp      = self.lam * u.angstrom
-            ltemp_kev  = ltemp.to(u.keV, equivalencies=u.spectral()).value
-            arf_temp   = arf(ltemp_kev)[::-1]
-            src_counts = src_flux * arf_temp * exposure
-        else:
-            src_counts = src_flux * arf(self.lam) * exposure
+        lam_kev = self.lam.to(u.keV, equivalencies=u.spectral()).value
+        src_counts = src_flux * arf(lam_kev) * exposure
 
         # Decide which energy indexes to use
         if lmin is None:
             imin = 0
         else:
-            imin = min(np.arange(len(self.lam))[self.lam >= lmin])
+            imin = min(np.arange(len(self.lam))[self.lam >= lmin * self.lam.unit])
         if lmax is None:
             iend = len(self.lam)
         else:
-            iend = max(np.arange(len(self.lam))[self.lam <= lmax])
+            iend = max(np.arange(len(self.lam))[self.lam <= lmax * self.lam.unit])
 
         #iend = imax
         #if imax < 0:

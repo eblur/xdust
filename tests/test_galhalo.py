@@ -2,6 +2,8 @@ import pytest
 import numpy as np
 from scipy.integrate import trapezoid as trapz
 import astropy.units as u
+from astropy.io import fits
+from astropy.table import Table
 
 from xdust.halos import *
 from xdust import grainpop
@@ -172,22 +174,36 @@ def create_arf(tmp_path, outfile, evals, effarea) -> str:
     """
     Create a dummy ARF file for testing
     """
-    # import numpy as np
-    from astropy.io import fits
-    from astropy.table import Table
-
     t = Table()
     t['ENERG_LO'] = evals[:-1]
     t['ENERG_HI'] = evals[1:]
     t['SPECRESP'] = np.full(len(evals) - 1, effarea)
 
-    hdu_table = fits.BinTableHDU.from_columns(t.as_array(), name='SPECRESP')
+    hdu_table = fits.BinTableHDU(t.as_array(), name='SPECRESP')
     hdu_primary = fits.PrimaryHDU()
     hdul = fits.HDUList([hdu_primary, hdu_table])
     hdul.writeto(tmp_path / outfile, overwrite=True)
     return str(tmp_path / outfile)
 
-def test_fake_image(tmp_path):
-    new_halo = Halo(EVALS, THVALS)
+@pytest.fixture
+def halo():
+    new_halo = galhalo.UniformGalHalo(EVALS, THVALS)
+    new_halo.calculate(GPOP)
+    return new_halo
+
+@pytest.fixture
+def arf(tmp_path):
     arf = create_arf(tmp_path, 'test_arf.fits', EVALS, 100.0)
-    new_halo.fake_image(arf, src_flux=FABS, exposure=1e4, pix_scale=1.0, num_pix=[32, 32])
+    return arf
+
+def test_fake_image(halo, arf):
+    image = halo.fake_image(arf, src_flux=FABS, exposure=1e4, pix_scale=1.0, num_pix=[8, 16])
+    assert image.shape == (16, 8)
+    assert np.all(image >= 0.0)
+    assert np.all(image == np.floor(image))
+    assert image.sum() > 0
+
+def test_fake_image_lmin_lmax(halo, arf):
+    restricted = halo.fake_image(arf, src_flux=FABS, exposure=1e4, pix_scale=1.0, num_pix=[8, 16], lmin=0.5, lmax=5.0)
+    unrestricted = halo.fake_image(arf, src_flux=FABS, exposure=1e4, pix_scale=1.0, num_pix=[8, 16])
+    assert 0 < restricted.sum() < unrestricted.sum()
