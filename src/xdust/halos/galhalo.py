@@ -153,7 +153,7 @@ class ScreenGalHalo(Halo):
 
         Returns
         -------
-        numpy.ndarray (NE x NTH) [fabs units / arcsec**2]
+        astropy.units.Quantity (NE x NTH) [fabs units / arcsec**2]
             Scattering halo intensity as a function of
             energy and observation angle.
         """
@@ -171,11 +171,11 @@ class ScreenGalHalo(Halo):
         theta_rad = self.theta/3600./180.*np.pi
 
         ne, ntheta = len(self.lam), len(self.theta)
-        inten  = np.zeros(shape=(ne, ntheta))
+        inten  = np.zeros(shape=(ne, ntheta)) * self.norm_int.unit
         lctm   = (time-tzero)
 
         for i in range(len(self.lam)):
-            deltat = time_delay(self.theta, self.x, dist) * u.second.to(u.day)
+            deltat = time_delay(self.theta.to(u.arcsec).value, self.x, dist) * u.second.to(u.day)
             t      = tnow - deltat
             for j in range(ntheta):
                 inten[i,j] += np.interp(t[j], time, lc * self.norm_int[i,j] * self.fabs[i])
