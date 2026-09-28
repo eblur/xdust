@@ -192,6 +192,13 @@ def halo():
     return new_halo
 
 @pytest.fixture
+def screen_halo():
+    new_halo = galhalo.ScreenGalHalo(EVALS, THVALS)
+    new_halo.calculate(GPOP, x=0.5)
+    new_halo.calculate_intensity(FABS)
+    return new_halo
+
+@pytest.fixture
 def arf(tmp_path):
     arf = create_arf(tmp_path, 'test_arf.fits', EVALS, 100.0)
     return arf
@@ -214,3 +221,13 @@ def test_time_delay():
 
     result2 = galhalo.time_delay(200.0, 0.5, 8.0)
     assert result2 == pytest.approx(4 * result1, rel=1e-3)
+
+def test_variable_profile(screen_halo):
+    time = np.linspace(0, 100, 10)
+    lc = np.ones_like(time)
+    dist = 8.0
+    var_profile = screen_halo.variable_profile(time, lc, dist=dist)
+    assert var_profile.shape == (len(EVALS), len(THVALS))
+    assert np.sum(var_profile) > 0
+    # 2 * lc and assert the result is ~2×
+
