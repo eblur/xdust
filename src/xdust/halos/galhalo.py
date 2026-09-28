@@ -238,15 +238,16 @@ class ScreenGalHalo(Halo):
         """
         # intensity cube (NE x NTH), phot/cm^2/s/arcsec^2
         var_profile = self.variable_profile(time, lc, dist=dist, tnow=tnow)
+
         # Decide which energy indexes to use
         if lmin is None:
             imin = 0
         else:
-            imin = min(np.arange(len(self.lam))[self.lam >= lmin])
+            imin = min(np.arange(len(self.lam))[self.lam >= lmin * self.lam.unit])
         if lmax is None:
             iend = len(self.lam)
         else:
-            iend = max(np.arange(len(self.lam))[self.lam <= lmax])
+            iend = max(np.arange(len(self.lam))[self.lam <= lmax * self.lam.unit])
 
         # set up image grid
         xlen, ylen = num_pix
