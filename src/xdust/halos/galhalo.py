@@ -237,7 +237,7 @@ class ScreenGalHalo(Halo):
             to simulate the number of counts in each pixel.
         """
         # intensity cube (NE x NTH), phot/cm^2/s/arcsec^2
-
+        var_profile = self.variable_profile(time, lc, dist=dist, tnow=tnow)
         # Decide which energy indexes to use
         if lmin is None:
             imin = 0
