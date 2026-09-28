@@ -601,5 +601,4 @@ def time_delay(alpha, x, dkpc):
     Assumes small angle scattering.
     """
     delta_x = path_diff(alpha, x)
-    d_cm    = dkpc * 1.e3 * u.pc.to('cm')  # cm
-    return delta_x * (d_cm / c.c).to('s').value # seconds
+    return delta_x * (dkpc * u.kpc / c.c).to('s').value
