@@ -243,3 +243,10 @@ def test_fake_variable_image(screen_halo, arf):
     assert np.all(image >= 0.0)
     assert np.all(image == np.floor(image))
     assert image.sum() > 0
+
+def test_fake_variable_image_lmin_lmax(screen_halo, arf):
+    time = np.linspace(0, 100, 10)
+    lc = np.ones_like(time)
+    restricted = screen_halo.fake_variable_image(time, lc=lc, arf=arf, exposure=1e4, num_pix=[8, 16], lmin=0.5, lmax=5.0)
+    unrestricted = screen_halo.fake_variable_image(time, lc=lc, arf=arf, exposure=1e4, num_pix=[8, 16])
+    assert 0 < restricted.sum() < unrestricted.sum()
