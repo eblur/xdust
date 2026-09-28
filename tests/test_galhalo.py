@@ -226,8 +226,20 @@ def test_variable_profile(screen_halo):
     time = np.linspace(0, 100, 10)
     lc = np.ones_like(time)
     dist = 8.0
-    var_profile = screen_halo.variable_profile(time, lc, dist=dist)
-    assert var_profile.shape == (len(EVALS), len(THVALS))
-    assert np.sum(var_profile) > 0
+    var_profile1 = screen_halo.variable_profile(time, lc, dist=dist)
+    assert var_profile1.shape == (len(EVALS), len(THVALS))
+    assert np.sum(var_profile1) > 0
+
+    var_profile2 = screen_halo.variable_profile(time, 2 * lc, dist=dist)
+    assert var_profile2.shape == (len(EVALS), len(THVALS))
+    assert np.sum(var_profile2) > 0
     # 2 * lc and assert the result is ~2×
 
+def test_fake_variable_image(screen_halo, arf):
+    time = np.linspace(0, 100, 10)
+    lc = np.ones_like(time)
+    image = screen_halo.fake_variable_image(time, lc=lc, arf=arf, exposure=1e4, num_pix=[8, 16])
+    assert image.shape == (16, 8)
+    assert np.all(image >= 0.0)
+    assert np.all(image == np.floor(image))
+    assert image.sum() > 0
