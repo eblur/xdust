@@ -261,13 +261,7 @@ class ScreenGalHalo(Halo):
         arf   = InterpolatedUnivariateSpline(arf_x, arf_y, k=1)
 
         # Conversion erg -> ct for each energy bin
-        if self.lam_unit in ['Angs', 'Angstrom', 'angs', 'angstrom']:
-            ener = self.lam * u.angstrom
-        elif self.lam_unit in ['kev', 'keV']:
-            ener = self.lam * u.keV
-        else:
-            ener = self.lam * u.Unit(self.lam_unit)
-        int_conv = arf(ener.to(u.keV, equivalencies=u.spectral()))
+        int_conv = arf(self.lam.to(u.keV, equivalencies=u.spectral()).value)
         # cm^2 ct/phot
 
         r_asec = radius * pix_scale
