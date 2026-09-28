@@ -207,3 +207,10 @@ def test_fake_image_lmin_lmax(halo, arf):
     restricted = halo.fake_image(arf, src_flux=FABS, exposure=1e4, pix_scale=1.0, num_pix=[8, 16], lmin=0.5, lmax=5.0)
     unrestricted = halo.fake_image(arf, src_flux=FABS, exposure=1e4, pix_scale=1.0, num_pix=[8, 16])
     assert 0 < restricted.sum() < unrestricted.sum()
+
+def test_time_delay():
+    result1 = galhalo.time_delay(100.0, 0.5, 8.0)
+    assert result1 == pytest.approx(96770, rel=1e-3)
+
+    result2 = galhalo.time_delay(200.0, 0.5, 8.0)
+    assert result2 == pytest.approx(4 * result1, rel=1e-3)
