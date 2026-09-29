@@ -233,12 +233,12 @@ def test_variable_profile(screen_halo):
     var_profile2 = screen_halo.variable_profile(time, 2 * lc, dist=dist)
     assert var_profile2.shape == (len(EVALS), len(THVALS))
     assert np.sum(var_profile2) > 0
-    # 2 * lc and assert the result is ~2×
+    assert np.sum(var_profile2).value == pytest.approx(2 * np.sum(var_profile1).value)
 
 def test_fake_variable_image(screen_halo, arf):
     time = np.linspace(0, 100, 10)
     lc = np.ones_like(time)
-    image = screen_halo.fake_variable_image(time, lc=lc, arf=arf, exposure=1e4, num_pix=[8, 16])
+    image = screen_halo.fake_variable_image(time, lc=lc, arf=arf, exposure=1e4, pix_scale=1.0, num_pix=[8, 16])
     assert image.shape == (16, 8)
     assert np.all(image >= 0.0)
     assert np.all(image == np.floor(image))
