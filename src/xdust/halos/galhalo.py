@@ -153,7 +153,7 @@ class ScreenGalHalo(Halo):
 
         Returns
         -------
-        numpy.ndarray (NE x NTH) [fabs units / arcsec**2]
+        astropy.units.Quantity (NE x NTH) [fabs units / arcsec**2]
             Scattering halo intensity as a function of
             energy and observation angle.
         """
@@ -171,11 +171,11 @@ class ScreenGalHalo(Halo):
         theta_rad = self.theta/3600./180.*np.pi
 
         ne, ntheta = len(self.lam), len(self.theta)
-        inten  = np.zeros(shape=(ne, ntheta))
+        inten  = np.zeros(shape=(ne, ntheta)) * self.norm_int.unit
         lctm   = (time-tzero)
 
         for i in range(len(self.lam)):
-            deltat = time_delay(self.theta, self.x, dist) * u.second.to(u.day)
+            deltat = time_delay(self.theta.to(u.arcsec).value, self.x, dist) * u.second.to(u.day)
             t      = tnow - deltat
             for j in range(ntheta):
                 inten[i,j] += np.interp(t[j], time, lc * self.norm_int[i,j] * self.fabs[i])
@@ -237,16 +237,17 @@ class ScreenGalHalo(Halo):
             to simulate the number of counts in each pixel.
         """
         # intensity cube (NE x NTH), phot/cm^2/s/arcsec^2
+        var_profile = self.variable_profile(time, lc, dist=dist, tnow=tnow)
 
         # Decide which energy indexes to use
         if lmin is None:
             imin = 0
         else:
-            imin = min(np.arange(len(self.lam))[self.lam >= lmin])
+            imin = min(np.arange(len(self.lam))[self.lam >= lmin * self.lam.unit])
         if lmax is None:
             iend = len(self.lam)
         else:
-            iend = max(np.arange(len(self.lam))[self.lam <= lmax])
+            iend = max(np.arange(len(self.lam))[self.lam <= lmax * self.lam.unit])
 
         # set up image grid
         xlen, ylen = num_pix
@@ -261,13 +262,7 @@ class ScreenGalHalo(Halo):
         arf   = InterpolatedUnivariateSpline(arf_x, arf_y, k=1)
 
         # Conversion erg -> ct for each energy bin
-        if self.lam_unit in ['Angs', 'Angstrom', 'angs', 'angstrom']:
-            ener = self.lam * u.angstrom
-        elif self.lam_unit in ['kev', 'keV']:
-            ener = self.lam * u.keV
-        else:
-            ener = self.lam * u.Unit(self.lam_unit)
-        int_conv = arf(ener.to(u.keV, equivalencies=u.spectral()))
+        int_conv = arf(self.lam.to(u.keV, equivalencies=u.spectral()).value)
         # cm^2 ct/phot
 
         r_asec = radius * pix_scale
@@ -601,5 +596,4 @@ def time_delay(alpha, x, dkpc):
     Assumes small angle scattering.
     """
     delta_x = path_diff(alpha, x)
-    d_cm    = dkpc * 1.e3 * u.pc.to('cm')  # cm
-    return delta_x * (d_cm / c.c).to('s').value # seconds
+    return delta_x * (dkpc * u.kpc / c.c).to('s').value

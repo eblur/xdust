@@ -2,6 +2,8 @@ import pytest
 import numpy as np
 from scipy.integrate import trapezoid as trapz
 import astropy.units as u
+from astropy.io import fits
+from astropy.table import Table
 
 from xdust.halos import *
 from xdust import grainpop
@@ -167,3 +169,84 @@ def test_halo_io(test):
     assert np.all(percent_diff(new_halo.taux,test.taux) < 0.01)
     assert np.all(percent_diff(new_halo.norm_int.flatten(),test.norm_int.flatten()) < 0.01)
     assert new_halo.lam.unit == 'keV'
+
+def create_arf(tmp_path, outfile, evals, effarea) -> str:
+    """
+    Create a dummy ARF file for testing
+    """
+    t = Table()
+    t['ENERG_LO'] = evals[:-1]
+    t['ENERG_HI'] = evals[1:]
+    t['SPECRESP'] = np.full(len(evals) - 1, effarea)
+
+    hdu_table = fits.BinTableHDU(t.as_array(), name='SPECRESP')
+    hdu_primary = fits.PrimaryHDU()
+    hdul = fits.HDUList([hdu_primary, hdu_table])
+    hdul.writeto(tmp_path / outfile, overwrite=True)
+    return str(tmp_path / outfile)
+
+@pytest.fixture
+def halo():
+    new_halo = galhalo.UniformGalHalo(EVALS, THVALS)
+    new_halo.calculate(GPOP)
+    return new_halo
+
+@pytest.fixture
+def screen_halo():
+    new_halo = galhalo.ScreenGalHalo(EVALS, THVALS)
+    new_halo.calculate(GPOP, x=0.5)
+    new_halo.calculate_intensity(FABS)
+    return new_halo
+
+@pytest.fixture
+def arf(tmp_path):
+    arf = create_arf(tmp_path, 'test_arf.fits', EVALS, 100.0)
+    return arf
+
+def test_fake_image(halo, arf):
+    image = halo.fake_image(arf, src_flux=FABS, exposure=1e4, pix_scale=1.0, num_pix=[8, 16])
+    assert image.shape == (16, 8)
+    assert np.all(image >= 0.0)
+    assert np.all(image == np.floor(image))
+    assert image.sum() > 0
+
+def test_fake_image_lmin_lmax(halo, arf):
+    restricted = halo.fake_image(arf, src_flux=FABS, exposure=1e4, pix_scale=1.0, num_pix=[8, 16], lmin=0.5, lmax=5.0)
+    unrestricted = halo.fake_image(arf, src_flux=FABS, exposure=1e4, pix_scale=1.0, num_pix=[8, 16])
+    assert 0 < restricted.sum() < unrestricted.sum()
+
+def test_time_delay():
+    result1 = galhalo.time_delay(100.0, 0.5, 8.0)
+    assert result1 == pytest.approx(96770, rel=1e-3)
+
+    result2 = galhalo.time_delay(200.0, 0.5, 8.0)
+    assert result2 == pytest.approx(4 * result1, rel=1e-3)
+
+def test_variable_profile(screen_halo):
+    time = np.linspace(0, 100, 10)
+    lc = np.ones_like(time)
+    dist = 8.0
+    var_profile1 = screen_halo.variable_profile(time, lc, dist=dist)
+    assert var_profile1.shape == (len(EVALS), len(THVALS))
+    assert np.sum(var_profile1) > 0
+
+    var_profile2 = screen_halo.variable_profile(time, 2 * lc, dist=dist)
+    assert var_profile2.shape == (len(EVALS), len(THVALS))
+    assert np.sum(var_profile2) > 0
+    assert np.sum(var_profile2).value == pytest.approx(2 * np.sum(var_profile1).value)
+
+def test_fake_variable_image(screen_halo, arf):
+    time = np.linspace(0, 100, 10)
+    lc = np.ones_like(time)
+    image = screen_halo.fake_variable_image(time, lc=lc, arf=arf, exposure=1e4, pix_scale=1.0, num_pix=[8, 16])
+    assert image.shape == (16, 8)
+    assert np.all(image >= 0.0)
+    assert np.all(image == np.floor(image))
+    assert image.sum() > 0
+
+def test_fake_variable_image_lmin_lmax(screen_halo, arf):
+    time = np.linspace(0, 100, 10)
+    lc = np.ones_like(time)
+    restricted = screen_halo.fake_variable_image(time, lc=lc, arf=arf, exposure=1e4, num_pix=[8, 16], lmin=0.5, lmax=5.0)
+    unrestricted = screen_halo.fake_variable_image(time, lc=lc, arf=arf, exposure=1e4, num_pix=[8, 16])
+    assert 0 < restricted.sum() < unrestricted.sum()
